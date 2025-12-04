@@ -18,17 +18,9 @@ Die Wahl eines Forschungstools ist keine Geschmacksfrage, sondern folgt aus zwei
 
 ## Die vier Archetypen
 
-Das Framework definiert vier Interface-Grundformen, die als Denkwerkzeuge dienen:
+Das Framework definiert vier Interface-Grundformen: Reader, Scope, Navigator und Workbench. Jeder Archetyp entspricht einer spezifischen Kombination aus Daten-Topologie und epistemischer Intention.
 
-The Reader für sequenzielle Daten und vertieftes Verstehen. Ein Interface für lineare Daten, bei denen Kontext und narrative Abfolge im Vordergrund stehen.
-
-The Scope für multidimensionale Daten und Vergleich. Ein analytisches Dashboard für Mustererkennung, Trends und Korrelationen.
-
-The Navigator für vernetzte Daten und Rekonstruktion. Eine topologische Ansicht für Daten, deren Wert in den Beziehungen der Elemente liegt.
-
-The Workbench für hierarchische Daten und Kuratierung. Eine Arbeitsumgebung für Manipulation, Bereinigung und Strukturierung.
-
-Die Zuordnung von Topologie und Intention zum Archetyp erfolgt durch dokumentierte Wenn-Dann-Heuristiken.
+Die vollständige Spezifikation mit kognitiven Aufgaben, UI-Elementen und Ausschlüssen findet sich in [[05-ARCHETYPEN]]. Die Zuordnungslogik ist in [[02-MAPPINGS]] dokumentiert.
 
 ---
 

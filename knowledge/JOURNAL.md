@@ -343,3 +343,29 @@ Aktuell: 00-PROJEKTAUFTRAG, 02-MAPPINGS, 03-BEISPIEL, 05-ARCHETYPEN, 06-DIALOG, 
 Unvollständig: 01-ARCHITEKTUR (fehlte 11-CODE-MAP), 04-SYSTEM-PROMPT (fehlen Spezialisierungen), 08-DESIGN-RATIONALE (redundant mit DESIGN).
 
 Neu erstellt: 11-CODE-MAP.
+
+---
+
+## 2025-12-04: Wissensbasis-Konsolidierung
+
+Zwei Maßnahmen zur Redundanzbereinigung wurden umgesetzt.
+
+### Projektauftrag verschlankt
+
+Das Dokument 00-PROJEKTAUFTRAG.md enthielt redundante Archetypen-Beschreibungen (13 Zeilen), die bereits ausführlicher in 05-ARCHETYPEN.md dokumentiert sind. Der Abschnitt wurde auf zwei Sätze mit Verweisen zur kanonischen Quelle reduziert.
+
+05-ARCHETYPEN.md ist jetzt die Single Source of Truth für Archetypen-Definitionen.
+
+### System Prompt auf v2.1 aktualisiert
+
+Der System Prompt wurde um die 12 Spezialisierungen aus 10-SPEZIALISIERUNGEN.md erweitert.
+
+Neuer Abschnitt 6 "SPEZIALISIERUNGEN" mit Erkennungsheuristiken für alle drei Varianten pro Archetyp:
+- Reader: Edition, Protokoll, Transcript
+- Scope: Survey, Monitor, Matrix
+- Navigator: Citation, Genealogy, Concept
+- Workbench: Registry, Codebook, Schema
+
+Die nachfolgenden Abschnitte wurden renummeriert (7. WORKFLOW-ERKENNUNG, 8. DEIN PROTOKOLL, 9. REGELN).
+
+Version wurde auf 2.1 hochgesetzt.
