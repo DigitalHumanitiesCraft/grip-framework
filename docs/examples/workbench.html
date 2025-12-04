@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workbench Demo - GRIP Framework</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/workbench.css">
+</head>
+<body>
+    <header class="demo-header workbench-header">
+        <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
+        <h1>The Workbench</h1>
+        <p>Hierarchische Daten + Kuratierung</p>
+    </header>
+
+    <main class="workbench-layout">
+        <aside class="workbench-tree">
+            <h2>Struktur</h2>
+            <p class="sidebar-info">Metadaten-Export: 234 Einträge, 12 Felder</p>
+
+            <div class="tree-view">
+                <div class="tree-node expanded">
+                    <span class="tree-toggle">-</span>
+                    <span class="tree-icon folder"></span>
+                    <span class="tree-label">metadata.json</span>
+                    <span class="tree-count">234</span>
+                </div>
+                <div class="tree-children">
+                    <div class="tree-node">
+                        <span class="tree-toggle"></span>
+                        <span class="tree-icon field"></span>
+                        <span class="tree-label">id</span>
+                        <span class="tree-type">string</span>
+                    </div>
+                    <div class="tree-node">
+                        <span class="tree-toggle"></span>
+                        <span class="tree-icon field"></span>
+                        <span class="tree-label">title</span>
+                        <span class="tree-type">string</span>
+                    </div>
+                    <div class="tree-node has-error">
+                        <span class="tree-toggle"></span>
+                        <span class="tree-icon field"></span>
+                        <span class="tree-label">date</span>
+                        <span class="tree-type">mixed</span>
+                        <span class="tree-error">12 Fehler</span>
+                    </div>
+                    <div class="tree-node has-warning">
+                        <span class="tree-toggle"></span>
+                        <span class="tree-icon field"></span>
+                        <span class="tree-label">author</span>
+                        <span class="tree-type">string</span>
+                        <span class="tree-warning">5 leer</span>
+                    </div>
+                    <div class="tree-node expanded">
+                        <span class="tree-toggle">-</span>
+                        <span class="tree-icon folder"></span>
+                        <span class="tree-label">tags</span>
+                        <span class="tree-type">array</span>
+                    </div>
+                    <div class="tree-children nested">
+                        <div class="tree-node">
+                            <span class="tree-toggle"></span>
+                            <span class="tree-icon array-item"></span>
+                            <span class="tree-label">[0..n]</span>
+                            <span class="tree-type">string</span>
+                        </div>
+                    </div>
+                    <div class="tree-node">
+                        <span class="tree-toggle"></span>
+                        <span class="tree-icon field"></span>
+                        <span class="tree-label">category</span>
+                        <span class="tree-type">string</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="validation-summary">
+                <h3>Validierung</h3>
+                <div class="validation-stats">
+                    <div class="stat error">
+                        <span class="stat-value">12</span>
+                        <span class="stat-label">Fehler</span>
+                    </div>
+                    <div class="stat warning">
+                        <span class="stat-value">5</span>
+                        <span class="stat-label">Warnungen</span>
+                    </div>
+                    <div class="stat valid">
+                        <span class="stat-value">217</span>
+                        <span class="stat-label">Valide</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <section class="workbench-main">
+            <div class="workbench-toolbar">
+                <div class="toolbar-group">
+                    <button class="tool-btn active" data-view="table">Tabelle</button>
+                    <button class="tool-btn" data-view="json">JSON</button>
+                    <button class="tool-btn" data-view="diff">Diff</button>
+                </div>
+                <div class="toolbar-group">
+                    <button class="tool-btn icon-btn" title="Rückgängig">↶</button>
+                    <button class="tool-btn icon-btn" title="Wiederholen">↷</button>
+                </div>
+                <div class="toolbar-group">
+                    <select class="filter-select">
+                        <option>Alle anzeigen</option>
+                        <option>Nur Fehler</option>
+                        <option>Nur Warnungen</option>
+                        <option>Nur valide</option>
+                    </select>
+                    <input type="search" placeholder="Suchen..." class="toolbar-search">
+                </div>
+                <div class="toolbar-group">
+                    <button class="action-btn">Validieren</button>
+                    <button class="action-btn primary">Speichern</button>
+                </div>
+            </div>
+
+            <div class="workbench-content">
+                <table class="edit-table">
+                    <thead>
+                        <tr>
+                            <th class="col-status"></th>
+                            <th class="col-id">ID</th>
+                            <th class="col-title">Title</th>
+                            <th class="col-date">Date</th>
+                            <th class="col-author">Author</th>
+                            <th class="col-tags">Tags</th>
+                            <th class="col-actions"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row-valid">
+                            <td class="status-cell"><span class="status-dot valid"></span></td>
+                            <td class="cell-readonly">doc-001</td>
+                            <td contenteditable="true">Introduction to Network Analysis</td>
+                            <td contenteditable="true">2024-03-15</td>
+                            <td contenteditable="true">Maria Schmidt</td>
+                            <td contenteditable="true">network, analysis, methods</td>
+                            <td class="actions-cell">
+                                <button class="row-action" title="Duplizieren">⊕</button>
+                                <button class="row-action delete" title="Löschen">×</button>
+                            </td>
+                        </tr>
+                        <tr class="row-error">
+                            <td class="status-cell"><span class="status-dot error"></span></td>
+                            <td class="cell-readonly">doc-002</td>
+                            <td contenteditable="true">Graph Clustering Methods</td>
+                            <td contenteditable="true" class="cell-error">15.03.2024</td>
+                            <td contenteditable="true">Thomas Weber</td>
+                            <td contenteditable="true">clustering, graphs</td>
+                            <td class="actions-cell">
+                                <button class="row-action" title="Duplizieren">⊕</button>
+                                <button class="row-action delete" title="Löschen">×</button>
+                            </td>
+                        </tr>
+                        <tr class="row-warning">
+                            <td class="status-cell"><span class="status-dot warning"></span></td>
+                            <td class="cell-readonly">doc-003</td>
+                            <td contenteditable="true">Statistical Inference</td>
+                            <td contenteditable="true">2024-02-28</td>
+                            <td contenteditable="true" class="cell-warning"></td>
+                            <td contenteditable="true">statistics, inference</td>
+                            <td class="actions-cell">
+                                <button class="row-action" title="Duplizieren">⊕</button>
+                                <button class="row-action delete" title="Löschen">×</button>
+                            </td>
+                        </tr>
+                        <tr class="row-valid">
+                            <td class="status-cell"><span class="status-dot valid"></span></td>
+                            <td class="cell-readonly">doc-004</td>
+                            <td contenteditable="true">Machine Learning Basics</td>
+                            <td contenteditable="true">2024-01-10</td>
+                            <td contenteditable="true">Anna Meyer</td>
+                            <td contenteditable="true">ml, basics, tutorial</td>
+                            <td class="actions-cell">
+                                <button class="row-action" title="Duplizieren">⊕</button>
+                                <button class="row-action delete" title="Löschen">×</button>
+                            </td>
+                        </tr>
+                        <tr class="row-error">
+                            <td class="status-cell"><span class="status-dot error"></span></td>
+                            <td class="cell-readonly">doc-005</td>
+                            <td contenteditable="true">Data Visualization</td>
+                            <td contenteditable="true" class="cell-error">March 2024</td>
+                            <td contenteditable="true">Peter Müller</td>
+                            <td contenteditable="true">visualization, charts</td>
+                            <td class="actions-cell">
+                                <button class="row-action" title="Duplizieren">⊕</button>
+                                <button class="row-action delete" title="Löschen">×</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="workbench-pagination">
+                <span>Zeige 1-5 von 234</span>
+                <div class="pagination-btns">
+                    <button disabled>&laquo;</button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>...</button>
+                    <button>47</button>
+                    <button>&raquo;</button>
+                </div>
+            </div>
+        </section>
+
+        <aside class="workbench-inspector">
+            <h2>Inspektor</h2>
+
+            <div class="inspector-section">
+                <h3>Ausgewählte Zelle</h3>
+                <div class="inspector-field">
+                    <label>Feld</label>
+                    <span id="inspector-field">date</span>
+                </div>
+                <div class="inspector-field">
+                    <label>Typ erwartet</label>
+                    <span id="inspector-expected">ISO 8601 (YYYY-MM-DD)</span>
+                </div>
+                <div class="inspector-field">
+                    <label>Aktueller Wert</label>
+                    <code id="inspector-value">15.03.2024</code>
+                </div>
+            </div>
+
+            <div class="inspector-section error-section">
+                <h3>Fehler</h3>
+                <div class="error-message">
+                    <span class="error-icon">!</span>
+                    <p>Datumsformat ungültig. Erwartet: YYYY-MM-DD</p>
+                </div>
+                <div class="quick-fix">
+                    <h4>Quick Fix</h4>
+                    <button class="fix-btn">→ In 2024-03-15 konvertieren</button>
+                </div>
+            </div>
+
+            <div class="inspector-section">
+                <h3>Batch-Operationen</h3>
+                <div class="batch-ops">
+                    <button class="batch-btn">Alle Datumsformate korrigieren (12)</button>
+                    <button class="batch-btn">Leere Autoren mit "Unknown" füllen (5)</button>
+                </div>
+            </div>
+
+            <div class="inspector-section">
+                <h3>Export</h3>
+                <div class="export-options">
+                    <button class="export-btn">JSON</button>
+                    <button class="export-btn">CSV</button>
+                    <button class="export-btn">XML</button>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="archetype-info">
+            <h3>Warum Workbench?</h3>
+            <p><strong>Topologie:</strong> Hierarchisch (verschachtelte JSON-Struktur)</p>
+            <p><strong>Intention:</strong> Kuratierung (Daten bereinigen, validieren, exportieren)</p>
+            <p><strong>Matrix-Position:</strong> Hierarchisch x Kuratierung = Workbench (primär)</p>
+        </div>
+        <a href="../index.html" class="back-to-matrix workbench-btn">Zurück zur Entscheidungsmatrix</a>
+    </footer>
+
+    <script src="../js/workbench.js"></script>
+</body>
+</html>

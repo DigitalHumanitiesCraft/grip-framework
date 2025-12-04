@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigator Demo - GRIP Framework</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navigator.css">
+</head>
+<body>
+    <header class="demo-header navigator-header">
+        <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
+        <h1>The Navigator</h1>
+        <p>Vernetzte Daten + Rekonstruktion</p>
+    </header>
+
+    <main class="navigator-layout">
+        <aside class="navigator-sidebar">
+            <h2>Netzwerk</h2>
+            <p class="sidebar-info">Zitationsnetzwerk: 47 Paper, 156 Zitationen</p>
+
+            <div class="network-stats">
+                <div class="stat">
+                    <span class="stat-value">47</span>
+                    <span class="stat-label">Knoten</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">156</span>
+                    <span class="stat-label">Kanten</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">6.6</span>
+                    <span class="stat-label">Avg. Degree</span>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3>Filter</h3>
+                <div class="filter-group">
+                    <label>Jahr</label>
+                    <input type="range" min="2015" max="2024" value="2024" id="year-filter">
+                    <span class="range-labels">
+                        <span>2015</span>
+                        <span id="year-value">2024</span>
+                    </span>
+                </div>
+
+                <div class="filter-group">
+                    <label>Min. Zitationen</label>
+                    <input type="range" min="0" max="20" value="0" id="citations-filter">
+                    <span class="range-labels">
+                        <span>0</span>
+                        <span id="citations-value">0</span>
+                    </span>
+                </div>
+
+                <div class="filter-group">
+                    <label>Cluster anzeigen</label>
+                    <div class="cluster-toggles">
+                        <button class="cluster-btn active" data-cluster="methods" style="--cluster-color: var(--color-reader)">Methoden</button>
+                        <button class="cluster-btn active" data-cluster="theory" style="--cluster-color: var(--color-scope)">Theorie</button>
+                        <button class="cluster-btn active" data-cluster="applications" style="--cluster-color: var(--color-navigator)">Anwendung</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layout-section">
+                <h3>Layout</h3>
+                <div class="layout-buttons">
+                    <button class="layout-btn active" data-layout="force">Force</button>
+                    <button class="layout-btn" data-layout="radial">Radial</button>
+                    <button class="layout-btn" data-layout="hierarchy">Hierarchie</button>
+                </div>
+            </div>
+        </aside>
+
+        <section class="navigator-main">
+            <div class="graph-container" id="graph">
+                <svg class="graph-svg" viewBox="0 0 800 600">
+                    <!-- Edges -->
+                    <g class="edges">
+                        <line x1="400" y1="300" x2="300" y2="200" class="edge"></line>
+                        <line x1="400" y1="300" x2="500" y2="200" class="edge"></line>
+                        <line x1="400" y1="300" x2="350" y2="400" class="edge"></line>
+                        <line x1="400" y1="300" x2="450" y2="400" class="edge"></line>
+                        <line x1="300" y1="200" x2="200" y2="150" class="edge"></line>
+                        <line x1="300" y1="200" x2="250" y2="100" class="edge"></line>
+                        <line x1="500" y1="200" x2="550" y2="100" class="edge"></line>
+                        <line x1="500" y1="200" x2="600" y2="150" class="edge"></line>
+                        <line x1="350" y1="400" x2="300" y2="480" class="edge"></line>
+                        <line x1="450" y1="400" x2="500" y2="480" class="edge"></line>
+                        <line x1="200" y1="150" x2="150" y2="250" class="edge"></line>
+                        <line x1="600" y1="150" x2="650" y2="250" class="edge"></line>
+                        <line x1="300" y1="200" x2="500" y2="200" class="edge cross"></line>
+                    </g>
+                    <!-- Nodes -->
+                    <g class="nodes">
+                        <g class="node central" data-id="1" transform="translate(400, 300)">
+                            <circle r="20" class="node-circle methods"></circle>
+                            <text y="5" class="node-label">Smith 2020</text>
+                        </g>
+                        <g class="node" data-id="2" transform="translate(300, 200)">
+                            <circle r="14" class="node-circle methods"></circle>
+                            <text y="4" class="node-label">Jones 2019</text>
+                        </g>
+                        <g class="node" data-id="3" transform="translate(500, 200)">
+                            <circle r="14" class="node-circle theory"></circle>
+                            <text y="4" class="node-label">Lee 2019</text>
+                        </g>
+                        <g class="node" data-id="4" transform="translate(350, 400)">
+                            <circle r="12" class="node-circle applications"></circle>
+                            <text y="4" class="node-label">Chen 2021</text>
+                        </g>
+                        <g class="node" data-id="5" transform="translate(450, 400)">
+                            <circle r="12" class="node-circle applications"></circle>
+                            <text y="4" class="node-label">Kim 2021</text>
+                        </g>
+                        <g class="node" data-id="6" transform="translate(200, 150)">
+                            <circle r="10" class="node-circle methods"></circle>
+                            <text y="4" class="node-label">Brown 2018</text>
+                        </g>
+                        <g class="node" data-id="7" transform="translate(250, 100)">
+                            <circle r="10" class="node-circle methods"></circle>
+                            <text y="4" class="node-label">Davis 2017</text>
+                        </g>
+                        <g class="node" data-id="8" transform="translate(550, 100)">
+                            <circle r="10" class="node-circle theory"></circle>
+                            <text y="4" class="node-label">Wilson 2018</text>
+                        </g>
+                        <g class="node" data-id="9" transform="translate(600, 150)">
+                            <circle r="10" class="node-circle theory"></circle>
+                            <text y="4" class="node-label">Taylor 2017</text>
+                        </g>
+                        <g class="node" data-id="10" transform="translate(300, 480)">
+                            <circle r="8" class="node-circle applications"></circle>
+                            <text y="3" class="node-label">Garcia 2022</text>
+                        </g>
+                        <g class="node" data-id="11" transform="translate(500, 480)">
+                            <circle r="8" class="node-circle applications"></circle>
+                            <text y="3" class="node-label">Martinez 2022</text>
+                        </g>
+                        <g class="node" data-id="12" transform="translate(150, 250)">
+                            <circle r="8" class="node-circle methods"></circle>
+                            <text y="3" class="node-label">Anderson 2016</text>
+                        </g>
+                        <g class="node" data-id="13" transform="translate(650, 250)">
+                            <circle r="8" class="node-circle theory"></circle>
+                            <text y="3" class="node-label">Thomas 2016</text>
+                        </g>
+                    </g>
+                </svg>
+
+                <div class="graph-controls">
+                    <button class="graph-btn" id="zoom-in">+</button>
+                    <button class="graph-btn" id="zoom-out">-</button>
+                    <button class="graph-btn" id="reset-view">Reset</button>
+                </div>
+            </div>
+        </section>
+
+        <aside class="navigator-details">
+            <div class="detail-panel" id="detail-panel">
+                <h2>Knotendetails</h2>
+                <p class="detail-hint">Klicken Sie auf einen Knoten im Graph.</p>
+
+                <div class="detail-content hidden" id="detail-content">
+                    <h3 id="detail-title">Smith et al. (2020)</h3>
+                    <p class="detail-subtitle" id="detail-journal">Journal of Computational Methods</p>
+
+                    <dl class="detail-meta">
+                        <dt>Zitiert von</dt>
+                        <dd id="detail-cited-by">12 Paper</dd>
+                        <dt>Zitiert</dt>
+                        <dd id="detail-cites">8 Paper</dd>
+                        <dt>Cluster</dt>
+                        <dd id="detail-cluster"><span class="cluster-tag methods">Methoden</span></dd>
+                    </dl>
+
+                    <div class="detail-abstract">
+                        <h4>Abstract</h4>
+                        <p id="detail-abstract-text">This paper introduces a novel approach to network analysis that combines graph-theoretic methods with machine learning techniques...</p>
+                    </div>
+
+                    <div class="detail-connections">
+                        <h4>Verbindungen</h4>
+                        <ul class="connection-list" id="connection-list">
+                            <li><span class="connection-dir">zitiert</span> Jones 2019</li>
+                            <li><span class="connection-dir">zitiert</span> Lee 2019</li>
+                            <li><span class="connection-dir">zitiert von</span> Chen 2021</li>
+                            <li><span class="connection-dir">zitiert von</span> Kim 2021</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="legend-panel">
+                <h3>Legende</h3>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <span class="legend-circle methods"></span>
+                        <span>Methoden</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-circle theory"></span>
+                        <span>Theorie</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-circle applications"></span>
+                        <span>Anwendung</span>
+                    </div>
+                </div>
+                <p class="legend-note">Knotengröße = Anzahl Zitationen</p>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="demo-footer navigator-footer">
+        <div class="archetype-info">
+            <h3>Warum Navigator?</h3>
+            <p><strong>Topologie:</strong> Vernetzt (Zitationsbeziehungen)</p>
+            <p><strong>Intention:</strong> Rekonstruktion (Wissensstruktur verstehen)</p>
+            <p><strong>Matrix-Position:</strong> Vernetzt x Rekonstruktion = Navigator (primär)</p>
+        </div>
+        <a href="../index.html" class="back-to-matrix navigator-btn">Zurück zur Entscheidungsmatrix</a>
+    </footer>
+
+    <script src="../js/navigator.js"></script>
+</body>
+</html>

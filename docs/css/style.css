@@ -367,6 +367,64 @@ section > p {
 #navigator { border-left: 3px solid var(--color-navigator); }
 #workbench { border-left: 3px solid var(--color-workbench); }
 
+/* Demo Links */
+
+.demo-link {
+    display: inline-block;
+    margin-top: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 6px 3px 8px 4px / 3px 6px 4px 8px;
+    transition: all 0.2s ease;
+}
+
+.demo-link.reader-link {
+    background: rgba(74, 124, 89, 0.1);
+    color: var(--color-reader);
+    border: 1px solid var(--color-reader);
+}
+
+.demo-link.reader-link:hover {
+    background: var(--color-reader);
+    color: white;
+}
+
+.demo-link.scope-link {
+    background: rgba(184, 84, 80, 0.1);
+    color: var(--color-scope);
+    border: 1px solid var(--color-scope);
+}
+
+.demo-link.scope-link:hover {
+    background: var(--color-scope);
+    color: white;
+}
+
+.demo-link.navigator-link {
+    background: rgba(123, 104, 166, 0.1);
+    color: var(--color-navigator);
+    border: 1px solid var(--color-navigator);
+}
+
+.demo-link.navigator-link:hover {
+    background: var(--color-navigator);
+    color: white;
+}
+
+.demo-link.workbench-link {
+    background: rgba(196, 135, 90, 0.1);
+    color: var(--color-workbench);
+    border: 1px solid var(--color-workbench);
+}
+
+.demo-link.workbench-link:hover {
+    background: var(--color-workbench);
+    color: white;
+}
+
 /* Workflow */
 
 .workflow-steps {
