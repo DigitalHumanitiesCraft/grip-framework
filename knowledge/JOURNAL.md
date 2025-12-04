@@ -61,3 +61,44 @@ Das Dokument 08-PROTOTYP-AUFTRAG.md definiert einen Prototypen, der GRIP auf sic
 Die Wissensbasis ist vernetzt (Wikilinks) und hierarchisch (Ableitungsstruktur). Die Intention ist Verstehen. Nach der Matrix ist Vernetzt×Verstehen ambig. Die Antwort (lokal und global) führt zu Navigator für Gesamtstruktur, Reader für Details, Scope für die Matrix.
 
 Erfolgskriterium: Ein Besucher kann nach fünf Minuten erklären, was die Archetypen sind, wie die Matrix funktioniert und warum der Prototyp so aufgebaut ist.
+
+---
+
+## 2025-12-04: Archetypen-Demos
+
+Vier interaktive Demo-Seiten wurden implementiert. Jede zeigt einen Archetyp mit realistischen Beispieldaten und passendem Interface.
+
+Der Reader zeigt die Korrespondenz Hannah Arendt / Karl Jaspers (1926-1969). Drei-Spalten-Layout mit Brief-Navigation, annotiertem Lesebereich und Kontext-Panel. Keyboard-Navigation mit Pfeiltasten. Die Daten sind sequenziell, die Intention ist Verstehen.
+
+Der Scope zeigt Umfragedaten einer Mitarbeiterbefragung. Filter-Sidebar, KPI-Cards mit Veränderungsindikatoren, Balken- und Liniendiagramme, paginierte Datentabelle. Die Daten sind multidimensional, die Intention ist Vergleich.
+
+Der Navigator zeigt ein Zitationsnetzwerk mit zehn Publikationen. SVG-Graph mit farbcodierten Clustern (Methoden, Theorie, Anwendung). Node-Selektion mit Detail-Panel, Cluster-Filter, Zoom-Controls. Die Daten sind vernetzt, die Intention ist Rekonstruktion.
+
+Die Workbench zeigt einen JSON-Metadaten-Export mit Validierungsfehlern. Tree-View der Datenstruktur, editierbare Tabelle mit Inline-Bearbeitung, Inspector-Panel mit Fehleranalyse, Quick-Fix für Datumsformate. Die Daten sind hierarchisch, die Intention ist Kuratierung.
+
+Jede Demo erklärt im Footer die GRIP-Matrix-Zuordnung. Die Hauptseite verlinkt alle Demos über farbcodierte Buttons in den Archetypen-Cards.
+
+---
+
+## Dateistruktur nach Demo-Implementierung
+
+```
+docs/
+  index.html              Hauptseite mit Matrix und Archetypen
+  css/
+    style.css             Basis-Styles und Demo-Links
+    reader.css            Reader-spezifische Styles
+    scope.css             Scope-spezifische Styles
+    navigator.css         Navigator-spezifische Styles
+    workbench.css         Workbench-spezifische Styles
+  js/
+    main.js               Matrix-Interaktion
+    reader.js             Brief-Navigation, Annotationen
+    navigator.js          Graph-Interaktion, Zoom
+    workbench.js          Inline-Editing, Validierung
+  examples/
+    reader.html           Arendt-Jaspers Korrespondenz
+    scope.html            Umfragedaten-Dashboard
+    navigator.html        Zitationsnetzwerk
+    workbench.html        Metadaten-Kuratierung
+```
