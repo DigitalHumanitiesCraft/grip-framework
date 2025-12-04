@@ -94,6 +94,7 @@ Die Versionierung erfolgt über das JOURNAL.md, das jeden Meilenstein dokumentie
 - [[07-PROTOTYP]] definiert den Website-Prototypen
 - [[09-WORKFLOWS]] beschreibt Pfade durch die Archetypen
 - [[10-SPEZIALISIERUNGEN]] definiert operationalisierte Archetyp-Varianten
+- [[11-CODE-MAP]] dokumentiert die JavaScript-Architektur
 - [[DESIGN]] spezifiziert die visuelle Identität
 - [[08-DESIGN-RATIONALE]] liefert kognitive Begründungen
 - [[CLAUDE.md]] definiert die Formatierungsregeln

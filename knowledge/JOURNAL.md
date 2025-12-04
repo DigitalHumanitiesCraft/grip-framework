@@ -276,3 +276,70 @@ HTML: Neue Section "workflows" mit Picker-Buttons und Container für dynamischen
 CSS: Styles für workflow-picker, workflow-path, workflow-phase, workflow-arrow und workflow-iteration. Responsive Layout für Mobile (vertikale Anordnung).
 
 JavaScript: workflows-Objekt mit allen fünf Workflows, initWorkflows() und renderWorkflow() Funktionen. Phasen-Icons zeigen den ersten Buchstaben des Archetyps.
+
+---
+
+## 2025-12-04: ES6-Modularisierung
+
+Die JavaScript-Architektur wurde auf native ES6-Module umgestellt. Die Entscheidung gegen Build-Tooling (Vite, Webpack) folgt dem Prinzip der Einfachheit.
+
+### Neue Struktur
+
+```
+docs/js/
+  main.js                 Entry Point für index.html (11 Zeilen)
+  modules/
+    matrix.js             matrixData, reasonings, initMatrix()
+    workflows.js          workflows, initWorkflows()
+  archetypes/
+    reader.js             export class AdaptiveReader
+    scope.js              export class AdaptiveScope
+    navigator.js          export class AdaptiveNavigator
+    workbench.js          export class AdaptiveWorkbench
+  reader-entry.js         Entry Point für reader.html
+  scope-entry.js          Entry Point für scope.html
+  navigator-entry.js      Entry Point für navigator.html
+  workbench-entry.js      Entry Point für workbench.html
+```
+
+### Änderungen
+
+main.js wurde von 249 Zeilen auf 11 Zeilen reduziert. Der Code importiert jetzt initMatrix() und initWorkflows() aus den Modulen.
+
+Alle HTML-Dateien verwenden jetzt script type="module".
+
+Die Archetyp-Klassen exportieren jetzt mit export class und export default.
+
+Entry-Point-Dateien instanziieren die Klassen mit den korrekten Datenpfaden.
+
+### Neue Dokumentation
+
+Das Dokument 11-CODE-MAP.md wurde erstellt. Es dokumentiert die JavaScript-Architektur, Modul-Abhängigkeiten, HTML-zu-JS-Mapping und den Datenfluss.
+
+---
+
+## 2025-12-04: Wissensbasis-Analyse
+
+Die 15 Markdown-Dokumente wurden auf Redundanzen und Verbesserungspotenzial analysiert.
+
+### Identifizierte Redundanzen
+
+Archetypen-Beschreibungen existieren dreifach (00-PROJEKTAUFTRAG, 05-ARCHETYPEN, 04-SYSTEM-PROMPT). Die Redundanz im Projektauftrag ist problematisch.
+
+Die Entscheidungsmatrix existiert zweifach (02-MAPPINGS, 04-SYSTEM-PROMPT). Die System-Prompt-Kopie ist notwendig, da der Prompt autark sein muss.
+
+Design-Dokumentation hat Überlappungen zwischen DESIGN.md und 08-DESIGN-RATIONALE.md im Bereich "Organic Academic".
+
+### Verbesserungspotenzial
+
+System Prompt v2.0 fehlt die Spezialisierungs-Heuristiken aus 10-SPEZIALISIERUNGEN.md.
+
+Die Code Map (11-CODE-MAP.md) fehlte und wurde erstellt.
+
+### Status-Übersicht
+
+Aktuell: 00-PROJEKTAUFTRAG, 02-MAPPINGS, 03-BEISPIEL, 05-ARCHETYPEN, 06-DIALOG, 07-PROTOTYP, 09-WORKFLOWS, 10-SPEZIALISIERUNGEN, DESIGN, CLAUDE, CLAUDE-METHODE.
+
+Unvollständig: 01-ARCHITEKTUR (fehlte 11-CODE-MAP), 04-SYSTEM-PROMPT (fehlen Spezialisierungen), 08-DESIGN-RATIONALE (redundant mit DESIGN).
+
+Neu erstellt: 11-CODE-MAP.
