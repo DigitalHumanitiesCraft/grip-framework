@@ -108,3 +108,51 @@ Alle zehn Dokumente im knowledge-Ordner verwenden nun konsistente Terminologie. 
 Konsistente Terminologie ist für ein LLM-lesbares Repository essentiell. Synonyme und wechselnde Begriffe erzeugen Ambiguität. Die Harmonisierung stellt sicher, dass das Framework als kohärentes Ganzes interpretiert werden kann.
 
 ---
+
+## 2025-12-04: Design-System dokumentiert und implementiert
+
+### Durchgeführte Arbeiten
+
+Das Design-System "Organic Academic" wurde dokumentiert und auf der Website implementiert.
+
+Das Dokument DESIGN.md wurde im knowledge-Ordner erstellt. Es definiert die visuelle Identität des Frameworks mit folgenden Elementen:
+
+Farbpalette: Paper Sand (#FDFBF7) als warmer Hintergrund statt hartem Weiß. Ink Black (#1A1A1A) für Text. Terracotta (#C4705A) als organischer Akzent. Archetypen-Farben für visuelle Kodierung.
+
+Typografie: Lora (Serif) für emotionale Headlines mit akademischem Charakter. Inter (Sans-Serif) für funktionale UI-Elemente. JetBrains Mono für Code und technische Bezeichner.
+
+Die Website wurde entsprechend aktualisiert. Das CSS verwendet nun CSS Custom Properties für konsistente Anwendung des Design-Systems.
+
+### Begründung
+
+Das Design kommuniziert die Werte des Frameworks: Ruhe, Wärme, Substanz. Die organische Ästhetik grenzt sich bewusst von aggressiver Technologie-Optik ab. Die Dokumentation ermöglicht konsistente Anwendung bei zukünftigen UI-Generierungen durch LLMs.
+
+---
+
+## 2025-12-04: Vollständige Entscheidungsmatrix und Website-Prototyp
+
+### Durchgeführte Arbeiten
+
+Die Entscheidungsmatrix wurde vervollständigt und auf zwei Ebenen implementiert.
+
+Erstens wurde die Wissensbasis erweitert. Das Dokument 02-MAPPINGS.md enthält nun die vollständige 4x4-Matrix mit allen 16 Feldern. Die Matrix unterscheidet primäre Zuordnungen (4), sekundäre Zuordnungen (8) und ambige Fälle (4). Jeder Fall ist begründet. Die ambigen Fälle sind mit konkreten Rückfragen dokumentiert.
+
+Zweitens wurde ein Website-Prototyp im docs-Ordner erstellt. Die Seite zeigt die Matrix als interaktives Element. Bei Klick auf eine Zelle erscheint der empfohlene Archetyp mit Begründung. Ambige Zellen zeigen die erforderliche Rückfrage. Die Archetypen-Cards wurden um konkrete Beispieldaten ergänzt.
+
+### Struktur des Prototyps
+
+Der docs-Ordner enthält index.html als Hauptseite, css/style.css mit Dark Theme und Matrix-Styling sowie js/main.js mit der Interaktionslogik für die Matrix.
+
+### Die vollständige Matrix
+
+Die Diagonale bildet den harten Kern: Sequenziell+Verstehen führt zu Reader, Multidimensional+Vergleich zu Scope, Vernetzt+Rekonstruktion zu Navigator, Hierarchisch+Kuratierung zu Workbench.
+
+Acht Sekundärfälle sind eindeutig ableitbar. Sie führen meist zu Scope (für Vergleiche) oder Workbench (für Kuratierung).
+
+Vier Fälle sind ambig und erfordern Rückfragen: Sequenziell+Rekonstruktion, Vernetzt+Verstehen, Vernetzt+Vergleich, Hierarchisch+Verstehen. Diese Fälle machen 25% der Matrix aus und rechtfertigen das Dialog-Protokoll.
+
+### Begründung
+
+Die vollständige Matrix macht das Framework deterministischer. Ein LLM kann nun für jede Kombination von Topologie und Intention eine begründete Entscheidung treffen oder wissen, dass es fragen muss. Die interaktive Visualisierung macht die Logik für menschliche Nutzer nachvollziehbar.
+
+---

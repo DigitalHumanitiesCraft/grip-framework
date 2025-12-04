@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRIP Framework</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>GRIP</h1>
+        <p>Generative Research Interface Protocol</p>
+    </header>
+
+    <main>
+        <section id="intro">
+            <h2>Was ist GRIP?</h2>
+            <p>GRIP ist ein methodisches Framework für die LLM-gestützte Entwicklung von Forschungsinterfaces. Es kodifiziert das Wissen darüber, welche Interface-Archetypen für welche Datenstrukturen und Forschungsintentionen geeignet sind.</p>
+        </section>
+
+        <section id="matrix">
+            <h2>Die Entscheidungsmatrix</h2>
+            <p>Klicken Sie auf eine Zelle, um den empfohlenen Archetyp zu sehen.</p>
+
+            <div class="matrix-container">
+                <table class="decision-matrix">
+                    <thead>
+                        <tr>
+                            <th class="corner"></th>
+                            <th>Verstehen</th>
+                            <th>Vergleich</th>
+                            <th>Rekonstruktion</th>
+                            <th>Kuratierung</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Sequenziell</th>
+                            <td class="cell primary" data-archetype="reader" data-type="primary">Reader</td>
+                            <td class="cell secondary" data-archetype="scope" data-type="secondary">Scope</td>
+                            <td class="cell ambig" data-archetype="ambig-seq-rekon" data-type="ambig">?</td>
+                            <td class="cell secondary" data-archetype="workbench" data-type="secondary">Workbench</td>
+                        </tr>
+                        <tr>
+                            <th>Multidimensional</th>
+                            <td class="cell secondary" data-archetype="scope" data-type="secondary">Scope</td>
+                            <td class="cell primary" data-archetype="scope" data-type="primary">Scope</td>
+                            <td class="cell secondary" data-archetype="navigator" data-type="secondary">Navigator</td>
+                            <td class="cell secondary" data-archetype="workbench" data-type="secondary">Workbench</td>
+                        </tr>
+                        <tr>
+                            <th>Vernetzt</th>
+                            <td class="cell ambig" data-archetype="ambig-net-verst" data-type="ambig">?</td>
+                            <td class="cell ambig" data-archetype="ambig-net-vergl" data-type="ambig">?</td>
+                            <td class="cell primary" data-archetype="navigator" data-type="primary">Navigator</td>
+                            <td class="cell secondary" data-archetype="workbench" data-type="secondary">Workbench</td>
+                        </tr>
+                        <tr>
+                            <th>Hierarchisch</th>
+                            <td class="cell ambig" data-archetype="ambig-hier-verst" data-type="ambig">?</td>
+                            <td class="cell secondary" data-archetype="scope" data-type="secondary">Scope</td>
+                            <td class="cell secondary" data-archetype="navigator" data-type="secondary">Navigator</td>
+                            <td class="cell primary" data-archetype="workbench" data-type="primary">Workbench</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="matrix-legend">
+                    <span class="legend-item"><span class="legend-color primary"></span> Primär (eindeutig)</span>
+                    <span class="legend-item"><span class="legend-color secondary"></span> Sekundär (abgeleitet)</span>
+                    <span class="legend-item"><span class="legend-color ambig"></span> Ambig (Rückfrage nötig)</span>
+                </div>
+            </div>
+
+            <div id="matrix-result" class="matrix-result hidden">
+                <h3 id="result-title"></h3>
+                <p id="result-description"></p>
+                <p id="result-reasoning" class="reasoning"></p>
+            </div>
+        </section>
+
+        <section id="archetypen">
+            <h2>Die vier Archetypen</h2>
+            <div class="archetype-grid">
+                <article class="archetype" id="reader">
+                    <h3>The Reader</h3>
+                    <p class="tagline">Sequenz + Verstehen</p>
+                    <p>Für lineare Daten wie Text, Zeitreihen oder Transkripte. Fokus auf Kontext und Immersion.</p>
+                    <p class="examples">Beispiele: Transkribierte Interviews, DNA-Sequenzen, historische Chroniken, annotierte Quellentexte.</p>
+                </article>
+                <article class="archetype" id="scope">
+                    <h3>The Scope</h3>
+                    <p class="tagline">Matrix + Vergleich</p>
+                    <p>Für multidimensionale Daten. Dashboards für Mustererkennung, Trends und Korrelationen.</p>
+                    <p class="examples">Beispiele: Umfragedaten, Messwerte, Verkaufsstatistiken, experimentelle Ergebnisse.</p>
+                </article>
+                <article class="archetype" id="navigator">
+                    <h3>The Navigator</h3>
+                    <p class="tagline">Netzwerk + Rekonstruktion</p>
+                    <p>Für vernetzte Daten. Graph-Ansichten für Beziehungen, Pfade und Strukturanalyse.</p>
+                    <p class="examples">Beispiele: Zitationsnetzwerke, Korrespondenzen, soziale Netzwerke, Dependency-Graphen.</p>
+                </article>
+                <article class="archetype" id="workbench">
+                    <h3>The Workbench</h3>
+                    <p class="tagline">Hierarchie + Kuratierung</p>
+                    <p>Für rohe oder hierarchische Daten. Arbeitsumgebung für Bereinigung und Strukturierung.</p>
+                    <p class="examples">Beispiele: JSON-Dumps, unbereinigte Tabellen, Metadaten-Exporte, Kategoriesysteme.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="workflow">
+            <h2>Der Workflow</h2>
+            <ol class="workflow-steps">
+                <li><span>Kontextualisierung</span> – LLM liest die GRIP-Wissensbasis</li>
+                <li><span>Datenanalyse</span> – Topologie der Forschungsdaten wird identifiziert</li>
+                <li><span>Dialog</span> – Rückfragen klären die epistemische Intention</li>
+                <li><span>Spezifikation</span> – Archetyp-Empfehlung mit UI-Spezifikation</li>
+                <li><span>Wissensrückfluss</span> – Erkenntnisse fließen zurück ins Repository</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer>
+        <p>GRIP Framework – Context Engineering für Forschungsinterfaces</p>
+        <p><a href="https://github.com/YOUR_USERNAME/grip-framework">GitHub Repository</a></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

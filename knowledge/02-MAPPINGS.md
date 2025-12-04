@@ -6,9 +6,18 @@ Abhängigkeiten: [[00-PROJEKTAUFTRAG]], [[01-ARCHITEKTUR]], [[05-ARCHETYPEN]]
 
 ---
 
-## Die Mapping-Matrix
+## Die vollständige Entscheidungsmatrix
 
-Die Zuordnung erfolgt durch Kombination von Daten-Topologie und epistemischer Intention. Beide Dimensionen müssen identifiziert werden, bevor ein Archetyp gewählt wird.
+Die Matrix hat 16 Felder. Vier sind primär (eindeutig). Acht sind sekundär (eindeutig abgeleitet). Vier sind ambig (erfordern Rückfragen).
+
+|                    | Verstehen     | Vergleich  | Rekonstruktion | Kuratierung |
+|--------------------|---------------|------------|----------------|-------------|
+| Sequenziell        | READER (P)    | Scope (S)  | ambig          | Workbench (S) |
+| Multidimensional   | Scope (S)     | SCOPE (P)  | Navigator (S)  | Workbench (S) |
+| Vernetzt           | ambig         | ambig      | NAVIGATOR (P)  | Workbench (S) |
+| Hierarchisch       | ambig         | Scope (S)  | Navigator (S)  | WORKBENCH (P) |
+
+Legende: (P) = Primäre Zuordnung, (S) = Sekundäre Zuordnung, ambig = Rückfrage erforderlich
 
 ---
 
@@ -78,12 +87,14 @@ Schlüsselwörter: sortieren, bereinigen, taggen, kategorisieren, korrigieren, e
 
 ## Die Entscheidungslogik
 
-### Primäre Regeln
+### Primäre Regeln (Die Diagonale)
 
-IF Daten = Sequenziell AND Intention = Vertieftes Verstehen THEN The Reader.
+Diese vier Zuordnungen bilden den harten Kern des Frameworks. Sie sind empirisch begründbar und eindeutig.
+
+IF Daten = Sequenziell AND Intention = Verstehen THEN The Reader.
 Begründung: Sequenzdaten erfordern Linearität. Immersion erfordert Fokus.
 
-IF Daten = Multidimensional AND Intention = Vergleich/Mustererkennung THEN The Scope.
+IF Daten = Multidimensional AND Intention = Vergleich THEN The Scope.
 Begründung: Hohe Datendichte benötigt visuelle Abstraktion durch Charts.
 
 IF Daten = Vernetzt AND Intention = Rekonstruktion THEN The Navigator.
@@ -92,16 +103,51 @@ Begründung: Relationale Komplexität lässt sich nur topologisch abbilden.
 IF Daten = Hierarchisch AND Intention = Kuratierung THEN The Workbench.
 Begründung: Manipulation erfordert atomare Sicht auf Datenelemente.
 
-### Sekundäre Regeln
+### Sekundäre Regeln (Eindeutig abgeleitet)
 
 IF Daten = Sequenziell AND Intention = Vergleich THEN The Scope.
-Beispiel: Mehrere Zeitreihen überlagern und Trends vergleichen.
+Begründung: Mehrere Zeitreihen überlagern ist eine Vergleichsoperation. Das erfordert visuelle Abstraktion durch Charts, nicht lineares Lesen.
+
+IF Daten = Sequenziell AND Intention = Kuratierung THEN The Workbench.
+Begründung: Transkripte bereinigen erfordert Inline-Editing und atomaren Datenzugriff, nicht Immersion.
+
+IF Daten = Multidimensional AND Intention = Verstehen THEN The Scope.
+Begründung: Einzelfälle in Tabellen verstehen heißt filtern und inspizieren. Das bleibt ein Dashboard mit Detailansicht.
+
+IF Daten = Multidimensional AND Intention = Rekonstruktion THEN The Navigator.
+Begründung: Wenn in Tabellen Beziehungen stecken (Fremdschlüssel), ist die Strukturfrage eine Graph-Frage.
 
 IF Daten = Multidimensional AND Intention = Kuratierung THEN The Workbench.
-Beispiel: Fehlerhafte Tabelleneinträge korrigieren.
+Begründung: Fehlerhafte Tabelleneinträge korrigieren erfordert direkten Datenzugriff.
 
-IF Daten = Vernetzt AND Intention = Vertieftes Verstehen THEN The Reader mit Verlinkung.
-Beispiel: Korrespondenz lesen, aber Verweise auf andere Briefe sichtbar machen.
+IF Daten = Vernetzt AND Intention = Kuratierung THEN The Workbench.
+Begründung: Kanten bereinigen oder Knoten zusammenführen erfordert atomaren Datenzugriff, nicht Visualisierung.
+
+IF Daten = Hierarchisch AND Intention = Vergleich THEN The Scope.
+Begründung: Kategorien vergleichen (etwa per Treemap) ist eine Aggregationsaufgabe.
+
+IF Daten = Hierarchisch AND Intention = Rekonstruktion THEN The Navigator.
+Begründung: Hierarchien sind gerichtete Graphen. Strukturanalyse ist Graph-Analyse.
+
+### Ambige Fälle (Rückfrage erforderlich)
+
+Diese vier Fälle erfordern das Dialog-Protokoll aus [[06-DIALOG]].
+
+IF Daten = Sequenziell AND Intention = Rekonstruktion THEN ambig.
+Problem: Verweise zwischen sequenziellen Elementen können unterschiedlich priorisiert werden. Die Sequenz kann primär bleiben (Reader mit Querverweisen) oder das Netzwerk primär werden (Navigator mit Zeitfilter).
+Rückfrage: Wollen Sie den chronologischen Fluss verstehen oder die Verweisstruktur analysieren?
+
+IF Daten = Vernetzt AND Intention = Verstehen THEN ambig.
+Problem: Verstehen kann lokal (einzelne Knoten im Kontext) oder global (Gesamtstruktur) gemeint sein. Die Intention differenziert nicht zwischen lokaler und globaler Perspektive.
+Rückfrage: Wollen Sie einzelne Elemente im Kontext ihrer Verbindungen lesen oder die Netzwerkstruktur als Ganzes erfassen?
+
+IF Daten = Vernetzt AND Intention = Vergleich THEN ambig.
+Problem: Netzwerke vergleichen kann bedeuten, Metriken gegenüberzustellen (Scope) oder Strukturen visuell nebeneinanderzulegen (Navigator mit Small Multiples).
+Rückfrage: Wollen Sie Kennzahlen der Netzwerke vergleichen oder Strukturen visuell nebeneinanderlegen?
+
+IF Daten = Hierarchisch AND Intention = Verstehen THEN ambig.
+Problem: Die Hierarchie kann Container (dann Reader mit Navigation) oder Analysegegenstand (dann Navigator) sein.
+Rückfrage: Wollen Sie ein verschachteltes Dokument linear durcharbeiten oder die Hierarchiestruktur selbst analysieren?
 
 ### Fallback-Regel
 
@@ -149,5 +195,5 @@ Bei hoher Komplexität: Der Nutzer beginnt mit einem Archetyp und kann weitere A
 ## Verknüpfungen
 
 - [[05-ARCHETYPEN]] beschreibt die vier Archetypen im Detail
-- [[06-DIALOG]] dokumentiert die Rückfragen zur Klärung von Topologie und Intention
+- [[06-DIALOG]] dokumentiert die Rückfragen zur Klärung der ambigen Fälle
 - [[03-BEISPIEL]] zeigt die Anwendung dieser Mappings an einem konkreten Fall
