@@ -731,3 +731,64 @@ Jeder Modus ist in 15-MODI.md mit vier Spalten dokumentiert:
 ### UI-Pattern
 
 Der Moduswechsel erfolgt über Tab-Leiste, Tastenkürzel (Cmd/Ctrl + 1-4) oder Kontextmenü. State-Erhaltung beim Wechsel (Selektion, Scroll, Filter). Deep-Link-URLs codieren Spezialisierung und Modus.
+
+---
+
+## 2025-12-04: Edition-Modi Skeleton-Implementierung
+
+Die erste vollständige Modus-Implementierung wurde für Edition erstellt.
+
+### Neue Dateien
+
+Wissensbasis:
+- 16-CONTEXT-MAP.md dokumentiert Dateistruktur und Wissensbedarf pro Modus
+
+Edition-Modi (16 Dateien):
+- HTML: synopse.html, apparat.html, genetik.html, faksimile.html
+- CSS: edition-synopse.css, edition-apparat.css, edition-genetik.css, edition-faksimile.css
+- JS: edition-synopse.js, edition-apparat.js, edition-genetik.js, edition-faksimile.js
+
+### Modus-Features
+
+Synopse: Lock-Scroll für parallele Textzeugen-Spalten, Diff-Highlighting on-the-fly, Zeugen-Auswahl per Checkbox.
+
+Apparat: Klassisches Lesetext-mit-Apparat-Layout, Lemma-Klick zeigt Varianten, Hover-Preview optional, Zeilennummern toggle.
+
+Genetik: Zeit-Slider blendet Schichten ein/aus, Filterung nach Hand und Korrekturtyp, Farbcodierung für Streichungen/Ergänzungen/Ersetzungen.
+
+Faksimile: Split-View mit resizable Panels, Zoom-Controls, Text-Bild-Zonen-Mapping, Transkription-Overlay mit einstellbarer Transparenz.
+
+### Infrastruktur
+
+Mode-Tabs CSS in style.css für einheitliche Tab-Navigation. Keyboard-Shortcuts Cmd/Ctrl + 1-4 für Moduswechsel. 12 leere Verzeichnisse für weitere Spezialisierungen vorbereitet.
+
+### Aktualisierte Dateien
+
+- reader-edition.html: Modi-Tabs hinzugefügt
+- 01-ARCHITEKTUR.md: Verweis auf 16-CONTEXT-MAP
+- README.md: 3-Ebenen-Taxonomie dokumentiert, Datei-Übersicht aktualisiert
+
+---
+
+## Aktueller Stand
+
+### Wissensbasis
+
+17 Markdown-Dokumente mit vollständiger Taxonomie:
+- 4 Archetypen
+- 12 Spezialisierungen (3 pro Archetyp)
+- 48 Modi (4 pro Spezialisierung)
+
+### Implementierung
+
+| Ebene | Definiert | Implementiert |
+|-------|-----------|---------------|
+| Archetypen | 4 | 4 (Basis-Demos) |
+| Spezialisierungen | 12 | 12 (Demo-Seiten) |
+| Modi | 48 | 4 (nur Edition) |
+
+### Nächste Schritte
+
+1. Weitere Modi implementieren (Survey, Citation, Registry als Priorität)
+2. Reale Testdatensätze beschaffen
+3. Modi-Navigation auf index.html erweitern

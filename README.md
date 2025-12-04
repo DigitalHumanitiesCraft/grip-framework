@@ -53,26 +53,41 @@ GRIP basiert auf zwei Dimensionen:
 - **Codebook** - Variablendefinitionen und Metadaten-Schemata
 - **Schema** - JSON-Schema-Validierung und -Editierung
 
+## Die 3-Ebenen-Taxonomie
+
+```
+Archetyp → Spezialisierung → Modus
+Reader   →     Edition     →   Synopse, Apparat, Genetik, Faksimile
+```
+
+Jede Spezialisierung hat 4 Modi - verschiedene Perspektiven auf denselben Datensatz.
+
 ## Projektstruktur
 
 ```
 grip-framework/
-├── knowledge/              # Wissensbasis (16 Markdown-Dokumente)
+├── knowledge/              # Wissensbasis (17 Markdown-Dokumente)
 │   ├── 00-PROJEKTAUFTRAG.md
 │   ├── 02-MAPPINGS.md      # Entscheidungslogik
 │   ├── 04-SYSTEM-PROMPT.md # LLM-Prompt
 │   ├── 05-ARCHETYPEN.md    # Archetyp-Spezifikationen
-│   └── 10-SPEZIALISIERUNGEN.md
+│   ├── 10-SPEZIALISIERUNGEN.md
+│   ├── 15-MODI.md          # 48 Modi für 12 Spezialisierungen
+│   └── 16-CONTEXT-MAP.md   # Dateistruktur und Wissensbedarf
 │
 └── docs/                   # Website-Prototyp
     ├── index.html          # Interaktive Entscheidungsmatrix
-    ├── css/                # Design-System (Organic Academic)
+    ├── css/
+    │   ├── style.css       # Design-System (Organic Academic)
+    │   └── modes/          # Modi-spezifische Styles
     ├── js/
     │   ├── archetypes/     # 4 Basis-Archetypen
-    │   └── specializations/# 12 Spezialisierungen
+    │   ├── specializations/# 12 Spezialisierungen
+    │   └── modes/          # Modi-Module (z.B. edition-synopse.js)
     └── examples/
-        ├── *.html          # 16 Demo-Seiten
-        └── data/           # 13 JSON-Testdatensätze
+        ├── *.html          # 16 Demo-Seiten (Basis + Spezialisierungen)
+        ├── edition/        # 4 Edition-Modi
+        └── data/           # JSON-Testdatensätze
 ```
 
 ## Quick Start
@@ -91,11 +106,11 @@ python -m http.server 8000
 
 | Typ | Anzahl | Beschreibung |
 |-----|--------|--------------|
-| HTML | 17 | Landing Page + 16 Demo-Seiten |
-| JavaScript | 35 | Module, Archetypen, Spezialisierungen |
-| CSS | 17 | Design-System + Archetyp-Styles |
+| HTML | 21 | Landing Page + 16 Demo-Seiten + 4 Edition-Modi |
+| JavaScript | 39 | Module, Archetypen, Spezialisierungen, Modi |
+| CSS | 21 | Design-System + Archetyp-Styles + Modi-Styles |
 | JSON | 13 | Demo-Datensätze |
-| Markdown | 16 | Wissensbasis |
+| Markdown | 17 | Wissensbasis |
 
 ## Technologie
 
@@ -148,6 +163,8 @@ Die Wissensbasis in `knowledge/` ist für System-Prompts optimiert:
 2. `02-MAPPINGS.md` - Wenn-Dann-Logik
 3. `05-ARCHETYPEN.md` - Detaillierte Spezifikationen
 4. `10-SPEZIALISIERUNGEN.md` - Erkennungsheuristiken
+5. `15-MODI.md` - 48 Modi mit Relevanz, Daten, Innovation
+6. `16-CONTEXT-MAP.md` - Welches Wissen für welche Datei
 
 ## Lizenz
 
