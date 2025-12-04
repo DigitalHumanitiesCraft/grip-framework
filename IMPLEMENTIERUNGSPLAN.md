@@ -8,6 +8,8 @@ Stand: 2025-12-04
 
 GRIP ist ein Context Engineering Artifact für LLM-gestützte Interface-Entwicklung. Es beantwortet die Frage: "Welches Interface passt zu meinen Daten und meiner Intention?"
 
+**Kern-Erkenntnis:** Das eigentliche Produkt ist der System Prompt und das mentale Modell. Die Website ist der Beweis, dass das Modell funktioniert. Das LLM ist der primäre "User" des Frameworks.
+
 ---
 
 ## Abgeschlossen
@@ -77,7 +79,14 @@ GRIP ist ein Context Engineering Artifact für LLM-gestützte Interface-Entwickl
 
 ### Phase 1: Spezialisierungen dokumentieren
 
-Drei Spezialisierungen pro Archetyp definieren:
+Drei Spezialisierungen pro Archetyp definieren.
+
+Kritischer Hinweis: Spezialisierungen dürfen keine bloßen Labels sein. Jede Spezialisierung muss operationalisiert werden durch:
+- Unterscheidende UI-Elemente (was hat Transcript, was Edition nicht hat?)
+- Spezifische Datenfelder (welche JSON-Struktur erwartet Monitor vs. Survey?)
+- Eigene Heuristiken im System Prompt (wann empfehle ich welche Variante?)
+
+Ohne diese Operationalisierung sind Spezialisierungen nur Taxonomie-Dekoration.
 
 **Reader-Spezialisierungen:**
 - Edition (Briefe, Manuskripte mit Annotationen)
@@ -99,7 +108,7 @@ Drei Spezialisierungen pro Archetyp definieren:
 - Codebook (Variablendefinitionen, Skalendokumentation)
 - Schema (Datenmodell-Validierung, Strukturprüfung)
 
-Liefergegenstand: 10-SPEZIALISIERUNGEN.md
+Liefergegenstand: 10-SPEZIALISIERUNGEN.md mit vollständiger Operationalisierung
 
 ### Phase 2: Workflow-Visualisierung
 
@@ -129,31 +138,47 @@ Pro Spezialisierung einen Beispiel-Datensatz:
 - navigator-genealogy.json (Stammbaum oder Begriffshierarchie)
 - workbench-codebook.json (Variablendefinitionen)
 
-### Phase 5: Daten-Upload-Feature
+### Phase 5: GRIP-Configurator
 
-Nutzer können eigene Daten hochladen:
+Nutzer können eigene Daten erkunden und konfigurieren.
 
+Strategische Entscheidung: Keine automatische Schema-Inferenz. Client-side ML für Topologie-Erkennung ist fragil und vermittelt falsche Sicherheit. Stattdessen: manuelle Konfiguration mit intelligenter Unterstützung.
+
+Funktionsumfang:
 - JSON-Upload auf jeder Demo-Seite
-- Automatische Topologie-Erkennung
-- Schema-Inferenz für Workbench
-- Export der angepassten Konfiguration
+- Struktur-Preview: Felder anzeigen, Nutzer wählt Spalten für X/Y/Label
+- Manuelle Topologie-Angabe mit Erklärung der Optionen
+- Export der Konfiguration als wiederverwendbares Template
+- Keine Black-Box-Magie, sondern transparente Konfiguration
 
-### Phase 6: LLM-Integration
+### Phase 6: Prompt-Generator
 
-Direkte Verbindung zum LLM für:
+GRIP als Prompt-Generator, nicht als Prompt-Executor.
 
-- Natürlichsprachliche Beschreibung → Matrix-Abfrage
-- Automatische Archetyp-Empfehlung mit Begründung
-- Rückfragen bei ambigen Fällen
-- Workflow-Begleitung über mehrere Phasen
+Strategische Entscheidung: Keine direkte LLM-API-Integration. Stattdessen generiert GRIP optimierte Prompts, die Nutzer in ihr bevorzugtes LLM kopieren. Das vermeidet API-Kosten, Vendor-Lock-in und Backend-Komplexität.
+
+Funktionsumfang:
+- Projektbeschreibungs-Formular: Nutzer beschreibt Daten und Ziel
+- Prompt-Generator: Erzeugt kontextuellen Prompt mit GRIP-Wissen
+- Copy-to-Clipboard für ChatGPT, Claude, etc.
+- Optionale Beispiel-Konversationen als Referenz
+
+Das LLM bleibt das Werkzeug des Nutzers, nicht eine Black-Box hinter GRIP.
 
 ---
 
 ## Technische Schulden
 
+Priorisiert nach Dringlichkeit:
+
+**Hoch (vor Phase 5):**
+- [ ] JavaScript-Modularisierung: ES6-Module statt globaler Klassen. Ohne diese Refaktorierung wird jede neue Funktionalität die Codebasis fragmentieren. Voraussetzung für Phase 5.
+
+**Mittel:**
 - [ ] CSS-Variablen konsolidieren (Duplikate in Archetyp-Stylesheets)
-- [ ] JavaScript-Module statt globaler Klassen
 - [ ] Responsive Design für mobile Geräte verbessern
+
+**Niedrig:**
 - [ ] Accessibility-Audit (ARIA, Keyboard-Navigation)
 - [ ] Performance-Optimierung für große Datensätze
 
@@ -170,14 +195,17 @@ Direkte Verbindung zum LLM für:
 
 ## Prioritäten
 
+Revidierte Reihenfolge nach strategischer Analyse:
+
 | Priorität | Phase | Begründung |
 |-----------|-------|------------|
-| 1 | Spezialisierungen | Zeigt Tiefe des Frameworks |
-| 2 | Workflow-Visualisierung | Macht Prozess-Perspektive greifbar |
-| 3 | Weitere Datensätze | Demonstriert Breite der Anwendung |
-| 4 | System Prompt | Verbessert LLM-Nutzung |
-| 5 | Daten-Upload | Ermöglicht echte Nutzung |
-| 6 | LLM-Integration | Volles Potenzial des Frameworks |
+| 1 | System Prompt verfeinern | Das Kernprodukt. Alle anderen Phasen hängen davon ab, dass die Entscheidungslogik robust ist. |
+| 2 | Spezialisierungen | Nur sinnvoll mit operationalisierten Unterschieden, nicht als Labels. |
+| 3 | Workflow-Visualisierung | Macht Prozess-Perspektive greifbar. |
+| 4 | Weitere Datensätze | Demonstriert Breite der Anwendung. |
+| 5 | JS-Modularisierung | Technische Voraussetzung für Configurator. |
+| 6 | GRIP-Configurator | Ermöglicht echte Nutzung mit eigenen Daten. |
+| 7 | Prompt-Generator | Skaliert GRIP-Wissen ohne Backend-Komplexität. |
 
 ---
 

@@ -168,3 +168,23 @@ Fünf Referenz-Workflows wurden dokumentiert:
 Jeder Workflow enthält ein ASCII-Diagramm, Phasenbeschreibungen mit Übergangsbedingungen, Iterationsschleifen und eine User Story.
 
 Das Konzept: Archetypen sind Momentaufnahmen, Forschung ist Prozess. Workflows zeigen, wie sich Topologie und Intention im Projektverlauf ändern und jeder Phasenwechsel eine neue Matrix-Abfrage auslöst.
+
+---
+
+## 2025-12-04: Strategische Planrevision
+
+Der IMPLEMENTIERUNGSPLAN.md wurde nach kritischer Analyse überarbeitet.
+
+Kern-Erkenntnis: Das eigentliche Produkt ist der System Prompt und das mentale Modell. Die Website ist der Beweis, dass das Modell funktioniert. Das LLM ist der primäre User des Frameworks.
+
+Fünf strategische Änderungen wurden vorgenommen:
+
+1. Spezialisierungen mit Operationalisierungs-Anforderung: Jede Spezialisierung muss unterscheidende UI-Elemente, spezifische Datenfelder und eigene Heuristiken definieren. Ohne diese Substanz sind Spezialisierungen nur Taxonomie-Dekoration.
+
+2. Phase 5 umbenannt zu GRIP-Configurator: Keine automatische Schema-Inferenz. Client-side ML für Topologie-Erkennung ist fragil. Stattdessen manuelle Konfiguration mit Struktur-Preview.
+
+3. Phase 6 umbenannt zu Prompt-Generator: Keine direkte LLM-API-Integration. GRIP generiert Prompts, die Nutzer in ihr bevorzugtes LLM kopieren. Vermeidet API-Kosten und Backend-Komplexität.
+
+4. Technische Schulden priorisiert: JS-Modularisierung als Voraussetzung für Phase 5 eingestuft.
+
+5. Prioritäten revidiert: System Prompt auf Platz 1. Alle anderen Phasen hängen davon ab, dass die Entscheidungslogik robust ist.
