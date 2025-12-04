@@ -818,6 +818,112 @@ footer a:hover {
     border-left: 3px solid var(--color-terracotta);
 }
 
+/* Mode Tabs Navigation */
+
+.mode-tabs {
+    display: flex;
+    gap: 0;
+    background: var(--color-paper-dark);
+    border-bottom: 2px solid var(--color-ink-muted);
+    padding: 0 var(--space-lg);
+}
+
+.mode-tabs a {
+    padding: var(--space-sm) var(--space-md);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--color-ink-muted);
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s ease;
+}
+
+.mode-tabs a:hover {
+    color: var(--color-ink);
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.mode-tabs a.active,
+.mode-tabs a[aria-selected="true"] {
+    color: var(--color-reader);
+    border-bottom-color: var(--color-reader);
+    font-weight: 600;
+}
+
+/* Mode Badge in Header */
+.mode-badge {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-reader);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    margin-left: var(--space-sm);
+}
+
+/* Mode Info in Footer */
+.mode-info {
+    max-width: 500px;
+}
+
+.mode-info h3 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    margin-bottom: var(--space-sm);
+}
+
+.mode-info p {
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+.back-to-spec {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-md);
+    background: transparent;
+    border: 2px solid var(--color-reader);
+    color: var(--color-reader);
+    text-decoration: none;
+    border-radius: 6px 3px 8px 4px / 3px 6px 4px 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.back-to-spec:hover {
+    background: var(--color-reader);
+    color: white;
+}
+
+/* Hidden Utility */
+.hidden {
+    display: none !important;
+}
+
+/* Stats List */
+.stats-list {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-xs) var(--space-sm);
+    font-size: 0.85rem;
+}
+
+.stats-list dt {
+    color: var(--color-ink-muted);
+}
+
+.stats-list dd {
+    font-weight: 600;
+    text-align: right;
+    font-family: var(--font-mono);
+}
+
 /* Demo Footer Layout */
 
 .demo-footer {

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faksimile - Edition - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/reader.css">
+    <link rel="stylesheet" href="../../css/specializations/edition.css">
+    <link rel="stylesheet" href="../../css/modes/edition-faksimile.css">
+</head>
+<body>
+    <header class="demo-header reader-header edition-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Edition</h1>
+            <span class="mode-badge">Faksimile-Modus</span>
+        </div>
+        <p>Transkription und Bildquelle verbinden</p>
+    </header>
+
+    <!-- Modus-Navigation -->
+    <nav class="mode-tabs" role="tablist">
+        <a href="synopse.html" role="tab">Synopse</a>
+        <a href="apparat.html" role="tab">Apparat</a>
+        <a href="genetik.html" role="tab">Genetik</a>
+        <a href="faksimile.html" role="tab" aria-selected="true" class="active">Faksimile</a>
+    </nav>
+
+    <main class="faksimile-layout">
+        <!-- Sidebar: Seiten-Navigation -->
+        <aside class="faksimile-sidebar">
+            <div class="page-nav">
+                <h2>Seiten</h2>
+                <div class="page-list" id="page-list">
+                    <!-- Dynamisch:
+                    <button class="page-thumb" data-page="1">
+                        <img src="thumb_001.jpg" alt="Seite 1">
+                        <span>1r</span>
+                    </button>
+                    -->
+                </div>
+            </div>
+
+            <div class="witness-select">
+                <h3>Textzeuge</h3>
+                <select id="witness-select">
+                    <!-- Dynamisch -->
+                </select>
+            </div>
+
+            <div class="display-options">
+                <h3>Anzeige</h3>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="show-overlay">
+                    Transkription-Overlay
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="show-zones" checked>
+                    Zonen markieren
+                </label>
+                <div class="overlay-opacity hidden" id="overlay-opacity-control">
+                    <label>Transparenz</label>
+                    <input type="range" id="overlay-opacity" min="0" max="100" value="50">
+                </div>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Bild + Text nebeneinander -->
+        <article class="faksimile-content">
+            <div class="split-view">
+                <!-- Faksimile-Panel -->
+                <div class="facsimile-panel" id="facsimile-panel">
+                    <div class="image-container" id="image-container">
+                        <img id="facsimile-image" src="" alt="Faksimile">
+                        <div class="zone-overlays" id="zone-overlays">
+                            <!-- Dynamisch: SVG-Zonen -->
+                        </div>
+                        <div class="text-overlay hidden" id="text-overlay">
+                            <!-- Dynamisch: Positionierter Transkriptionstext -->
+                        </div>
+                    </div>
+                    <div class="image-controls">
+                        <button id="zoom-in" title="Vergrößern">+</button>
+                        <button id="zoom-out" title="Verkleinern">−</button>
+                        <button id="zoom-reset" title="Zurücksetzen">⟲</button>
+                        <span id="zoom-level">100%</span>
+                    </div>
+                </div>
+
+                <!-- Transkription-Panel -->
+                <div class="transcription-panel" id="transcription-panel">
+                    <header class="transcription-header">
+                        <h2 id="page-title">Seite</h2>
+                        <p id="page-info">Informationen</p>
+                    </header>
+                    <div class="transcription-text" id="transcription-text">
+                        <!-- Dynamisch: Zeilenweise Transkription
+                        <div class="line" data-zone="z1">
+                            <span class="line-number">1</span>
+                            <span class="line-text">Transkribierter Text...</span>
+                        </div>
+                        -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resize-Handle -->
+            <div class="resize-handle" id="resize-handle"></div>
+        </article>
+
+        <!-- Kontext-Panel: Zone-Detail -->
+        <aside class="faksimile-context">
+            <section class="zone-detail">
+                <h2>Zone</h2>
+                <p class="zone-prompt" id="zone-prompt">Klicken Sie auf eine Zone im Bild oder Text.</p>
+
+                <div class="zone-info hidden" id="zone-info">
+                    <dl class="zone-data">
+                        <dt>Zeile</dt>
+                        <dd id="zone-line">-</dd>
+                        <dt>Koordinaten</dt>
+                        <dd id="zone-coords">-</dd>
+                    </dl>
+
+                    <div class="zone-preview">
+                        <h3>Ausschnitt</h3>
+                        <div class="zone-crop" id="zone-crop">
+                            <!-- Bildausschnitt der Zone -->
+                        </div>
+                    </div>
+
+                    <div class="zone-transcription">
+                        <h3>Transkription</h3>
+                        <p id="zone-text" class="zone-text"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="page-stats">
+                <h3>Seitenstatistik</h3>
+                <dl class="stats-list">
+                    <dt>Zeilen</dt>
+                    <dd id="stat-lines">-</dd>
+                    <dt>Zonen</dt>
+                    <dd id="stat-zones">-</dd>
+                    <dt>Wörter</dt>
+                    <dd id="stat-words">-</dd>
+                </dl>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>+ / −</dt>
+                    <dd>Zoom</dd>
+                    <dt>← / →</dt>
+                    <dd>Seite wechseln</dd>
+                    <dt>↑ / ↓</dt>
+                    <dd>Zone wechseln</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer reader-footer">
+        <div class="mode-info">
+            <h3>Faksimile-Modus</h3>
+            <p><strong>Relevanz:</strong> Verbindung von Transkription und Bildquelle. Verifizierung am Original.</p>
+            <p><strong>Innovation:</strong> Klick auf Text scrollt zum Bildausschnitt. Transparenz-Overlay legt Transkription über Scan.</p>
+        </div>
+        <a href="../reader-edition.html" class="back-to-spec reader-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/edition-faksimile.js"></script>
+</body>
+</html>

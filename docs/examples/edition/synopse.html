@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synopse - Edition - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/reader.css">
+    <link rel="stylesheet" href="../../css/specializations/edition.css">
+    <link rel="stylesheet" href="../../css/modes/edition-synopse.css">
+</head>
+<body>
+    <header class="demo-header reader-header edition-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Edition</h1>
+            <span class="mode-badge">Synopse-Modus</span>
+        </div>
+        <p>Textzeugen parallel vergleichen</p>
+    </header>
+
+    <!-- Modus-Navigation -->
+    <nav class="mode-tabs" role="tablist">
+        <a href="synopse.html" role="tab" aria-selected="true" class="active">Synopse</a>
+        <a href="apparat.html" role="tab">Apparat</a>
+        <a href="genetik.html" role="tab">Genetik</a>
+        <a href="faksimile.html" role="tab">Faksimile</a>
+    </nav>
+
+    <main class="synopse-layout">
+        <!-- Sidebar: Textzeugen-Auswahl -->
+        <aside class="synopse-sidebar">
+            <div class="witnesses-panel">
+                <h2>Textzeugen wählen</h2>
+                <div class="witness-checkboxes" id="witness-checkboxes">
+                    <!-- Dynamisch: Checkboxen für jeden Zeugen -->
+                </div>
+                <button class="btn-secondary" id="select-all">Alle auswählen</button>
+            </div>
+
+            <div class="sync-options">
+                <h3>Synchronisation</h3>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="lock-scroll" checked>
+                    Lock-Scroll
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="highlight-diff" checked>
+                    Abweichungen markieren
+                </label>
+            </div>
+
+            <div class="synopse-stats">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Aktive Zeugen</dt>
+                    <dd id="stat-active">0</dd>
+                    <dt>Abweichungen</dt>
+                    <dd id="stat-diff">0</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Parallele Spalten -->
+        <article class="synopse-content">
+            <header class="synopse-header">
+                <h2 id="text-title">Werktitel</h2>
+                <p id="text-section">Abschnitt</p>
+            </header>
+
+            <div class="synopse-columns" id="synopse-columns">
+                <!-- Dynamisch: Eine Spalte pro gewähltem Zeugen -->
+                <!--
+                <div class="witness-column" data-witness="A">
+                    <div class="column-header">
+                        <span class="siglum">A</span>
+                        <span class="witness-name">Handschrift A</span>
+                    </div>
+                    <div class="column-text" data-line="1">Text der Zeile...</div>
+                </div>
+                -->
+            </div>
+        </article>
+
+        <!-- Kontext-Panel: Diff-Detail -->
+        <aside class="synopse-context">
+            <section class="diff-detail">
+                <h2>Abweichung</h2>
+                <p class="diff-prompt" id="diff-prompt">Klicken Sie auf eine markierte Stelle.</p>
+
+                <div class="diff-info hidden" id="diff-info">
+                    <div class="diff-position">
+                        <span>Zeile</span>
+                        <strong id="diff-line">-</strong>
+                    </div>
+                    <div class="diff-variants" id="diff-variants">
+                        <!-- Dynamisch: Varianten-Vergleich -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>↑ / ↓</dt>
+                    <dd>Zeile wechseln</dd>
+                    <dt>← / →</dt>
+                    <dd>Nächste Abweichung</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer reader-footer">
+        <div class="mode-info">
+            <h3>Synopse-Modus</h3>
+            <p><strong>Relevanz:</strong> Textzeugenvergleich ist Kernaufgabe der Textkritik. Parallele Darstellung zeigt Abweichungen sofort.</p>
+            <p><strong>Innovation:</strong> Lock-Scroll synchronisiert beliebig viele Spalten. Diff-Highlighting berechnet Abweichungen on-the-fly.</p>
+        </div>
+        <a href="../reader-edition.html" class="back-to-spec reader-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/edition-synopse.js"></script>
+</body>
+</html>

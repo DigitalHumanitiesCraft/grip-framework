@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genetik - Edition - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/reader.css">
+    <link rel="stylesheet" href="../../css/specializations/edition.css">
+    <link rel="stylesheet" href="../../css/modes/edition-genetik.css">
+</head>
+<body>
+    <header class="demo-header reader-header edition-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Edition</h1>
+            <span class="mode-badge">Genetik-Modus</span>
+        </div>
+        <p>Entstehungsprozess nachvollziehen</p>
+    </header>
+
+    <!-- Modus-Navigation -->
+    <nav class="mode-tabs" role="tablist">
+        <a href="synopse.html" role="tab">Synopse</a>
+        <a href="apparat.html" role="tab">Apparat</a>
+        <a href="genetik.html" role="tab" aria-selected="true" class="active">Genetik</a>
+        <a href="faksimile.html" role="tab">Faksimile</a>
+    </nav>
+
+    <main class="genetik-layout">
+        <!-- Sidebar: Schichten + Hände -->
+        <aside class="genetik-sidebar">
+            <div class="timeline-panel">
+                <h2>Entstehungszeit</h2>
+                <input type="range" id="time-slider" min="0" max="100" value="100">
+                <div class="time-labels">
+                    <span>Grundschicht</span>
+                    <span>Endfassung</span>
+                </div>
+            </div>
+
+            <div class="layers-panel">
+                <h3>Schichten</h3>
+                <div class="layer-checkboxes" id="layer-checkboxes">
+                    <!-- Dynamisch:
+                    <label class="layer-item" style="--layer-color: #4A90A4">
+                        <input type="checkbox" data-layer="1" checked>
+                        <span class="layer-label">Grundschicht</span>
+                    </label>
+                    -->
+                </div>
+            </div>
+
+            <div class="hands-panel">
+                <h3>Hände</h3>
+                <div class="hand-checkboxes" id="hand-checkboxes">
+                    <!-- Dynamisch:
+                    <label class="hand-item" style="--hand-color: #1A1A1A">
+                        <input type="checkbox" data-hand="author" checked>
+                        <span class="hand-label">Autor</span>
+                    </label>
+                    -->
+                </div>
+            </div>
+
+            <div class="correction-types">
+                <h3>Korrekturtypen</h3>
+                <div class="type-checkboxes" id="type-checkboxes">
+                    <label class="type-item">
+                        <input type="checkbox" data-type="deletion" checked>
+                        <span class="type-label">Streichungen</span>
+                    </label>
+                    <label class="type-item">
+                        <input type="checkbox" data-type="addition" checked>
+                        <span class="type-label">Ergänzungen</span>
+                    </label>
+                    <label class="type-item">
+                        <input type="checkbox" data-type="substitution" checked>
+                        <span class="type-label">Ersetzungen</span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Genetischer Text -->
+        <article class="genetik-content">
+            <header class="text-header">
+                <h2 id="text-title">Werktitel</h2>
+                <p id="text-witness">Handschrift</p>
+            </header>
+
+            <div class="genetic-text" id="genetic-text">
+                <!-- Dynamisch: Text mit Schicht-Markierungen
+                <span class="layer" data-layer="1" data-hand="author">Grundtext</span>
+                <span class="deletion" data-layer="2">gestrichener Text</span>
+                <span class="addition" data-layer="2" data-hand="editor">eingefügter Text</span>
+                -->
+            </div>
+
+            <div class="genetic-legend">
+                <h3>Legende</h3>
+                <div class="legend-items" id="legend-items">
+                    <!-- Dynamisch basierend auf aktiven Filtern -->
+                </div>
+            </div>
+        </article>
+
+        <!-- Kontext-Panel: Korrektur-Detail -->
+        <aside class="genetik-context">
+            <section class="correction-detail">
+                <h2>Korrektur</h2>
+                <p class="correction-prompt" id="correction-prompt">Klicken Sie auf eine markierte Stelle.</p>
+
+                <div class="correction-info hidden" id="correction-info">
+                    <dl class="correction-data">
+                        <dt>Typ</dt>
+                        <dd id="corr-type">-</dd>
+                        <dt>Schicht</dt>
+                        <dd id="corr-layer">-</dd>
+                        <dt>Hand</dt>
+                        <dd id="corr-hand">-</dd>
+                    </dl>
+
+                    <div class="correction-text">
+                        <h3>Vorher</h3>
+                        <p id="corr-before" class="text-before"></p>
+                        <h3>Nachher</h3>
+                        <p id="corr-after" class="text-after"></p>
+                    </div>
+
+                    <div class="correction-note hidden" id="correction-note">
+                        <h3>Anmerkung</h3>
+                        <p id="corr-note-text"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="stats-panel">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Schichten</dt>
+                    <dd id="stat-layers">-</dd>
+                    <dt>Korrekturen</dt>
+                    <dd id="stat-corrections">-</dd>
+                    <dt>Hände</dt>
+                    <dd id="stat-hands">-</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer reader-footer">
+        <div class="mode-info">
+            <h3>Genetik-Modus</h3>
+            <p><strong>Relevanz:</strong> Entstehungsprozess eines Textes nachvollziehen. Relevant für Autorschaftsforschung und Werkgenese.</p>
+            <p><strong>Innovation:</strong> Zeitstrahl-Slider blendet Schichten ein/aus. Farbcodierung unterscheidet Hände visuell.</p>
+        </div>
+        <a href="../reader-edition.html" class="back-to-spec reader-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/edition-genetik.js"></script>
+</body>
+</html>
