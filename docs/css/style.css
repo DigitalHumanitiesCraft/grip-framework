@@ -484,6 +484,124 @@ footer a:hover {
     text-decoration: underline;
 }
 
+/* Data Info Box - Demo Page Footer */
+
+.data-info-box {
+    background: var(--color-paper);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 12px 4px 14px 6px / 4px 12px 6px 14px;
+    padding: var(--space-lg);
+    margin-top: var(--space-lg);
+    max-width: 800px;
+}
+
+.data-info-box h3 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.info-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-lg);
+}
+
+.info-section h4 {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-ink-muted);
+    margin-bottom: var(--space-sm);
+}
+
+.info-section p {
+    font-size: 0.9rem;
+    color: var(--color-ink-light);
+    line-height: 1.6;
+}
+
+.info-section ul {
+    list-style: none;
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+}
+
+.info-section ul li {
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.info-section ul li:last-child {
+    border-bottom: none;
+}
+
+.info-section ul li strong {
+    color: var(--color-ink);
+}
+
+.info-section em {
+    display: block;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-ink-light);
+    padding: var(--space-sm);
+    background: var(--color-paper-dark);
+    border-radius: 6px 3px 8px 4px / 3px 6px 4px 8px;
+    border-left: 3px solid var(--color-terracotta);
+}
+
+/* Demo Footer Layout */
+
+.demo-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: var(--space-xl) var(--space-lg);
+    border-top: 3px solid var(--color-terracotta);
+    background: var(--color-paper-dark);
+}
+
+.demo-footer .archetype-info {
+    max-width: 400px;
+}
+
+.demo-footer .archetype-info h3 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    margin-bottom: var(--space-sm);
+}
+
+.demo-footer .archetype-info p {
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+.demo-footer .back-to-matrix {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-terracotta);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px 3px 8px 4px / 3px 6px 4px 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+
+.demo-footer .back-to-matrix:hover {
+    background: var(--color-terracotta-light);
+}
+
 /* Responsive */
 
 @media (max-width: 768px) {

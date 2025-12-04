@@ -80,25 +80,74 @@ Jede Demo erklärt im Footer die GRIP-Matrix-Zuordnung. Die Hauptseite verlinkt 
 
 ---
 
-## Dateistruktur nach Demo-Implementierung
+## 2025-12-04: Adaptive Interfaces
+
+Die statischen Demo-Seiten wurden zu dynamischen, JSON-basierten Interfaces umgebaut. Jeder Archetyp lädt Daten via fetch() und passt die UI automatisch an.
+
+### Reader: Arendt-Jaspers Korrespondenz
+
+AdaptiveReader-Klasse mit positionsbasierten Annotationen (start/end-Zeichen). Interaktive Timeline mit historischen Perioden. Brief-Referenzen als klickbare Links. Statistik-Panel zeigt Wortanzahl, Annotationen und Referenzen.
+
+Datenformat: Fünf fiktive Briefe mit Annotations-Array, Referenzen auf andere Briefe und Timeline-Perioden.
+
+### Scope: Umfragedaten zur Digitalisierung
+
+AdaptiveScope-Klasse mit Echtzeit-Aggregation aus 120 Rohdatensätzen. Dynamische Filter für Abteilung, Altersgruppe, Home-Office-Tage. Pearson-Korrelationsmatrix zeigt Zusammenhänge zwischen Variablen. KPI-Cards mit Änderungsindikatoren. CSV-Export und Pagination.
+
+Datenformat: 120 Befragte mit 12 Variablen (Zufriedenheit, Kommunikation, Training, Veränderungsbereitschaft auf Skala 1-10).
+
+### Navigator: Zitationsnetzwerk
+
+AdaptiveNavigator-Klasse mit Force-Directed Layout ohne D3-Dependency. Drei Layout-Modi (Force, Radial, Cluster). Physik-Simulation mit Alpha-Decay-Visualisierung. Node-Dragging, Pan, Zoom. Cluster-Filter und Jahr-Filter. Netzwerk-Metriken (Degree, In-Degree, Out-Degree, Dichte).
+
+Datenformat: 10 Publikationen in drei thematischen Clustern (Methoden, Theorie, Anwendung). 19 gerichtete Kanten für Zitationsbeziehungen.
+
+### Workbench: Sammlungsmetadaten mit Fehlern
+
+AdaptiveWorkbench-Klasse mit Auto-Validierung gegen Schema. Drei Ansichten: Tabelle (editierbar), JSON, Fehlerübersicht. Quick-Fix-Vorschläge für bekannte Fehlermuster (Datumsformate, Kategorien, fehlende Felder). Batch-Operationen für Massenkorrektur. Undo/Redo mit Ctrl+Z/Y. Export als JSON, CSV oder Validierungsreport.
+
+Datenformat: 25 Kunstobjekte mit absichtlichen Fehlern (ungültige Datumsformate, Duplikate, Tippfehler, fehlende Pflichtfelder).
+
+### Info-Boxen mit User Stories
+
+Jede Demo-Seite enthält eine Info-Box mit drei Sektionen:
+- **Datensatz**: Beschreibung der Beispieldaten
+- **Visualisierung**: Auflistung der UI-Features
+- **User Story**: Konkrete Nutzerperspektive im Format "Als [Rolle] möchte ich [Aktion], indem ich [Methode], um [Ziel]."
+
+User Stories:
+- Reader: Editionsphilologin rekonstruiert intellektuelle Beziehung
+- Scope: Personalentwicklerin plant zielgerichtete Trainingsmaßnahmen
+- Navigator: Wissenschaftshistorikerin macht intellektuelle Genealogien sichtbar
+- Workbench: Sammlungsregistrarin bereinigt Metadaten für Systemimport
+
+---
+
+## Dateistruktur nach Adaptive-Implementierung
 
 ```
 docs/
   index.html              Hauptseite mit Matrix und Archetypen
   css/
-    style.css             Basis-Styles und Demo-Links
-    reader.css            Reader-spezifische Styles
-    scope.css             Scope-spezifische Styles
-    navigator.css         Navigator-spezifische Styles
-    workbench.css         Workbench-spezifische Styles
+    style.css             Basis-Styles, Demo-Footer, Info-Boxen
+    reader.css            Reader: Timeline, Annotationen, Referenzen
+    scope.css             Scope: KPIs, Korrelationsmatrix, Pagination
+    navigator.css         Navigator: Simulation, Metriken, Graph-Controls
+    workbench.css         Workbench: Schema, Fehler-Cards, JSON-View
   js/
     main.js               Matrix-Interaktion
-    reader.js             Brief-Navigation, Annotationen
-    navigator.js          Graph-Interaktion, Zoom
-    workbench.js          Inline-Editing, Validierung
+    reader.js             AdaptiveReader-Klasse
+    scope.js              AdaptiveScope-Klasse (NEU)
+    navigator.js          AdaptiveNavigator-Klasse
+    workbench.js          AdaptiveWorkbench-Klasse
   examples/
-    reader.html           Arendt-Jaspers Korrespondenz
-    scope.html            Umfragedaten-Dashboard
-    navigator.html        Zitationsnetzwerk
-    workbench.html        Metadaten-Kuratierung
+    reader.html           Dynamische Korrespondenz-Ansicht
+    scope.html            Dynamisches Umfrage-Dashboard
+    navigator.html        Dynamisches Zitationsnetzwerk
+    workbench.html        Dynamische Metadaten-Kuratierung
+    data/
+      reader-correspondence.json   Arendt-Jaspers Briefe
+      scope-survey.json            120 Umfrage-Rohdaten
+      navigator-citations.json     Zitationsnetzwerk
+      workbench-metadata.json      Kunstsammlung mit Fehlern
 ```
