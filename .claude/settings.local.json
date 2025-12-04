@@ -8,7 +8,10 @@
       "Bash(git commit -m \"$(cat <<''EOF''\nPrototyp-Auftrag und UI-Verfeinerungen\n\nNeue Dateien:\n- knowledge/07-PROTOTYP.md: Selbstreferenzieller Prototyp-Auftrag\n\nAktualisierte Dateien:\n- docs/index.html: \"Dialog\" statt \"?\" in ambigen Zellen\n- docs/css/style.css: Vier UI-Verbesserungen implementiert\n- knowledge/01-ARCHITEKTUR.md: Verweise auf 07-PROTOTYP und DESIGN\n- knowledge/JOURNAL.md: Zwei neue Meilensteine dokumentiert\n\nUI-Verbesserungen:\n1. Matrix-Lesbarkeit: Small Caps, verstärkte Spaltenüberschriften\n2. Semantik: Terracotta statt Warn-Gelb für Dialog-Zellen\n3. Affordance: Hover-Effekte mit Elevation und Pfeil-Cue\n4. Organic Touch: Asymmetrische Border-Radii\n\nDer Prototyp-Auftrag definiert das Ziel: GRIP erklärt sich selbst,\nindem die Wissensbasis nach eigenen Prinzipien visualisiert wird.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
       "Bash(git commit:*)",
       "Bash(move:*)",
-      "Bash(python -m http.server:*)"
+      "Bash(python -m http.server:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(wc:*)"
     ],
     "deny": [],
     "ask": []
