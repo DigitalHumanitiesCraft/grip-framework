@@ -1,0 +1,227 @@
+{
+  "metadata": {
+    "title": "Korrespondenz Hannah Arendt – Karl Jaspers",
+    "description": "Ausgewählte Briefe aus dem Briefwechsel zweier Philosophen (1926-1969)",
+    "generated": "2025-12-04",
+    "topology": "sequenziell",
+    "intention": "verstehen",
+    "note": "Synthetische Daten nach historischem Vorbild"
+  },
+  "persons": {
+    "arendt": {
+      "name": "Hannah Arendt",
+      "born": 1906,
+      "died": 1975,
+      "role": "Philosophin, Politische Theoretikerin"
+    },
+    "jaspers": {
+      "name": "Karl Jaspers",
+      "born": 1883,
+      "died": 1969,
+      "role": "Philosoph, Psychiater"
+    }
+  },
+  "letters": [
+    {
+      "id": "letter001",
+      "date": "1926-04-12",
+      "from": "arendt",
+      "to": "jaspers",
+      "location_from": "Marburg",
+      "location_to": "Heidelberg",
+      "subject": "Dank für die Vorlesung",
+      "body": "Sehr verehrter Herr Professor,\n\ngestatten Sie mir, Ihnen für die Vorlesung zu danken, die ich im vergangenen Semester bei Ihnen hören durfte. Die Frage nach der Existenz, wie Sie sie stellen, hat mich nicht mehr losgelassen.\n\nIch arbeite gegenwärtig an meiner Dissertation über den Liebesbegriff bei Augustin. Heideggers Methode prägt die Arbeit, doch Ihre Fragen nach dem Umgreifenden bleiben mir gegenwärtig.\n\nMit vorzüglicher Hochachtung\nHannah Arendt",
+      "references": [],
+      "annotations": [
+        {
+          "start": 180,
+          "end": 220,
+          "type": "context",
+          "note": "Arendts Dissertation wurde 1929 abgeschlossen"
+        }
+      ]
+    },
+    {
+      "id": "letter002",
+      "date": "1926-05-03",
+      "from": "jaspers",
+      "to": "arendt",
+      "location_from": "Heidelberg",
+      "location_to": "Marburg",
+      "subject": "Re: Dank für die Vorlesung",
+      "body": "Liebe Fräulein Arendt,\n\nIhr Brief hat mich gefreut. Die Verbindung von Augustin und der Frage nach der Existenz scheint mir fruchtbar. Dass Sie bei Heidegger arbeiten und dennoch andere Wege suchen, spricht für Sie.\n\nSchicken Sie mir Ihre Arbeit, wenn sie fertig ist. Ich bin gespannt auf Ihre Gedanken zur Liebe als philosophischem Begriff.\n\nMit herzlichen Grüßen\nKarl Jaspers",
+      "references": ["letter001"],
+      "annotations": []
+    },
+    {
+      "id": "letter003",
+      "date": "1929-11-18",
+      "from": "arendt",
+      "to": "jaspers",
+      "location_from": "Berlin",
+      "location_to": "Heidelberg",
+      "subject": "Die Dissertation ist abgeschlossen",
+      "body": "Lieber Herr Professor Jaspers,\n\ndie Arbeit über Augustin ist nun abgeschlossen und angenommen. Ich sende Ihnen ein Exemplar mit diesem Brief. Ihre Fragen haben mich während der Arbeit begleitet, auch wenn ich nicht sicher bin, ob ich Antworten gefunden habe.\n\nBerlin ist unruhig. Die politischen Entwicklungen beunruhigen mich. Doch davon ein andermal.\n\nIhre ergebene\nHannah Arendt",
+      "references": ["letter001", "letter002"],
+      "annotations": [
+        {
+          "start": 270,
+          "end": 320,
+          "type": "historical",
+          "note": "Die Weltwirtschaftskrise und der Aufstieg der NSDAP"
+        }
+      ]
+    },
+    {
+      "id": "letter004",
+      "date": "1933-01-30",
+      "from": "arendt",
+      "to": "jaspers",
+      "location_from": "Berlin",
+      "location_to": "Heidelberg",
+      "subject": "Die Ereignisse",
+      "body": "Lieber Herr Jaspers,\n\nheute ist geschehen, was wir gefürchtet haben. Ich weiß nicht, was nun kommt. Die Arbeit an meinem Rahel-Buch geht weiter, aber die Umstände werden schwieriger.\n\nWie geht es Ihnen und Ihrer Frau? Ich denke an Sie.\n\nHannah Arendt",
+      "references": [],
+      "annotations": [
+        {
+          "start": 30,
+          "end": 75,
+          "type": "historical",
+          "note": "Hitlers Ernennung zum Reichskanzler"
+        },
+        {
+          "start": 160,
+          "end": 180,
+          "type": "context",
+          "note": "Gertrud Jaspers war jüdischer Herkunft"
+        }
+      ]
+    },
+    {
+      "id": "letter005",
+      "date": "1933-02-15",
+      "from": "jaspers",
+      "to": "arendt",
+      "location_from": "Heidelberg",
+      "location_to": "Berlin",
+      "subject": "Re: Die Ereignisse",
+      "body": "Liebe Hannah Arendt,\n\nIhr Brief kam an. Wir sind noch hier und werden bleiben. Was kommen wird, wissen wir nicht. Meine Frau ist gefasst.\n\nArbeiten Sie weiter. Das Denken ist jetzt wichtiger als je zuvor. Ihr Rahel-Buch sollte erscheinen, auch wenn die Zeiten dagegen sprechen.\n\nPassen Sie auf sich auf.\n\nIhr Karl Jaspers",
+      "references": ["letter004"],
+      "annotations": []
+    },
+    {
+      "id": "letter006",
+      "date": "1946-09-08",
+      "from": "arendt",
+      "to": "jaspers",
+      "location_from": "New York",
+      "location_to": "Basel",
+      "subject": "Nach dreizehn Jahren",
+      "body": "Lieber Karl Jaspers,\n\ndreizehn Jahre Schweigen. Ich weiß nicht, wo ich beginnen soll. Dass Sie überlebt haben, dass Gertrud überlebt hat – ich habe es erst vor Monaten erfahren.\n\nIch bin in Amerika. Heinrich ist bei mir. Wir haben geheiratet, 1940, in Paris, bevor wir fliehen mussten. Meine Mutter ist tot.\n\nDeutschland existiert für mich nicht mehr, oder noch nicht wieder. Aber Sie existieren. Das ist mehr, als ich zu hoffen wagte.\n\nIhre Hannah",
+      "references": [],
+      "annotations": [
+        {
+          "start": 0,
+          "end": 50,
+          "type": "context",
+          "note": "Der Briefwechsel war von 1933 bis 1945 unterbrochen"
+        },
+        {
+          "start": 200,
+          "end": 230,
+          "type": "context",
+          "note": "Heinrich Blücher, Arendts zweiter Ehemann"
+        }
+      ]
+    },
+    {
+      "id": "letter007",
+      "date": "1946-10-01",
+      "from": "jaspers",
+      "to": "arendt",
+      "location_from": "Basel",
+      "location_to": "New York",
+      "subject": "Re: Nach dreizehn Jahren",
+      "body": "Liebste Hannah,\n\nIhr Brief hat uns beide zu Tränen gerührt. Dreizehn Jahre, in denen wir nicht wussten, ob Sie leben. Gertrud hat oft von Ihnen gesprochen.\n\nWir sind in Basel. Heidelberg war nicht mehr möglich. Die Universität hat mich zurückgerufen, aber ich kann nicht zurück in ein Land, das diese Dinge zugelassen hat.\n\nSchreiben Sie mir alles. Wir haben viel nachzuholen.\n\nIhr Karl",
+      "references": ["letter006"],
+      "annotations": [
+        {
+          "start": 180,
+          "end": 250,
+          "type": "historical",
+          "note": "Jaspers verließ Deutschland 1948 und nahm einen Ruf nach Basel an"
+        }
+      ]
+    },
+    {
+      "id": "letter008",
+      "date": "1951-03-22",
+      "from": "arendt",
+      "to": "jaspers",
+      "location_from": "New York",
+      "location_to": "Basel",
+      "subject": "Das Buch ist fertig",
+      "body": "Lieber Karl,\n\ndas Buch über den Totalitarismus ist fertig. Es erscheint in einigen Monaten. Ich schicke Ihnen die Fahnen.\n\nEs ist das Buch, das ich schreiben musste. Die Frage, wie das möglich war – der Terror, die Lager, die Vernichtung des Menschen als Mensch. Ich weiß nicht, ob ich Antworten gefunden habe. Aber ich musste die Fragen stellen.\n\nIhr Urteil ist mir wichtiger als jede Rezension.\n\nHannah",
+      "references": [],
+      "annotations": [
+        {
+          "start": 20,
+          "end": 60,
+          "type": "context",
+          "note": "The Origins of Totalitarianism, 1951"
+        }
+      ]
+    },
+    {
+      "id": "letter009",
+      "date": "1961-05-15",
+      "from": "arendt",
+      "to": "jaspers",
+      "location_from": "Jerusalem",
+      "location_to": "Basel",
+      "subject": "Der Prozess",
+      "body": "Lieber Karl,\n\nich bin in Jerusalem. Der Prozess gegen Eichmann hat begonnen. Der New Yorker hat mich geschickt, als Berichterstatterin.\n\nWas ich sehe, verstört mich. Nicht das Monster, das ich erwartet hatte. Ein Bürokrat. Ein Mann, der nicht denken konnte. Die Banalität dessen, was hier verhandelt wird, ist schwerer zu ertragen als das Dämonische es wäre.\n\nIch werde darüber schreiben müssen. Aber ich weiß noch nicht, wie.\n\nHannah",
+      "references": [],
+      "annotations": [
+        {
+          "start": 50,
+          "end": 100,
+          "type": "historical",
+          "note": "Der Eichmann-Prozess, April bis Dezember 1961"
+        },
+        {
+          "start": 200,
+          "end": 280,
+          "type": "context",
+          "note": "Grundlage für 'Eichmann in Jerusalem: A Report on the Banality of Evil' (1963)"
+        }
+      ]
+    },
+    {
+      "id": "letter010",
+      "date": "1969-02-26",
+      "from": "arendt",
+      "to": "jaspers",
+      "location_from": "New York",
+      "location_to": "Basel",
+      "subject": "Zum Geburtstag",
+      "body": "Liebster Karl,\n\nzu Ihrem Geburtstag die herzlichsten Wünsche. Sechsundachtzig Jahre. Ich denke an unsere erste Begegnung in Heidelberg, vor mehr als vierzig Jahren. Die junge Studentin und der Professor. Was alles dazwischen liegt.\n\nSie haben mir das Denken beigebracht. Nicht die Inhalte – die musste ich selbst finden. Aber die Haltung. Die Unbedingtheit. Die Redlichkeit.\n\nDafür danke ich Ihnen.\n\nIhre Hannah",
+      "references": ["letter001"],
+      "annotations": [
+        {
+          "start": 50,
+          "end": 80,
+          "type": "context",
+          "note": "Jaspers' letzter Geburtstag; er starb am 26. Februar 1969"
+        }
+      ]
+    }
+  ],
+  "timeline": {
+    "periods": [
+      { "start": "1926", "end": "1933", "label": "Frühe Korrespondenz", "color": "#4A7C59" },
+      { "start": "1933", "end": "1945", "label": "Unterbrechung (Schweigen)", "color": "#6B6B6B" },
+      { "start": "1946", "end": "1969", "label": "Nachkriegszeit", "color": "#7B68A6" }
+    ]
+  }
+}

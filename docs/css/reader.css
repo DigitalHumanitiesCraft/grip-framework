@@ -108,15 +108,15 @@
     margin-top: 2px;
 }
 
-/* Timeline Mini */
+/* Timeline Container */
 
-.timeline-mini {
+.timeline-container {
     margin-top: var(--space-xl);
     padding-top: var(--space-lg);
     border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.timeline-mini h3 {
+.timeline-container h3 {
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--color-ink-muted);
@@ -125,30 +125,60 @@
     letter-spacing: 0.05em;
 }
 
-.timeline-bar {
+.timeline {
+    position: relative;
+    padding: var(--space-md) 0;
+}
+
+.timeline-periods {
+    position: relative;
+    height: 24px;
+    margin-bottom: var(--space-sm);
+}
+
+.timeline-period {
+    position: absolute;
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    color: var(--color-ink-muted);
+    overflow: hidden;
+}
+
+.timeline-period .period-label {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0 4px;
+}
+
+.timeline-track {
     display: flex;
     align-items: center;
     gap: var(--space-sm);
 }
 
-.timeline-bar .year {
+.timeline-year {
     font-family: var(--font-mono);
     font-size: 0.75rem;
     color: var(--color-ink-muted);
+    min-width: 35px;
 }
 
 .timeline-dots {
     flex: 1;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    position: relative;
     height: 2px;
     background: var(--color-paper-dark);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 1px;
 }
 
-.timeline-dots .dot {
+.timeline-dot {
+    position: absolute;
     width: 10px;
     height: 10px;
     background: var(--color-paper);
@@ -156,13 +186,49 @@
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
+    transform: translate(-50%, -50%);
+    top: 50%;
 }
 
-.timeline-dots .dot:hover,
-.timeline-dots .dot.active {
+.timeline-dot:hover,
+.timeline-dot.active {
     background: var(--color-reader);
     border-color: var(--color-reader);
-    transform: scale(1.2);
+    transform: translate(-50%, -50%) scale(1.3);
+    z-index: 1;
+}
+
+/* Persons Panel */
+
+.persons-panel {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.persons-panel h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-ink-muted);
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.persons-list {
+    font-size: 0.85rem;
+}
+
+.persons-list dt {
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-top: var(--space-sm);
+}
+
+.persons-list dd {
+    color: var(--color-ink-muted);
+    margin-left: 0;
+    font-size: 0.8rem;
 }
 
 /* Main Content */
@@ -251,6 +317,33 @@
     background: rgba(74, 124, 89, 0.3);
 }
 
+.annotation.highlight {
+    animation: highlightPulse 2s ease;
+}
+
+@keyframes highlightPulse {
+    0%, 100% { background: rgba(74, 124, 89, 0.15); }
+    50% { background: rgba(74, 124, 89, 0.5); }
+}
+
+.annotation[data-type="historical"] {
+    background: rgba(196, 112, 90, 0.15);
+    border-bottom-color: var(--color-terracotta);
+}
+
+.annotation[data-type="historical"]:hover {
+    background: rgba(196, 112, 90, 0.3);
+}
+
+.annotation[data-type="context"] {
+    background: rgba(123, 104, 166, 0.15);
+    border-bottom-color: var(--color-navigator);
+}
+
+.annotation[data-type="context"]:hover {
+    background: rgba(123, 104, 166, 0.3);
+}
+
 /* Letter Footer */
 
 .letter-footer {
@@ -280,6 +373,154 @@
     font-size: 0.9rem;
     color: var(--color-ink-light);
     line-height: 1.6;
+}
+
+.annotation-panel.historical {
+    border-left: 3px solid var(--color-terracotta);
+}
+
+.annotation-panel.context {
+    border-left: 3px solid var(--color-navigator);
+}
+
+/* References Panel */
+
+.references-panel {
+    background: var(--color-paper-dark);
+    padding: var(--space-md);
+    border-radius: 8px 4px 10px 6px / 4px 8px 6px 10px;
+    margin-bottom: var(--space-lg);
+    border-left: 3px solid var(--color-ink-muted);
+}
+
+.references-panel h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-ink-muted);
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.references-panel ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.references-panel li {
+    margin-bottom: var(--space-xs);
+}
+
+.reference-link {
+    color: var(--color-reader);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.reference-link:hover {
+    text-decoration: underline;
+}
+
+/* Annotations List in Context */
+
+.annotations-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.annotation-item {
+    padding: var(--space-sm);
+    margin-bottom: var(--space-xs);
+    background: var(--color-paper-dark);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.annotation-item:hover,
+.annotation-item.active {
+    background: rgba(74, 124, 89, 0.15);
+}
+
+.annotation-type {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-right: var(--space-xs);
+}
+
+.annotation-type.context {
+    background: rgba(123, 104, 166, 0.2);
+    color: var(--color-navigator);
+}
+
+.annotation-type.historical {
+    background: rgba(196, 112, 90, 0.2);
+    color: var(--color-terracotta);
+}
+
+.annotation-note {
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+}
+
+.no-annotations {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    font-style: italic;
+}
+
+/* Stats List */
+
+.stats-list {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-xs) var(--space-md);
+    font-size: 0.85rem;
+}
+
+.stats-list dt {
+    color: var(--color-ink-muted);
+}
+
+.stats-list dd {
+    font-family: var(--font-mono);
+    color: var(--color-ink);
+    font-weight: 600;
+    margin: 0;
+    text-align: right;
+}
+
+/* Period Description */
+
+.period-description {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    font-style: italic;
+}
+
+/* Letter Subject */
+
+.letter-subject {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--color-ink);
+    margin-top: var(--space-sm);
+    font-weight: 600;
+}
+
+/* Location styling */
+
+.location-from,
+.location-to {
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    font-style: italic;
 }
 
 .letter-pagination {

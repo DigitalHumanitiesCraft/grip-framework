@@ -11,55 +11,55 @@
     <header class="demo-header navigator-header">
         <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
         <h1>The Navigator</h1>
-        <p>Vernetzte Daten + Rekonstruktion</p>
+        <p id="header-subtitle">Vernetzte Daten + Rekonstruktion</p>
     </header>
 
     <main class="navigator-layout">
         <aside class="navigator-sidebar">
-            <h2>Netzwerk</h2>
-            <p class="sidebar-info">Zitationsnetzwerk: 47 Paper, 156 Zitationen</p>
+            <div class="sidebar-header">
+                <h2 id="network-title">Netzwerk</h2>
+                <p class="sidebar-info" id="network-description"></p>
+            </div>
 
-            <div class="network-stats">
+            <div class="network-stats" id="network-stats">
                 <div class="stat">
-                    <span class="stat-value">47</span>
+                    <span class="stat-value" id="stat-nodes">-</span>
                     <span class="stat-label">Knoten</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-value">156</span>
+                    <span class="stat-value" id="stat-edges">-</span>
                     <span class="stat-label">Kanten</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-value">6.6</span>
-                    <span class="stat-label">Avg. Degree</span>
+                    <span class="stat-value" id="stat-density">-</span>
+                    <span class="stat-label">Dichte</span>
                 </div>
             </div>
 
             <div class="filter-section">
                 <h3>Filter</h3>
                 <div class="filter-group">
-                    <label>Jahr</label>
-                    <input type="range" min="2015" max="2024" value="2024" id="year-filter">
+                    <label>Jahr (bis)</label>
+                    <input type="range" id="year-filter">
                     <span class="range-labels">
-                        <span>2015</span>
-                        <span id="year-value">2024</span>
+                        <span id="year-min">-</span>
+                        <span id="year-value">-</span>
                     </span>
                 </div>
 
                 <div class="filter-group">
-                    <label>Min. Zitationen</label>
-                    <input type="range" min="0" max="20" value="0" id="citations-filter">
+                    <label>Min. Verbindungen</label>
+                    <input type="range" min="0" max="10" value="0" id="degree-filter">
                     <span class="range-labels">
                         <span>0</span>
-                        <span id="citations-value">0</span>
+                        <span id="degree-value">0</span>
                     </span>
                 </div>
 
                 <div class="filter-group">
                     <label>Cluster anzeigen</label>
-                    <div class="cluster-toggles">
-                        <button class="cluster-btn active" data-cluster="methods" style="--cluster-color: var(--color-reader)">Methoden</button>
-                        <button class="cluster-btn active" data-cluster="theory" style="--cluster-color: var(--color-scope)">Theorie</button>
-                        <button class="cluster-btn active" data-cluster="applications" style="--cluster-color: var(--color-navigator)">Anwendung</button>
+                    <div class="cluster-toggles" id="cluster-toggles">
+                        <!-- Dynamisch gefüllt -->
                     </div>
                 </div>
             </div>
@@ -69,91 +69,53 @@
                 <div class="layout-buttons">
                     <button class="layout-btn active" data-layout="force">Force</button>
                     <button class="layout-btn" data-layout="radial">Radial</button>
-                    <button class="layout-btn" data-layout="hierarchy">Hierarchie</button>
+                    <button class="layout-btn" data-layout="cluster">Cluster</button>
+                </div>
+            </div>
+
+            <div class="simulation-section">
+                <h3>Simulation</h3>
+                <div class="simulation-controls">
+                    <button class="sim-btn" id="sim-play" title="Play/Pause">
+                        <span id="sim-icon">⏸</span>
+                    </button>
+                    <button class="sim-btn" id="sim-reheat" title="Reheat">🔥</button>
+                    <div class="sim-status">
+                        <span class="sim-label">Alpha:</span>
+                        <div class="alpha-bar">
+                            <div class="alpha-fill" id="alpha-fill"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </aside>
 
         <section class="navigator-main">
             <div class="graph-container" id="graph">
-                <svg class="graph-svg" viewBox="0 0 800 600">
-                    <!-- Edges -->
-                    <g class="edges">
-                        <line x1="400" y1="300" x2="300" y2="200" class="edge"></line>
-                        <line x1="400" y1="300" x2="500" y2="200" class="edge"></line>
-                        <line x1="400" y1="300" x2="350" y2="400" class="edge"></line>
-                        <line x1="400" y1="300" x2="450" y2="400" class="edge"></line>
-                        <line x1="300" y1="200" x2="200" y2="150" class="edge"></line>
-                        <line x1="300" y1="200" x2="250" y2="100" class="edge"></line>
-                        <line x1="500" y1="200" x2="550" y2="100" class="edge"></line>
-                        <line x1="500" y1="200" x2="600" y2="150" class="edge"></line>
-                        <line x1="350" y1="400" x2="300" y2="480" class="edge"></line>
-                        <line x1="450" y1="400" x2="500" y2="480" class="edge"></line>
-                        <line x1="200" y1="150" x2="150" y2="250" class="edge"></line>
-                        <line x1="600" y1="150" x2="650" y2="250" class="edge"></line>
-                        <line x1="300" y1="200" x2="500" y2="200" class="edge cross"></line>
-                    </g>
-                    <!-- Nodes -->
-                    <g class="nodes">
-                        <g class="node central" data-id="1" transform="translate(400, 300)">
-                            <circle r="20" class="node-circle methods"></circle>
-                            <text y="5" class="node-label">Smith 2020</text>
-                        </g>
-                        <g class="node" data-id="2" transform="translate(300, 200)">
-                            <circle r="14" class="node-circle methods"></circle>
-                            <text y="4" class="node-label">Jones 2019</text>
-                        </g>
-                        <g class="node" data-id="3" transform="translate(500, 200)">
-                            <circle r="14" class="node-circle theory"></circle>
-                            <text y="4" class="node-label">Lee 2019</text>
-                        </g>
-                        <g class="node" data-id="4" transform="translate(350, 400)">
-                            <circle r="12" class="node-circle applications"></circle>
-                            <text y="4" class="node-label">Chen 2021</text>
-                        </g>
-                        <g class="node" data-id="5" transform="translate(450, 400)">
-                            <circle r="12" class="node-circle applications"></circle>
-                            <text y="4" class="node-label">Kim 2021</text>
-                        </g>
-                        <g class="node" data-id="6" transform="translate(200, 150)">
-                            <circle r="10" class="node-circle methods"></circle>
-                            <text y="4" class="node-label">Brown 2018</text>
-                        </g>
-                        <g class="node" data-id="7" transform="translate(250, 100)">
-                            <circle r="10" class="node-circle methods"></circle>
-                            <text y="4" class="node-label">Davis 2017</text>
-                        </g>
-                        <g class="node" data-id="8" transform="translate(550, 100)">
-                            <circle r="10" class="node-circle theory"></circle>
-                            <text y="4" class="node-label">Wilson 2018</text>
-                        </g>
-                        <g class="node" data-id="9" transform="translate(600, 150)">
-                            <circle r="10" class="node-circle theory"></circle>
-                            <text y="4" class="node-label">Taylor 2017</text>
-                        </g>
-                        <g class="node" data-id="10" transform="translate(300, 480)">
-                            <circle r="8" class="node-circle applications"></circle>
-                            <text y="3" class="node-label">Garcia 2022</text>
-                        </g>
-                        <g class="node" data-id="11" transform="translate(500, 480)">
-                            <circle r="8" class="node-circle applications"></circle>
-                            <text y="3" class="node-label">Martinez 2022</text>
-                        </g>
-                        <g class="node" data-id="12" transform="translate(150, 250)">
-                            <circle r="8" class="node-circle methods"></circle>
-                            <text y="3" class="node-label">Anderson 2016</text>
-                        </g>
-                        <g class="node" data-id="13" transform="translate(650, 250)">
-                            <circle r="8" class="node-circle theory"></circle>
-                            <text y="3" class="node-label">Thomas 2016</text>
-                        </g>
+                <svg class="graph-svg" id="graph-svg">
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="20" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="var(--color-paper-dark)" />
+                        </marker>
+                        <marker id="arrowhead-highlighted" markerWidth="10" markerHeight="7" refX="20" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="var(--color-navigator)" />
+                        </marker>
+                    </defs>
+                    <g class="graph-content" id="graph-content">
+                        <g class="edges" id="edges-group"></g>
+                        <g class="nodes" id="nodes-group"></g>
                     </g>
                 </svg>
 
                 <div class="graph-controls">
-                    <button class="graph-btn" id="zoom-in">+</button>
-                    <button class="graph-btn" id="zoom-out">-</button>
-                    <button class="graph-btn" id="reset-view">Reset</button>
+                    <button class="graph-btn" id="zoom-in" title="Zoom In">+</button>
+                    <button class="graph-btn" id="zoom-out" title="Zoom Out">-</button>
+                    <button class="graph-btn" id="fit-view" title="Fit View">⊡</button>
+                    <button class="graph-btn" id="reset-view" title="Reset">↺</button>
+                </div>
+
+                <div class="graph-info" id="graph-info">
+                    <span id="visible-nodes">-</span> Knoten sichtbar
                 </div>
             </div>
         </section>
@@ -161,55 +123,66 @@
         <aside class="navigator-details">
             <div class="detail-panel" id="detail-panel">
                 <h2>Knotendetails</h2>
-                <p class="detail-hint">Klicken Sie auf einen Knoten im Graph.</p>
+                <p class="detail-hint" id="detail-hint">Klicken Sie auf einen Knoten im Graph.</p>
 
                 <div class="detail-content hidden" id="detail-content">
-                    <h3 id="detail-title">Smith et al. (2020)</h3>
-                    <p class="detail-subtitle" id="detail-journal">Journal of Computational Methods</p>
+                    <h3 id="detail-title"></h3>
+                    <p class="detail-subtitle" id="detail-author"></p>
 
                     <dl class="detail-meta">
+                        <dt>Jahr</dt>
+                        <dd id="detail-year">-</dd>
                         <dt>Zitiert von</dt>
-                        <dd id="detail-cited-by">12 Paper</dd>
+                        <dd id="detail-cited-by">-</dd>
                         <dt>Zitiert</dt>
-                        <dd id="detail-cites">8 Paper</dd>
+                        <dd id="detail-cites">-</dd>
                         <dt>Cluster</dt>
-                        <dd id="detail-cluster"><span class="cluster-tag methods">Methoden</span></dd>
+                        <dd><span class="cluster-tag" id="detail-cluster"></span></dd>
                     </dl>
+
+                    <div class="detail-metrics">
+                        <h4>Netzwerk-Metriken</h4>
+                        <dl class="metrics-list">
+                            <dt>Degree</dt>
+                            <dd id="metric-degree">-</dd>
+                            <dt>In-Degree</dt>
+                            <dd id="metric-in-degree">-</dd>
+                            <dt>Out-Degree</dt>
+                            <dd id="metric-out-degree">-</dd>
+                        </dl>
+                    </div>
 
                     <div class="detail-abstract">
                         <h4>Abstract</h4>
-                        <p id="detail-abstract-text">This paper introduces a novel approach to network analysis that combines graph-theoretic methods with machine learning techniques...</p>
+                        <p id="detail-abstract-text"></p>
                     </div>
 
                     <div class="detail-connections">
-                        <h4>Verbindungen</h4>
-                        <ul class="connection-list" id="connection-list">
-                            <li><span class="connection-dir">zitiert</span> Jones 2019</li>
-                            <li><span class="connection-dir">zitiert</span> Lee 2019</li>
-                            <li><span class="connection-dir">zitiert von</span> Chen 2021</li>
-                            <li><span class="connection-dir">zitiert von</span> Kim 2021</li>
-                        </ul>
+                        <h4>Zitiert</h4>
+                        <ul class="connection-list" id="outgoing-list"></ul>
+                        <h4>Zitiert von</h4>
+                        <ul class="connection-list" id="incoming-list"></ul>
                     </div>
                 </div>
             </div>
 
             <div class="legend-panel">
                 <h3>Legende</h3>
-                <div class="legend-items">
-                    <div class="legend-item">
-                        <span class="legend-circle methods"></span>
-                        <span>Methoden</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-circle theory"></span>
-                        <span>Theorie</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-circle applications"></span>
-                        <span>Anwendung</span>
-                    </div>
+                <div class="legend-items" id="legend-items">
+                    <!-- Dynamisch gefüllt -->
                 </div>
-                <p class="legend-note">Knotengröße = Anzahl Zitationen</p>
+                <p class="legend-note">Knotengröße = Anzahl eingehender Zitationen</p>
+            </div>
+
+            <div class="path-panel hidden" id="path-panel">
+                <h3>Kürzester Pfad</h3>
+                <div class="path-controls">
+                    <select id="path-from"></select>
+                    <span class="path-arrow">→</span>
+                    <select id="path-to"></select>
+                    <button class="path-btn" id="find-path">Suchen</button>
+                </div>
+                <div class="path-result" id="path-result"></div>
             </div>
         </aside>
     </main>
@@ -219,7 +192,7 @@
             <h3>Warum Navigator?</h3>
             <p><strong>Topologie:</strong> Vernetzt (Zitationsbeziehungen)</p>
             <p><strong>Intention:</strong> Rekonstruktion (Wissensstruktur verstehen)</p>
-            <p><strong>Matrix-Position:</strong> Vernetzt x Rekonstruktion = Navigator (primär)</p>
+            <p><strong>Matrix-Position:</strong> Vernetzt × Rekonstruktion = Navigator (primär)</p>
         </div>
         <a href="../index.html" class="back-to-matrix navigator-btn">Zurück zur Entscheidungsmatrix</a>
     </footer>

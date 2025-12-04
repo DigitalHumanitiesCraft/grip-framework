@@ -1,87 +1,354 @@
-// Reader Demo - Interaction Logic
+// Adaptive Reader - Loads and renders correspondence data from JSON
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Annotation handling
-    const annotations = document.querySelectorAll('.annotation');
-    const annotationPanel = document.getElementById('annotation-panel');
-    const annotationText = document.getElementById('annotation-text');
+class AdaptiveReader {
+    constructor(dataUrl) {
+        this.dataUrl = dataUrl;
+        this.data = null;
+        this.currentIndex = 0;
+        this.init();
+    }
 
-    annotations.forEach(annotation => {
-        annotation.addEventListener('click', () => {
-            const note = annotation.dataset.note;
-            annotationText.textContent = note;
-            annotationPanel.style.borderLeft = '3px solid var(--color-reader)';
+    async init() {
+        try {
+            const response = await fetch(this.dataUrl);
+            this.data = await response.json();
+            this.render();
+            this.bindEvents();
+        } catch (error) {
+            console.error('Failed to load data:', error);
+            document.getElementById('letter-body').innerHTML =
+                '<p class="error">Daten konnten nicht geladen werden.</p>';
+        }
+    }
+
+    render() {
+        this.renderCorpusInfo();
+        this.renderPersons();
+        this.renderNavigation();
+        this.renderTimeline();
+        this.renderLetter(0);
+    }
+
+    renderCorpusInfo() {
+        const { metadata } = this.data;
+        document.getElementById('corpus-title').textContent = metadata.title.split(':')[0] || 'Korrespondenz';
+        document.getElementById('corpus-description').textContent = metadata.description;
+    }
+
+    renderPersons() {
+        const { persons } = this.data;
+        const container = document.getElementById('persons-panel');
+
+        let html = '<h3>Korrespondenten</h3><dl class="persons-list">';
+        for (const [key, person] of Object.entries(persons)) {
+            html += `
+                <dt>${person.name}</dt>
+                <dd>${person.born}–${person.died}, ${person.role}</dd>
+            `;
+        }
+        html += '</dl>';
+        container.innerHTML = html;
+    }
+
+    renderNavigation() {
+        const { letters, persons } = this.data;
+        const nav = document.getElementById('letter-nav');
+
+        nav.innerHTML = letters.map((letter, index) => {
+            const sender = persons[letter.from]?.name.split(' ').pop() || letter.from;
+            const date = this.formatDate(letter.date);
+            return `
+                <button class="letter-btn ${index === 0 ? 'active' : ''}" data-index="${index}">
+                    <span class="date">${date}</span>
+                    <span class="preview">${sender}: ${letter.subject}</span>
+                </button>
+            `;
+        }).join('');
+    }
+
+    renderTimeline() {
+        const { letters, timeline } = this.data;
+        const container = document.getElementById('timeline');
+
+        if (!timeline?.periods) {
+            container.style.display = 'none';
+            return;
+        }
+
+        // Calculate year range
+        const years = letters.map(l => parseInt(l.date.split('-')[0]));
+        const minYear = Math.min(...years);
+        const maxYear = Math.max(...years);
+        const range = maxYear - minYear || 1;
+
+        // Render periods as background bands
+        let html = '<div class="timeline-periods">';
+        timeline.periods.forEach(period => {
+            const startYear = parseInt(period.start);
+            const endYear = parseInt(period.end);
+            const left = ((startYear - minYear) / range) * 100;
+            const width = ((endYear - startYear) / range) * 100;
+            html += `
+                <div class="timeline-period"
+                     style="left: ${left}%; width: ${width}%; background: ${period.color}20;"
+                     title="${period.label}"
+                     data-period="${period.label}">
+                    <span class="period-label">${period.label}</span>
+                </div>
+            `;
+        });
+        html += '</div>';
+
+        // Render letter dots
+        html += '<div class="timeline-track">';
+        html += `<span class="timeline-year">${minYear}</span>`;
+        html += '<div class="timeline-dots">';
+        letters.forEach((letter, index) => {
+            const year = parseInt(letter.date.split('-')[0]);
+            const pos = ((year - minYear) / range) * 100;
+            html += `
+                <span class="timeline-dot ${index === 0 ? 'active' : ''}"
+                      style="left: ${pos}%;"
+                      data-index="${index}"
+                      title="${this.formatDate(letter.date)}: ${letter.subject}">
+                </span>
+            `;
+        });
+        html += '</div>';
+        html += `<span class="timeline-year">${maxYear}</span>`;
+        html += '</div>';
+
+        container.innerHTML = html;
+    }
+
+    renderLetter(index) {
+        const { letters, persons, timeline } = this.data;
+        const letter = letters[index];
+        this.currentIndex = index;
+
+        // Update navigation
+        document.querySelectorAll('.letter-btn').forEach((btn, i) => {
+            btn.classList.toggle('active', i === index);
+        });
+        document.querySelectorAll('.timeline-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
         });
 
-        annotation.addEventListener('mouseenter', () => {
-            annotation.style.cursor = 'help';
+        // Header
+        const sender = persons[letter.from];
+        const recipient = persons[letter.to];
+        document.getElementById('letter-sender').textContent = sender?.name || letter.from;
+        document.getElementById('letter-recipient').textContent = recipient?.name || letter.to;
+        document.getElementById('letter-location-from').textContent = `(${letter.location_from})`;
+        document.getElementById('letter-location-to').textContent = `(${letter.location_to})`;
+        document.getElementById('letter-date').textContent = this.formatDate(letter.date);
+        document.getElementById('letter-subject').textContent = letter.subject;
+
+        // Body with annotations
+        const bodyHtml = this.renderBodyWithAnnotations(letter.body, letter.annotations);
+        document.getElementById('letter-body').innerHTML = bodyHtml;
+
+        // References
+        this.renderReferences(letter.references, letters);
+
+        // Annotations list
+        this.renderAnnotationsList(letter.annotations);
+
+        // Statistics
+        document.getElementById('stat-words').textContent = letter.body.split(/\s+/).length;
+        document.getElementById('stat-annotations').textContent = letter.annotations?.length || 0;
+        document.getElementById('stat-references').textContent = letter.references?.length || 0;
+
+        // Period info
+        if (timeline?.periods) {
+            const year = parseInt(letter.date.split('-')[0]);
+            const period = timeline.periods.find(p =>
+                year >= parseInt(p.start) && year <= parseInt(p.end)
+            );
+            if (period) {
+                document.getElementById('period-label').textContent = period.label;
+                document.getElementById('period-label').style.color = period.color;
+            }
+        }
+
+        // Pagination
+        document.getElementById('letter-counter').textContent =
+            `Brief ${index + 1} von ${letters.length}`;
+        document.getElementById('prev-btn').disabled = index === 0;
+        document.getElementById('next-btn').disabled = index === letters.length - 1;
+    }
+
+    renderBodyWithAnnotations(body, annotations) {
+        if (!annotations || annotations.length === 0) {
+            return this.formatBody(body);
+        }
+
+        // Sort annotations by start position (descending to insert from end)
+        const sorted = [...annotations].sort((a, b) => b.start - a.start);
+
+        let result = body;
+        sorted.forEach((ann, idx) => {
+            const before = result.slice(0, ann.start);
+            const text = result.slice(ann.start, ann.end);
+            const after = result.slice(ann.end);
+
+            result = before +
+                `<span class="annotation" data-type="${ann.type}" data-note="${this.escapeHtml(ann.note)}" data-index="${idx}">${text}</span>` +
+                after;
         });
-    });
 
-    // Letter navigation
-    const letterBtns = document.querySelectorAll('.letter-btn');
-    const prevBtn = document.querySelector('.prev-letter');
-    const nextBtn = document.querySelector('.next-letter');
-    const letterCounter = document.querySelector('.letter-counter');
-    let currentLetter = 1;
-    const totalLetters = 12;
+        return this.formatBody(result);
+    }
 
-    function updateLetterNav() {
-        letterBtns.forEach(btn => {
-            btn.classList.remove('active');
-            if (parseInt(btn.dataset.letter) === currentLetter) {
-                btn.classList.add('active');
+    formatBody(text) {
+        // Convert newlines to paragraphs
+        const paragraphs = text.split('\n\n');
+        return paragraphs.map(p => {
+            if (p.startsWith('Sehr') || p.startsWith('Liebe') || p.startsWith('Liebste')) {
+                return `<p class="salutation">${p.replace(/\n/g, '<br>')}</p>`;
+            }
+            if (p.startsWith('Mit') || p.startsWith('Ihre') || p.startsWith('Ihr ')) {
+                return `<p class="closing">${p.replace(/\n/g, '<br>')}</p>`;
+            }
+            return `<p>${p.replace(/\n/g, '<br>')}</p>`;
+        }).join('');
+    }
+
+    renderReferences(refs, allLetters) {
+        const container = document.getElementById('references-panel');
+        const list = document.getElementById('references-list');
+
+        if (!refs || refs.length === 0) {
+            container.style.display = 'none';
+            return;
+        }
+
+        container.style.display = 'block';
+        list.innerHTML = refs.map(refId => {
+            const refLetter = allLetters.find(l => l.id === refId);
+            if (!refLetter) return '';
+            const refIndex = allLetters.indexOf(refLetter);
+            return `
+                <li>
+                    <a href="#" class="reference-link" data-index="${refIndex}">
+                        ${this.formatDate(refLetter.date)}: ${refLetter.subject}
+                    </a>
+                </li>
+            `;
+        }).join('');
+    }
+
+    renderAnnotationsList(annotations) {
+        const list = document.getElementById('annotations-list');
+        if (!annotations || annotations.length === 0) {
+            list.innerHTML = '<li class="no-annotations">Keine Annotationen</li>';
+            return;
+        }
+
+        list.innerHTML = annotations.map((ann, idx) => `
+            <li class="annotation-item" data-index="${idx}">
+                <span class="annotation-type ${ann.type}">${ann.type}</span>
+                <span class="annotation-note">${ann.note}</span>
+            </li>
+        `).join('');
+    }
+
+    bindEvents() {
+        // Navigation buttons
+        document.querySelectorAll('.letter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.renderLetter(parseInt(btn.dataset.index));
+            });
+        });
+
+        // Timeline dots
+        document.querySelectorAll('.timeline-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                this.renderLetter(parseInt(dot.dataset.index));
+            });
+        });
+
+        // Prev/Next
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            if (this.currentIndex > 0) {
+                this.renderLetter(this.currentIndex - 1);
             }
         });
 
-        prevBtn.disabled = currentLetter === 1;
-        nextBtn.disabled = currentLetter === totalLetters;
-        letterCounter.textContent = `Brief ${currentLetter} von ${totalLetters}`;
+        document.getElementById('next-btn').addEventListener('click', () => {
+            if (this.currentIndex < this.data.letters.length - 1) {
+                this.renderLetter(this.currentIndex + 1);
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && this.currentIndex > 0) {
+                this.renderLetter(this.currentIndex - 1);
+            } else if (e.key === 'ArrowRight' && this.currentIndex < this.data.letters.length - 1) {
+                this.renderLetter(this.currentIndex + 1);
+            }
+        });
+
+        // Annotation clicks (delegated)
+        document.getElementById('letter-body').addEventListener('click', (e) => {
+            const ann = e.target.closest('.annotation');
+            if (ann) {
+                this.showAnnotation(ann.dataset.note, ann.dataset.type);
+                // Highlight corresponding list item
+                document.querySelectorAll('.annotation-item').forEach(item => {
+                    item.classList.toggle('active', item.dataset.index === ann.dataset.index);
+                });
+            }
+        });
+
+        // Annotation list clicks
+        document.getElementById('annotations-list').addEventListener('click', (e) => {
+            const item = e.target.closest('.annotation-item');
+            if (item) {
+                const idx = item.dataset.index;
+                const ann = document.querySelector(`.annotation[data-index="${idx}"]`);
+                if (ann) {
+                    ann.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    ann.classList.add('highlight');
+                    setTimeout(() => ann.classList.remove('highlight'), 2000);
+                    this.showAnnotation(ann.dataset.note, ann.dataset.type);
+                }
+            }
+        });
+
+        // Reference links
+        document.getElementById('references-list').addEventListener('click', (e) => {
+            const link = e.target.closest('.reference-link');
+            if (link) {
+                e.preventDefault();
+                this.renderLetter(parseInt(link.dataset.index));
+            }
+        });
     }
 
-    letterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            currentLetter = parseInt(btn.dataset.letter);
-            updateLetterNav();
-            // In a real app, this would load the letter content
-        });
-    });
+    showAnnotation(note, type) {
+        const panel = document.getElementById('annotation-panel');
+        const text = document.getElementById('annotation-text');
+        panel.className = `annotation-panel ${type}`;
+        text.textContent = note;
+    }
 
-    prevBtn.addEventListener('click', () => {
-        if (currentLetter > 1) {
-            currentLetter--;
-            updateLetterNav();
-        }
-    });
+    formatDate(isoDate) {
+        const [year, month, day] = isoDate.split('-');
+        const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+                       'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+        return `${parseInt(day)}. ${months[parseInt(month) - 1]} ${year}`;
+    }
 
-    nextBtn.addEventListener('click', () => {
-        if (currentLetter < totalLetters) {
-            currentLetter++;
-            updateLetterNav();
-        }
-    });
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML.replace(/"/g, '&quot;');
+    }
+}
 
-    // Timeline dots
-    const timelineDots = document.querySelectorAll('.timeline-dots .dot');
-    timelineDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            timelineDots.forEach(d => d.classList.remove('active'));
-            dot.classList.add('active');
-            // Map dot to letter range
-            const letterIndex = Math.min(index * 2 + 1, 6);
-            currentLetter = letterIndex;
-            updateLetterNav();
-        });
-    });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft' && currentLetter > 1) {
-            currentLetter--;
-            updateLetterNav();
-        } else if (e.key === 'ArrowRight' && currentLetter < totalLetters) {
-            currentLetter++;
-            updateLetterNav();
-        }
-    });
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    new AdaptiveReader('data/reader-correspondence.json');
 });

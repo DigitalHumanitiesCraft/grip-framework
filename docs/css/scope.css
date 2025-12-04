@@ -393,6 +393,109 @@
     cursor: not-allowed;
 }
 
+/* Value highlighting in table */
+
+.value-high {
+    color: var(--color-reader);
+    font-weight: 600;
+}
+
+.value-low {
+    color: var(--color-scope);
+    font-weight: 600;
+}
+
+/* KPI sublabel */
+
+.kpi-sublabel {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-ink-muted);
+    margin-top: 2px;
+}
+
+/* Bar chart enhancements */
+
+.bar-n {
+    font-size: 0.75rem;
+    color: var(--color-ink-muted);
+    margin-left: var(--space-xs);
+}
+
+/* Correlation Matrix */
+
+.correlation-card {
+    grid-column: 1 / -1;
+}
+
+.chart-subtitle {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    margin-bottom: var(--space-md);
+}
+
+.correlation-matrix {
+    overflow-x: auto;
+}
+
+.corr-table {
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.corr-table th,
+.corr-table td {
+    padding: var(--space-sm);
+    text-align: center;
+    border: 1px solid var(--color-paper-dark);
+    min-width: 60px;
+}
+
+.corr-table th {
+    background: var(--color-paper-dark);
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.corr-table td {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+.corr-table td:hover {
+    transform: scale(1.1);
+    z-index: 1;
+    position: relative;
+}
+
+/* Table actions */
+
+.table-actions {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+}
+
+.table-actions select {
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    background: var(--color-paper);
+}
+
+/* No data message */
+
+.no-data {
+    color: var(--color-ink-muted);
+    font-style: italic;
+    text-align: center;
+    padding: var(--space-lg);
+}
+
 /* Footer */
 
 .scope-footer {

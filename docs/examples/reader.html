@@ -8,140 +8,111 @@
     <link rel="stylesheet" href="../css/reader.css">
 </head>
 <body>
-    <header class="demo-header">
+    <header class="demo-header reader-header">
         <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
         <h1>The Reader</h1>
         <p>Sequenzielle Daten + Verstehen</p>
     </header>
 
     <main class="reader-layout">
+        <!-- Sidebar: Navigation + Timeline -->
         <aside class="reader-sidebar">
-            <h2>Korrespondenz</h2>
-            <p class="sidebar-info">12 Briefe zwischen Hannah Arendt und Karl Jaspers, 1926-1929</p>
+            <div class="corpus-info">
+                <h2 id="corpus-title">Korrespondenz</h2>
+                <p class="sidebar-info" id="corpus-description"></p>
+            </div>
 
-            <nav class="letter-nav">
-                <button class="letter-btn active" data-letter="1">
-                    <span class="date">14. Mai 1926</span>
-                    <span class="preview">Arendt an Jaspers</span>
-                </button>
-                <button class="letter-btn" data-letter="2">
-                    <span class="date">23. Mai 1926</span>
-                    <span class="preview">Jaspers an Arendt</span>
-                </button>
-                <button class="letter-btn" data-letter="3">
-                    <span class="date">8. Juni 1926</span>
-                    <span class="preview">Arendt an Jaspers</span>
-                </button>
-                <button class="letter-btn" data-letter="4">
-                    <span class="date">15. Juni 1926</span>
-                    <span class="preview">Jaspers an Arendt</span>
-                </button>
-                <button class="letter-btn" data-letter="5">
-                    <span class="date">3. Juli 1926</span>
-                    <span class="preview">Arendt an Jaspers</span>
-                </button>
-                <button class="letter-btn" data-letter="6">
-                    <span class="date">20. August 1926</span>
-                    <span class="preview">Jaspers an Arendt</span>
-                </button>
+            <nav class="letter-nav" id="letter-nav">
+                <!-- Dynamisch gefüllt -->
             </nav>
 
-            <div class="timeline-mini">
+            <div class="timeline-container">
                 <h3>Zeitstrahl</h3>
-                <div class="timeline-bar">
-                    <span class="year">1926</span>
-                    <div class="timeline-dots">
-                        <span class="dot active" title="Mai 1926"></span>
-                        <span class="dot" title="Juni 1926"></span>
-                        <span class="dot" title="Juli 1926"></span>
-                        <span class="dot" title="August 1926"></span>
-                    </div>
-                    <span class="year">1927</span>
+                <div class="timeline" id="timeline">
+                    <!-- Dynamisch: Perioden + Briefe -->
                 </div>
+            </div>
+
+            <div class="persons-panel" id="persons-panel">
+                <h3>Korrespondenten</h3>
+                <!-- Dynamisch gefüllt -->
             </div>
         </aside>
 
+        <!-- Hauptbereich: Brief-Inhalt -->
         <article class="reader-content">
             <header class="letter-header">
                 <div class="letter-meta">
-                    <span class="sender">Hannah Arendt</span>
+                    <span class="sender" id="letter-sender"></span>
+                    <span class="location-from" id="letter-location-from"></span>
                     <span class="arrow">&rarr;</span>
-                    <span class="recipient">Karl Jaspers</span>
+                    <span class="recipient" id="letter-recipient"></span>
+                    <span class="location-to" id="letter-location-to"></span>
                 </div>
-                <time class="letter-date">Heidelberg, 14. Mai 1926</time>
+                <time class="letter-date" id="letter-date"></time>
+                <h2 class="letter-subject" id="letter-subject"></h2>
             </header>
 
-            <div class="letter-body" id="letter-content">
-                <p class="salutation">Sehr verehrter Herr Professor,</p>
-
-                <p>ich möchte Ihnen für das gestrige Gespräch danken, das mich tief bewegt hat. Ihre Ausführungen über die <span class="annotation" data-note="Jaspers' Konzept der Grenzsituation aus seiner 'Psychologie der Weltanschauungen' (1919)">Grenzsituationen</span> haben mir eine neue Perspektive auf meine eigene philosophische Arbeit eröffnet.</p>
-
-                <p>Was Sie über das <span class="annotation" data-note="Zentraler Begriff in Jaspers' Existenzphilosophie">Existieren</span> sagten, unterscheidet sich fundamental von dem, was ich bei <span class="annotation" data-note="Martin Heidegger, bei dem Arendt 1924-1926 in Marburg studierte">Heidegger</span> gelernt habe. Bei ihm ist das Dasein immer schon in die Welt geworfen, bei Ihnen scheint es eine Möglichkeit der Kommunikation zu geben, die über das bloße In-der-Welt-sein hinausgeht.</p>
-
-                <p>Besonders Ihr Begriff der <span class="annotation" data-note="Jaspers' Idee einer authentischen Begegnung zwischen Existenzen">existentiellen Kommunikation</span> beschäftigt mich. Ist es nicht so, dass wir uns selbst nur im Gespräch mit dem Anderen finden können? Dass Philosophie ohne diesen Dialog unmöglich ist?</p>
-
-                <p>Ich arbeite derzeit an meiner Dissertation über den <span class="annotation" data-note="Arendts Dissertation 'Der Liebesbegriff bei Augustin' wurde 1929 veröffentlicht">Liebesbegriff bei Augustin</span>. Darf ich Sie bitten, mir Ihre Gedanken zu diesem Thema mitzuteilen? Augustins Unterscheidung zwischen <em>caritas</em> und <em>cupiditas</em> scheint mir relevant für die Frage nach der existentiellen Kommunikation.</p>
-
-                <p class="closing">Mit herzlichem Dank und in aufrichtiger Verehrung</p>
-                <p class="signature">Ihre Hannah Arendt</p>
+            <div class="letter-body" id="letter-body">
+                <!-- Dynamisch mit Annotations -->
             </div>
 
             <footer class="letter-footer">
+                <div class="references-panel" id="references-panel">
+                    <h3>Bezüge zu anderen Briefen</h3>
+                    <ul id="references-list"></ul>
+                </div>
+
                 <div class="annotation-panel" id="annotation-panel">
                     <h3>Annotation</h3>
                     <p id="annotation-text">Klicken Sie auf einen markierten Begriff, um die Annotation zu sehen.</p>
                 </div>
 
                 <nav class="letter-pagination">
-                    <button class="prev-letter" disabled>&larr; Vorheriger Brief</button>
-                    <span class="letter-counter">Brief 1 von 12</span>
-                    <button class="next-letter">Nächster Brief &rarr;</button>
+                    <button class="prev-letter" id="prev-btn">&larr; Vorheriger Brief</button>
+                    <span class="letter-counter" id="letter-counter"></span>
+                    <button class="next-letter" id="next-btn">Nächster Brief &rarr;</button>
                 </nav>
             </footer>
         </article>
 
+        <!-- Kontext-Panel -->
         <aside class="reader-context">
             <h2>Kontext</h2>
 
+            <section class="context-section" id="period-info">
+                <h3>Zeitperiode</h3>
+                <p id="period-label"></p>
+                <p id="period-description" class="period-description"></p>
+            </section>
+
             <section class="context-section">
-                <h3>Personen</h3>
-                <dl class="context-list">
-                    <dt>Hannah Arendt</dt>
-                    <dd>1906-1975, politische Theoretikerin. Studentin bei Heidegger und Jaspers.</dd>
-                    <dt>Karl Jaspers</dt>
-                    <dd>1883-1969, Psychiater und Philosoph. Begründer der Existenzphilosophie.</dd>
+                <h3>Annotationen in diesem Brief</h3>
+                <ul id="annotations-list" class="annotations-list"></ul>
+            </section>
+
+            <section class="context-section">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Wortanzahl</dt>
+                    <dd id="stat-words">-</dd>
+                    <dt>Annotationen</dt>
+                    <dd id="stat-annotations">-</dd>
+                    <dt>Referenzen</dt>
+                    <dd id="stat-references">-</dd>
                 </dl>
-            </section>
-
-            <section class="context-section">
-                <h3>Erwähnte Werke</h3>
-                <ul class="context-list">
-                    <li><em>Psychologie der Weltanschauungen</em> (Jaspers, 1919)</li>
-                    <li><em>Sein und Zeit</em> (Heidegger, 1927)</li>
-                    <li><em>Der Liebesbegriff bei Augustin</em> (Arendt, 1929)</li>
-                </ul>
-            </section>
-
-            <section class="context-section">
-                <h3>Themen in diesem Brief</h3>
-                <div class="tag-cloud">
-                    <span class="tag">Grenzsituation</span>
-                    <span class="tag">Existenz</span>
-                    <span class="tag">Kommunikation</span>
-                    <span class="tag">Augustinus</span>
-                </div>
             </section>
         </aside>
     </main>
 
-    <footer class="demo-footer">
+    <footer class="demo-footer reader-footer">
         <div class="archetype-info">
             <h3>Warum Reader?</h3>
             <p><strong>Topologie:</strong> Sequenziell (chronologische Briefe)</p>
             <p><strong>Intention:</strong> Verstehen (Gedankenentwicklung nachvollziehen)</p>
             <p><strong>Matrix-Position:</strong> Sequenziell × Verstehen = Reader (primär)</p>
         </div>
-        <a href="../index.html" class="back-to-matrix">Zurück zur Entscheidungsmatrix</a>
+        <a href="../index.html" class="back-to-matrix reader-btn">Zurück zur Entscheidungsmatrix</a>
     </footer>
 
     <script src="../js/reader.js"></script>

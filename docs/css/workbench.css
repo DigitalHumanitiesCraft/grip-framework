@@ -616,6 +616,241 @@
     color: var(--color-workbench);
 }
 
+/* Schema View */
+
+.schema-view {
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.schema-view h3 {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-ink-muted);
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.schema-fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.schema-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: var(--space-xs);
+    background: var(--color-paper);
+    border-radius: 3px;
+    font-size: 0.8rem;
+}
+
+.schema-field.required {
+    border-left: 2px solid var(--color-workbench);
+}
+
+.field-name {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--color-ink);
+}
+
+.field-desc {
+    font-family: var(--font-sans);
+    color: var(--color-ink-muted);
+    font-size: 0.75rem;
+    text-align: right;
+    max-width: 60%;
+}
+
+/* Error Breakdown */
+
+.error-breakdown {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.error-breakdown h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-ink-muted);
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+#error-types-list {
+    list-style: none;
+    font-size: 0.85rem;
+}
+
+.error-type-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--color-paper);
+}
+
+.error-type-name {
+    color: var(--color-ink-light);
+}
+
+.error-type-count {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--color-scope);
+}
+
+.no-errors {
+    color: var(--color-reader);
+    font-style: italic;
+}
+
+/* View Containers */
+
+.view-table,
+.view-json,
+.view-errors {
+    height: 100%;
+}
+
+.view-table.hidden,
+.view-json.hidden,
+.view-errors.hidden {
+    display: none;
+}
+
+/* JSON View */
+
+.json-display {
+    background: var(--color-paper-dark);
+    padding: var(--space-md);
+    border-radius: 4px;
+    overflow: auto;
+    max-height: calc(100vh - 400px);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--color-ink);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Errors View */
+
+.errors-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.error-card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-paper-dark);
+    border-left: 3px solid var(--color-scope);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.error-card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(184, 84, 80, 0.05);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.error-card-id {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--color-ink);
+}
+
+.error-card-title {
+    flex: 1;
+    color: var(--color-ink-light);
+    font-size: 0.9rem;
+}
+
+.error-badge {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    background: var(--color-scope);
+    color: white;
+    border-radius: 10px;
+}
+
+.error-card-list {
+    list-style: none;
+    padding: var(--space-md);
+}
+
+.error-card-item {
+    padding: var(--space-xs) 0;
+    font-size: 0.9rem;
+    color: var(--color-ink);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.error-card-item:last-child {
+    border-bottom: none;
+}
+
+.error-card-item strong {
+    color: var(--color-scope);
+}
+
+.error-detail {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-ink-muted);
+    margin-top: 2px;
+}
+
+.no-errors-message {
+    text-align: center;
+    padding: var(--space-xl);
+    color: var(--color-reader);
+    font-size: 1.1rem;
+}
+
+/* Inspector Improvements */
+
+.inspector-hint {
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    font-style: italic;
+}
+
+.inspector-details.hidden {
+    display: none;
+}
+
+.no-batch-ops {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    font-style: italic;
+}
+
+/* Modified Cells */
+
+td.modified {
+    background: rgba(196, 135, 90, 0.1) !important;
+}
+
+/* Row Hover */
+
+.edit-table tbody tr:hover {
+    background: rgba(196, 135, 90, 0.05);
+}
+
 /* Footer */
 
 .workbench-footer {

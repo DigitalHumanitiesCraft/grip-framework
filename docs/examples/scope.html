@@ -19,224 +19,119 @@
             <h2>Filter</h2>
 
             <div class="filter-group">
-                <label>Zeitraum</label>
-                <select id="filter-year">
-                    <option value="all">Alle Jahre</option>
-                    <option value="2024">2024</option>
-                    <option value="2023">2023</option>
-                    <option value="2022">2022</option>
-                </select>
+                <label>Abteilung</label>
+                <div class="checkbox-group" id="filter-department">
+                    <!-- Dynamisch -->
+                </div>
             </div>
 
             <div class="filter-group">
                 <label>Altersgruppe</label>
-                <div class="checkbox-group">
-                    <label><input type="checkbox" checked> 18-29</label>
-                    <label><input type="checkbox" checked> 30-44</label>
-                    <label><input type="checkbox" checked> 45-59</label>
-                    <label><input type="checkbox" checked> 60+</label>
+                <div class="checkbox-group" id="filter-age">
+                    <!-- Dynamisch -->
                 </div>
             </div>
 
             <div class="filter-group">
-                <label>Region</label>
-                <select id="filter-region">
-                    <option value="all">Alle Regionen</option>
-                    <option value="nord">Nord</option>
-                    <option value="sued">Süd</option>
-                    <option value="ost">Ost</option>
-                    <option value="west">West</option>
+                <label>Home-Office Tage</label>
+                <select id="filter-remote">
+                    <option value="all">Alle</option>
+                    <option value="0">Nur Büro (0)</option>
+                    <option value="1-2">1-2 Tage</option>
+                    <option value="3-4">3-4 Tage</option>
+                    <option value="5">Voll remote (5)</option>
                 </select>
             </div>
 
             <div class="filter-group">
-                <label>Bildungsabschluss</label>
-                <select id="filter-education">
+                <label>Support benötigt</label>
+                <select id="filter-support">
                     <option value="all">Alle</option>
-                    <option value="haupt">Hauptschule</option>
-                    <option value="real">Realschule</option>
-                    <option value="abi">Abitur</option>
-                    <option value="uni">Hochschule</option>
+                    <option value="ja">Ja</option>
+                    <option value="nein">Nein</option>
                 </select>
             </div>
 
-            <button class="reset-filters">Filter zurücksetzen</button>
+            <button class="reset-filters" id="reset-filters">Filter zurücksetzen</button>
 
             <div class="filter-summary">
                 <h3>Aktive Auswahl</h3>
-                <p><strong>N = 2.847</strong> Befragte</p>
-                <p class="filter-detail">von 3.500 gesamt (81%)</p>
+                <p><strong>N = <span id="filtered-count">0</span></strong> Befragte</p>
+                <p class="filter-detail">von <span id="total-count">0</span> gesamt (<span id="filter-percent">0</span>%)</p>
             </div>
         </aside>
 
         <section class="scope-main">
-            <div class="kpi-row">
-                <div class="kpi-card">
-                    <span class="kpi-value">67%</span>
-                    <span class="kpi-label">Zustimmung gesamt</span>
-                    <span class="kpi-change positive">+3% vs. Vorjahr</span>
-                </div>
-                <div class="kpi-card">
-                    <span class="kpi-value">4.2</span>
-                    <span class="kpi-label">Durchschnitt (1-5)</span>
-                    <span class="kpi-change neutral">0 vs. Vorjahr</span>
-                </div>
-                <div class="kpi-card">
-                    <span class="kpi-value">0.78</span>
-                    <span class="kpi-label">Standardabw.</span>
-                    <span class="kpi-change negative">+0.12 vs. Vorjahr</span>
-                </div>
-                <div class="kpi-card">
-                    <span class="kpi-value">42%</span>
-                    <span class="kpi-label">Rücklaufquote</span>
-                    <span class="kpi-change positive">+5% vs. Vorjahr</span>
-                </div>
+            <!-- KPIs -->
+            <div class="kpi-row" id="kpi-row">
+                <!-- Dynamisch -->
             </div>
 
+            <!-- Charts -->
             <div class="chart-row">
                 <div class="chart-card">
-                    <h3>Zustimmung nach Altersgruppe</h3>
-                    <div class="bar-chart">
-                        <div class="bar-group">
-                            <span class="bar-label">18-29</span>
-                            <div class="bar-container">
-                                <div class="bar" style="width: 72%"></div>
-                            </div>
-                            <span class="bar-value">72%</span>
-                        </div>
-                        <div class="bar-group">
-                            <span class="bar-label">30-44</span>
-                            <div class="bar-container">
-                                <div class="bar" style="width: 68%"></div>
-                            </div>
-                            <span class="bar-value">68%</span>
-                        </div>
-                        <div class="bar-group">
-                            <span class="bar-label">45-59</span>
-                            <div class="bar-container">
-                                <div class="bar" style="width: 65%"></div>
-                            </div>
-                            <span class="bar-value">65%</span>
-                        </div>
-                        <div class="bar-group">
-                            <span class="bar-label">60+</span>
-                            <div class="bar-container">
-                                <div class="bar" style="width: 58%"></div>
-                            </div>
-                            <span class="bar-value">58%</span>
-                        </div>
+                    <h3>Zufriedenheit nach Altersgruppe</h3>
+                    <div class="bar-chart" id="chart-age">
+                        <!-- Dynamisch -->
                     </div>
                 </div>
 
                 <div class="chart-card">
-                    <h3>Zeitlicher Verlauf</h3>
-                    <div class="line-chart">
-                        <svg viewBox="0 0 300 150" class="chart-svg">
-                            <polyline
-                                fill="none"
-                                stroke="var(--color-scope)"
-                                stroke-width="2"
-                                points="20,120 80,100 140,90 200,85 260,80"
-                            />
-                            <circle cx="20" cy="120" r="4" fill="var(--color-scope)" />
-                            <circle cx="80" cy="100" r="4" fill="var(--color-scope)" />
-                            <circle cx="140" cy="90" r="4" fill="var(--color-scope)" />
-                            <circle cx="200" cy="85" r="4" fill="var(--color-scope)" />
-                            <circle cx="260" cy="80" r="4" fill="var(--color-scope)" />
-                            <text x="20" y="140" font-size="10" fill="var(--color-ink-muted)">2020</text>
-                            <text x="80" y="140" font-size="10" fill="var(--color-ink-muted)">2021</text>
-                            <text x="140" y="140" font-size="10" fill="var(--color-ink-muted)">2022</text>
-                            <text x="200" y="140" font-size="10" fill="var(--color-ink-muted)">2023</text>
-                            <text x="260" y="140" font-size="10" fill="var(--color-ink-muted)">2024</text>
-                        </svg>
+                    <h3>Zufriedenheit nach Abteilung</h3>
+                    <div class="bar-chart" id="chart-department">
+                        <!-- Dynamisch -->
                     </div>
                 </div>
             </div>
 
+            <!-- Korrelationsmatrix -->
+            <div class="chart-card correlation-card">
+                <h3>Korrelationen</h3>
+                <p class="chart-subtitle">Zusammenhang zwischen Variablen</p>
+                <div class="correlation-matrix" id="correlation-matrix">
+                    <!-- Dynamisch -->
+                </div>
+            </div>
+
+            <!-- Datentabelle -->
             <div class="table-card">
-                <h3>Detailansicht</h3>
+                <h3>Rohdaten</h3>
                 <div class="table-controls">
-                    <input type="search" placeholder="Suchen..." class="table-search">
-                    <button class="export-btn">CSV Export</button>
+                    <input type="search" placeholder="Suchen..." class="table-search" id="table-search">
+                    <div class="table-actions">
+                        <select id="sort-by">
+                            <option value="id">Sortieren nach ID</option>
+                            <option value="satisfaction_digital_tools">Nach Zufriedenheit</option>
+                            <option value="change_readiness">Nach Veränderungsbereitschaft</option>
+                            <option value="tenure_years">Nach Betriebszugehörigkeit</option>
+                        </select>
+                        <button class="export-btn" id="export-csv">CSV Export</button>
+                    </div>
                 </div>
                 <div class="table-wrapper">
-                    <table class="data-table">
+                    <table class="data-table" id="data-table">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Alter</th>
-                                <th>Region</th>
-                                <th>Bildung</th>
-                                <th>Frage 1</th>
-                                <th>Frage 2</th>
-                                <th>Frage 3</th>
-                                <th>Gesamt</th>
+                                <th>Abteilung</th>
+                                <th>Jahre</th>
+                                <th>Remote</th>
+                                <th>Tools</th>
+                                <th>Komm.</th>
+                                <th>Training</th>
+                                <th>Change</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>001</td>
-                                <td>28</td>
-                                <td>Nord</td>
-                                <td>Hochschule</td>
-                                <td>5</td>
-                                <td>4</td>
-                                <td>4</td>
-                                <td class="highlight">4.3</td>
-                            </tr>
-                            <tr>
-                                <td>002</td>
-                                <td>45</td>
-                                <td>Süd</td>
-                                <td>Abitur</td>
-                                <td>4</td>
-                                <td>4</td>
-                                <td>3</td>
-                                <td>3.7</td>
-                            </tr>
-                            <tr>
-                                <td>003</td>
-                                <td>62</td>
-                                <td>Ost</td>
-                                <td>Realschule</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>4</td>
-                                <td>3.7</td>
-                            </tr>
-                            <tr>
-                                <td>004</td>
-                                <td>33</td>
-                                <td>West</td>
-                                <td>Hochschule</td>
-                                <td>5</td>
-                                <td>5</td>
-                                <td>5</td>
-                                <td class="highlight">5.0</td>
-                            </tr>
-                            <tr>
-                                <td>005</td>
-                                <td>51</td>
-                                <td>Nord</td>
-                                <td>Abitur</td>
-                                <td>4</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>3.7</td>
-                            </tr>
+                        <tbody id="table-body">
+                            <!-- Dynamisch -->
                         </tbody>
                     </table>
                 </div>
                 <div class="table-pagination">
-                    <span>Zeige 1-5 von 2.847</span>
-                    <div class="pagination-btns">
-                        <button disabled>&laquo;</button>
-                        <button disabled>&lsaquo;</button>
-                        <button class="active">1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button>&rsaquo;</button>
-                        <button>&raquo;</button>
+                    <span id="pagination-info">Zeige 0-0 von 0</span>
+                    <div class="pagination-btns" id="pagination-btns">
+                        <!-- Dynamisch -->
                     </div>
                 </div>
             </div>
@@ -246,11 +141,13 @@
     <footer class="demo-footer scope-footer">
         <div class="archetype-info">
             <h3>Warum Scope?</h3>
-            <p><strong>Topologie:</strong> Multidimensional (Alter, Region, Bildung, Antworten)</p>
+            <p><strong>Topologie:</strong> Multidimensional (12 Variablen, 120 Befragte)</p>
             <p><strong>Intention:</strong> Vergleich (Muster erkennen, Gruppen vergleichen)</p>
-            <p><strong>Matrix-Position:</strong> Multidimensional x Vergleich = Scope (primär)</p>
+            <p><strong>Matrix-Position:</strong> Multidimensional × Vergleich = Scope (primär)</p>
         </div>
         <a href="../index.html" class="back-to-matrix scope-btn">Zurück zur Entscheidungsmatrix</a>
     </footer>
+
+    <script src="../js/scope.js"></script>
 </body>
 </html>

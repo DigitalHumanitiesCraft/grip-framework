@@ -1,0 +1,129 @@
+{
+  "metadata": {
+    "title": "Zitationsnetzwerk: Digital Humanities Methodendiskurs",
+    "description": "Zehn Publikationen aus drei Forschungsclustern mit Zitationsbeziehungen",
+    "generated": "2025-12-04",
+    "topology": "vernetzt",
+    "intention": "rekonstruktion"
+  },
+  "nodes": [
+    {
+      "id": "pub001",
+      "title": "Distant Reading and the Digital Humanities",
+      "author": "Moretti, Franco",
+      "year": 2013,
+      "cluster": "methoden",
+      "abstract": "Proposes computational analysis of large literary corpora as alternative to close reading. Argues for quantitative methods in literary studies."
+    },
+    {
+      "id": "pub002",
+      "title": "Graphs, Maps, Trees: Abstract Models for Literary History",
+      "author": "Moretti, Franco",
+      "year": 2005,
+      "cluster": "methoden",
+      "abstract": "Introduces visual abstractions for analyzing literary history. Demonstrates network analysis and geographic mapping of literary phenomena."
+    },
+    {
+      "id": "pub003",
+      "title": "A Companion to Digital Humanities",
+      "author": "Schreibman, Susan et al.",
+      "year": 2004,
+      "cluster": "theorie",
+      "abstract": "Foundational collection defining the field of digital humanities. Covers history, theory, and methods across disciplines."
+    },
+    {
+      "id": "pub004",
+      "title": "Digital Humanities and the Study of Antiquity",
+      "author": "Bodard, Gabriel",
+      "year": 2010,
+      "cluster": "anwendung",
+      "abstract": "Applies digital methods to classical studies. Focuses on epigraphic databases and textual encoding."
+    },
+    {
+      "id": "pub005",
+      "title": "The Digital Humanities Manifesto 2.0",
+      "author": "Presner, Todd et al.",
+      "year": 2009,
+      "cluster": "theorie",
+      "abstract": "Programmatic statement on the future of digital humanities. Emphasizes collaboration, openness, and interdisciplinarity."
+    },
+    {
+      "id": "pub006",
+      "title": "Network Analysis in the Humanities",
+      "author": "Düring, Marten",
+      "year": 2015,
+      "cluster": "methoden",
+      "abstract": "Systematic introduction to network analysis for historians and literary scholars. Covers centrality measures, community detection, and visualization."
+    },
+    {
+      "id": "pub007",
+      "title": "Digital Editions and the Complexity of Remediation",
+      "author": "Pierazzo, Elena",
+      "year": 2015,
+      "cluster": "anwendung",
+      "abstract": "Examines the theoretical foundations of digital scholarly editing. Discusses TEI encoding and interface design for editions."
+    },
+    {
+      "id": "pub008",
+      "title": "Debates in the Digital Humanities",
+      "author": "Gold, Matthew K.",
+      "year": 2012,
+      "cluster": "theorie",
+      "abstract": "Collection of essays on contested topics in digital humanities. Addresses questions of disciplinary identity and institutional politics."
+    },
+    {
+      "id": "pub009",
+      "title": "Stylometry and Method: The Case of Euripides",
+      "author": "Eder, Maciej",
+      "year": 2017,
+      "cluster": "anwendung",
+      "abstract": "Applies stylometric analysis to classical authorship attribution. Demonstrates statistical methods on Greek tragedy corpus."
+    },
+    {
+      "id": "pub010",
+      "title": "The Historian's Macroscope: Big Data in History",
+      "author": "Graham, Shawn et al.",
+      "year": 2015,
+      "cluster": "methoden",
+      "abstract": "Practical guide to computational methods for historians. Covers text mining, topic modeling, and network analysis with tutorials."
+    }
+  ],
+  "edges": [
+    { "source": "pub001", "target": "pub002", "type": "cites" },
+    { "source": "pub001", "target": "pub003", "type": "cites" },
+    { "source": "pub006", "target": "pub002", "type": "cites" },
+    { "source": "pub006", "target": "pub001", "type": "cites" },
+    { "source": "pub006", "target": "pub003", "type": "cites" },
+    { "source": "pub010", "target": "pub001", "type": "cites" },
+    { "source": "pub010", "target": "pub006", "type": "cites" },
+    { "source": "pub010", "target": "pub003", "type": "cites" },
+    { "source": "pub005", "target": "pub003", "type": "cites" },
+    { "source": "pub008", "target": "pub003", "type": "cites" },
+    { "source": "pub008", "target": "pub005", "type": "cites" },
+    { "source": "pub008", "target": "pub001", "type": "cites" },
+    { "source": "pub004", "target": "pub003", "type": "cites" },
+    { "source": "pub004", "target": "pub007", "type": "cites" },
+    { "source": "pub007", "target": "pub003", "type": "cites" },
+    { "source": "pub007", "target": "pub008", "type": "cites" },
+    { "source": "pub009", "target": "pub001", "type": "cites" },
+    { "source": "pub009", "target": "pub004", "type": "cites" },
+    { "source": "pub009", "target": "pub006", "type": "cites" }
+  ],
+  "clusters": {
+    "methoden": {
+      "label": "Methoden",
+      "color": "#4A90A4",
+      "description": "Publikationen zu digitalen Analysemethoden"
+    },
+    "theorie": {
+      "label": "Theorie",
+      "color": "#C4705A",
+      "description": "Grundlagentexte und Debatten zur Disziplin"
+    },
+    "anwendung": {
+      "label": "Anwendung",
+      "color": "#7A9A5A",
+      "description": "Konkrete Anwendungen in Fachdisziplinen"
+    }
+  }
+}
