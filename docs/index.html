@@ -113,8 +113,31 @@
             </div>
         </section>
 
-        <section id="workflow">
-            <h2>Der Workflow</h2>
+        <section id="workflows">
+            <h2>Forschungs-Workflows</h2>
+            <p>Archetypen sind Momentaufnahmen. Forschung ist ein Prozess, der mehrere Phasen durchläuft. Wählen Sie Ihren Projekttyp:</p>
+
+            <div class="workflow-picker">
+                <button class="workflow-btn active" data-workflow="qualitative">Qualitative Analyse</button>
+                <button class="workflow-btn" data-workflow="review">Literaturreview</button>
+                <button class="workflow-btn" data-workflow="cleaning">Datenbereinigung</button>
+                <button class="workflow-btn" data-workflow="edition">Digitale Edition</button>
+                <button class="workflow-btn" data-workflow="survey">Survey-Forschung</button>
+            </div>
+
+            <div class="workflow-display">
+                <div class="workflow-path" id="workflow-path">
+                    <!-- Dynamisch gefüllt -->
+                </div>
+                <div class="workflow-info" id="workflow-info">
+                    <p class="workflow-summary" id="workflow-summary"></p>
+                    <p class="workflow-user-story" id="workflow-user-story"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="grip-process">
+            <h2>Der GRIP-Prozess</h2>
             <ol class="workflow-steps">
                 <li><span>Kontextualisierung</span> – LLM liest die GRIP-Wissensbasis</li>
                 <li><span>Datenanalyse</span> – Topologie der Forschungsdaten wird identifiziert</li>

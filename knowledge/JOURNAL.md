@@ -252,3 +252,27 @@ Citation für bibliometrische Netzwerke mit Publikationsjahr-Achse, Impact-Indik
 Registry für Sammlungsinventare mit Inventarnummer-Suche, Standort-Hierarchie und Duplikat-Warnung. Codebook für Variablendefinitionen mit Variable-Liste, Werte-Tabelle und Validierungsregeln-Editor. Schema für JSON-Schema-Editierung mit Schema-Tree, Live-Validierung und Fehler-Highlighting.
 
 Jede Spezialisierung ist vollständig operationalisiert mit unterscheidenden UI-Elementen, spezifischen JSON-Datenfeldern und Erkennungsheuristiken für den System Prompt.
+
+---
+
+## 2025-12-04: Workflow-Visualisierung
+
+Die Website wurde um eine interaktive Workflow-Sektion erweitert.
+
+### Neue Komponenten
+
+Workflow-Picker mit fünf Buttons für die Referenz-Workflows (Qualitative Analyse, Literaturreview, Datenbereinigung, Digitale Edition, Survey-Forschung).
+
+Animierte Workflow-Pfade zeigen die Phasensequenz mit farbcodierten Archetyp-Icons. Jede Phase ist klickbar und verlinkt zur entsprechenden Demo-Seite.
+
+Iterationshinweise zeigen an, welche Phasen typischerweise Rücksprünge haben.
+
+User Stories und Zusammenfassungen werden dynamisch unter dem Pfad angezeigt.
+
+### Technische Umsetzung
+
+HTML: Neue Section "workflows" mit Picker-Buttons und Container für dynamischen Content.
+
+CSS: Styles für workflow-picker, workflow-path, workflow-phase, workflow-arrow und workflow-iteration. Responsive Layout für Mobile (vertikale Anordnung).
+
+JavaScript: workflows-Objekt mit allen fünf Workflows, initWorkflows() und renderWorkflow() Funktionen. Phasen-Icons zeigen den ersten Buchstaben des Archetyps.
