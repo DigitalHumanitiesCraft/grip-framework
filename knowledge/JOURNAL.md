@@ -563,3 +563,110 @@ Vier Änderungen basierend auf Design-Review:
 ### Responsive Anpassungen
 
 Mobile-Breakpoint (768px): Spec-Grid wechselt auf einspaltiges Layout.
+
+---
+
+## 2025-12-04: Bugfixes und Refactoring
+
+Mehrere technische Schulden wurden behoben.
+
+### JS-Bereinigung
+
+Vier redundante Standalone-Dateien wurden gelöscht (reader.js, scope.js, navigator.js, workbench.js). Diese enthielten alte Versionen der Archetyp-Klassen, die durch die ES6-Module in archetypes/ ersetzt wurden.
+
+### Fetch-Pfad-Korrektur
+
+Alle 12 Spezialisierungs-JS-Dateien hatten falsche Pfade (`../examples/data/` statt `data/`). Der Pfad ist relativ zur HTML-Datei, nicht zur JS-Datei.
+
+### HTML-ID-Korrekturen
+
+Zwei Demo-Seiten zeigten keine Daten wegen ID-Mismatches zwischen JS und HTML:
+
+navigator-citation.html: `network-container` → `network-canvas`, plus fehlende IDs für `network-title`, `network-stats`, `time-filter`, `type-filter`.
+
+workbench-registry.html: `collection-name` → `collection-title`, plus `collection-stats`, `quality-indicator`, `objects-tbody`, `objects-cards`, `editor-panel`, `objects-count`.
+
+### Wikilink-Korrektur
+
+In 10-SPEZIALISIERUNGEN.md wurde `[[08-DESIGN-RATIONALE]]` durch `[[DESIGN]]` ersetzt, da die Datei in DESIGN.md integriert wurde.
+
+### README erstellt
+
+Umfassende README.md im Wurzelverzeichnis mit Projektübersicht, Archetypen-Beschreibungen, Projektstruktur, Quick Start, Technologie-Stack und Standards-Übersicht.
+
+---
+
+## 2025-12-04: Landing Page erweitert
+
+Die index.html wurde um strukturierte Einstiegselemente erweitert.
+
+### Hero-Section
+
+Neuer Header mit GRIP-Titel, Untertitel "Generative Research Interface Protocol" und sachlicher Tagline: "Systematische Zuordnung von Interface-Archetypen zu Datentopologien und epistemischen Intentionen."
+
+CTA-Buttons führen zur Entscheidungsmatrix und zum GitHub-Repository.
+
+Stats-Banner zeigt die Kennzahlen: 4 Archetypen, 12 Spezialisierungen, 16 Live-Demos.
+
+### Zielgruppen-Karten
+
+Drei Cards für unterschiedliche Nutzergruppen:
+- Forschende: Interface-Empfehlung basierend auf Datenstruktur und Ziel
+- LLM-Entwickler: Wissensbasis als System-Prompt
+- Designer: Kognitive Prinzipien und bewährte Patterns
+
+### Footer-Erweiterung
+
+Links zu GitHub, System-Prompt und Dokumentation. Tagline "Context Engineering für Forschungsinterfaces".
+
+### CSS-Erweiterungen
+
+~200 Zeilen neue Styles für Hero, Buttons, Stats-Grid, Audience-Grid und Footer. Responsive Breakpoints für Mobile.
+
+### Tonalität
+
+Bewusst sachlich, neutral und präzise gehalten. Keine Marketing-Sprache. Das Framework erklärt Forschung, es verkauft sie nicht.
+
+---
+
+## Learnings aus dieser Session
+
+### 1. Fetch-Pfade sind relativ zur HTML-Datei
+
+JavaScript-Module, die per `<script type="module" src="...">` eingebunden werden, lösen `fetch()`-Pfade relativ zur HTML-Datei auf, nicht relativ zur JS-Datei. Daher: `data/file.json` statt `../examples/data/file.json`.
+
+### 2. ID-Konsistenz zwischen JS und HTML prüfen
+
+Bei `getElementById()` muss die ID exakt übereinstimmen. Nach HTML-Refactoring alle JS-Referenzen prüfen.
+
+### 3. ES6-Module ersetzen Standalone-Dateien
+
+Nach Migration zu ES6-Modulen alte Standalone-Versionen löschen, um Verwirrung zu vermeiden.
+
+### 4. Sachliche Kommunikation
+
+Wissenschaftliche Frameworks kommunizieren neutral. Keine Verkaufssprache ("Das richtige Interface für Sie!"), sondern präzise Beschreibungen ("Systematische Zuordnung von...").
+
+---
+
+## Nächste Schritte
+
+### Priorität 1: Deployment
+
+GitHub Pages aktivieren, um die Website öffentlich zugänglich zu machen. `docs/` als Publish-Verzeichnis konfigurieren.
+
+### Priorität 2: Praxistest des System-Prompts
+
+Den System-Prompt v2.1 mit realen Forschungsdaten testen. Erkennt das LLM korrekt Topologie, Intention und Spezialisierung?
+
+### Priorität 3: Interaktive Matrix-Feedback
+
+Wenn Nutzer eine Zelle klicken, könnte ein kurzer Erklärungstext erscheinen, warum dieser Archetyp für diese Kombination empfohlen wird.
+
+### Priorität 4: Accessibility-Audit
+
+ARIA-Labels für die interaktiven Elemente, Keyboard-Navigation für die Matrix, Fokus-Management für Workflows.
+
+### Priorität 5: Dokumentation vervollständigen
+
+01-ARCHITEKTUR.md aktualisieren mit aktuellem Stand der Dateistruktur und Abhängigkeiten.
