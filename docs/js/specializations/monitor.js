@@ -22,7 +22,7 @@ export class Monitor {
 
     async init() {
         try {
-            const response = await fetch('../examples/data/scope-monitor.json');
+            const response = await fetch('data/scope-monitor.json');
             this.data = await response.json();
 
             this.data.metrics.forEach(m => this.visibleMetrics.add(m.id));

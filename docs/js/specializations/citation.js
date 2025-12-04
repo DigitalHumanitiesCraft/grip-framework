@@ -24,7 +24,7 @@ export class Citation {
 
     async init() {
         try {
-            const response = await fetch('../examples/data/navigator-citations.json');
+            const response = await fetch('data/navigator-citations.json');
             this.data = await response.json();
 
             this.processData();

@@ -24,7 +24,7 @@ export class Schema {
 
     async init() {
         try {
-            const response = await fetch('../examples/data/workbench-schema.json');
+            const response = await fetch('data/workbench-schema.json');
             this.data = await response.json();
 
             this.schema = this.data.schema || {};

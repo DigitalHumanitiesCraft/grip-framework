@@ -24,7 +24,7 @@ export class Genealogy {
 
     async init() {
         try {
-            const response = await fetch('../examples/data/navigator-genealogy.json');
+            const response = await fetch('data/navigator-genealogy.json');
             this.data = await response.json();
 
             this.persons = this.data.persons || [];

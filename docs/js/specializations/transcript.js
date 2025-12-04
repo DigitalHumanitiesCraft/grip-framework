@@ -29,7 +29,7 @@ export class Transcript {
 
     async init() {
         try {
-            const response = await fetch('../examples/data/reader-transcript.json');
+            const response = await fetch('data/reader-transcript.json');
             this.data = await response.json();
 
             this.setupEventListeners();

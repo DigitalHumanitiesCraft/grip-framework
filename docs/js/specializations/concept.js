@@ -25,7 +25,7 @@ export class Concept {
 
     async init() {
         try {
-            const response = await fetch('../examples/data/navigator-concept.json');
+            const response = await fetch('data/navigator-concept.json');
             this.data = await response.json();
 
             this.concepts = this.data.concepts || [];

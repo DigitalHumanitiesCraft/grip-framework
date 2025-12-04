@@ -23,7 +23,7 @@ export class Matrix {
 
     async init() {
         try {
-            const response = await fetch('../examples/data/scope-matrix.json');
+            const response = await fetch('data/scope-matrix.json');
             this.data = await response.json();
 
             this.setupEventListeners();

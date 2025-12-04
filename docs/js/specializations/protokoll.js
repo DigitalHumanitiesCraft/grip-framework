@@ -30,7 +30,7 @@ export class Protokoll {
 
     async init() {
         try {
-            const response = await fetch('../examples/data/reader-protokoll.json');
+            const response = await fetch('data/reader-protokoll.json');
             this.data = await response.json();
 
             this.setupEventListeners();

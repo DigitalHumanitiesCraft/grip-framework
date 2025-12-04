@@ -22,12 +22,9 @@
         <!-- Sidebar: Filter + Standorte -->
         <aside class="registry-sidebar">
             <div class="collection-meta">
-                <h2 id="collection-name">Sammlung</h2>
-                <dl>
-                    <dt>Institution</dt>
-                    <dd id="collection-institution">-</dd>
-                    <dt>Objekte</dt>
-                    <dd id="collection-total">-</dd>
+                <h2 id="collection-title">Sammlung</h2>
+                <dl id="collection-stats">
+                    <!-- Dynamisch -->
                 </dl>
             </div>
 
@@ -67,15 +64,9 @@
                 </div>
             </div>
 
-            <div class="validation-summary">
+            <div class="validation-summary" id="quality-indicator">
                 <h3>Datenqualität</h3>
-                <div class="quality-indicator">
-                    <div class="quality-bar" id="quality-bar"></div>
-                    <span id="quality-percent">-%</span>
-                </div>
-                <ul class="error-types" id="error-types">
-                    <!-- Dynamisch: Fehlertypen mit Anzahl -->
-                </ul>
+                <!-- Dynamisch -->
             </div>
         </aside>
 
@@ -95,6 +86,7 @@
                     </select>
                     <button class="apply-bulk" id="apply-bulk" disabled>Anwenden</button>
                 </div>
+                <span class="objects-count" id="objects-count">0 / 0</span>
                 <span class="selection-count">Ausgewählt: <span id="selection-count">0</span></span>
             </div>
 
@@ -115,7 +107,7 @@
                             <th>Status</th>
                         </tr>
                     </thead>
-                    <tbody id="registry-body">
+                    <tbody id="objects-tbody">
                         <!-- Dynamisch -->
                     </tbody>
                 </table>
@@ -127,7 +119,7 @@
 
             <!-- Karten-Ansicht -->
             <div class="cards-view hidden" id="cards-view">
-                <div class="object-cards" id="object-cards">
+                <div class="object-cards" id="objects-cards">
                     <!-- Dynamisch: Objekt-Karten -->
                 </div>
             </div>
@@ -135,7 +127,7 @@
 
         <!-- Kontext-Panel: Objekt-Editor -->
         <aside class="registry-context">
-            <section class="object-editor" id="object-editor">
+            <section class="object-editor" id="editor-panel">
                 <h2>Objekt bearbeiten</h2>
                 <p class="editor-prompt">Wählen Sie ein Objekt aus der Liste.</p>
                 <form class="editor-form hidden" id="editor-form">

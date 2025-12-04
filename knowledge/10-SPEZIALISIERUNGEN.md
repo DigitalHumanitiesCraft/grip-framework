@@ -2,7 +2,7 @@
 
 Dieses Dokument definiert drei Spezialisierungen pro Archetyp. Jede Spezialisierung ist vollständig operationalisiert mit unterscheidenden UI-Elementen, spezifischen Datenfeldern und eigenen Erkennungsheuristiken.
 
-Abhängigkeiten: [[05-ARCHETYPEN]], [[02-MAPPINGS]], [[08-DESIGN-RATIONALE]]
+Abhängigkeiten: [[05-ARCHETYPEN]], [[02-MAPPINGS]], [[DESIGN]]
 
 ---
 
@@ -770,5 +770,5 @@ ELSE → Basis-Workbench
 
 - [[05-ARCHETYPEN]] definiert die Basis-Archetypen, von denen die Spezialisierungen abgeleitet sind
 - [[02-MAPPINGS]] beschreibt die grundlegende Entscheidungslogik
-- [[08-DESIGN-RATIONALE]] liefert kognitive Begründungen, die auch für Spezialisierungen gelten
+- [[DESIGN]] liefert kognitive Begründungen, die auch für Spezialisierungen gelten
 - [[04-SYSTEM-PROMPT]] wird um die Erkennungsheuristiken erweitert

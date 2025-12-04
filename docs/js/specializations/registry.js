@@ -25,7 +25,7 @@ export class Registry {
 
     async init() {
         try {
-            const response = await fetch('../examples/data/workbench-metadata.json');
+            const response = await fetch('data/workbench-metadata.json');
             this.data = await response.json();
 
             this.objects = this.data.objects || [];

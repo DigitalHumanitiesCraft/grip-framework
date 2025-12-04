@@ -22,27 +22,15 @@
         <!-- Sidebar: Filter + Cluster -->
         <aside class="citation-sidebar">
             <div class="network-meta">
-                <h2>Netzwerk</h2>
-                <dl>
-                    <dt>Publikationen</dt>
-                    <dd id="stat-nodes">-</dd>
-                    <dt>Zitationen</dt>
-                    <dd id="stat-edges">-</dd>
-                    <dt>Dichte</dt>
-                    <dd id="stat-density">-</dd>
-                </dl>
+                <h2 id="network-title">Netzwerk</h2>
+                <div id="network-stats">
+                    <!-- Dynamisch: Statistiken -->
+                </div>
             </div>
 
-            <div class="time-filter">
+            <div class="time-filter" id="time-filter">
                 <h3>Zeitraum</h3>
-                <div class="year-range">
-                    <input type="number" id="year-min" min="1900" max="2025" value="1950">
-                    <span>bis</span>
-                    <input type="number" id="year-max" min="1900" max="2025" value="2025">
-                </div>
-                <div class="year-slider" id="year-slider">
-                    <!-- Dynamisch: Range-Slider -->
-                </div>
+                <!-- Dynamisch: Jahr-Range -->
             </div>
 
             <div class="cluster-filter">
@@ -58,11 +46,9 @@
                 <span id="citation-threshold-value">0</span>
             </div>
 
-            <div class="publication-type-filter">
+            <div class="publication-type-filter" id="type-filter">
                 <h3>Publikationstyp</h3>
-                <div class="type-checkboxes" id="type-checkboxes">
-                    <!-- Dynamisch: book, article, chapter, etc. -->
-                </div>
+                <!-- Dynamisch: book, article, chapter, etc. -->
             </div>
         </aside>
 
@@ -87,7 +73,7 @@
                 <button class="reset-view" id="reset-view">Ansicht zurücksetzen</button>
             </div>
 
-            <div class="network-container" id="network-container">
+            <div class="network-container" id="network-canvas">
                 <!-- D3/Canvas Netzwerk-Visualisierung -->
             </div>
 

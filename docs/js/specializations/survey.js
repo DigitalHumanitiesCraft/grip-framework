@@ -21,7 +21,7 @@ export class Survey {
 
     async init() {
         try {
-            const response = await fetch('../examples/data/scope-survey.json');
+            const response = await fetch('data/scope-survey.json');
             this.data = await response.json();
             this.filteredData = [...(this.data.respondents || [])];
 

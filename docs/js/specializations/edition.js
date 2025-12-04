@@ -28,7 +28,7 @@ export class Edition {
 
     async init() {
         try {
-            const response = await fetch('../examples/data/reader-edition.json');
+            const response = await fetch('data/reader-edition.json');
             this.data = await response.json();
 
             this.setupEventListeners();

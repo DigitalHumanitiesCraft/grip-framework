@@ -25,7 +25,7 @@ export class Codebook {
 
     async init() {
         try {
-            const response = await fetch('../examples/data/workbench-codebook.json');
+            const response = await fetch('data/workbench-codebook.json');
             this.data = await response.json();
 
             this.variables = this.data.variables || [];
