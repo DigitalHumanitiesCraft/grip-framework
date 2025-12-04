@@ -628,6 +628,21 @@ section > p {
     margin-top: var(--space-xs);
 }
 
+.mode-badge {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--color-paper);
+    background: var(--color-terracotta);
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-top: var(--space-xs);
+    align-self: flex-start;
+}
+
+.spec-card.has-modes {
+    border-left: 2px solid var(--color-terracotta);
+}
+
 /* Demo Links */
 
 .demo-link {

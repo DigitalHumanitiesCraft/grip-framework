@@ -792,3 +792,65 @@ Mode-Tabs CSS in style.css für einheitliche Tab-Navigation. Keyboard-Shortcuts 
 1. Weitere Modi implementieren (Survey, Citation, Registry als Priorität)
 2. Reale Testdatensätze beschaffen
 3. Modi-Navigation auf index.html erweitern
+
+---
+
+## 2025-12-04: index.html Modi-Integration
+
+Die Landing Page wurde aktualisiert, um die 3-Ebenen-Taxonomie abzubilden.
+
+### Hero-Stats erweitert
+
+Neue Statistik-Anzeige: 4 Archetypen, 12 Spezialisierungen, 48 Modi, 20 Live-Demos.
+
+Die Demo-Zahl wurde von 16 auf 20 korrigiert (4 Basis + 12 Spezialisierungen + 4 Edition-Modi).
+
+### Spezialisierungs-Cards
+
+Edition-Card erhält visuellen Indikator für implementierte Modi:
+- mode-badge Element mit "4 Modi" Label
+- has-modes Klasse für Terracotta-Akzent am linken Rand
+
+### Neue CSS-Styles
+
+.mode-badge: Terracotta-Hintergrund, Monospace-Font, kompakte Darstellung
+.spec-card.has-modes: Linker Rand-Akzent zur Unterscheidung von Spezialisierungen mit Modi
+
+---
+
+## 2025-12-04: About-Seite und README-Finalisierung
+
+### about.html erstellt
+
+Neue About-Seite mit folgenden Sektionen:
+- Was ist GRIP? (mit konkretem Beispiel)
+- Die 3-Ebenen-Taxonomie (visuelle Darstellung)
+- Kognitive Grundlagen (vereinfacht für Laien)
+- Die Entscheidungsmatrix (mit Alltagsbeispielen)
+- Für LLM-Entwickler
+- Technologie
+- Wissenschaftliche Standards
+- Autor (Dr. Christopher Pollin)
+
+Verbesserungen gegenüber Erstversion:
+- Alle Umlaute korrigiert
+- Fachbegriffe erklärt (HCI, präattentive Wahrnehmung)
+- Konkrete Beispiele statt abstrakter Beschreibungen
+- Autor-Sektion mit Link
+
+### README.md finalisiert
+
+Neue Elemente:
+- Badges für Live Demo und MIT-Lizenz
+- Online Demo URL (https://dhcraft.org/grip-framework/)
+- Autor: Dr. Christopher Pollin
+- Links-Sektion mit Demo, Repo und Autor-Website
+- Korrigierte Datei-Anzahl (22 HTML, 19 MD)
+
+### GitHub-URLs aktualisiert
+
+Alle Links zeigen jetzt auf:
+- Demo: https://dhcraft.org/grip-framework/
+- Repo: https://github.com/DigitalHumanitiesCraft/grip-framework
+
+Betroffene Dateien: index.html, about.html, README.md

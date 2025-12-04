@@ -2,7 +2,7 @@
 
 Dieses Dokument definiert die Mapping-Logik zwischen GRIP-Archetypen und wissenschaftlichen Metadaten-Standards. Es dient als Referenz für LLMs und Parser-Module zur Datenerkennung und -konvertierung.
 
-Abhängigkeiten: [[10-SPEZIALISIERUNGEN]], [[05-ARCHETYPEN]]
+Abhängigkeiten: [[10-SPEZIALISIERUNGEN]], [[05-ARCHETYPEN]], [[14-EPICS]]
 
 ---
 
@@ -379,8 +379,119 @@ Geplante Parser-Module:
 
 ---
 
+## XML-Erkennungs-Trigger (Detail)
+
+### TEI P5
+
+```xml
+<!-- Root-Element -->
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+
+<!-- Oder: Namespace-Deklaration -->
+xmlns:tei="http://www.tei-c.org/ns/1.0"
+
+<!-- Critical Apparatus Module erkennbar durch: -->
+<app>, <lem>, <rdg>, <wit>
+```
+
+### Akoma Ntoso
+
+```xml
+<!-- Root-Element -->
+<akomaNtoso xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0">
+
+<!-- Charakteristische Elemente: -->
+<debate>, <speech>, <scene>, <vote>
+```
+
+### DDI Codebook
+
+```xml
+<!-- Root-Elemente (alternativ): -->
+<codeBook xmlns="ddi:codebook:2_5">
+<stdyDscr>
+
+<!-- Charakteristische Elemente: -->
+<var>, <catgry>, <varGrp>
+```
+
+### MODS
+
+```xml
+<!-- Root-Element oder Container: -->
+<mods xmlns="http://www.loc.gov/mods/v3">
+<modsCollection>
+
+<!-- Zitationsbeziehungen: -->
+<relatedItem type="references">
+```
+
+### LIDO
+
+```xml
+<!-- Root-Element: -->
+<lido xmlns="http://www.lido-schema.org">
+
+<!-- Charakteristische Elemente: -->
+<objectWorkType>, <repositorySet>, <eventSet>
+```
+
+---
+
+## JSON-Erkennungs-Trigger (Detail)
+
+### SDMX-JSON
+
+```json
+{
+  "structure": {
+    "dimensions": { ... }
+  },
+  "dataSets": [ ... ]
+}
+```
+
+Trigger-Keys: `structure.dimensions`, `dataSets`
+
+### OGC SensorThings
+
+```json
+{
+  "Datastreams": [ ... ],
+  "Observations": [ ... ]
+}
+```
+
+Trigger-Keys: `Datastreams`, `Observations`, `@iot.id`
+
+### GEDCOM X
+
+```json
+{
+  "persons": [ ... ],
+  "relationships": [ ... ]
+}
+```
+
+Trigger-Keys: `persons`, `relationships`, `type: "ParentChild"`
+
+### JSON Schema
+
+```json
+{
+  "$schema": "https://json-schema.org/...",
+  "type": "object",
+  "properties": { ... }
+}
+```
+
+Trigger-Keys: `$schema`, `properties`, `required`, `$ref`
+
+---
+
 ## Verknüpfungen
 
-- [[10-SPEZIALISIERUNGEN]] definiert die Erkennungsheuristiken für Spezialisierungen
+- [[10-SPEZIALISIERUNGEN]] enthält das vollständige Erkennungsprotokoll
+- [[14-EPICS]] dokumentiert Datenfelder und JSON-Schemata pro Spezialisierung
 - [[05-ARCHETYPEN]] beschreibt die Basis-Archetypen
 - [[11-CODE-MAP]] dokumentiert die technische Implementierung

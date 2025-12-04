@@ -1,5 +1,8 @@
 # GRIP Framework
 
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://dhcraft.org/grip-framework/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 **Generative Research Interface Protocol** - Ein methodisches Framework für die LLM-gestützte Entwicklung von Forschungsinterfaces.
 
 ## Was ist GRIP?
@@ -66,7 +69,7 @@ Jede Spezialisierung hat 4 Modi - verschiedene Perspektiven auf denselben Datens
 
 ```
 grip-framework/
-├── knowledge/              # Wissensbasis (17 Markdown-Dokumente)
+├── knowledge/              # Wissensbasis (19 Markdown-Dokumente)
 │   ├── 00-PROJEKTAUFTRAG.md
 │   ├── 02-MAPPINGS.md      # Entscheidungslogik
 │   ├── 04-SYSTEM-PROMPT.md # LLM-Prompt
@@ -92,7 +95,11 @@ grip-framework/
 
 ## Quick Start
 
-### Live-Demo starten
+### Online Demo
+
+Die Live-Demo ist verfügbar unter: **https://dhcraft.org/grip-framework/**
+
+### Lokal starten
 ```bash
 cd docs
 python -m http.server 8000
@@ -106,11 +113,11 @@ python -m http.server 8000
 
 | Typ | Anzahl | Beschreibung |
 |-----|--------|--------------|
-| HTML | 21 | Landing Page + 16 Demo-Seiten + 4 Edition-Modi |
+| HTML | 22 | Landing Page + About + 16 Demo-Seiten + 4 Edition-Modi |
 | JavaScript | 39 | Module, Archetypen, Spezialisierungen, Modi |
 | CSS | 21 | Design-System + Archetyp-Styles + Modi-Styles |
 | JSON | 13 | Demo-Datensätze |
-| Markdown | 17 | Wissensbasis |
+| Markdown | 19 | Wissensbasis |
 
 ## Technologie
 
@@ -172,4 +179,14 @@ MIT
 
 ## Autor
 
+**Dr. Christopher Pollin**
+Digital Humanities Craft
+https://chpollin.github.io/
+
 Entwickelt als Context Engineering Experiment für Frontier-LLMs.
+
+## Links
+
+- **Live Demo**: https://dhcraft.org/grip-framework/
+- **Repository**: https://github.com/DigitalHumanitiesCraft/grip-framework
+- **Autor**: https://chpollin.github.io/

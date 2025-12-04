@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - GRIP Framework</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .about-layout {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-lg);
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .about-header h1 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .about-header .tagline {
+            font-family: var(--font-serif);
+            font-style: italic;
+            color: var(--color-ink-muted);
+            font-size: 1.1rem;
+        }
+
+        .about-section {
+            margin-bottom: var(--space-xl);
+        }
+
+        .about-section h2 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--color-terracotta);
+        }
+
+        .about-section h3 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            margin-top: var(--space-lg);
+            margin-bottom: var(--space-sm);
+            color: var(--color-ink);
+        }
+
+        .about-section p {
+            margin-bottom: var(--space-md);
+            line-height: 1.8;
+        }
+
+        .taxonomy-visual {
+            background: var(--color-paper-dark);
+            padding: var(--space-lg);
+            border-radius: 6px 3px 8px 4px;
+            margin: var(--space-lg) 0;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .taxonomy-visual .level {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+        }
+
+        .taxonomy-visual .level:last-child {
+            margin-bottom: 0;
+        }
+
+        .taxonomy-visual .label {
+            width: 140px;
+            font-weight: 500;
+        }
+
+        .taxonomy-visual .count {
+            background: var(--color-terracotta);
+            color: var(--color-paper);
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-right: var(--space-sm);
+        }
+
+        .taxonomy-visual .examples {
+            color: var(--color-ink-muted);
+        }
+
+        .principle-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .principle-card {
+            background: var(--color-paper-dark);
+            padding: var(--space-md);
+            border-radius: 6px 3px 8px 4px;
+            border-left: 3px solid var(--color-ink-muted);
+        }
+
+        .principle-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .principle-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .principle-card.reader { border-left-color: var(--color-reader); }
+        .principle-card.scope { border-left-color: var(--color-scope); }
+        .principle-card.navigator { border-left-color: var(--color-navigator); }
+        .principle-card.workbench { border-left-color: var(--color-workbench); }
+
+        .tech-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-sm);
+        }
+
+        .tech-list li {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            padding: var(--space-sm);
+            background: var(--color-paper-dark);
+            border-radius: 4px;
+        }
+
+        .tech-list li::before {
+            content: '>';
+            color: var(--color-terracotta);
+            margin-right: var(--space-sm);
+        }
+
+        .about-cta {
+            text-align: center;
+            padding: var(--space-xl) 0;
+            border-top: 1px solid var(--color-paper-dark);
+        }
+
+        .about-cta .btn {
+            margin: 0 var(--space-sm);
+        }
+
+        .author-section {
+            background: var(--color-paper-dark);
+            padding: var(--space-lg);
+            border-radius: 6px 3px 8px 4px;
+            text-align: center;
+        }
+
+        .author-section a {
+            color: var(--color-terracotta);
+        }
+
+        .reference {
+            font-size: 0.85rem;
+            color: var(--color-ink-muted);
+            font-style: italic;
+        }
+
+        .reference-list {
+            font-size: 0.85rem;
+            color: var(--color-ink-muted);
+            padding-left: var(--space-lg);
+        }
+
+        .reference-list li {
+            margin-bottom: var(--space-sm);
+        }
+
+        .highlight-box {
+            background: var(--color-paper-dark);
+            border-left: 3px solid var(--color-terracotta);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+        }
+
+        .limitation-list {
+            list-style: disc;
+            padding-left: var(--space-lg);
+        }
+
+        .limitation-list li {
+            margin-bottom: var(--space-sm);
+        }
+
+        @media (max-width: 600px) {
+            .principle-grid,
+            .tech-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero" style="padding: var(--space-lg);">
+        <nav style="max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+            <a href="index.html" style="font-family: var(--font-serif); font-size: 1.2rem; text-decoration: none; color: var(--color-ink); font-weight: 600;">GRIP</a>
+            <div style="display: flex; gap: var(--space-md);">
+                <a href="index.html#matrix" style="text-decoration: none; color: var(--color-ink-muted);">Matrix</a>
+                <a href="index.html#archetypen" style="text-decoration: none; color: var(--color-ink-muted);">Archetypen</a>
+                <a href="about.html" style="text-decoration: none; color: var(--color-terracotta);">About</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="about-layout">
+        <div class="about-header">
+            <h1>About GRIP</h1>
+            <p class="tagline">Generative Research Interface Protocol</p>
+        </div>
+
+        <!-- PROBLEM & MOTIVATION -->
+        <section class="about-section">
+            <h2>Das Problem</h2>
+            <p>Forschende in den Digital Humanities stehen vor einem wiederkehrenden Problem: Für ihre Daten gibt es selten passende Standardinterfaces. Briefkorrespondenzen brauchen andere Darstellungen als Umfragedaten, Zitationsnetzwerke andere als Sammlungsinventare. Die Entwicklung maßgeschneiderter Interfaces ist zeitaufwändig und erfordert Expertise in UX-Design und Softwareentwicklung.</p>
+
+            <p>Gleichzeitig können Large Language Models (LLMs) wie Claude oder ChatGPT zunehmend Code generieren. Doch ohne domänenspezifisches Wissen produzieren sie generische Lösungen, die wissenschaftliche Anforderungen nicht erfüllen.</p>
+
+            <div class="highlight-box">
+                <strong>Forschungsfrage:</strong> Wie kann das Expertenwissen über geeignete Interface-Archetypen für verschiedene Datenstrukturen und Forschungsintentionen so kodifiziert werden, dass LLMs fundierte Interface-Empfehlungen generieren können?
+            </div>
+        </section>
+
+        <!-- LÖSUNG -->
+        <section class="about-section">
+            <h2>Die Lösung: GRIP</h2>
+            <p>GRIP ist ein methodisches Framework, das Sprachmodellen beibringt, passende Interface-Empfehlungen für Forschungsdaten zu generieren. Es kodifiziert das Wissen darüber, welche Interface-Archetypen für welche Datenstrukturen und Forschungsintentionen geeignet sind.</p>
+
+            <p><strong>Kernidee:</strong> Das eigentliche Produkt ist der System-Prompt und das mentale Modell. Die Website beweist, dass das Modell funktioniert.</p>
+
+            <h3>Beispiel</h3>
+            <p>Eine Historikerin hat eine Sammlung von 500 Briefen zwischen Hannah Arendt und Karl Jaspers. Sie beschreibt ihre Daten einem LLM, das mit GRIP kontextualisiert ist:</p>
+            <ul>
+                <li><strong>Topologie-Erkennung:</strong> Briefe sind sequenziell (chronologisch geordnet, mit Vor- und Nachfolger)</li>
+                <li><strong>Intentions-Erkennung:</strong> Die Forscherin will die intellektuelle Beziehung verstehen (Immersion, nicht Vergleich)</li>
+                <li><strong>Matrix-Lookup:</strong> Sequenziell + Verstehen = Reader</li>
+                <li><strong>Spezialisierung:</strong> Briefkorrespondenzen → Edition-Spezialisierung</li>
+                <li><strong>Empfehlung:</strong> Reader mit Timeline-Navigation, Annotationsleiste, Referenz-Verlinkung, Kontextpanel für Personen und Orte</li>
+            </ul>
+        </section>
+
+        <!-- TAXONOMIE -->
+        <section class="about-section">
+            <h2>Die 3-Ebenen-Taxonomie</h2>
+            <p>GRIP organisiert Interface-Wissen in drei hierarchischen Ebenen:</p>
+
+            <div class="taxonomy-visual">
+                <div class="level">
+                    <span class="label">Archetypen</span>
+                    <span class="count">4</span>
+                    <span class="examples">Reader, Scope, Navigator, Workbench</span>
+                </div>
+                <div class="level">
+                    <span class="label">Spezialisierungen</span>
+                    <span class="count">12</span>
+                    <span class="examples">Edition, Survey, Citation, Registry...</span>
+                </div>
+                <div class="level">
+                    <span class="label">Modi</span>
+                    <span class="count">48</span>
+                    <span class="examples">Synopse, Apparat, Genetik, Faksimile...</span>
+                </div>
+            </div>
+
+            <h3>Warum diese Struktur?</h3>
+            <p>Die Zahlen 4-12-48 sind nicht willkürlich:</p>
+            <ul>
+                <li><strong>4 Archetypen</strong> ergeben sich aus der Kreuzung von 4 Topologien × 4 Intentionen, wobei die Matrix auf 4 distinkte Interface-Grundformen konvergiert</li>
+                <li><strong>12 Spezialisierungen</strong> (3 pro Archetyp) decken die häufigsten Anwendungsfälle in den Digital Humanities ab, basierend auf etablierten Metadatenstandards (TEI, DDI, MODS, LIDO)</li>
+                <li><strong>48 Modi</strong> (4 pro Spezialisierung) bieten verschiedene Perspektiven auf denselben Datensatz, analog zu Views in Datenbanksystemen</li>
+            </ul>
+        </section>
+
+        <!-- ENTSCHEIDUNGSMATRIX -->
+        <section class="about-section">
+            <h2>Die Entscheidungsmatrix</h2>
+            <p>Die Zuordnung von Daten zu Archetypen erfolgt über zwei Dimensionen:</p>
+
+            <h3>Topologie (Datenstruktur)</h3>
+            <ul>
+                <li><strong>Sequenziell:</strong> Daten mit inhärenter Reihenfolge (Briefe, Protokolle, Zeitreihen)</li>
+                <li><strong>Multidimensional:</strong> Tabellarische Daten mit mehreren Variablen (Umfragen, Messwerte)</li>
+                <li><strong>Vernetzt:</strong> Daten mit Beziehungen zwischen Entitäten (Zitationen, Verwandtschaften)</li>
+                <li><strong>Hierarchisch:</strong> Baumstrukturen mit Über-/Unterordnung (Taxonomien, Inventare)</li>
+            </ul>
+
+            <h3>Intention (Forschungsziel)</h3>
+            <ul>
+                <li><strong>Verstehen:</strong> Tiefes Eintauchen in Inhalte, Kontexterschließung</li>
+                <li><strong>Vergleich:</strong> Mustererkennung, Trends, Korrelationen</li>
+                <li><strong>Rekonstruktion:</strong> Beziehungen nachvollziehen, Pfade finden</li>
+                <li><strong>Kuratierung:</strong> Daten bereinigen, validieren, anreichern</li>
+            </ul>
+
+            <p>Die Kombination ergibt 16 Felder: 4 primäre (eindeutige Zuordnung), 8 sekundäre (ableitbar), 4 ambige (erfordern Rückfragen zur Klärung).</p>
+        </section>
+
+        <!-- KOGNITIVE GRUNDLAGEN -->
+        <section class="about-section">
+            <h2>Kognitive Grundlagen</h2>
+            <p>Jeder Archetyp basiert auf Erkenntnissen aus der Mensch-Computer-Interaktion (Human-Computer Interaction, HCI). Die Design-Entscheidungen sind wissenschaftlich fundiert:</p>
+
+            <div class="principle-grid">
+                <div class="principle-card reader">
+                    <h4>Reader</h4>
+                    <p>Tiefes Lesen erfordert ununterbrochenen Textfluss. Optimale Zeilenlänge: 60-75 Zeichen. Zu lange Zeilen erschweren den Zeilenrücksprung, zu kurze unterbrechen den Lesefluss.</p>
+                    <p class="reference">Dyson, M. C. (2004). How physical text layout affects reading from screen.</p>
+                </div>
+                <div class="principle-card scope">
+                    <h4>Scope</h4>
+                    <p>Präattentive Verarbeitung: Das visuelle System erkennt Muster (Farbe, Form, Position) in unter 250ms, bevor bewusste Aufmerksamkeit einsetzt. Small Multiples nutzen diesen Effekt besser als interaktive Einzelcharts.</p>
+                    <p class="reference">Healey, C. G., & Enns, J. T. (2012). Attention and visual memory in visualization and computer graphics.</p>
+                </div>
+                <div class="principle-card navigator">
+                    <h4>Navigator</h4>
+                    <p>Bei Netzwerkvisualisierungen ist die räumliche Position eines Knotens (Zentralität, Cluster-Zugehörigkeit) oft informativer als sein Label. Ab ca. 50 Knoten wird die Darstellung ohne Filter unübersichtlich ("Hairball-Problem").</p>
+                    <p class="reference">McGuffin, M. J., & Jurisica, I. (2009). Interaction techniques for selecting and manipulating subgraphs in network visualizations.</p>
+                </div>
+                <div class="principle-card workbench">
+                    <h4>Workbench</h4>
+                    <p>Mode Awareness: Bei Datenbearbeitung müssen Nutzende jederzeit wissen, ob sie sich im Lese- oder Bearbeitungsmodus befinden. Fehlende visuelle Trennung führt zu versehentlichen Änderungen.</p>
+                    <p class="reference">Sellen, A. J., & Harper, R. H. (2003). The Myth of the Paperless Office.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- METHODIK -->
+        <section class="about-section">
+            <h2>Methodik</h2>
+            <p>GRIP wurde durch einen iterativen Knowledge-Engineering-Prozess entwickelt:</p>
+
+            <h3>1. Domänenanalyse</h3>
+            <p>Analyse bestehender Forschungsinterfaces in den Digital Humanities: Welche Patterns wiederholen sich? Welche Datenstrukturen erfordern welche Darstellungsformen?</p>
+
+            <h3>2. Taxonomie-Entwicklung</h3>
+            <p>Induktive Ableitung der Archetypen aus beobachteten Interfaces. Validierung durch Mapping auf etablierte Metadatenstandards (TEI P5, DDI, MODS, LIDO, SKOS).</p>
+
+            <h3>3. Prompt Engineering</h3>
+            <p>Iterative Verfeinerung des System-Prompts durch Tests mit verschiedenen LLMs (Claude, GPT-4). Messung: Generiert das LLM sinnvolle Empfehlungen für gegebene Datenbeschreibungen?</p>
+
+            <h3>4. Prototyping</h3>
+            <p>Implementierung der 20 Demo-Interfaces als Proof-of-Concept. Die Website wendet GRIP auf sich selbst an (selbstreferenzieller Prototyp).</p>
+        </section>
+
+        <!-- ZIELGRUPPEN -->
+        <section class="about-section">
+            <h2>Zielgruppen</h2>
+
+            <h3>Forschende in den Digital Humanities</h3>
+            <p>Nutzen GRIP, um passende Interface-Empfehlungen für ihre Daten zu erhalten. Beschreiben ihre Datenstruktur und Forschungsziele, erhalten konkrete UI-Spezifikationen.</p>
+
+            <h3>LLM-Entwickler und Prompt Engineers</h3>
+            <p>Nutzen die GRIP-Wissensbasis als System-Prompt-Komponente. Die Markdown-Dokumente sind für Context Windows optimiert.</p>
+
+            <h3>UX-Designer für Forschungssoftware</h3>
+            <p>Referenzieren die kognitiven Prinzipien und Design Rationales. Jede Archetyp-Entscheidung ist wissenschaftlich begründet.</p>
+        </section>
+
+        <!-- LIMITATIONEN -->
+        <section class="about-section">
+            <h2>Limitationen</h2>
+            <p>GRIP ist ein Experiment, kein fertiges Produkt. Bekannte Einschränkungen:</p>
+
+            <ul class="limitation-list">
+                <li><strong>Domänenfokus:</strong> Die Taxonomie ist auf Digital Humanities optimiert. Andere Domänen (Naturwissenschaften, Wirtschaft) erfordern möglicherweise andere Archetypen.</li>
+                <li><strong>Keine automatische Erkennung:</strong> GRIP erkennt die Topologie nicht automatisch aus Dateien. Nutzende müssen ihre Datenstruktur beschreiben.</li>
+                <li><strong>Validierung ausstehend:</strong> Die Effektivität der LLM-generierten Empfehlungen wurde noch nicht in kontrollierten Studien evaluiert.</li>
+                <li><strong>Implementierungstiefe:</strong> Von 48 definierten Modi sind erst 4 (Edition) vollständig implementiert.</li>
+                <li><strong>Kognitive Prinzipien:</strong> Die zitierten HCI-Studien sind teilweise älter. Neuere Forschung zu Touch-Interfaces und Mobile-First-Design ist nicht integriert.</li>
+            </ul>
+        </section>
+
+        <!-- FÜR LLM-ENTWICKLER -->
+        <section class="about-section">
+            <h2>Für LLM-Entwickler</h2>
+            <p>Die Wissensbasis in <code>knowledge/</code> ist für System-Prompts optimiert:</p>
+            <ul class="tech-list">
+                <li>04-SYSTEM-PROMPT.md – Kondensierter Prompt</li>
+                <li>02-MAPPINGS.md – Wenn-Dann-Logik</li>
+                <li>05-ARCHETYPEN.md – Spezifikationen</li>
+                <li>10-SPEZIALISIERUNGEN.md – Heuristiken</li>
+                <li>15-MODI.md – 48 Modi definiert</li>
+                <li>16-CONTEXT-MAP.md – Wissensbedarf</li>
+            </ul>
+        </section>
+
+        <!-- TECHNOLOGIE -->
+        <section class="about-section">
+            <h2>Technologie</h2>
+            <ul class="tech-list">
+                <li>Vanilla JavaScript (ES6+)</li>
+                <li>CSS Custom Properties</li>
+                <li>Statische Website</li>
+                <li>Client-Side Rendering</li>
+                <li>Keine Framework-Dependencies</li>
+                <li>GitHub Pages ready</li>
+            </ul>
+        </section>
+
+        <!-- STANDARDS -->
+        <section class="about-section">
+            <h2>Wissenschaftliche Standards</h2>
+            <p>GRIP orientiert sich an etablierten Metadatenstandards der Digital Humanities:</p>
+            <ul>
+                <li><strong>TEI P5</strong> – Text Encoding Initiative für kritische Editionen</li>
+                <li><strong>DDI</strong> – Data Documentation Initiative für Umfragedaten</li>
+                <li><strong>MODS</strong> – Metadata Object Description Schema für bibliografische Daten</li>
+                <li><strong>LIDO</strong> – Lightweight Information Describing Objects für Sammlungsinventare</li>
+                <li><strong>SKOS</strong> – Simple Knowledge Organization System für Thesauri und Ontologien</li>
+            </ul>
+        </section>
+
+        <!-- LITERATUR -->
+        <section class="about-section">
+            <h2>Literaturverweise</h2>
+            <ul class="reference-list">
+                <li>Dyson, M. C. (2004). How physical text layout affects reading from screen. <em>Behaviour & Information Technology</em>, 23(6), 377-393.</li>
+                <li>Healey, C. G., & Enns, J. T. (2012). Attention and visual memory in visualization and computer graphics. <em>IEEE Transactions on Visualization and Computer Graphics</em>, 18(7), 1170-1188.</li>
+                <li>McGuffin, M. J., & Jurisica, I. (2009). Interaction techniques for selecting and manipulating subgraphs in network visualizations. <em>IEEE Transactions on Visualization and Computer Graphics</em>, 15(6), 937-944.</li>
+                <li>Sellen, A. J., & Harper, R. H. (2003). <em>The Myth of the Paperless Office</em>. MIT Press.</li>
+                <li>Tufte, E. R. (2001). <em>The Visual Display of Quantitative Information</em> (2nd ed.). Graphics Press.</li>
+                <li>Few, S. (2012). <em>Show Me the Numbers: Designing Tables and Graphs to Enlighten</em> (2nd ed.). Analytics Press.</li>
+            </ul>
+        </section>
+
+        <!-- AUTOR -->
+        <section class="about-section">
+            <h2>Autor</h2>
+            <div class="author-section">
+                <p><strong>Dr. Christopher Pollin</strong></p>
+                <p>Digital Humanities Craft</p>
+                <p><a href="https://chpollin.github.io/">chpollin.github.io</a></p>
+                <p style="margin-top: var(--space-md); font-size: 0.9rem; color: var(--color-ink-muted);">
+                    GRIP entstand als Context Engineering Experiment für Frontier-LLMs.
+                </p>
+            </div>
+        </section>
+
+        <div class="about-cta">
+            <a href="index.html#matrix" class="btn btn-primary">Zur Entscheidungsmatrix</a>
+            <a href="https://github.com/DigitalHumanitiesCraft/grip-framework" class="btn btn-secondary">GitHub Repository</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p class="footer-brand">GRIP Framework</p>
+            <p class="footer-tagline">Context Engineering für Forschungsinterfaces</p>
+            <div class="footer-links">
+                <a href="https://github.com/DigitalHumanitiesCraft/grip-framework">GitHub</a>
+                <a href="https://github.com/DigitalHumanitiesCraft/grip-framework/blob/main/knowledge/04-SYSTEM-PROMPT.md">System-Prompt</a>
+                <a href="https://github.com/DigitalHumanitiesCraft/grip-framework/blob/main/README.md">Dokumentation</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
