@@ -210,3 +210,21 @@ Neue Inhalte:
 6. Überarbeitetes Protokoll unterscheidet jetzt zwischen Datei-Upload und Projektbeschreibung.
 
 Der Prompt ist von 81 auf 157 Zeilen gewachsen. Die Struktur folgt der Nummerierung 1-8 für bessere Navigierbarkeit.
+
+---
+
+## 2025-12-04: Design Rationale
+
+Das Dokument 08-DESIGN-RATIONALE.md wurde erstellt. Es liefert wissenschaftliche Begründungen für Interface-Entscheidungen basierend auf HCI-Forschung.
+
+Vier Abschnitte dokumentieren kognitive Anforderungen pro Archetyp:
+
+1. Reader: Sakkaden-Forschung. Zeilenlänge 60-75 Zeichen, Zeilenhöhe 1.6em, keine Unterstreichungen im Fließtext.
+
+2. Scope: Prä-attentive Wahrnehmung. Small Multiples statt interaktiver Einzel-Charts, semantische Farbkodierung, Filter-Sidebar.
+
+3. Navigator: Hairball-Problem. Filterpflicht ab 50 Knoten, Progressive Disclosure für Labels, mehrere Layout-Modi.
+
+4. Workbench: Mode Awareness. Visuell abgegrenzte Editier-Modi, sofortiges Validierungs-Feedback, Undo/Redo.
+
+Zusätzlich: Design Constraints für LLM-Codegenerierung als harte Regeln formuliert.

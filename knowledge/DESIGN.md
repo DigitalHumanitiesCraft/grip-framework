@@ -2,7 +2,7 @@
 
 Dieses Dokument definiert die visuelle Sprache für GRIP-Interfaces und die Framework-Website. Es dient als Referenz für konsistentes Design und kann von einem LLM bei der UI-Generierung herangezogen werden.
 
-Abhängigkeiten: [[00-PROJEKTAUFTRAG]], [[05-ARCHETYPEN]]
+Abhängigkeiten: [[00-PROJEKTAUFTRAG]], [[05-ARCHETYPEN]], [[08-DESIGN-RATIONALE]]
 
 ---
 
@@ -183,7 +183,56 @@ Workbench: Funktionale Ästhetik. Monospace für Datenwerte. Klare Abgrenzung ed
 
 ---
 
+## Design Tokens
+
+Die folgenden CSS-Variablen erzwingen Konsistenz und ermöglichen LLMs, das Design-System maschinenlesbar zu nutzen.
+
+### Farben
+
+```css
+/* Basis */
+--color-paper: #FDFBF7;
+--color-paper-dark: #F5F1EB;
+--color-ink: #1A1A1A;
+--color-ink-light: #6B6B6B;
+--color-ink-muted: #9A9A9A;
+
+/* Akzent */
+--color-terracotta: #C4705A;
+--color-terracotta-light: #D4826A;
+--color-slate: #1E1E1E;
+
+/* Archetypen */
+--color-archetype-reader: #4A7C59;
+--color-archetype-scope: #B85450;
+--color-archetype-navigator: #7B68A6;
+--color-archetype-workbench: #C4875A;
+```
+
+### Typografie
+
+```css
+/* Semantische Fonts */
+--font-serif: 'Lora', Georgia, serif;          /* Emotional: Inhalte, Headlines */
+--font-sans: 'Inter', system-ui, sans-serif;   /* Funktional: UI, Navigation */
+--font-mono: 'JetBrains Mono', monospace;      /* Technisch: Daten, Code */
+```
+
+### Spacing
+
+```css
+--space-xs: 0.25rem;
+--space-sm: 0.5rem;
+--space-md: 1rem;
+--space-lg: 1.5rem;
+--space-xl: 2rem;
+--space-2xl: 3rem;
+```
+
+---
+
 ## Verknüpfungen
 
 - [[05-ARCHETYPEN]] definiert die kognitiven Aufgaben, die das Design unterstützen muss
 - [[00-PROJEKTAUFTRAG]] beschreibt den akademischen Kontext des Frameworks
+- [[08-DESIGN-RATIONALE]] liefert die wissenschaftlichen Begründungen

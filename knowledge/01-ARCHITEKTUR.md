@@ -38,6 +38,8 @@ Der Projektauftrag definiert Vision und Grundannahmen. Die Archetypen-Spezifikat
 
 DESIGN.md spezifiziert die visuelle Identität (Organic Academic) für UI-Generierung.
 
+08-DESIGN-RATIONALE.md liefert die kognitiven Begründungen für Interface-Entscheidungen (HCI-Forschung).
+
 ### Meta-Dokumente
 
 CLAUDE.md und CLAUDE-METHODE.md definieren Stilrichtlinien für die Wissensbasis.
@@ -90,4 +92,5 @@ Die Versionierung erfolgt über das JOURNAL.md, das jeden Meilenstein dokumentie
 - [[07-PROTOTYP]] definiert den Website-Prototypen
 - [[09-WORKFLOWS]] beschreibt Pfade durch die Archetypen
 - [[DESIGN]] spezifiziert die visuelle Identität
+- [[08-DESIGN-RATIONALE]] liefert kognitive Begründungen
 - [[CLAUDE.md]] definiert die Formatierungsregeln
