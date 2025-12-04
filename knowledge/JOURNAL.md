@@ -188,3 +188,25 @@ Fünf strategische Änderungen wurden vorgenommen:
 4. Technische Schulden priorisiert: JS-Modularisierung als Voraussetzung für Phase 5 eingestuft.
 
 5. Prioritäten revidiert: System Prompt auf Platz 1. Alle anderen Phasen hängen davon ab, dass die Entscheidungslogik robust ist.
+
+---
+
+## 2025-12-04: System Prompt v2.0
+
+Der System Prompt wurde von v1.0 auf v2.0 erweitert.
+
+Neue Inhalte:
+
+1. Vollständige 4×4 Entscheidungsmatrix mit allen 16 Feldern. DIALOG-Felder ersetzen "ambig" für bessere Lesbarkeit.
+
+2. Strukturierte Topologie-Erkennung mit Leitfragen. Sequenziell, Multidimensional, Vernetzt, Hierarchisch.
+
+3. Strukturierte Intentions-Erkennung mit Schlüsselwörtern. Verstehen, Vergleich, Rekonstruktion, Kuratierung.
+
+4. Detailliertes Dialog-Protokoll mit exakten Rückfragen für alle vier ambigen Matrix-Felder.
+
+5. Workflow-Erkennung für Gesamtprojekte. Fünf Referenz-Workflows mit Phasensequenz und Kurzbeschreibung.
+
+6. Überarbeitetes Protokoll unterscheidet jetzt zwischen Datei-Upload und Projektbeschreibung.
+
+Der Prompt ist von 81 auf 157 Zeilen gewachsen. Die Struktur folgt der Nummerierung 1-8 für bessere Navigierbarkeit.
