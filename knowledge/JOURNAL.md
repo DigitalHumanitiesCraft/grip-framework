@@ -228,3 +228,27 @@ Vier Abschnitte dokumentieren kognitive Anforderungen pro Archetyp:
 4. Workbench: Mode Awareness. Visuell abgegrenzte Editier-Modi, sofortiges Validierungs-Feedback, Undo/Redo.
 
 Zusätzlich: Design Constraints für LLM-Codegenerierung als harte Regeln formuliert.
+
+---
+
+## 2025-12-04: Spezialisierungen
+
+Das Dokument 10-SPEZIALISIERUNGEN.md wurde erstellt. Es definiert 12 operationalisierte Archetyp-Varianten (drei pro Archetyp).
+
+### Reader-Spezialisierungen
+
+Edition für kritische Textausgaben mit Variantenapparat, Siglenliste und Lemma-Markierungen. Protokoll für Sitzungsmitschriften mit Sprecherwechsel-Markierungen, Beschluss-Highlighting und Tagesordnungsnavigation. Transcript für Interviewtranskripte mit Turn-Taking-Visualisierung, Code-Margin und Timestamp-Syncing.
+
+### Scope-Spezialisierungen
+
+Survey für Umfragedaten mit Likert-Visualisierung, demografischen Filtern und Korrelationsmatrix. Monitor für Echtzeitdaten mit Ampel-Indikatoren, Anomalie-Highlighting und Threshold-Linien. Matrix für Kreuztabellen mit Heatmap-Färbung, Residuen-Anzeige und Chi-Quadrat-Indikator.
+
+### Navigator-Spezialisierungen
+
+Citation für bibliometrische Netzwerke mit Publikationsjahr-Achse, Impact-Indikator und Co-Citation-Hervorhebung. Genealogy für Verwandtschaftsbeziehungen mit Generationen-Layout, Geschlechts-Symbolen und Ahnentafel-Ansichten. Concept für Ontologien mit hierarchischer Baumansicht, Kantentyp-Legende und Pfad-Hervorhebung.
+
+### Workbench-Spezialisierungen
+
+Registry für Sammlungsinventare mit Inventarnummer-Suche, Standort-Hierarchie und Duplikat-Warnung. Codebook für Variablendefinitionen mit Variable-Liste, Werte-Tabelle und Validierungsregeln-Editor. Schema für JSON-Schema-Editierung mit Schema-Tree, Live-Validierung und Fehler-Highlighting.
+
+Jede Spezialisierung ist vollständig operationalisiert mit unterscheidenden UI-Elementen, spezifischen JSON-Datenfeldern und Erkennungsheuristiken für den System Prompt.

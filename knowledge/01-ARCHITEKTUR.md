@@ -36,6 +36,8 @@ Der Projektauftrag definiert Vision und Grundannahmen. Die Archetypen-Spezifikat
 
 09-WORKFLOWS.md beschreibt typische Pfade durch die Archetypen für verschiedene Forschungstypen.
 
+10-SPEZIALISIERUNGEN.md definiert drei operationalisierte Varianten pro Archetyp mit unterscheidenden UI-Elementen, spezifischen Datenfeldern und Erkennungsheuristiken.
+
 DESIGN.md spezifiziert die visuelle Identität (Organic Academic) für UI-Generierung.
 
 08-DESIGN-RATIONALE.md liefert die kognitiven Begründungen für Interface-Entscheidungen (HCI-Forschung).
@@ -91,6 +93,7 @@ Die Versionierung erfolgt über das JOURNAL.md, das jeden Meilenstein dokumentie
 - [[02-MAPPINGS]] enthält die Zuordnungslogik
 - [[07-PROTOTYP]] definiert den Website-Prototypen
 - [[09-WORKFLOWS]] beschreibt Pfade durch die Archetypen
+- [[10-SPEZIALISIERUNGEN]] definiert operationalisierte Archetyp-Varianten
 - [[DESIGN]] spezifiziert die visuelle Identität
 - [[08-DESIGN-RATIONALE]] liefert kognitive Begründungen
 - [[CLAUDE.md]] definiert die Formatierungsregeln
