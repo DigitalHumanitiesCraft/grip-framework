@@ -1,8 +1,8 @@
 # Beispiel: Publikationsdatenbank
 
-Dieses Dokument demonstriert die Anwendung des Interface-Repos an einem konkreten Fall. Es zeigt den vollständigen Workflow von der Dateneingabe bis zur UI-Spezifikation.
+Dieses Dokument demonstriert die Anwendung des GRIP-Frameworks an einem konkreten Fall. Es zeigt den vollständigen Workflow von der Datenanalyse bis zur UI-Spezifikation.
 
-Abhängigkeiten: [[00-PROJEKTAUFTRAG]], [[01-ARCHITEKTUR]], [[02-MAPPINGS]]
+Abhängigkeiten: [[00-PROJEKTAUFTRAG]], [[02-MAPPINGS]], [[05-ARCHETYPEN]]
 
 ---
 
@@ -14,57 +14,66 @@ Die Forschungsfrage lautet: Welche Forschungscluster gibt es und wie entwickeln 
 
 ---
 
-## Phase 1: Analyse
+## Phase 1: Topologie-Analyse
 
-Der Schema-Detector inferiert aus den Daten folgende Struktur: Eine Liste von Objekten mit String-Feldern für Titel und Abstract, einem Array für Autoren, einem numerischen Feld für das Jahr und einem Array von Referenzen auf andere Objekte.
+Die Daten werden auf ihre Topologie untersucht.
 
-Der Type-Classifier ordnet diese Struktur mehreren Kategorien zu. Die Grundstruktur ist tabellarisch, da jede Publikation einen Datensatz bildet. Die Zitationen machen die Daten zusätzlich relational. Das Jahresfeld markiert sie als temporal. Die Textfelder qualifizieren sie als dokumentbasiert.
+Die Grundstruktur ist multidimensional, da jede Publikation einen Datensatz mit mehreren Attributen bildet. Die Zitationen machen die Daten zusätzlich vernetzt, da Publikationen aufeinander verweisen. Das Jahresfeld macht sie sequenziell in der Zeitdimension.
 
-Der Complexity-Scorer bewertet die Daten als komplex aufgrund der Mehrfachklassifikation und der Datenmenge.
-
----
-
-## Phase 2: Pattern-Matching
-
-Die Forschungsfrage wird analysiert. Sie enthält drei Komponenten: Die Frage nach Clustern ist explorativ und relational. Die Frage nach der zeitlichen Entwicklung ist temporal.
-
-Aus der Kombination von Datentypen und Fragetypen ergibt sich: Die relationalen Daten mit relationaler Frage führen zum Graph-Pattern. Die temporalen Daten mit temporaler Frage führen zum Timeline-Pattern. Die Komplexität rechtfertigt eine Kombination beider Patterns.
-
-Das Composite-Pattern wird angewendet: Graph und Timeline in einem Split-View mit verknüpfter Interaktion.
+Die Daten sind hybrid: Sie kombinieren vernetzte und sequenzielle Aspekte.
 
 ---
 
-## Phase 3: Component Assembly
+## Phase 2: Intentions-Analyse
 
-Für das kombinierte Pattern werden folgende Komponenten benötigt:
+Die Forschungsfrage wird analysiert.
 
-Eine Search-Komponente ermöglicht Volltextsuche über Titel und Abstract. Eine Filter-Komponente bietet Facetten für Jahr, Autoren und Cluster-Zugehörigkeit. Eine Graph-Canvas-Komponente visualisiert das Zitationsnetzwerk mit Cluster-Coloring. Eine Timeline-Komponente zeigt die zeitliche Verteilung der Publikationen. Eine Card-Komponente stellt einzelne Publikationen in Ergebnislisten dar. Ein Detail-Panel zeigt den vollständigen Abstract und Metadaten einer ausgewählten Publikation.
+Die Frage nach Clustern zielt auf Rekonstruktion von Zusammenhängen. Der Forschende will verstehen, welche Publikationen thematisch zusammengehören und wie sie verbunden sind.
 
-Das Layout ist ein Workspace mit Split-View: Links der Graph, rechts Timeline und Ergebnisliste.
+Die Frage nach der zeitlichen Entwicklung zielt auf Vergleich. Der Forschende will Muster über die Zeit erkennen.
 
----
-
-## Phase 4: Interaktionsdesign
-
-Die Interaktionen verknüpfen die Ansichten. Ein Klick auf einen Knoten im Graph filtert die Timeline und Ergebnisliste auf die entsprechende Publikation und ihre Nachbarn. Ein Klick auf einen Zeitabschnitt in der Timeline hebt die entsprechenden Knoten im Graph hervor. Die Suche filtert beide Ansichten simultan.
-
-Navigation erfolgt per Tastatur durch die Ergebnisliste. Zoom und Pan steuern die Graph-Ansicht. Der Timeline-Slider definiert den sichtbaren Zeitraum.
+Die Intention ist hybrid: Rekonstruktion (primär) und Vergleich (sekundär).
 
 ---
 
-## Resultat
+## Phase 3: Archetyp-Auswahl
 
-Die generierte UI-Spezifikation beschreibt einen Workspace mit folgender Struktur:
+Die Mapping-Logik wird angewendet.
 
-Die linke Seite zeigt einen Citation-Graph. Knoten repräsentieren Publikationen, Kanten Zitationen. Cluster werden durch Farben unterschieden. Die rechte Seite enthält oben einen Timeline-Slider und darunter eine scrollbare Liste von Publication-Cards.
+Vernetzte Daten mit Rekonstruktions-Intention führen zum Navigator. Die Zitationsbeziehungen sollen als Graph sichtbar werden.
 
-Die Toolbar oben bietet Search, Filter-Dropdowns für Jahr und Autor sowie einen Cluster-Filter. Das Detail-Panel erscheint als Overlay bei Selektion einer Publikation.
+Sequenzielle Daten mit Vergleichs-Intention führen zum Scope. Die zeitliche Entwicklung soll als Timeline sichtbar werden.
 
-Diese Spezifikation kann als Grundlage für eine Implementierung in React, Vue oder einem anderen Framework dienen.
+Da beide Aspekte für die Forschungsfrage relevant sind, wird eine Kombination gewählt: Navigator als primärer Archetyp, Scope als sekundäre Ansicht. Die Kombination erfolgt in einem Split-View mit verknüpfter Interaktion.
+
+---
+
+## Phase 4: UI-Spezifikation
+
+Die Spezifikation beschreibt einen Workspace mit folgender Struktur:
+
+Die linke Seite zeigt den Navigator. Ein Node-Link-Diagramm visualisiert das Zitationsnetzwerk. Knoten repräsentieren Publikationen, Kanten Zitationen. Cluster werden durch Farben unterschieden. Zoom und Pan ermöglichen Navigation. Ein Knoten-Inspektor zeigt Details bei Selektion.
+
+Die rechte Seite zeigt den Scope. Ein Timeline-Slider ermöglicht die Filterung nach Zeitraum. Ein Line-Chart zeigt die Publikationshäufigkeit über die Zeit. Darunter eine scrollbare Liste von Publikations-Cards.
+
+Die Toolbar oben enthält eine Volltextsuche über Titel und Abstract, Filter-Dropdowns für Jahr und Autor sowie einen Cluster-Filter.
+
+Die Interaktionen verknüpfen die Ansichten. Ein Klick auf einen Knoten im Navigator filtert Timeline und Liste auf die entsprechende Publikation und ihre Nachbarn. Eine Zeitraum-Selektion im Scope hebt die entsprechenden Knoten im Navigator hervor.
+
+---
+
+## Begründung der Entscheidungen
+
+Die Wahl des Navigators als primärer Archetyp folgt aus der Forschungsfrage. Cluster sind ein strukturelles Phänomen, das nur in einer Graph-Ansicht erkennbar wird. Eine Tabelle oder Liste würde die Beziehungsinformation verbergen.
+
+Die Ergänzung durch den Scope folgt aus dem zeitlichen Aspekt der Frage. Die Entwicklung von Clustern über die Zeit erfordert eine Visualisierung, die Veränderungen sichtbar macht.
+
+Die Kombination in einem Split-View statt einer einzigen überladenen Ansicht folgt dem Prinzip der progressiven Disclosure. Der Nutzer kann sich auf einen Aspekt konzentrieren und bei Bedarf den anderen hinzuziehen.
 
 ---
 
 ## Verknüpfungen
 
 - [[02-MAPPINGS]] erklärt die angewendeten Zuordnungsregeln
-- [[01-ARCHITEKTUR]] beschreibt die Module, die diesen Workflow ausführen
+- [[05-ARCHETYPEN]] beschreibt Navigator und Scope im Detail
+- [[06-DIALOG]] zeigt, welche Rückfragen bei diesem Fall gestellt werden könnten

@@ -1,61 +1,70 @@
-# Projektauftrag: Interface-Repo
+# GRIP: Generative Research Interface Protocol
 
-Dieses Dokument beschreibt Ziel, Scope und Deliverables des Interface-Repo-Projekts.
-
----
-
-## Kernformel
-
-Die zentrale Idee lässt sich als Transformation formulieren:
-
-Forschungsdaten + Forschungsfrage + Interface-Repo = Domänenspezifisches Tool
-
-Das Interface-Repo fungiert als Wissensspeicher, der die Regeln für diese Transformation kodifiziert.
+Dieses Dokument definiert Ziel, Scope und Grundannahmen des GRIP-Frameworks.
 
 ---
 
-## Problemstellung
+## Definition
 
-Forschungsprojekte benötigen häufig maßgeschneiderte Interfaces zur Datenexploration. Dieses Wissen wird aktuell implizit angewendet oder jedes Mal neu erarbeitet. Es fehlt ein kodifiziertes System, das Datenstrukturen erkennt, Forschungsfragen interpretiert, daraus optimale UI-Patterns ableitet und über Domänen hinweg wiederverwendbar ist.
+GRIP ist ein methodisches Framework für die LLM-gestützte Entwicklung von Forschungsinterfaces. Es funktioniert als Context Engineering Artefakt, das einem Frontier-Modell das nötige Domänenwissen bereitstellt, um gemeinsam mit Forschenden maßgeschneiderte Dateninterfaces zu konzipieren. Das Repository speichert akkumuliertes Methodenwissen darüber, welche Interface-Archetypen für welche Datenstrukturen und Forschungsintentionen geeignet sind.
 
 ---
 
-## Lösungsansatz
+## Grundannahme
 
-Ein selbstbeschreibendes Repository kodifiziert Methodenwissen in strukturierten Markdown-Dateien. Ein LLM kann dieses Repo lesen und daraus kontextspezifische UI-Spezifikationen generieren. Die Instructions im Repo sind zugleich die Dokumentation.
+Die Wahl eines Forschungstools ist keine Geschmacksfrage, sondern folgt aus zwei Faktoren. Erstens der Daten-Topologie, also wie die Daten strukturiert vorliegen (sequenziell, multidimensional, vernetzt, hierarchisch). Zweitens der epistemischen Intention, also was der Forschende wissen will (Verstehen, Vergleichen, Rekonstruieren, Kuratieren). GRIP kodifiziert das Wissen über diese Zusammenhänge und macht es für LLM-gestützte Entwicklung nutzbar.
 
-Das Repository ist maschinenlesbar durch strukturierte Heuristiken, erweiterbar durch modularen Aufbau und domänenagnostisch durch Abstraktion von konkreten Datentypen.
+---
+
+## Die vier Archetypen
+
+Das Framework definiert vier Interface-Grundformen, die als Denkwerkzeuge dienen:
+
+The Reader für sequenzielle Daten und vertieftes Verstehen. Ein Interface für lineare Daten, bei denen Kontext und narrative Abfolge im Vordergrund stehen.
+
+The Scope für multidimensionale Daten und Vergleich. Ein analytisches Dashboard für Mustererkennung, Trends und Korrelationen.
+
+The Navigator für vernetzte Daten und Rekonstruktion. Eine topologische Ansicht für Daten, deren Wert in den Beziehungen der Elemente liegt.
+
+The Workbench für hierarchische Daten und Kuratierung. Eine Arbeitsumgebung für Manipulation, Bereinigung und Strukturierung.
+
+Die Zuordnung von Topologie und Intention zum Archetyp erfolgt durch dokumentierte Wenn-Dann-Heuristiken.
 
 ---
 
 ## Scope
 
-Das Projekt umfasst strukturierte Daten wie JSON, CSV und XML, relationale Daten in Form von Graphen und Netzwerken, Dokumentenkorpora aus PDFs und Texten, temporale Daten als Zeitreihen, geospatiale Daten mit Koordinaten sowie binäre und unstrukturierte Daten, die via AI-Vorverarbeitung strukturiert werden.
+Das Framework behandelt strukturierte Daten wie JSON, CSV und XML, relationale Daten in Form von Graphen und Netzwerken, Dokumentenkorpora aus PDFs und Texten, temporale Daten als Zeitreihen sowie geospatiale Daten mit Koordinaten.
 
-Nicht im initialen Scope sind Echtzeit-Streaming, kollaborative Multi-User-Features und die konkrete Code-Implementierung. Das Projekt liefert Spezifikationen, keine Software.
-
----
-
-## Deliverables
-
-Das Projekt liefert fünf Artefakte:
-
-Das Analyzer-Modul enthält Regeln zur Datenstruktur-Erkennung und Klassifikation. Der Pattern-Katalog dokumentiert UI-Patterns mit ihren Anwendungsbedingungen. Die Komponenten-Bibliothek beschreibt abstrakte UI-Bausteine und ihre Varianten. Die Layout-Templates definieren modulare Raster-Systeme für unterschiedliche Anwendungsfälle. Die Interaktions-Grammatik standardisiert Interaktionsmuster für Navigation, Selektion und Annotation.
+Nicht im initialen Scope sind Echtzeit-Streaming, kollaborative Multi-User-Features und die konkrete Code-Implementierung. GRIP liefert Archetyp-Empfehlungen und UI-Spezifikationen, keine lauffähige Software.
 
 ---
 
-## Workflow
+## Der kollaborative Workflow
 
-Der Nutzungsworkflow gliedert sich in vier Phasen. Zunächst analysiert das System die Eingangsdaten und erkennt deren Schema und Typ. Dann wird basierend auf Datentyp und Forschungsfrage ein passendes UI-Pattern ausgewählt. Anschließend werden die benötigten Komponenten und ein geeignetes Layout zusammengestellt. Zuletzt generiert das System eine UI-Spezifikation oder optional ausführbaren Code.
+Phase 1 ist die Kontextualisierung. Das LLM erhält Zugriff auf das GRIP-Repository und internalisiert die darin enthaltenen Archetypen, Mappings und Designentscheidungen.
+
+Phase 2 ist die Datenanalyse. Der Forschende speist die Daten ein. Das LLM analysiert das Schema und identifiziert die Topologie. Bei Ambiguitäten stellt es Rückfragen.
+
+Phase 3 ist der Dialog. Das LLM stellt präzise Fragen zur epistemischen Intention und schlägt einen Archetyp vor. Der Forschende kann Einwände formulieren und Prioritäten setzen.
+
+Phase 4 ist die Spezifikation. Nach Zustimmung generiert das LLM eine UI-Spezifikation mit Komponenten, Layout und Interaktionsmustern.
+
+Phase 5 ist der Wissensrückfluss. Neue Erkenntnisse und gelungene Lösungen fließen zurück ins Repository.
 
 ---
 
-## Erfolgskriterien
+## Was GRIP ist und was nicht
 
-Das System gilt als erfolgreich, wenn alle gängigen Forschungsdatentypen abgedeckt sind, gleiche Inputs zu gleichen Outputs führen, jede Designentscheidung durch Repo-Regeln begründbar ist, neue Patterns mit geringem Aufwand hinzugefügt werden können und ein LLM das Repo vollständig interpretieren kann.
+GRIP ist eine strukturierte Ausgangsbasis für LLM-gestützte Interface-Konzeption. Es liefert dem Modell die epistemische Grundlage für informierte Vorschläge. Es kodifiziert Erfahrungswissen. Es ermöglicht schnellere Iterationen.
+
+GRIP ist kein vollautomatischer Generator. Die Zuordnung von Daten zu Interfaces bleibt ein interpretativer Akt, der menschliche Urteilskraft erfordert. Das Framework unterstützt diesen Prozess, es ersetzt ihn nicht.
 
 ---
 
 ## Verknüpfungen
 
-- [[01-ARCHITEKTUR]] beschreibt die technische Struktur des Repos
+- [[05-ARCHETYPEN]] spezifiziert die vier Interface-Grundformen im Detail
+- [[02-MAPPINGS]] beschreibt die Zuordnungslogik
+- [[06-DIALOG]] dokumentiert das Rückfrage-Protokoll
+- [[04-SYSTEM-PROMPT]] enthält den kondensierten Prompt für LLM-Nutzung
