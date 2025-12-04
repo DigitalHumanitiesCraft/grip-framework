@@ -38,6 +38,8 @@ Der Projektauftrag definiert Vision und Grundannahmen. Die Archetypen-Spezifikat
 
 10-SPEZIALISIERUNGEN.md definiert drei operationalisierte Varianten pro Archetyp mit unterscheidenden UI-Elementen, spezifischen Datenfeldern und Erkennungsheuristiken.
 
+15-MODI.md definiert die dritte Taxonomie-Ebene: vier Modi pro Spezialisierung, die verschiedene Perspektiven auf denselben Datensatz ermöglichen.
+
 12-STANDARDS.md dokumentiert die wissenschaftlichen Metadatenstandards (TEI, DDI, LIDO, SKOS) und ihre Zuordnung zu Spezialisierungen.
 
 13-RESEARCH-PLAN.md enthält den Recherche-Plan für alle 12 Spezialisierungen mit Primärquellen, Aufgaben und Priorisierung.
@@ -102,5 +104,6 @@ Die Versionierung erfolgt über das JOURNAL.md, das jeden Meilenstein dokumentie
 - [[12-STANDARDS]] dokumentiert wissenschaftliche Metadatenstandards
 - [[13-RESEARCH-PLAN]] enthält Recherche-Plan für Spezialisierungen
 - [[14-EPICS]] spezifiziert Epics und User Stories für Kern-Spezialisierungen
+- [[15-MODI]] definiert Modi als dritte Taxonomie-Ebene
 - [[DESIGN]] spezifiziert visuelle Identität und kognitive Begründungen
 - [[CLAUDE]] definiert Stilregeln und Knowledge-Engineering-Methode

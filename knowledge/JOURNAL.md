@@ -684,3 +684,50 @@ Die JSON-Daten sind synthetisch. Für wissenschaftliche Validierung brauchen wir
 - Ein echter TEI-Text (Edition)
 - Echte Umfragedaten (Survey)
 - Ein reales Zitationsnetzwerk (Citation)
+
+---
+
+## 2025-12-04: Modi-Taxonomie
+
+Die dritte Ebene der Interface-Taxonomie wurde definiert.
+
+### Terminologie
+
+Die Hierarchie lautet nun: Archetyp → Spezialisierung → Modus
+
+Ein Modus ist eine Perspektive auf denselben Datensatz innerhalb einer Spezialisierung. Der Modus ändert die Darstellung, nicht die Daten. Nutzende wechseln zwischen Modi über Tabs, Toggles oder Tastenkürzel.
+
+### 48 Modi dokumentiert
+
+Für jede der 12 Spezialisierungen wurden vier Modi definiert:
+
+**Reader:**
+- Edition: Synopse, Apparat, Genetik, Faksimile
+- Protokoll: Chronologie, Sprecher, Abstimmung, Agenda
+- Transcript: Partitur, Fließtext, Codierung, Audio-Sync
+
+**Scope:**
+- Survey: Fragebogen, Verteilung, Skalen, Codebook
+- Monitor: Dashboard, Timeline, Anomalie, Korrelation
+- Matrix: Tabelle, Heatmap, Residuen, Pivot
+
+**Navigator:**
+- Citation: Netzwerk, Timeline, Bibliometrie, Ego-Netzwerk
+- Genealogy: Stammbaum, Ahnentafel, Familienblatt, Zeitstrahl
+- Concept: Hierarchie, Graph, Definition, Mapping
+
+**Workbench:**
+- Registry: Liste, Karteikarte, Standort, Zustand
+- Codebook: Variablenliste, Variablendetail, Validierung, Export
+- Schema: Struktur, Editor, Validator, Diff
+
+### Dokumentation
+
+Jeder Modus ist in 15-MODI.md mit vier Spalten dokumentiert:
+- Relevanz: Warum dieser Modus für die Domäne wichtig ist
+- Benötigte Daten: Welche JSON-Felder der Modus voraussetzt
+- Innovation: Was das Interface gegenüber existierenden Tools bietet
+
+### UI-Pattern
+
+Der Moduswechsel erfolgt über Tab-Leiste, Tastenkürzel (Cmd/Ctrl + 1-4) oder Kontextmenü. State-Erhaltung beim Wechsel (Selektion, Scroll, Filter). Deep-Link-URLs codieren Spezialisierung und Modus.
