@@ -24,7 +24,8 @@
     /* Matrix Colors */
     --color-primary: #4A7C59;
     --color-secondary: #5B7B8C;
-    --color-ambig: #9E7A3C;
+    --color-ambig: var(--color-terracotta);
+    --color-ambig-bg: rgba(196, 112, 90, 0.12);
 
     /* Typography */
     --font-serif: 'Lora', Georgia, serif;
@@ -126,6 +127,7 @@ section > p {
     border: 1px solid var(--color-paper-dark);
 }
 
+/* Verbesserung 1: Vertikale Führungslinien durch Border-Styling */
 .decision-matrix thead th {
     background: var(--color-paper-dark);
     font-family: var(--font-sans);
@@ -134,6 +136,20 @@ section > p {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+/* Subtile vertikale Linien von Überschrift bis Boden */
+.decision-matrix thead th:not(.corner)::after {
+    content: '';
+    position: absolute;
+    bottom: -100%;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.08), transparent);
+    pointer-events: none;
 }
 
 .decision-matrix tbody th {
@@ -141,8 +157,10 @@ section > p {
     font-family: var(--font-sans);
     font-weight: 600;
     text-align: right;
-    color: var(--color-ink-light);
+    color: var(--color-ink);
     font-size: 0.85rem;
+    font-variant: small-caps;
+    letter-spacing: 0.03em;
 }
 
 .decision-matrix .corner {
@@ -150,17 +168,38 @@ section > p {
     border-color: var(--color-paper);
 }
 
+/* Verbesserung 3: Affordance & Micro-Interactions */
 .decision-matrix .cell {
     cursor: pointer;
     transition: all 0.2s ease;
     font-family: var(--font-mono);
     font-weight: 500;
     font-size: 0.9rem;
+    position: relative;
 }
 
 .decision-matrix .cell:hover {
-    transform: scale(1.02);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    background-color: rgba(0, 0, 0, 0.03);
+    z-index: 1;
+}
+
+/* Hover-Pfeil als Interaktions-Cue */
+.decision-matrix .cell::after {
+    content: '\2192';
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    font-size: 0.75rem;
+    color: var(--color-ink-muted);
+}
+
+.decision-matrix .cell:hover::after {
+    opacity: 0.6;
 }
 
 .decision-matrix .cell.primary {
@@ -175,10 +214,16 @@ section > p {
     color: var(--color-ink-light);
 }
 
+/* Verbesserung 2: Ambiguität als Dialog-Startpunkt (Terracotta statt Warn-Gelb) */
 .decision-matrix .cell.ambig {
-    background: rgba(158, 122, 60, 0.12);
+    background: var(--color-ambig-bg);
     color: var(--color-ambig);
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.decision-matrix .cell.ambig:hover {
+    background: rgba(196, 112, 90, 0.2);
 }
 
 .decision-matrix .cell.active {
@@ -220,17 +265,18 @@ section > p {
 }
 
 .legend-color.ambig {
-    background: rgba(158, 122, 60, 0.2);
-    border: 1px solid var(--color-ambig);
+    background: var(--color-ambig-bg);
+    border: 1px solid var(--color-terracotta);
 }
 
 /* Matrix Result */
+/* Verbesserung 4: Organic Touch - Wobbly Borders */
 
 .matrix-result {
     margin-top: var(--space-lg);
     padding: var(--space-lg);
     background: var(--color-paper-dark);
-    border-radius: 4px;
+    border-radius: 12px 4px 14px 6px / 4px 12px 6px 14px;
     animation: fadeIn 0.3s ease;
 }
 
@@ -275,9 +321,9 @@ section > p {
 .archetype {
     background: var(--color-paper);
     border: 1px solid var(--color-paper-dark);
-    border-radius: 4px;
+    border-radius: 14px 6px 12px 8px / 6px 14px 8px 12px;
     padding: var(--space-lg);
-    transition: box-shadow 0.2s ease;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .archetype:hover {

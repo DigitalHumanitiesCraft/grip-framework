@@ -32,6 +32,10 @@ Der Projektauftrag definiert Vision und Grundannahmen. Die Archetypen-Spezifikat
 
 03-BEISPIEL.md und weitere Beispieldokumente zeigen die Anwendung der Mappings an konkreten Fällen.
 
+07-PROTOTYP.md definiert den Auftrag für den selbstreferenziellen Website-Prototypen.
+
+DESIGN.md spezifiziert die visuelle Identität (Organic Academic) für UI-Generierung.
+
 ### Meta-Dokumente
 
 CLAUDE.md und CLAUDE-METHODE.md definieren Stilrichtlinien für die Wissensbasis.
@@ -81,4 +85,6 @@ Die Versionierung erfolgt über das JOURNAL.md, das jeden Meilenstein dokumentie
 - [[00-PROJEKTAUFTRAG]] definiert Vision und Grundannahmen
 - [[05-ARCHETYPEN]] spezifiziert die Interface-Grundformen
 - [[02-MAPPINGS]] enthält die Zuordnungslogik
+- [[07-PROTOTYP]] definiert den Website-Prototypen
+- [[DESIGN]] spezifiziert die visuelle Identität
 - [[CLAUDE.md]] definiert die Formatierungsregeln

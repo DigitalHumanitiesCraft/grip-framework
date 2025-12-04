@@ -109,6 +109,50 @@ Konsistente Terminologie ist für ein LLM-lesbares Repository essentiell. Synony
 
 ---
 
+## 2025-12-04: UI-Verfeinerung der Matrix
+
+### Durchgeführte Arbeiten
+
+Vier Verbesserungen wurden implementiert, um das Interface von funktional zu exzellent zu heben.
+
+Erstens Matrix-Lesbarkeit: Vertikale Führungslinien wurden als subtile Gradienten von den Spaltenüberschriften nach unten ergänzt. Die Zeilenbeschriftungen verwenden nun Small Caps für stärkere horizontale Achsen.
+
+Zweitens semantisches Reframing: Die ambigen Zellen zeigen nun "Dialog" statt "?" und verwenden Terracotta statt Warn-Gelb. Die Legende beschreibt sie als "Dialog (Rückfrage klärt)" statt "Ambig". Die Farbe signalisiert Einladung statt Fehler.
+
+Drittens Affordance: Hover-Effekte mit leichter Elevation und einem Pfeil-Cue machen die Klickbarkeit intuitiv spürbar. Die Zellen reagieren visuell auf Interaktion.
+
+Viertens Organic Touch: Cards und Result-Box verwenden asymmetrische Border-Radii, die einen subtilen handgezeichneten Charakter vermitteln, ohne die Lesbarkeit zu beeinträchtigen.
+
+### Begründung
+
+Die Verbesserungen folgen der Organic Academic Design-Philosophie. Sie machen das Interface wärmer und einladender, ohne die funktionale Klarheit zu opfern. Das semantische Reframing ist inhaltlich wichtig: Ambiguität im GRIP-Kontext ist ein Dialog-Startpunkt, keine Fehlermeldung.
+
+---
+
+## 2025-12-04: Selbstreferenzieller Prototyp-Auftrag
+
+### Durchgeführte Arbeiten
+
+Das Dokument 07-PROTOTYP.md wurde erstellt. Es definiert den Auftrag für einen Prototypen, der das GRIP-Framework auf sich selbst anwendet.
+
+Die Kernidee: Der Prototyp erklärt GRIP, indem er GRIP ist. Die Wissensbasis des Frameworks wird zum Datensatz, der nach den eigenen Prinzipien visualisiert wird.
+
+Die GRIP-Analyse der Wissensbasis ergibt: Die Dokumente sind vernetzt (Wikilinks) und hierarchisch (Ableitungsstruktur). Die Intention des Besuchers ist Verstehen. Nach der Matrix ist Vernetzt×Verstehen ambig. Die Rückfrage (lokal oder global?) wird mit "beides" beantwortet. Daraus folgt: Navigator für Gesamtstruktur, Reader für Details, Scope für die Matrix.
+
+### Spezifikation
+
+Der Prototyp besteht aus drei Komponenten: Ein Wissensgraph (Navigator) zeigt die Dokumentstruktur. Ein Reader öffnet Inhalte bei Klick. Die interaktive Matrix (Scope) demonstriert die Entscheidungslogik.
+
+### Erfolgskriterium
+
+Ein Besucher ohne Vorwissen kann nach fünf Minuten erklären, was die vier Archetypen sind, wie die Matrix funktioniert und warum der Prototyp selbst so aufgebaut ist.
+
+### Begründung
+
+Die Selbstreferenz ist methodisch konsequent. Wenn GRIP für Forschungsinterfaces funktioniert, muss es auf seine eigene Dokumentation anwendbar sein. Der Prototyp ist der Beweis.
+
+---
+
 ## 2025-12-04: Design-System dokumentiert und implementiert
 
 ### Durchgeführte Arbeiten
