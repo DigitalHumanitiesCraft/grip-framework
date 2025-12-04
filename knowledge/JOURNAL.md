@@ -369,3 +369,50 @@ Neuer Abschnitt 6 "SPEZIALISIERUNGEN" mit Erkennungsheuristiken für alle drei V
 Die nachfolgenden Abschnitte wurden renummeriert (7. WORKFLOW-ERKENNUNG, 8. DEIN PROTOKOLL, 9. REGELN).
 
 Version wurde auf 2.1 hochgesetzt.
+
+---
+
+## 2025-12-04: Spezialisierungs-Schemata in Demo-Daten
+
+Die JSON-Dateien der Demo-Seiten wurden aktualisiert, um die Spezialisierungs-Heuristiken aus 10-SPEZIALISIERUNGEN.md zu implementieren. Dies ermöglicht die automatische Erkennung durch den System Prompt.
+
+### Navigator → Citation
+
+Die Datei navigator-citations.json wurde von generischen `nodes`/`edges` auf das Citation-Schema umgestellt:
+
+- `publications` statt `nodes` mit vollständigen bibliografischen Daten (authors, venue, type, citations_received)
+- `citations` statt `edges` mit Kontext (context, section)
+- `clusters` als Array mit id, label, color, description
+- `metrics` mit Netzwerk-Kennzahlen
+
+Erkennbare Felder: `publications`, `citations`, `year` → System Prompt erkennt Citation-Spezialisierung
+
+### Scope → Survey
+
+Die Datei scope-survey.json wurde um das Survey-Schema erweitert:
+
+- `survey_meta` mit n, response_rate, collection_period
+- `scales` mit item-Listen und cronbach_alpha
+- `items` mit type=likert und vollständiger Skalenbeschreibung
+- `demographics` mit Typ-Annotationen (categorical, numeric, ordinal)
+
+Erkennbare Felder: `scales`, `items`, `likert` → System Prompt erkennt Survey-Spezialisierung
+
+### Workbench → Registry
+
+Die Datei workbench-metadata.json wurde um das Registry-Schema erweitert:
+
+- `collection_meta` mit Institution und Objektzahl
+- `schema.required_fields` und `schema.controlled_vocabularies`
+- `locations` als hierarchische Struktur (building, rooms)
+- Erstes Objekt als Referenz mit `inventory_number`, strukturierter `location`, `completeness_score`
+
+Erkennbare Felder: `inventory_number`, `location`, `condition` → System Prompt erkennt Registry-Spezialisierung
+
+### Testbarkeit
+
+Die aktualisierten Daten dienen als Testfälle für den System Prompt v2.1. Wenn ein LLM diese JSONs analysiert, sollte es:
+
+1. Die Topologie korrekt erkennen (vernetzt/multidimensional/hierarchisch)
+2. Die Spezialisierung aus den Feldnamen ableiten
+3. Die passenden UI-Elemente vorschlagen (Zeitachse für Citation, Likert-Bars für Survey, etc.)

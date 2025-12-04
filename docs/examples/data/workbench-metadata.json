@@ -5,34 +5,51 @@
     "generated": "2025-12-04",
     "topology": "hierarchisch",
     "intention": "kuratierung",
+    "specialization": "registry",
     "note": "Dieser Datensatz enthält absichtlich eingebaute Fehler zur Demonstration der Workbench"
   },
-  "schema": {
-    "id": "Inventarnummer (Pflicht)",
-    "title": "Titel des Werks (Pflicht)",
-    "artist": "Künstler (Pflicht)",
-    "date": "Entstehungsdatum (Format: YYYY oder YYYY-MM-DD)",
-    "medium": "Technik/Material",
-    "dimensions": "Maße in cm (H x B x T)",
-    "location": "Standort im Museum",
-    "category": "Kategorie (Malerei, Skulptur, Grafik, Fotografie, Installation)",
-    "acquisition": "Erwerbungsart und -datum",
-    "condition": "Zustandsbewertung (1-5)",
-    "notes": "Anmerkungen"
+  "collection_meta": {
+    "name": "Kunstsammlung Stadtmuseum",
+    "institution": "Städtisches Museum",
+    "total_objects": 25
   },
+  "schema": {
+    "required_fields": ["inventory_number", "title", "artist"],
+    "controlled_vocabularies": {
+      "condition": ["excellent", "good", "fair", "poor", "unknown"],
+      "category": ["Malerei", "Skulptur", "Grafik", "Fotografie", "Installation"]
+    }
+  },
+  "locations": [
+    {
+      "id": "L1",
+      "building": "Haupthaus",
+      "rooms": ["Ausstellung Saal 2", "Ausstellung Saal 3", "Ausstellung Saal 4", "Foyer", "Grafikkabinett"]
+    },
+    {
+      "id": "L2",
+      "building": "Depot",
+      "rooms": ["Depot 1", "Depot 2", "Depot 3", "Depot 4", "Fotoarchiv"]
+    }
+  ],
   "objects": [
     {
-      "id": "SM-2024-001",
+      "inventory_number": "SM-2024-001",
       "title": "Landschaft mit Fluss",
-      "artist": "Maria Bergmann",
-      "date": "1923",
+      "creator": "Maria Bergmann",
+      "date": { "text": "1923", "earliest": 1923, "latest": 1923 },
       "medium": "Öl auf Leinwand",
-      "dimensions": "80 x 120",
-      "location": "Depot 3, Regal A",
+      "dimensions": { "height_cm": 80, "width_cm": 120 },
+      "location": {
+        "building": "Depot",
+        "room": "Depot 3",
+        "position": "Regal A"
+      },
       "category": "Malerei",
-      "acquisition": "Ankauf 2020",
-      "condition": 2,
-      "notes": ""
+      "condition": "good",
+      "provenance": ["Ankauf 2020"],
+      "completeness_score": 1.0,
+      "validation_errors": []
     },
     {
       "id": "SM-2024-002",

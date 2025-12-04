@@ -5,23 +5,78 @@
     "generated": "2025-12-04",
     "topology": "multidimensional",
     "intention": "vergleich",
+    "specialization": "survey"
+  },
+  "survey_meta": {
+    "title": "Mitarbeiterbefragung 2024",
     "n": 120,
-    "variables": 12
+    "response_rate": 0.72,
+    "collection_period": { "start": "2024-01", "end": "2024-02" }
   },
-  "schema": {
-    "id": "Eindeutige Befragten-ID",
-    "age_group": "Altersgruppe (18-29, 30-44, 45-59, 60+)",
-    "department": "Abteilung (IT, HR, Marketing, Finance, Operations)",
-    "tenure_years": "Betriebszugehörigkeit in Jahren",
-    "remote_days": "Home-Office-Tage pro Woche (0-5)",
-    "satisfaction_digital_tools": "Zufriedenheit mit digitalen Werkzeugen (1-5)",
-    "satisfaction_communication": "Zufriedenheit mit Kommunikationstools (1-5)",
-    "satisfaction_training": "Zufriedenheit mit Schulungsangeboten (1-5)",
-    "productivity_self": "Selbsteinschätzung Produktivität (1-5)",
-    "change_readiness": "Veränderungsbereitschaft (1-5)",
-    "tool_count": "Anzahl regelmäßig genutzter Tools",
-    "support_needed": "Wunsch nach mehr IT-Support (ja/nein)"
-  },
+  "scales": [
+    {
+      "id": "digital_satisfaction",
+      "label": "Zufriedenheit mit Digitalisierung",
+      "items": ["satisfaction_digital_tools", "satisfaction_communication", "satisfaction_training"],
+      "cronbach_alpha": 0.84
+    },
+    {
+      "id": "readiness",
+      "label": "Veränderungsbereitschaft",
+      "items": ["change_readiness", "productivity_self"],
+      "cronbach_alpha": 0.79
+    }
+  ],
+  "items": [
+    {
+      "id": "satisfaction_digital_tools",
+      "text": "Ich bin mit den digitalen Werkzeugen an meinem Arbeitsplatz zufrieden.",
+      "type": "likert",
+      "scale": { "min": 1, "max": 5, "labels": ["stimme nicht zu", "stimme eher nicht zu", "neutral", "stimme eher zu", "stimme zu"] }
+    },
+    {
+      "id": "satisfaction_communication",
+      "text": "Die digitalen Kommunikationstools erfüllen meine Anforderungen.",
+      "type": "likert",
+      "scale": { "min": 1, "max": 5, "labels": ["stimme nicht zu", "stimme eher nicht zu", "neutral", "stimme eher zu", "stimme zu"] }
+    },
+    {
+      "id": "satisfaction_training",
+      "text": "Die Schulungsangebote für digitale Tools sind ausreichend.",
+      "type": "likert",
+      "scale": { "min": 1, "max": 5, "labels": ["stimme nicht zu", "stimme eher nicht zu", "neutral", "stimme eher zu", "stimme zu"] }
+    },
+    {
+      "id": "productivity_self",
+      "text": "Ich schätze meine eigene Produktivität im digitalen Arbeitsumfeld als hoch ein.",
+      "type": "likert",
+      "scale": { "min": 1, "max": 5, "labels": ["stimme nicht zu", "stimme eher nicht zu", "neutral", "stimme eher zu", "stimme zu"] }
+    },
+    {
+      "id": "change_readiness",
+      "text": "Ich bin bereit, neue digitale Werkzeuge zu erlernen.",
+      "type": "likert",
+      "scale": { "min": 1, "max": 5, "labels": ["stimme nicht zu", "stimme eher nicht zu", "neutral", "stimme eher zu", "stimme zu"] }
+    },
+    {
+      "id": "tool_count",
+      "text": "Wie viele digitale Werkzeuge nutzen Sie regelmäßig?",
+      "type": "numeric",
+      "scale": { "min": 0, "max": 20 }
+    },
+    {
+      "id": "support_needed",
+      "text": "Wünschen Sie sich mehr IT-Support?",
+      "type": "binary",
+      "values": ["ja", "nein"]
+    }
+  ],
+  "demographics": [
+    { "id": "age_group", "type": "categorical", "values": ["18-29", "30-44", "45-59", "60+"] },
+    { "id": "department", "type": "categorical", "values": ["IT", "HR", "Marketing", "Finance", "Operations"] },
+    { "id": "tenure_years", "type": "numeric", "description": "Betriebszugehörigkeit in Jahren" },
+    { "id": "remote_days", "type": "ordinal", "values": [0, 1, 2, 3, 4, 5], "description": "Home-Office-Tage pro Woche" }
+  ],
   "respondents": [
     {"id": "R001", "age_group": "30-44", "department": "IT", "tenure_years": 5, "remote_days": 3, "satisfaction_digital_tools": 5, "satisfaction_communication": 4, "satisfaction_training": 4, "productivity_self": 5, "change_readiness": 5, "tool_count": 12, "support_needed": "nein"},
     {"id": "R002", "age_group": "45-59", "department": "HR", "tenure_years": 12, "remote_days": 2, "satisfaction_digital_tools": 3, "satisfaction_communication": 3, "satisfaction_training": 2, "productivity_self": 3, "change_readiness": 3, "tool_count": 6, "support_needed": "ja"},

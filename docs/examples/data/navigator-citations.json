@@ -4,126 +4,255 @@
     "description": "Zehn Publikationen aus drei Forschungsclustern mit Zitationsbeziehungen",
     "generated": "2025-12-04",
     "topology": "vernetzt",
-    "intention": "rekonstruktion"
+    "intention": "rekonstruktion",
+    "specialization": "citation"
   },
-  "nodes": [
+  "publications": [
     {
-      "id": "pub001",
-      "title": "Distant Reading and the Digital Humanities",
-      "author": "Moretti, Franco",
-      "year": 2013,
-      "cluster": "methoden",
-      "abstract": "Proposes computational analysis of large literary corpora as alternative to close reading. Argues for quantitative methods in literary studies."
+      "id": "kuhn1962",
+      "authors": ["Kuhn, Thomas S."],
+      "title": "The Structure of Scientific Revolutions",
+      "year": 1962,
+      "venue": "University of Chicago Press",
+      "type": "book",
+      "citations_received": 89420,
+      "cluster": "theorie",
+      "abstract": "Introduces the concept of paradigm shifts in science. Argues that scientific progress is not linear but characterized by revolutionary changes in worldview."
     },
     {
-      "id": "pub002",
+      "id": "moretti2005",
+      "authors": ["Moretti, Franco"],
       "title": "Graphs, Maps, Trees: Abstract Models for Literary History",
-      "author": "Moretti, Franco",
       "year": 2005,
+      "venue": "Verso Books",
+      "type": "book",
+      "citations_received": 2340,
       "cluster": "methoden",
       "abstract": "Introduces visual abstractions for analyzing literary history. Demonstrates network analysis and geographic mapping of literary phenomena."
     },
     {
-      "id": "pub003",
+      "id": "schreibman2004",
+      "authors": ["Schreibman, Susan", "Siemens, Ray", "Unsworth, John"],
       "title": "A Companion to Digital Humanities",
-      "author": "Schreibman, Susan et al.",
       "year": 2004,
+      "venue": "Blackwell",
+      "type": "collection",
+      "citations_received": 4560,
       "cluster": "theorie",
       "abstract": "Foundational collection defining the field of digital humanities. Covers history, theory, and methods across disciplines."
     },
     {
-      "id": "pub004",
-      "title": "Digital Humanities and the Study of Antiquity",
-      "author": "Bodard, Gabriel",
+      "id": "bodard2010",
+      "authors": ["Bodard, Gabriel", "Mahony, Simon"],
+      "title": "Digital Research in the Study of Classical Antiquity",
       "year": 2010,
+      "venue": "Ashgate",
+      "type": "collection",
+      "citations_received": 890,
       "cluster": "anwendung",
       "abstract": "Applies digital methods to classical studies. Focuses on epigraphic databases and textual encoding."
     },
     {
-      "id": "pub005",
+      "id": "presner2009",
+      "authors": ["Presner, Todd", "Schnapp, Jeffrey"],
       "title": "The Digital Humanities Manifesto 2.0",
-      "author": "Presner, Todd et al.",
       "year": 2009,
+      "venue": "UCLA",
+      "type": "manifesto",
+      "citations_received": 1230,
       "cluster": "theorie",
       "abstract": "Programmatic statement on the future of digital humanities. Emphasizes collaboration, openness, and interdisciplinarity."
     },
     {
-      "id": "pub006",
-      "title": "Network Analysis in the Humanities",
-      "author": "Düring, Marten",
+      "id": "duering2015",
+      "authors": ["Düring, Marten"],
+      "title": "From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources",
       "year": 2015,
+      "venue": "The Programming Historian",
+      "type": "article",
+      "citations_received": 780,
       "cluster": "methoden",
       "abstract": "Systematic introduction to network analysis for historians and literary scholars. Covers centrality measures, community detection, and visualization."
     },
     {
-      "id": "pub007",
-      "title": "Digital Editions and the Complexity of Remediation",
-      "author": "Pierazzo, Elena",
+      "id": "pierazzo2015",
+      "authors": ["Pierazzo, Elena"],
+      "title": "Digital Scholarly Editing: Theories, Models and Methods",
       "year": 2015,
+      "venue": "Ashgate",
+      "type": "book",
+      "citations_received": 1120,
       "cluster": "anwendung",
       "abstract": "Examines the theoretical foundations of digital scholarly editing. Discusses TEI encoding and interface design for editions."
     },
     {
-      "id": "pub008",
+      "id": "gold2012",
+      "authors": ["Gold, Matthew K."],
       "title": "Debates in the Digital Humanities",
-      "author": "Gold, Matthew K.",
       "year": 2012,
+      "venue": "University of Minnesota Press",
+      "type": "collection",
+      "citations_received": 3450,
       "cluster": "theorie",
       "abstract": "Collection of essays on contested topics in digital humanities. Addresses questions of disciplinary identity and institutional politics."
     },
     {
-      "id": "pub009",
-      "title": "Stylometry and Method: The Case of Euripides",
-      "author": "Eder, Maciej",
+      "id": "eder2017",
+      "authors": ["Eder, Maciej"],
+      "title": "Visualization in Stylometry: Cluster Analysis Using Networks",
       "year": 2017,
+      "venue": "Digital Scholarship in the Humanities",
+      "type": "article",
+      "citations_received": 560,
       "cluster": "anwendung",
       "abstract": "Applies stylometric analysis to classical authorship attribution. Demonstrates statistical methods on Greek tragedy corpus."
     },
     {
-      "id": "pub010",
-      "title": "The Historian's Macroscope: Big Data in History",
-      "author": "Graham, Shawn et al.",
+      "id": "graham2015",
+      "authors": ["Graham, Shawn", "Milligan, Ian", "Weingart, Scott"],
+      "title": "Exploring Big Historical Data: The Historian's Macroscope",
       "year": 2015,
+      "venue": "Imperial College Press",
+      "type": "book",
+      "citations_received": 1890,
       "cluster": "methoden",
       "abstract": "Practical guide to computational methods for historians. Covers text mining, topic modeling, and network analysis with tutorials."
     }
   ],
-  "edges": [
-    { "source": "pub001", "target": "pub002", "type": "cites" },
-    { "source": "pub001", "target": "pub003", "type": "cites" },
-    { "source": "pub006", "target": "pub002", "type": "cites" },
-    { "source": "pub006", "target": "pub001", "type": "cites" },
-    { "source": "pub006", "target": "pub003", "type": "cites" },
-    { "source": "pub010", "target": "pub001", "type": "cites" },
-    { "source": "pub010", "target": "pub006", "type": "cites" },
-    { "source": "pub010", "target": "pub003", "type": "cites" },
-    { "source": "pub005", "target": "pub003", "type": "cites" },
-    { "source": "pub008", "target": "pub003", "type": "cites" },
-    { "source": "pub008", "target": "pub005", "type": "cites" },
-    { "source": "pub008", "target": "pub001", "type": "cites" },
-    { "source": "pub004", "target": "pub003", "type": "cites" },
-    { "source": "pub004", "target": "pub007", "type": "cites" },
-    { "source": "pub007", "target": "pub003", "type": "cites" },
-    { "source": "pub007", "target": "pub008", "type": "cites" },
-    { "source": "pub009", "target": "pub001", "type": "cites" },
-    { "source": "pub009", "target": "pub004", "type": "cites" },
-    { "source": "pub009", "target": "pub006", "type": "cites" }
+  "citations": [
+    {
+      "source": "moretti2005",
+      "target": "kuhn1962",
+      "context": "theoretical_framework",
+      "section": "introduction"
+    },
+    {
+      "source": "schreibman2004",
+      "target": "kuhn1962",
+      "context": "paradigm_reference",
+      "section": "preface"
+    },
+    {
+      "source": "duering2015",
+      "target": "moretti2005",
+      "context": "methodological",
+      "section": "literature_review"
+    },
+    {
+      "source": "duering2015",
+      "target": "schreibman2004",
+      "context": "foundational",
+      "section": "introduction"
+    },
+    {
+      "source": "graham2015",
+      "target": "moretti2005",
+      "context": "methodological",
+      "section": "chapter_3"
+    },
+    {
+      "source": "graham2015",
+      "target": "duering2015",
+      "context": "methodological",
+      "section": "chapter_5"
+    },
+    {
+      "source": "graham2015",
+      "target": "schreibman2004",
+      "context": "foundational",
+      "section": "introduction"
+    },
+    {
+      "source": "presner2009",
+      "target": "schreibman2004",
+      "context": "foundational",
+      "section": "preamble"
+    },
+    {
+      "source": "gold2012",
+      "target": "schreibman2004",
+      "context": "foundational",
+      "section": "introduction"
+    },
+    {
+      "source": "gold2012",
+      "target": "presner2009",
+      "context": "critical_response",
+      "section": "chapter_1"
+    },
+    {
+      "source": "gold2012",
+      "target": "moretti2005",
+      "context": "methodological_debate",
+      "section": "chapter_4"
+    },
+    {
+      "source": "bodard2010",
+      "target": "schreibman2004",
+      "context": "foundational",
+      "section": "introduction"
+    },
+    {
+      "source": "bodard2010",
+      "target": "pierazzo2015",
+      "context": "methodological",
+      "section": "chapter_2"
+    },
+    {
+      "source": "pierazzo2015",
+      "target": "schreibman2004",
+      "context": "foundational",
+      "section": "chapter_1"
+    },
+    {
+      "source": "pierazzo2015",
+      "target": "gold2012",
+      "context": "theoretical_debate",
+      "section": "chapter_3"
+    },
+    {
+      "source": "eder2017",
+      "target": "moretti2005",
+      "context": "methodological",
+      "section": "introduction"
+    },
+    {
+      "source": "eder2017",
+      "target": "bodard2010",
+      "context": "domain_application",
+      "section": "case_study"
+    },
+    {
+      "source": "eder2017",
+      "target": "duering2015",
+      "context": "methodological",
+      "section": "methods"
+    }
   ],
-  "clusters": {
-    "methoden": {
+  "clusters": [
+    {
+      "id": "methoden",
       "label": "Methoden",
       "color": "#4A90A4",
       "description": "Publikationen zu digitalen Analysemethoden"
     },
-    "theorie": {
+    {
+      "id": "theorie",
       "label": "Theorie",
       "color": "#C4705A",
       "description": "Grundlagentexte und Debatten zur Disziplin"
     },
-    "anwendung": {
+    {
+      "id": "anwendung",
       "label": "Anwendung",
       "color": "#7A9A5A",
       "description": "Konkrete Anwendungen in Fachdisziplinen"
     }
+  ],
+  "metrics": {
+    "nodes": 10,
+    "edges": 18,
+    "density": 0.2,
+    "avg_citations": 10642
   }
 }
