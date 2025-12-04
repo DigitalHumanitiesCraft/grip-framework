@@ -448,3 +448,118 @@ workbench.js: Unterstützt sowohl altes (key: description string) als auch neues
 - Meta: CLAUDE, JOURNAL
 
 Gelöscht: CLAUDE-METHODE.md (in CLAUDE.md integriert), 08-DESIGN-RATIONALE.md (in DESIGN.md integriert)
+
+---
+
+## 2025-12-04: 12 Spezialisierungen – Skeleton-Implementierung
+
+Die vollständige Dateistruktur für alle 12 Spezialisierungen wurde erstellt. 59 neue Dateien mit 9.529 Zeilen Code.
+
+### HTML-Templates (12 Dateien)
+
+Jede Spezialisierung hat ein eigenes HTML-Template mit spezifischen UI-Elementen gemäß 10-SPEZIALISIERUNGEN.md:
+
+Reader: reader-edition.html (Variantenapparat), reader-protokoll.html (Sprecherwechsel), reader-transcript.html (Turn-Taking)
+
+Scope: scope-survey.html (Likert-Skalen), scope-monitor.html (Sparklines), scope-matrix.html (Heatmap)
+
+Navigator: navigator-citation.html (Zeitachse), navigator-genealogy.html (Generationen), navigator-concept.html (Hierarchie)
+
+Workbench: workbench-registry.html (Standort-Hierarchie), workbench-codebook.html (Variablen-Editor), workbench-schema.html (Live-Validierung)
+
+### JSON-Referenzdaten (9 Dateien)
+
+Neue Datensätze basierend auf wissenschaftlichen Metadatenstandards:
+
+- reader-edition.json: Goethes Faust mit TEI-Apparat (witnesses, apparatus, siglum)
+- reader-protokoll.json: Gemeinderatssitzung nach Akoma Ntoso
+- reader-transcript.json: Narratives Interview nach EXMARaLDA
+- scope-monitor.json: Temperatursensor nach OGC SensorThings
+- scope-matrix.json: Bildung×Einkommen nach SDMX-JSON
+- navigator-genealogy.json: Bach-Familie nach GEDCOM X
+- navigator-concept.json: Forschungsmethoden-Thesaurus nach SKOS
+- workbench-codebook.json: ALLBUS-Variablen nach DDI-Lifecycle
+- workbench-schema.json: Publikations-Schema nach JSON Schema
+
+### JavaScript-Module (24 Dateien)
+
+Für jede Spezialisierung wurden Entry-Point und Klassen-Modul erstellt:
+
+```
+docs/js/specializations/
+  edition.js + edition-entry.js
+  protokoll.js + protokoll-entry.js
+  transcript.js + transcript-entry.js
+  survey.js + survey-entry.js
+  monitor.js + monitor-entry.js
+  matrix.js + matrix-entry.js
+  citation.js + citation-entry.js
+  genealogy.js + genealogy-entry.js
+  concept.js + concept-entry.js
+  registry.js + registry-entry.js
+  codebook.js + codebook-entry.js
+  schema.js + schema-entry.js
+```
+
+### CSS-Dateien (12 Dateien)
+
+Spezialisierungsspezifische Styles in docs/css/specializations/ mit vollständigen Layouts für Drei-Spalten-Ansicht, Sidebar, Hauptbereich und Kontext-Panel.
+
+### Neue Wissensbasis-Dokumente
+
+12-STANDARDS.md wurde erstellt mit:
+- Container-Erkennungstabelle (Dateiendung → MIME → Standard)
+- Standard-Mappings für alle 12 Spezialisierungen
+- JSON-Schema-Beispiele
+- Parser-Architektur-Dokumentation
+
+11-CODE-MAP.md wurde aktualisiert mit:
+- Vollständiger Verzeichnisstruktur
+- Spezialisierungs-zu-Standard-Mapping-Tabelle
+- Parser-Module-Planung
+- Erweiterungs-Anleitung
+
+---
+
+## 2025-12-04: Navigation zu Spezialisierungen
+
+Die index.html wurde erweitert, um alle 16 Demos (4 Basis + 12 Spezialisierungen) erreichbar zu machen.
+
+### Neue UI-Struktur
+
+Jede Archetyp-Card enthält jetzt:
+1. Titel, Tagline, Beschreibung
+2. Basis-Demo-Button
+3. Spezialisierungs-Grid mit drei Cards
+
+```
+┌─────────────────────────────────────────┐
+│ The Reader                              │
+│ Sequenz + Verstehen                     │
+│ Beschreibung...                         │
+│ [Basis-Demo →]                          │
+├─────────────────────────────────────────┤
+│ SPEZIALISIERUNGEN                       │
+│ ┌──────────┐ ┌──────────┐ ┌──────────┐ │
+│ │Edition  →│ │Protokoll→│ │Transcript│ │
+│ │TEI P5   │ │Akoma Nto │ │EXMARaLDA │ │
+│ │Krit.App.│ │Sitzungen │ │Interviews│ │
+│ └──────────┘ └──────────┘ └──────────┘ │
+└─────────────────────────────────────────┘
+```
+
+### UI-Verbesserungen
+
+Vier Änderungen basierend auf Design-Review:
+
+1. 2×2-Grid statt auto-fit: Archetypen-Grid verwendet jetzt `repeat(2, 1fr)` für symmetrisches Layout. Workbench ist nicht mehr isoliert.
+
+2. Stärkere Trennlinie: `border-top: 2px solid` und mehr Padding vor "SPEZIALISIERUNGEN" für bessere visuelle Hierarchie.
+
+3. Klick-Affordance: Pfeil `→` in jeder Spec-Card, der beim Hover animiert wird und die Archetyp-Farbe annimmt.
+
+4. Größere Standard-Font: Von 0.65rem auf 0.7rem für bessere Lesbarkeit der Metadatenstandards (TEI P5, DDI-C, etc.)
+
+### Responsive Anpassungen
+
+Mobile-Breakpoint (768px): Spec-Grid wechselt auf einspaltiges Layout.
