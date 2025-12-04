@@ -651,22 +651,36 @@ Wissenschaftliche Frameworks kommunizieren neutral. Keine Verkaufssprache ("Das 
 
 ## Nächste Schritte
 
-### Priorität 1: Deployment
+### Priorität 1: Interface-Qualität der Demos
 
-GitHub Pages aktivieren, um die Website öffentlich zugänglich zu machen. `docs/` als Publish-Verzeichnis konfigurieren.
+Die 16 Demos funktionieren, aber die Interaktionen sind noch oberflächlich. Konkret:
 
-### Priorität 2: Praxistest des System-Prompts
+- **Reader-Demos**: Annotation-Interaktion, Referenz-Navigation zwischen Briefen/Dokumenten
+- **Scope-Demos**: Echte Korrelationsberechnung, Filter-Kombinationen, Export
+- **Navigator-Demos**: Graph-Physik verfeinern, Pfadanalyse zwischen Knoten
+- **Workbench-Demos**: Validierungslogik vervollständigen, Batch-Operationen
 
-Den System-Prompt v2.1 mit realen Forschungsdaten testen. Erkennt das LLM korrekt Topologie, Intention und Spezialisierung?
+### Priorität 2: Wissenschaftliche Fundierung vertiefen
 
-### Priorität 3: Interaktive Matrix-Feedback
+Die kognitiven Prinzipien pro Archetyp sind benannt, aber nicht durchgehend im Code umgesetzt:
 
-Wenn Nutzer eine Zelle klicken, könnte ein kurzer Erklärungstext erscheinen, warum dieser Archetyp für diese Kombination empfohlen wird.
+- Reader: Zeilenlänge 60-75 Zeichen, Sakkaden-optimierte Typografie
+- Scope: Small Multiples statt Einzel-Charts, prä-attentive Farbkodierung
+- Navigator: Hairball-Prevention ab 50 Knoten, Progressive Disclosure
+- Workbench: Mode Awareness, sofortiges Validierungs-Feedback
 
-### Priorität 4: Accessibility-Audit
+### Priorität 3: Spezialisierungs-Differenzierung
 
-ARIA-Labels für die interaktiven Elemente, Keyboard-Navigation für die Matrix, Fokus-Management für Workflows.
+Die 12 Spezialisierungen haben eigene HTML-Templates, aber die JS-Logik ist oft generisch. Jede Spezialisierung sollte ihre spezifischen UI-Elemente vollständig implementieren:
 
-### Priorität 5: Dokumentation vervollständigen
+- Edition: Variantenapparat mit Lemma-Markierungen
+- Citation: Co-Citation-Analyse, Zeitachsen-Layout
+- Registry: Standort-Hierarchie, Duplikat-Erkennung
 
-01-ARCHITEKTUR.md aktualisieren mit aktuellem Stand der Dateistruktur und Abhängigkeiten.
+### Priorität 4: Reale Testdatensätze
+
+Die JSON-Daten sind synthetisch. Für wissenschaftliche Validierung brauchen wir:
+
+- Ein echter TEI-Text (Edition)
+- Echte Umfragedaten (Survey)
+- Ein reales Zitationsnetzwerk (Citation)
