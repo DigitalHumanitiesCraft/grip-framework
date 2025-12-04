@@ -1,0 +1,116 @@
+{
+  "metadata": {
+    "specialization": "concept",
+    "source_standard": "SKOS / JSON-LD"
+  },
+  "ontology_meta": {
+    "name": "Forschungsmethoden-Thesaurus",
+    "version": "1.0",
+    "namespace": "http://example.org/methods/",
+    "description": "Vereinfachte Ontologie sozialwissenschaftlicher Methoden"
+  },
+  "relation_types": [
+    { "id": "broader", "label": "Oberbegriff von", "inverse": "narrower", "transitive": true, "color": "#4A7C59" },
+    { "id": "narrower", "label": "Unterbegriff von", "inverse": "broader", "transitive": true, "color": "#4A7C59" },
+    { "id": "related", "label": "Verwandt mit", "inverse": "related", "transitive": false, "color": "#C4875A" }
+  ],
+  "concepts": [
+    {
+      "id": "M001",
+      "prefLabel": "Forschungsmethoden",
+      "definition": "Systematische Vorgehensweisen zur wissenschaftlichen Erkenntnisgewinnung",
+      "synonyms": ["Methodik", "Methodologie"],
+      "narrower": ["M002", "M003"]
+    },
+    {
+      "id": "M002",
+      "prefLabel": "Quantitative Methoden",
+      "definition": "Methoden, die auf numerischen Daten und statistischer Analyse basieren",
+      "broader": ["M001"],
+      "narrower": ["M004", "M005", "M006"],
+      "related": ["M003"]
+    },
+    {
+      "id": "M003",
+      "prefLabel": "Qualitative Methoden",
+      "definition": "Methoden zur Analyse nicht-numerischer Daten wie Texte, Bilder oder Beobachtungen",
+      "broader": ["M001"],
+      "narrower": ["M007", "M008", "M009"],
+      "related": ["M002"]
+    },
+    {
+      "id": "M004",
+      "prefLabel": "Umfrageforschung",
+      "altLabel": ["Survey Research"],
+      "definition": "Systematische Befragung einer Stichprobe mittels standardisierter Instrumente",
+      "broader": ["M002"],
+      "narrower": ["M010", "M011"]
+    },
+    {
+      "id": "M005",
+      "prefLabel": "Experimentelle Forschung",
+      "definition": "Methode zur Prüfung kausaler Hypothesen durch kontrollierte Manipulation von Variablen",
+      "broader": ["M002"],
+      "related": ["M012"]
+    },
+    {
+      "id": "M006",
+      "prefLabel": "Sekundäranalyse",
+      "definition": "Erneute Analyse bereits erhobener Daten unter neuer Fragestellung",
+      "broader": ["M002"]
+    },
+    {
+      "id": "M007",
+      "prefLabel": "Interviewforschung",
+      "definition": "Erhebung von Daten durch mündliche Befragung",
+      "broader": ["M003"],
+      "narrower": ["M013", "M014"],
+      "related": ["M004"]
+    },
+    {
+      "id": "M008",
+      "prefLabel": "Ethnografie",
+      "definition": "Langfristige teilnehmende Beobachtung in einem sozialen Feld",
+      "synonyms": ["Feldforschung"],
+      "broader": ["M003"]
+    },
+    {
+      "id": "M009",
+      "prefLabel": "Inhaltsanalyse",
+      "definition": "Systematische Analyse von Texten oder anderen Kommunikationsformen",
+      "broader": ["M003"],
+      "related": ["M002"]
+    },
+    {
+      "id": "M010",
+      "prefLabel": "Online-Befragung",
+      "definition": "Befragung über webbasierte Fragebögen",
+      "broader": ["M004"]
+    },
+    {
+      "id": "M011",
+      "prefLabel": "Telefonbefragung",
+      "altLabel": ["CATI"],
+      "definition": "Standardisierte Befragung per Telefon",
+      "broader": ["M004"]
+    },
+    {
+      "id": "M012",
+      "prefLabel": "Quasi-Experiment",
+      "definition": "Experimentelles Design ohne vollständige Randomisierung",
+      "broader": ["M005"]
+    },
+    {
+      "id": "M013",
+      "prefLabel": "Narratives Interview",
+      "definition": "Offenes Interview zur Erhebung lebensgeschichtlicher Erzählungen",
+      "broader": ["M007"]
+    },
+    {
+      "id": "M014",
+      "prefLabel": "Experteninterview",
+      "definition": "Leitfadengestütztes Interview mit Personen in spezifischen Funktionsrollen",
+      "broader": ["M007"]
+    }
+  ]
+}

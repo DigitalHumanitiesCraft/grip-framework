@@ -1,0 +1,141 @@
+{
+  "metadata": {
+    "specialization": "codebook",
+    "source_standard": "DDI (Data Documentation Initiative)"
+  },
+  "codebook_meta": {
+    "title": "ALLBUS 2022 Codebook (Auszug)",
+    "version": "1.0",
+    "doi": "10.4232/1.14051",
+    "last_modified": "2024-01-15",
+    "description": "Allgemeine Bevölkerungsumfrage der Sozialwissenschaften"
+  },
+  "variable_groups": [
+    {
+      "id": "demographics",
+      "label": "Soziodemografie",
+      "description": "Grundlegende demografische Merkmale",
+      "variables": ["v1", "v2", "v3", "v4"]
+    },
+    {
+      "id": "politics",
+      "label": "Politische Einstellungen",
+      "description": "Fragen zu politischem Interesse und Vertrauen",
+      "variables": ["v10", "v11"]
+    }
+  ],
+  "variables": [
+    {
+      "name": "v1",
+      "label": "Geschlecht des Befragten",
+      "type": "categorical",
+      "measurement_level": "nominal",
+      "question_text": "Welches Geschlecht haben Sie?",
+      "source_questionnaire": "Hauptfragebogen, S. 2",
+      "valid_values": [
+        { "value": 1, "label": "männlich" },
+        { "value": 2, "label": "weiblich" },
+        { "value": 3, "label": "divers" }
+      ],
+      "missing_values": [
+        { "value": -1, "label": "keine Angabe" },
+        { "value": -9, "label": "nicht erhoben" }
+      ]
+    },
+    {
+      "name": "v2",
+      "label": "Alter in Jahren",
+      "type": "numeric",
+      "measurement_level": "ratio",
+      "question_text": "In welchem Jahr sind Sie geboren?",
+      "source_questionnaire": "Hauptfragebogen, S. 2",
+      "valid_range": { "min": 18, "max": 99 },
+      "missing_values": [
+        { "value": -1, "label": "keine Angabe" }
+      ]
+    },
+    {
+      "name": "v3",
+      "label": "Höchster Bildungsabschluss",
+      "type": "categorical",
+      "measurement_level": "ordinal",
+      "question_text": "Welchen höchsten allgemeinbildenden Schulabschluss haben Sie?",
+      "source_questionnaire": "Hauptfragebogen, S. 4",
+      "valid_values": [
+        { "value": 1, "label": "ohne Abschluss" },
+        { "value": 2, "label": "Hauptschulabschluss" },
+        { "value": 3, "label": "Realschulabschluss" },
+        { "value": 4, "label": "Fachhochschulreife" },
+        { "value": 5, "label": "Abitur" }
+      ],
+      "missing_values": [
+        { "value": -1, "label": "keine Angabe" },
+        { "value": -8, "label": "weiß nicht" }
+      ]
+    },
+    {
+      "name": "v4",
+      "label": "Erwerbsstatus",
+      "type": "categorical",
+      "measurement_level": "nominal",
+      "question_text": "Welche Aussage beschreibt Ihre derzeitige Situation am besten?",
+      "source_questionnaire": "Hauptfragebogen, S. 6",
+      "valid_values": [
+        { "value": 1, "label": "Vollzeit erwerbstätig" },
+        { "value": 2, "label": "Teilzeit erwerbstätig" },
+        { "value": 3, "label": "arbeitslos" },
+        { "value": 4, "label": "in Ausbildung" },
+        { "value": 5, "label": "Hausfrau/Hausmann" },
+        { "value": 6, "label": "im Ruhestand" }
+      ],
+      "missing_values": [
+        { "value": -1, "label": "keine Angabe" }
+      ]
+    },
+    {
+      "name": "v10",
+      "label": "Politisches Interesse",
+      "type": "categorical",
+      "measurement_level": "ordinal",
+      "question_text": "Wie stark interessieren Sie sich für Politik?",
+      "source_questionnaire": "Hauptfragebogen, S. 12",
+      "valid_values": [
+        { "value": 1, "label": "sehr stark" },
+        { "value": 2, "label": "stark" },
+        { "value": 3, "label": "mittel" },
+        { "value": 4, "label": "wenig" },
+        { "value": 5, "label": "überhaupt nicht" }
+      ],
+      "missing_values": [
+        { "value": -1, "label": "keine Angabe" }
+      ]
+    },
+    {
+      "name": "v11",
+      "label": "Vertrauen in den Bundestag",
+      "type": "numeric",
+      "measurement_level": "interval",
+      "question_text": "Wie groß ist Ihr Vertrauen in den Bundestag? (0 = überhaupt kein Vertrauen, 10 = sehr großes Vertrauen)",
+      "source_questionnaire": "Hauptfragebogen, S. 14",
+      "valid_range": { "min": 0, "max": 10 },
+      "missing_values": [
+        { "value": -1, "label": "keine Angabe" },
+        { "value": -8, "label": "weiß nicht" }
+      ]
+    }
+  ],
+  "validation_rules": [
+    {
+      "id": "R1",
+      "description": "Alter muss im gültigen Bereich liegen",
+      "expression": "v2 >= 18 AND v2 <= 99 OR v2 = -1",
+      "affected_variables": ["v2"]
+    },
+    {
+      "id": "R2",
+      "description": "Vertrauen muss im Skalenbereich liegen",
+      "expression": "v11 >= 0 AND v11 <= 10 OR v11 IN (-1, -8)",
+      "affected_variables": ["v11"]
+    }
+  ]
+}

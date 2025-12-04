@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "title": "Faust. Der Tragödie erster Teil",
+    "author": "Johann Wolfgang von Goethe",
+    "specialization": "edition",
+    "source_standard": "TEI XML"
+  },
+  "witnesses": [
+    {
+      "siglum": "H",
+      "name": "Hamburger Ausgabe",
+      "date": 1948,
+      "repository": "Deutsches Literaturarchiv Marbach",
+      "description": "Kritische Ausgabe mit ausführlichem Kommentar"
+    },
+    {
+      "siglum": "A",
+      "name": "Ausgabe letzter Hand",
+      "date": 1828,
+      "repository": "Goethe- und Schiller-Archiv Weimar",
+      "description": "Letzte von Goethe autorisierte Fassung"
+    },
+    {
+      "siglum": "U",
+      "name": "Urfaust",
+      "date": 1775,
+      "repository": "Herzogin Anna Amalia Bibliothek",
+      "description": "Frühe Fassung, erst 1887 wiederentdeckt"
+    }
+  ],
+  "text_flow": [
+    { "id": 1, "line": 354, "content": "Habe nun, ach! Philosophie," },
+    { "id": 2, "line": 355, "content": "Juristerei und Medizin," },
+    { "id": 3, "line": 356, "content": "Und leider auch Theologie" },
+    { "id": 4, "line": 357, "content": "Durchaus studiert, mit heißem Bemühn." },
+    { "id": 5, "line": 358, "content": "Da steh ich nun, ich armer Tor!" },
+    { "id": 6, "line": 359, "content": "Und bin so klug als wie zuvor;" },
+    { "id": 7, "line": 360, "content": "Heiße Magister, heiße Doktor gar" },
+    { "id": 8, "line": 361, "content": "Und ziehe schon an die zehen Jahr" }
+  ],
+  "apparatus": [
+    {
+      "segment_id": 4,
+      "lemma": "heißem Bemühn",
+      "start": 22,
+      "end": 35,
+      "readings": [
+        { "siglum": "A", "text": "heißem Bemühn", "type": "base" },
+        { "siglum": "H", "text": "heissem Bemühn", "type": "orthographic", "note": "Modernisierte Schreibweise" },
+        { "siglum": "U", "text": "heißen Bemühn", "type": "variant", "note": "Frühere Fassung mit Dativform" }
+      ]
+    },
+    {
+      "segment_id": 6,
+      "lemma": "als wie",
+      "start": 12,
+      "end": 18,
+      "readings": [
+        { "siglum": "A", "text": "als wie", "type": "base" },
+        { "siglum": "H", "text": "als wie", "type": "base" },
+        { "siglum": "U", "text": "wie", "type": "variant", "note": "Kürzere Form ohne Vergleichspartikel" }
+      ]
+    },
+    {
+      "segment_id": 8,
+      "lemma": "zehen Jahr",
+      "start": 23,
+      "end": 33,
+      "readings": [
+        { "siglum": "A", "text": "zehen Jahr", "type": "base" },
+        { "siglum": "H", "text": "zehn Jahr", "type": "modernized" },
+        { "siglum": "U", "text": "sieben Jahr", "type": "variant", "note": "Abweichende Zeitangabe in Frühfassung" }
+      ]
+    }
+  ],
+  "editorial_notes": [
+    {
+      "segment_id": 1,
+      "position": 10,
+      "type": "commentary",
+      "text": "Der Ausruf 'ach!' markiert den elegischen Grundton des Eingangsmonologs."
+    },
+    {
+      "segment_id": 5,
+      "position": 0,
+      "type": "conjecture",
+      "text": "Einige Editoren vermuten eine Anspielung auf das mittelalterliche Narrenmotiv."
+    }
+  ]
+}

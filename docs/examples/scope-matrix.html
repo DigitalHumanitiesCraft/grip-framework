@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix - Scope Spezialisierung - GRIP Framework</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/scope.css">
+    <link rel="stylesheet" href="../css/specializations/matrix.css">
+</head>
+<body>
+    <header class="demo-header scope-header matrix-header">
+        <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
+        <div class="header-main">
+            <h1>Matrix</h1>
+            <span class="specialization-badge">Scope-Spezialisierung</span>
+        </div>
+        <p>Kreuzvergleiche und mehrdimensionale Häufigkeitsanalysen</p>
+    </header>
+
+    <main class="matrix-layout">
+        <!-- Sidebar: Dimensionen + Statistik -->
+        <aside class="matrix-sidebar">
+            <div class="matrix-meta">
+                <h2 id="matrix-title">Kreuztabelle</h2>
+                <p class="matrix-source" id="matrix-source"></p>
+            </div>
+
+            <div class="dimension-selector">
+                <h3>Dimensionen</h3>
+                <div class="dimension-row">
+                    <label>Zeilen:</label>
+                    <select id="row-dimension">
+                        <!-- Dynamisch -->
+                    </select>
+                </div>
+                <div class="dimension-row">
+                    <label>Spalten:</label>
+                    <select id="column-dimension">
+                        <!-- Dynamisch -->
+                    </select>
+                </div>
+                <button class="swap-dimensions" id="swap-btn">↔ Tauschen</button>
+            </div>
+
+            <div class="display-options">
+                <h3>Anzeige</h3>
+                <div class="radio-group">
+                    <label><input type="radio" name="cell-display" value="count" checked> Absolute Häufigkeit</label>
+                    <label><input type="radio" name="cell-display" value="row-percent"> Zeilenprozent</label>
+                    <label><input type="radio" name="cell-display" value="col-percent"> Spaltenprozent</label>
+                    <label><input type="radio" name="cell-display" value="residual"> Residuen</label>
+                </div>
+            </div>
+
+            <div class="color-scale">
+                <h3>Farbskala</h3>
+                <select id="color-scale">
+                    <option value="sequential">Sequenziell (Häufigkeit)</option>
+                    <option value="diverging">Divergierend (Residuen)</option>
+                    <option value="none">Keine Farbe</option>
+                </select>
+            </div>
+
+            <div class="statistics-panel">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Chi-Quadrat</dt>
+                    <dd id="stat-chi-square">-</dd>
+                    <dt>p-Wert</dt>
+                    <dd id="stat-p-value">-</dd>
+                    <dt>Cramér's V</dt>
+                    <dd id="stat-cramers-v">-</dd>
+                    <dt>N</dt>
+                    <dd id="stat-n">-</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Heatmap-Tabelle -->
+        <section class="matrix-main">
+            <div class="matrix-container">
+                <table class="crosstab-table" id="crosstab-table">
+                    <thead id="crosstab-head">
+                        <!-- Dynamisch: Spaltenüberschriften -->
+                    </thead>
+                    <tbody id="crosstab-body">
+                        <!-- Dynamisch: Zellen mit Heatmap-Färbung -->
+                    </tbody>
+                    <tfoot id="crosstab-foot">
+                        <!-- Dynamisch: Spaltensummen -->
+                    </tfoot>
+                </table>
+            </div>
+
+            <!-- Legende -->
+            <div class="matrix-legend" id="matrix-legend">
+                <div class="legend-gradient"></div>
+                <div class="legend-labels">
+                    <span id="legend-min">0</span>
+                    <span id="legend-max">100</span>
+                </div>
+            </div>
+
+            <!-- Detail-Panel bei Zellklick -->
+            <div class="cell-detail hidden" id="cell-detail">
+                <h3>Zelldetail</h3>
+                <dl>
+                    <dt>Zeile</dt>
+                    <dd id="detail-row">-</dd>
+                    <dt>Spalte</dt>
+                    <dd id="detail-col">-</dd>
+                    <dt>Beobachtet</dt>
+                    <dd id="detail-observed">-</dd>
+                    <dt>Erwartet</dt>
+                    <dd id="detail-expected">-</dd>
+                    <dt>Residuum</dt>
+                    <dd id="detail-residual">-</dd>
+                </dl>
+            </div>
+        </section>
+    </main>
+
+    <footer class="demo-footer scope-footer">
+        <div class="archetype-info">
+            <h3>Warum Matrix?</h3>
+            <p><strong>Basis-Archetyp:</strong> Scope (Multidimensional + Vergleich)</p>
+            <p><strong>Spezialisierung:</strong> Kreuztabellen mit Heatmap-Färbung</p>
+            <p><strong>Erkennungsheuristik:</strong> dimensions.rows, dimensions.columns, cells, chi_square</p>
+        </div>
+
+        <div class="data-info-box">
+            <h3>Kognitive Aufgabe</h3>
+            <div class="info-content">
+                <p>Identifikation von Zellmustern in zweidimensionalen Tabellen.
+                Der Nutzer sucht Über- und Unterrepräsentationen.</p>
+                <h4>UI-Elemente</h4>
+                <ul>
+                    <li><strong>Heatmap-Färbung:</strong> Nach Zellwerten</li>
+                    <li><strong>Zeilen-/Spalten-Marginalen:</strong> Summen am Rand</li>
+                    <li><strong>Residuen-Anzeige:</strong> Beobachtet vs. erwartet</li>
+                    <li><strong>Chi-Quadrat-Indikator:</strong> Signifikanz der Zusammenhänge</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-to-matrix scope-btn">Zurück zur Entscheidungsmatrix</a>
+    </footer>
+
+    <script type="module" src="../js/specializations/matrix-entry.js"></script>
+</body>
+</html>

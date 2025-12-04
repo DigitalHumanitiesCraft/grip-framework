@@ -1,0 +1,322 @@
+/**
+ * Edition CSS
+ * Reader-Spezialisierung: Kritische Textausgaben
+ * Standard: TEI P5 Critical Apparatus
+ */
+
+/* Layout: Drei-Spalten mit Textzeugen, Haupttext, Variantendetail */
+.edition-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr 320px;
+    gap: var(--space-lg);
+    min-height: calc(100vh - 200px);
+    padding: var(--space-lg);
+}
+
+/* Header mit Spezialisierungs-Badge */
+.edition-header .header-main {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.specialization-badge {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-archetype-reader);
+    background: rgba(74, 124, 89, 0.1);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 4px;
+}
+
+/* Sidebar: Textzeugen */
+.edition-sidebar {
+    background: var(--color-paper);
+    padding: var(--space-md);
+    border-right: 1px solid var(--color-paper-dark);
+}
+
+.witnesses-panel h2 {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+}
+
+.witness-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.witness-list li {
+    padding: var(--space-sm);
+    border-left: 3px solid transparent;
+    margin-bottom: var(--space-xs);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.witness-list li:hover,
+.witness-list li.active {
+    background: var(--color-paper-dark);
+    border-left-color: var(--color-archetype-reader);
+}
+
+.witness-list .siglum {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    margin-right: var(--space-sm);
+}
+
+.witness-list .description {
+    font-size: 0.875rem;
+    color: var(--color-ink-light);
+}
+
+/* Siglenliste */
+.siglen-legend {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.siglen-legend dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+}
+
+.siglen-legend dt {
+    font-family: var(--font-mono);
+    font-weight: 600;
+}
+
+.siglen-legend dd {
+    margin: 0;
+    color: var(--color-ink-light);
+}
+
+/* Hauptbereich: Edierter Text */
+.edition-content {
+    background: var(--color-paper);
+    padding: var(--space-xl);
+    max-width: 800px;
+}
+
+.edition-text-header {
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.edition-text-header h2 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+}
+
+.edition-meta {
+    font-size: 0.875rem;
+    color: var(--color-ink-light);
+}
+
+/* Leithandschrift-Auswahl */
+.base-text-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+    font-size: 0.875rem;
+}
+
+.base-text-info select {
+    font-family: var(--font-mono);
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    background: white;
+    border-radius: 4px;
+}
+
+/* Editionstext mit Lemma-Markierungen */
+.edition-text {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.8;
+    max-width: 65ch;
+}
+
+.edition-text .lemma {
+    background: rgba(74, 124, 89, 0.15);
+    padding: 0 2px;
+    border-bottom: 2px solid var(--color-archetype-reader);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.edition-text .lemma:hover {
+    background: rgba(74, 124, 89, 0.3);
+}
+
+.edition-text .lemma.active {
+    background: rgba(74, 124, 89, 0.4);
+}
+
+/* Line numbers */
+.edition-text .line {
+    display: block;
+    position: relative;
+    padding-left: 3rem;
+}
+
+.edition-text .line::before {
+    content: attr(data-line);
+    position: absolute;
+    left: 0;
+    color: var(--color-ink-light);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+}
+
+/* Variantenapparat */
+.apparatus-panel {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 2px solid var(--color-paper-dark);
+}
+
+.apparatus-panel h3 {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+}
+
+.apparatus-content {
+    font-family: var(--font-serif);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+.apparatus-entry {
+    margin-bottom: var(--space-sm);
+    padding-left: var(--space-md);
+    border-left: 2px solid var(--color-paper-dark);
+}
+
+.apparatus-entry .lemma-ref {
+    font-weight: 600;
+}
+
+.apparatus-entry .reading {
+    margin-left: var(--space-sm);
+}
+
+.apparatus-entry .siglum-ref {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-archetype-reader);
+}
+
+/* Kontext-Panel */
+.edition-context {
+    background: var(--color-paper);
+    padding: var(--space-md);
+    border-left: 1px solid var(--color-paper-dark);
+}
+
+.variant-detail h2 {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+}
+
+.variant-prompt {
+    color: var(--color-ink-light);
+    font-size: 0.875rem;
+    font-style: italic;
+}
+
+.variant-info.hidden {
+    display: none;
+}
+
+/* Lesarten-Tabelle */
+.readings-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    margin-top: var(--space-md);
+}
+
+.readings-table th {
+    text-align: left;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    padding: var(--space-sm);
+    border-bottom: 2px solid var(--color-paper-dark);
+}
+
+.readings-table td {
+    padding: var(--space-sm);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.readings-table .siglum {
+    font-family: var(--font-mono);
+    font-weight: 600;
+}
+
+/* Editorische Anmerkungen */
+.editorial-notes {
+    margin-top: var(--space-xl);
+}
+
+.editorial-notes ul {
+    list-style: none;
+    padding: 0;
+}
+
+.editorial-notes li {
+    padding: var(--space-sm);
+    margin-bottom: var(--space-xs);
+    background: var(--color-paper-dark);
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.editorial-notes .note-type {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-ink-light);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .edition-layout {
+        grid-template-columns: 240px 1fr;
+    }
+
+    .edition-context {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .edition-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .edition-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--color-paper-dark);
+    }
+}

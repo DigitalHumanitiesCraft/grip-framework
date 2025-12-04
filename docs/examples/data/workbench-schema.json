@@ -1,0 +1,161 @@
+{
+  "metadata": {
+    "specialization": "schema",
+    "source_standard": "JSON Schema Draft-07"
+  },
+  "schema_meta": {
+    "title": "Publication Record",
+    "version": "2.0",
+    "description": "Schema für bibliografische Einträge im GRIP-System"
+  },
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["id", "title", "authors", "year"],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^PUB-[0-9]{4}-[0-9]{4}$",
+        "description": "Eindeutiger Publikationsidentifikator im Format PUB-YYYY-NNNN"
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 500,
+        "description": "Titel der Publikation"
+      },
+      "authors": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "$ref": "#/definitions/author"
+        },
+        "description": "Liste der Autoren"
+      },
+      "year": {
+        "type": "integer",
+        "minimum": 1500,
+        "maximum": 2100,
+        "description": "Erscheinungsjahr"
+      },
+      "doi": {
+        "type": "string",
+        "pattern": "^10\\.[0-9]{4,}/[a-zA-Z0-9./_-]+$",
+        "description": "Digital Object Identifier"
+      },
+      "type": {
+        "type": "string",
+        "enum": ["article", "book", "chapter", "conference", "thesis", "report"],
+        "description": "Publikationstyp"
+      },
+      "abstract": {
+        "type": "string",
+        "maxLength": 5000,
+        "description": "Zusammenfassung"
+      },
+      "keywords": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "uniqueItems": true,
+        "description": "Schlagwörter"
+      },
+      "venue": {
+        "$ref": "#/definitions/venue"
+      }
+    },
+    "definitions": {
+      "author": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Vollständiger Name"
+          },
+          "orcid": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]$",
+            "description": "ORCID iD"
+          },
+          "affiliation": {
+            "type": "string",
+            "description": "Institutionelle Zugehörigkeit"
+          }
+        }
+      },
+      "venue": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name der Zeitschrift/Konferenz/Verlag"
+          },
+          "volume": {
+            "type": "string"
+          },
+          "issue": {
+            "type": "string"
+          },
+          "pages": {
+            "type": "string",
+            "pattern": "^[0-9]+-[0-9]+$"
+          },
+          "issn": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{3}[0-9X]$"
+          }
+        }
+      }
+    }
+  },
+  "test_data": [
+    {
+      "description": "Valider Artikel mit DOI",
+      "data": {
+        "id": "PUB-2024-0001",
+        "title": "Machine Learning in Research Interfaces",
+        "authors": [
+          { "name": "Müller, Anna", "orcid": "0000-0002-1234-5678", "affiliation": "Universität Wien" }
+        ],
+        "year": 2024,
+        "doi": "10.1234/example.2024.001",
+        "type": "article",
+        "keywords": ["machine learning", "research", "interface design"]
+      },
+      "expected": "valid"
+    },
+    {
+      "description": "Ungültige ID (falsches Format)",
+      "data": {
+        "id": "invalid-id",
+        "title": "Test",
+        "authors": [{ "name": "Test" }],
+        "year": 2024
+      },
+      "expected": "invalid",
+      "expected_errors": ["id pattern mismatch"]
+    },
+    {
+      "description": "Fehlende Pflichtfelder",
+      "data": {
+        "id": "PUB-2024-0002",
+        "title": ""
+      },
+      "expected": "invalid",
+      "expected_errors": ["title too short", "authors missing", "year missing"]
+    },
+    {
+      "description": "Ungültige ORCID",
+      "data": {
+        "id": "PUB-2024-0003",
+        "title": "Valid Title",
+        "authors": [{ "name": "Test", "orcid": "invalid-orcid" }],
+        "year": 2024
+      },
+      "expected": "invalid",
+      "expected_errors": ["orcid pattern mismatch"]
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concept - Navigator Spezialisierung - GRIP Framework</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navigator.css">
+    <link rel="stylesheet" href="../css/specializations/concept.css">
+</head>
+<body>
+    <header class="demo-header navigator-header concept-header">
+        <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
+        <div class="header-main">
+            <h1>Concept</h1>
+            <span class="specialization-badge">Navigator-Spezialisierung</span>
+        </div>
+        <p>Wissensstrukturen, Ontologien und semantische Netze</p>
+    </header>
+
+    <main class="concept-layout">
+        <!-- Sidebar: Suche + Relationstypen -->
+        <aside class="concept-sidebar">
+            <div class="ontology-meta">
+                <h2 id="ontology-name">Ontologie</h2>
+                <p class="ontology-version" id="ontology-version"></p>
+            </div>
+
+            <div class="concept-search">
+                <h3>Konzeptsuche</h3>
+                <input type="search" id="concept-search" placeholder="Begriff eingeben...">
+                <ul class="search-results" id="search-results">
+                    <!-- Dynamisch -->
+                </ul>
+            </div>
+
+            <div class="relation-types">
+                <h3>Relationstypen</h3>
+                <ul class="relation-type-list" id="relation-type-list">
+                    <!-- Dynamisch: is-a, part-of, related-to mit Farbe + Toggle -->
+                </ul>
+            </div>
+
+            <div class="hierarchy-controls">
+                <h3>Hierarchie</h3>
+                <div class="depth-control">
+                    <label>Tiefe:</label>
+                    <input type="range" id="hierarchy-depth" min="1" max="5" value="2">
+                    <span id="hierarchy-depth-value">2</span>
+                </div>
+                <div class="direction-control">
+                    <label>Richtung:</label>
+                    <select id="hierarchy-direction">
+                        <option value="down">Abwärts (Unterbegriffe)</option>
+                        <option value="up">Aufwärts (Oberbegriffe)</option>
+                        <option value="both">Beidseitig</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="view-mode">
+                <h3>Ansicht</h3>
+                <div class="view-buttons">
+                    <button class="view-btn active" data-view="graph">Graph</button>
+                    <button class="view-btn" data-view="tree">Baum</button>
+                    <button class="view-btn" data-view="list">Liste</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Ontologie-Visualisierung -->
+        <section class="concept-main">
+            <div class="graph-controls">
+                <button class="expand-all" id="expand-all">Alle expandieren</button>
+                <button class="collapse-all" id="collapse-all">Alle kollabieren</button>
+                <button class="reset-view" id="reset-view">Ansicht zurücksetzen</button>
+            </div>
+
+            <!-- Graph-Ansicht -->
+            <div class="graph-container" id="graph-container">
+                <!-- D3 Ontologie-Visualisierung -->
+            </div>
+
+            <!-- Baum-Ansicht (alternativ) -->
+            <div class="tree-view hidden" id="tree-view">
+                <ul class="concept-tree" id="concept-tree">
+                    <!-- Dynamisch: Aufklappbarer Baum -->
+                </ul>
+            </div>
+
+            <!-- Listen-Ansicht (alternativ) -->
+            <div class="list-view hidden" id="list-view">
+                <table class="concept-table" id="concept-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Label</th>
+                            <th>Oberbegriffe</th>
+                            <th>Unterbegriffe</th>
+                            <th>Verwandte</th>
+                        </tr>
+                    </thead>
+                    <tbody id="concept-table-body">
+                        <!-- Dynamisch -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pfad-Anzeige -->
+            <div class="path-display hidden" id="path-display">
+                <h4>Pfad zwischen Konzepten</h4>
+                <div class="path-nodes" id="path-nodes">
+                    <!-- Dynamisch: Knoten mit Relationen -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontext-Panel: Konzeptdetails -->
+        <aside class="concept-context">
+            <section class="concept-detail" id="concept-detail">
+                <h2>Konzept</h2>
+                <p class="detail-prompt">Klicken Sie auf ein Konzept im Graph.</p>
+                <div class="detail-content hidden" id="detail-content">
+                    <h3 id="concept-label"></h3>
+                    <p class="concept-id">ID: <span id="concept-id"></span></p>
+                    <div class="concept-definition">
+                        <h4>Definition</h4>
+                        <p id="concept-definition-text"></p>
+                    </div>
+                    <div class="concept-synonyms">
+                        <h4>Synonyme</h4>
+                        <ul id="concept-synonyms-list">
+                            <!-- Dynamisch -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="relations-panel">
+                <h2>Relationen</h2>
+                <div class="relations-content hidden" id="relations-content">
+                    <div class="relation-group">
+                        <h4>Oberbegriffe (broader)</h4>
+                        <ul id="broader-list">
+                            <!-- Dynamisch -->
+                        </ul>
+                    </div>
+                    <div class="relation-group">
+                        <h4>Unterbegriffe (narrower)</h4>
+                        <ul id="narrower-list">
+                            <!-- Dynamisch -->
+                        </ul>
+                    </div>
+                    <div class="relation-group">
+                        <h4>Verwandte (related)</h4>
+                        <ul id="related-list">
+                            <!-- Dynamisch -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="path-finder">
+                <h3>Pfad finden</h3>
+                <div class="path-inputs">
+                    <input type="text" id="path-from" placeholder="Von...">
+                    <input type="text" id="path-to" placeholder="Nach...">
+                    <button id="find-path">Suchen</button>
+                </div>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer navigator-footer">
+        <div class="archetype-info">
+            <h3>Warum Concept?</h3>
+            <p><strong>Basis-Archetyp:</strong> Navigator (Vernetzt + Rekonstruktion)</p>
+            <p><strong>Spezialisierung:</strong> Ontologien und semantische Netze</p>
+            <p><strong>Erkennungsheuristik:</strong> concepts, broader, narrower, relation_types</p>
+        </div>
+
+        <div class="data-info-box">
+            <h3>Kognitive Aufgabe</h3>
+            <div class="info-content">
+                <p>Exploration von Begriffshierarchien und Querverbindungen.
+                Der Nutzer versteht, wie Konzepte zueinander stehen.</p>
+                <h4>UI-Elemente</h4>
+                <ul>
+                    <li><strong>Hierarchische Baumansicht:</strong> Für Taxonomien</li>
+                    <li><strong>Kantentyp-Legende:</strong> is-a, part-of, related-to</li>
+                    <li><strong>Konzept-Definition:</strong> Im Node-Inspector</li>
+                    <li><strong>Pfad-Hervorhebung:</strong> Zwischen Konzepten</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-to-matrix navigator-btn">Zurück zur Entscheidungsmatrix</a>
+    </footer>
+
+    <script type="module" src="../js/specializations/concept-entry.js"></script>
+</body>
+</html>

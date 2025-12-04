@@ -1,0 +1,412 @@
+/**
+ * Concept CSS
+ * Navigator-Spezialisierung: Ontologien
+ * Standard: SKOS
+ */
+
+.concept-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr 320px;
+    gap: var(--space-lg);
+    min-height: calc(100vh - 200px);
+    padding: var(--space-lg);
+}
+
+.concept-header .specialization-badge {
+    color: var(--color-archetype-navigator);
+    background: rgba(123, 104, 166, 0.1);
+}
+
+/* Sidebar */
+.concept-sidebar {
+    background: var(--color-paper);
+    padding: var(--space-md);
+}
+
+.ontology-meta {
+    margin-bottom: var(--space-lg);
+}
+
+.ontology-version {
+    font-size: 0.875rem;
+    color: var(--color-ink-light);
+}
+
+/* Konzeptsuche */
+.concept-search input {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.concept-search .search-results {
+    list-style: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    margin-top: var(--space-sm);
+}
+
+.search-results li {
+    padding: var(--space-sm);
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.search-results li:hover {
+    background: var(--color-paper-dark);
+}
+
+/* Relationstypen */
+.relation-types {
+    margin-top: var(--space-lg);
+}
+
+.relation-type-list {
+    list-style: none;
+    padding: 0;
+}
+
+.relation-type-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+}
+
+.relation-type-list .rel-color {
+    width: 20px;
+    height: 3px;
+    border-radius: 2px;
+}
+
+.relation-type-list .rel-color.broader { background: #4A7C59; }
+.relation-type-list .rel-color.narrower { background: #4A7C59; }
+.relation-type-list .rel-color.related { background: #C4875A; stroke-dasharray: 4; }
+
+/* Hierarchie-Kontrolle */
+.hierarchy-controls {
+    margin-top: var(--space-lg);
+}
+
+.depth-control,
+.direction-control {
+    margin-bottom: var(--space-md);
+}
+
+.depth-control label,
+.direction-control label {
+    display: block;
+    font-size: 0.875rem;
+    margin-bottom: var(--space-xs);
+}
+
+.depth-control input {
+    width: 100%;
+}
+
+.direction-control select {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+/* Hauptbereich */
+.concept-main {
+    background: var(--color-paper);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.graph-controls {
+    display: flex;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.graph-controls button {
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-paper-dark);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Graph-Container */
+.graph-container {
+    flex: 1;
+    min-height: 500px;
+}
+
+/* Konzept-Knoten */
+.concept-node {
+    cursor: pointer;
+}
+
+.concept-node circle {
+    fill: var(--color-archetype-navigator);
+    stroke: white;
+    stroke-width: 2;
+}
+
+.concept-node.root circle {
+    fill: var(--color-terracotta);
+}
+
+.concept-node.selected circle {
+    stroke: var(--color-ink);
+    stroke-width: 4;
+}
+
+.concept-node text {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    pointer-events: none;
+}
+
+/* Kanten */
+.concept-edge {
+    fill: none;
+    stroke-width: 2;
+}
+
+.concept-edge.broader { stroke: #4A7C59; }
+.concept-edge.narrower { stroke: #4A7C59; }
+.concept-edge.related {
+    stroke: #C4875A;
+    stroke-dasharray: 4, 4;
+}
+
+/* Baum-Ansicht */
+.tree-view {
+    flex: 1;
+    padding: var(--space-md);
+    overflow: auto;
+}
+
+.tree-view.hidden {
+    display: none;
+}
+
+.concept-tree {
+    list-style: none;
+    padding: 0;
+}
+
+.concept-tree ul {
+    list-style: none;
+    padding-left: var(--space-lg);
+    border-left: 1px solid var(--color-paper-dark);
+    margin-left: var(--space-sm);
+}
+
+.concept-tree li {
+    padding: var(--space-xs) 0;
+}
+
+.concept-tree .tree-node {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.concept-tree .tree-node:hover {
+    background: var(--color-paper-dark);
+}
+
+.concept-tree .tree-node.selected {
+    background: rgba(123, 104, 166, 0.2);
+}
+
+.concept-tree .expand-icon {
+    width: 16px;
+    text-align: center;
+    color: var(--color-ink-light);
+}
+
+/* Listen-Ansicht */
+.list-view {
+    flex: 1;
+    padding: var(--space-md);
+    overflow: auto;
+}
+
+.list-view.hidden {
+    display: none;
+}
+
+.concept-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.concept-table th {
+    text-align: left;
+    padding: var(--space-sm);
+    border-bottom: 2px solid var(--color-paper-dark);
+    font-family: var(--font-sans);
+}
+
+.concept-table td {
+    padding: var(--space-sm);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.concept-table tr:hover {
+    background: var(--color-paper-dark);
+}
+
+/* Pfad-Anzeige */
+.path-display {
+    padding: var(--space-md);
+    background: var(--color-paper-dark);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.path-display.hidden {
+    display: none;
+}
+
+.path-nodes {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.path-nodes .path-node {
+    padding: var(--space-xs) var(--space-sm);
+    background: white;
+    border-radius: 4px;
+}
+
+.path-nodes .path-arrow {
+    color: var(--color-ink-light);
+}
+
+/* Kontext-Panel */
+.concept-context {
+    background: var(--color-paper);
+    padding: var(--space-md);
+}
+
+.concept-detail .detail-prompt {
+    color: var(--color-ink-light);
+    font-style: italic;
+}
+
+.detail-content.hidden {
+    display: none;
+}
+
+.detail-content h3 {
+    font-family: var(--font-serif);
+    margin-bottom: var(--space-sm);
+}
+
+.concept-id {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-md);
+}
+
+.concept-definition,
+.concept-synonyms {
+    margin-bottom: var(--space-md);
+}
+
+.concept-definition h4,
+.concept-synonyms h4 {
+    font-size: 0.875rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+.concept-synonyms ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.concept-synonyms li {
+    padding: 2px 8px;
+    background: var(--color-paper-dark);
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+/* Relationen */
+.relations-panel {
+    margin-top: var(--space-xl);
+}
+
+.relations-content.hidden {
+    display: none;
+}
+
+.relation-group {
+    margin-bottom: var(--space-md);
+}
+
+.relation-group h4 {
+    font-size: 0.875rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+.relation-group ul {
+    list-style: none;
+    padding: 0;
+}
+
+.relation-group li {
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-paper-dark);
+    border-radius: 4px;
+    margin-bottom: var(--space-xs);
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.relation-group li:hover {
+    background: rgba(123, 104, 166, 0.2);
+}
+
+/* Pfad-Finder */
+.path-finder {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.path-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.path-inputs input {
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.path-inputs button {
+    padding: var(--space-sm);
+    background: var(--color-archetype-navigator);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

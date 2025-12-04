@@ -1,0 +1,374 @@
+/**
+ * Codebook CSS
+ * Workbench-Spezialisierung: Variablendefinitionen
+ * Standard: DDI Lifecycle
+ */
+
+.codebook-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr 320px;
+    gap: var(--space-lg);
+    min-height: calc(100vh - 200px);
+    padding: var(--space-lg);
+}
+
+.codebook-header .specialization-badge {
+    color: var(--color-archetype-workbench);
+    background: rgba(196, 135, 90, 0.1);
+}
+
+/* Sidebar */
+.codebook-sidebar {
+    background: var(--color-paper);
+    padding: var(--space-md);
+}
+
+.codebook-meta dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+}
+
+/* Variablen-Suche */
+.variable-search {
+    margin-top: var(--space-lg);
+}
+
+.variable-search input {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+/* Variablengruppen */
+.variable-groups {
+    margin-top: var(--space-lg);
+}
+
+.group-list {
+    list-style: none;
+    padding: 0;
+}
+
+.group-list .group-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.group-list .group-header:hover {
+    background: var(--color-paper-dark);
+}
+
+.group-list .expand-icon {
+    transition: transform 0.2s;
+}
+
+.group-list .group-header.open .expand-icon {
+    transform: rotate(90deg);
+}
+
+.group-list .group-vars {
+    list-style: none;
+    padding-left: var(--space-lg);
+    display: none;
+}
+
+.group-list .group-header.open + .group-vars {
+    display: block;
+}
+
+.group-vars li {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.group-vars li:hover {
+    background: var(--color-paper-dark);
+}
+
+.group-vars li.selected {
+    background: rgba(196, 135, 90, 0.2);
+}
+
+/* Typ-Filter */
+.type-filter {
+    margin-top: var(--space-lg);
+}
+
+.type-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    font-size: 0.875rem;
+}
+
+/* Export */
+.export-options {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.export-options select {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    margin-bottom: var(--space-sm);
+}
+
+.export-btn {
+    width: 100%;
+    padding: var(--space-sm);
+    background: var(--color-archetype-workbench);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Hauptbereich */
+.codebook-main {
+    background: var(--color-paper);
+    padding: var(--space-lg);
+    border-radius: 4px;
+}
+
+.view-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-lg);
+}
+
+.add-variable {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-archetype-workbench);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Variablen-Karten */
+.variable-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.variable-card {
+    background: white;
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    padding: var(--space-md);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.variable-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.variable-card.selected {
+    border-color: var(--color-archetype-workbench);
+    border-width: 2px;
+}
+
+.variable-card .var-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.variable-card .type-icon {
+    font-size: 1.25rem;
+}
+
+.variable-card .var-name {
+    font-family: var(--font-mono);
+    font-weight: 600;
+}
+
+.variable-card .var-label {
+    color: var(--color-ink-light);
+    font-size: 0.875rem;
+}
+
+.variable-card .var-meta {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+/* Tabellen-Ansicht */
+.table-view.hidden {
+    display: none;
+}
+
+.variable-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.variable-table th {
+    text-align: left;
+    padding: var(--space-sm);
+    background: var(--color-paper-dark);
+    font-family: var(--font-sans);
+}
+
+.variable-table td {
+    padding: var(--space-sm);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.variable-table tr:hover {
+    background: rgba(196, 135, 90, 0.1);
+}
+
+.variable-table .var-name {
+    font-family: var(--font-mono);
+}
+
+/* Validierungsregeln */
+.validation-rules-section {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.rules-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    margin-bottom: var(--space-md);
+}
+
+.rules-table th {
+    text-align: left;
+    padding: var(--space-sm);
+    background: var(--color-paper-dark);
+}
+
+.rules-table td {
+    padding: var(--space-sm);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.rules-table .rule-id {
+    font-family: var(--font-mono);
+}
+
+.rules-table .expression {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    background: var(--color-paper-dark);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.add-rule {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-paper-dark);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Kontext-Panel */
+.codebook-context {
+    background: var(--color-paper);
+    padding: var(--space-md);
+}
+
+.variable-editor .editor-prompt {
+    color: var(--color-ink-light);
+    font-style: italic;
+}
+
+.editor-form.hidden {
+    display: none;
+}
+
+.editor-form .form-group {
+    margin-bottom: var(--space-md);
+}
+
+.editor-form label {
+    display: block;
+    font-size: 0.875rem;
+    margin-bottom: var(--space-xs);
+}
+
+.editor-form input,
+.editor-form select,
+.editor-form textarea {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+/* Werte-Editor */
+.values-editor {
+    margin-top: var(--space-xl);
+}
+
+.values-content.hidden {
+    display: none;
+}
+
+.values-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    margin-bottom: var(--space-sm);
+}
+
+.values-table th {
+    text-align: left;
+    padding: var(--space-xs);
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+.values-table td {
+    padding: var(--space-xs);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.values-table .value-code {
+    font-family: var(--font-mono);
+}
+
+.values-table .delete-btn {
+    background: none;
+    border: none;
+    color: var(--color-ink-light);
+    cursor: pointer;
+}
+
+.values-table .delete-btn:hover {
+    color: #B85450;
+}
+
+.add-value {
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-paper-dark);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+}

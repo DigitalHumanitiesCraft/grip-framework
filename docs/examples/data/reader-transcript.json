@@ -1,0 +1,107 @@
+{
+  "metadata": {
+    "specialization": "transcript",
+    "source_standard": "GAT2 / Conversation Analysis"
+  },
+  "interview": {
+    "id": "INT-2024-05",
+    "date": "2024-03-15",
+    "duration_seconds": 2847,
+    "method": "Narratives Interview",
+    "location": "Büro des Befragten",
+    "language": "de"
+  },
+  "participants": [
+    { "id": "I", "role": "interviewer", "pseudonym": "Interviewer" },
+    { "id": "P", "role": "interviewee", "pseudonym": "Herr Berger", "demographics": { "age": 52, "gender": "male", "profession": "Ingenieur" } }
+  ],
+  "codebook": [
+    { "code": "career_transition", "definition": "Aussagen über berufliche Veränderungen", "color": "#4A7C59" },
+    { "code": "emotional_reaction", "definition": "Explizite Gefühlsäußerungen", "color": "#B85450" },
+    { "code": "agency", "definition": "Handlungsmacht und Selbstwirksamkeit", "color": "#7B68A6" },
+    { "code": "external_factors", "definition": "Äußere Einflüsse auf die Biografie", "color": "#C4875A" },
+    { "code": "retrospective_eval", "definition": "Rückblickende Bewertung", "color": "#6B6B6B" }
+  ],
+  "turns": [
+    {
+      "id": 1,
+      "speaker": "I",
+      "start_ms": 0,
+      "end_ms": 4200,
+      "text": "Können Sie mir erzählen, wie es zu dem Wechsel in Ihre jetzige Position kam?",
+      "codes": [],
+      "paralinguistics": []
+    },
+    {
+      "id": 2,
+      "speaker": "P",
+      "start_ms": 4500,
+      "end_ms": 18000,
+      "text": "Ja also (.) das war eigentlich nicht geplant. Ich war damals noch bei der Firma Meier und äh dann kam plötzlich dieses Angebot.",
+      "codes": ["career_transition", "external_factors"],
+      "paralinguistics": [
+        { "type": "pause", "duration": "short", "position": 9 },
+        { "type": "hesitation", "position": 76 }
+      ]
+    },
+    {
+      "id": 3,
+      "speaker": "I",
+      "start_ms": 18300,
+      "end_ms": 20500,
+      "text": "Wie haben Sie das erlebt?",
+      "codes": [],
+      "paralinguistics": []
+    },
+    {
+      "id": 4,
+      "speaker": "P",
+      "start_ms": 21000,
+      "end_ms": 45000,
+      "text": "Das war ((lacht)) ziemlich überwältigend. Ich meine, man arbeitet fünfzehn Jahre an einem Ort und dann (2.0) ja dann steht man plötzlich vor so einer Entscheidung.",
+      "codes": ["emotional_reaction", "career_transition"],
+      "paralinguistics": [
+        { "type": "laugh", "position": 8 },
+        { "type": "pause", "duration": "long", "position": 95, "duration_sec": 2.0 }
+      ]
+    },
+    {
+      "id": 5,
+      "speaker": "I",
+      "start_ms": 45500,
+      "end_ms": 48000,
+      "text": "Was hat letztlich den Ausschlag gegeben?",
+      "codes": [],
+      "paralinguistics": []
+    },
+    {
+      "id": 6,
+      "speaker": "P",
+      "start_ms": 48500,
+      "end_ms": 72000,
+      "text": "Ich hab mir gesagt, wenn nicht jetzt wann dann. Mit über fünfzig wird das nicht einfacher. Und meine Frau hat gesagt, mach das, ich unterstütz dich.",
+      "codes": ["agency", "external_factors"],
+      "paralinguistics": []
+    },
+    {
+      "id": 7,
+      "speaker": "P",
+      "start_ms": 72500,
+      "end_ms": 95000,
+      "text": "Rückblickend war es die richtige Entscheidung. Auch wenn die ersten Monate (.) schwierig waren. Aber so ist das halt im Leben.",
+      "codes": ["retrospective_eval", "emotional_reaction"],
+      "paralinguistics": [
+        { "type": "pause", "duration": "short", "position": 48 }
+      ]
+    },
+    {
+      "id": 8,
+      "speaker": "I",
+      "start_ms": 95500,
+      "end_ms": 99000,
+      "text": "Können Sie mir mehr über diese ersten Monate erzählen?",
+      "codes": [],
+      "paralinguistics": []
+    }
+  ]
+}

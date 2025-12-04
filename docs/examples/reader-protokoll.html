@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protokoll - Reader Spezialisierung - GRIP Framework</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reader.css">
+    <link rel="stylesheet" href="../css/specializations/protokoll.css">
+</head>
+<body>
+    <header class="demo-header reader-header protokoll-header">
+        <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
+        <div class="header-main">
+            <h1>Protokoll</h1>
+            <span class="specialization-badge">Reader-Spezialisierung</span>
+        </div>
+        <p>Sitzungsmitschriften und formalisierte Gesprächsdokumentation</p>
+    </header>
+
+    <main class="protokoll-layout">
+        <!-- Sidebar: Sitzungsinfo + Tagesordnung -->
+        <aside class="protokoll-sidebar">
+            <div class="session-info">
+                <h2>Sitzung</h2>
+                <dl id="session-details">
+                    <dt>Datum</dt>
+                    <dd id="session-date">-</dd>
+                    <dt>Nr.</dt>
+                    <dd id="session-number">-</dd>
+                    <dt>Ort</dt>
+                    <dd id="session-location">-</dd>
+                    <dt>Vorsitz</dt>
+                    <dd id="session-chair">-</dd>
+                </dl>
+            </div>
+
+            <div class="attendance-panel">
+                <h3>Anwesenheit</h3>
+                <div class="attendance-filter">
+                    <label><input type="checkbox" id="filter-present" checked> Anwesend</label>
+                    <label><input type="checkbox" id="filter-absent"> Abwesend</label>
+                </div>
+                <ul class="attendance-list" id="attendance-list">
+                    <!-- Dynamisch: Name + Rolle + Status -->
+                </ul>
+            </div>
+
+            <div class="agenda-panel">
+                <h3>Tagesordnung</h3>
+                <nav class="agenda-nav" id="agenda-nav">
+                    <!-- Dynamisch: TOP-Nummern als Navigation -->
+                </nav>
+            </div>
+
+            <div class="resolutions-summary">
+                <h3>Beschlüsse</h3>
+                <span class="resolution-count" id="resolution-count">0</span>
+                <a href="#resolutions-section" class="jump-link">Zur Übersicht</a>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Protokolltext -->
+        <article class="protokoll-content">
+            <header class="protokoll-header-info">
+                <h2 id="protokoll-title">Sitzungsprotokoll</h2>
+                <p class="protokoll-subtitle" id="protokoll-subtitle"></p>
+            </header>
+
+            <!-- Segmentierter Protokolltext -->
+            <div class="segments-container" id="segments-container">
+                <!-- Dynamisch: Segmente mit Sprecherwechsel -->
+                <!-- <div class="segment">
+                    <span class="speaker speaker-{color}">Name</span>
+                    <p class="segment-text">...</p>
+                    <span class="segment-type">statement|resolution|...</span>
+                </div> -->
+            </div>
+
+            <!-- Beschlussübersicht -->
+            <section class="resolutions-section" id="resolutions-section">
+                <h3>Beschlussübersicht</h3>
+                <table class="resolutions-table" id="resolutions-table">
+                    <thead>
+                        <tr>
+                            <th>Nr.</th>
+                            <th>Beschluss</th>
+                            <th>Abstimmung</th>
+                            <th>TOP</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resolutions-body">
+                        <!-- Dynamisch -->
+                    </tbody>
+                </table>
+            </section>
+
+            <nav class="protokoll-pagination">
+                <button class="prev-session" id="prev-session">&larr; Vorherige Sitzung</button>
+                <span class="session-counter" id="session-counter"></span>
+                <button class="next-session" id="next-session">Nächste Sitzung &rarr;</button>
+            </nav>
+        </article>
+
+        <!-- Kontext-Panel: Sprecher + aktives Segment -->
+        <aside class="protokoll-context">
+            <section class="speaker-panel">
+                <h2>Sprecher</h2>
+                <div class="speaker-legend" id="speaker-legend">
+                    <!-- Dynamisch: Sprecher mit Farbkodierung -->
+                </div>
+                <div class="speaker-stats">
+                    <h3>Redeanteile</h3>
+                    <div class="speaker-chart" id="speaker-chart">
+                        <!-- Dynamisch: Balkendiagramm -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="segment-detail" id="segment-detail">
+                <h2>Aktives Segment</h2>
+                <p class="segment-prompt">Klicken Sie auf ein Segment im Protokoll.</p>
+                <div class="segment-info hidden" id="segment-info">
+                    <dl>
+                        <dt>Sprecher</dt>
+                        <dd id="detail-speaker">-</dd>
+                        <dt>Typ</dt>
+                        <dd id="detail-type">-</dd>
+                        <dt>TOP</dt>
+                        <dd id="detail-top">-</dd>
+                    </dl>
+                </div>
+            </section>
+
+            <section class="related-sessions">
+                <h3>Verwandte Sitzungen</h3>
+                <ul id="related-sessions-list">
+                    <!-- Dynamisch: Verweise auf frühere Sitzungen -->
+                </ul>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer reader-footer">
+        <div class="archetype-info">
+            <h3>Warum Protokoll?</h3>
+            <p><strong>Basis-Archetyp:</strong> Reader (Sequenziell + Verstehen)</p>
+            <p><strong>Spezialisierung:</strong> Sitzungsmitschriften mit Beschlussverfolgung</p>
+            <p><strong>Erkennungsheuristik:</strong> session, agenda, speaker, resolution</p>
+        </div>
+
+        <div class="data-info-box">
+            <h3>Kognitive Aufgabe</h3>
+            <div class="info-content">
+                <p>Nachvollziehen von Entscheidungsprozessen. Der Nutzer rekonstruiert,
+                wie eine Gruppe zu Beschlüssen kam.</p>
+                <h4>UI-Elemente</h4>
+                <ul>
+                    <li><strong>Sprecherwechsel-Markierungen:</strong> Farbkodierte Sprecher</li>
+                    <li><strong>Beschluss-Highlighting:</strong> Separate Beschlussliste</li>
+                    <li><strong>TOP-Navigation:</strong> Sprung zu Tagesordnungspunkten</li>
+                    <li><strong>Anwesenheitsliste:</strong> Mit Filtermöglichkeit</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-to-matrix reader-btn">Zurück zur Entscheidungsmatrix</a>
+    </footer>
+
+    <script type="module" src="../js/specializations/protokoll-entry.js"></script>
+</body>
+</html>

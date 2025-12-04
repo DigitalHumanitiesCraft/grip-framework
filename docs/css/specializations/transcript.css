@@ -1,0 +1,330 @@
+/**
+ * Transcript CSS
+ * Reader-Spezialisierung: Interviewtranskripte
+ * Standard: EXMARaLDA / GAT2
+ */
+
+.transcript-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr 300px;
+    gap: var(--space-lg);
+    min-height: calc(100vh - 200px);
+    padding: var(--space-lg);
+}
+
+/* Sidebar: Interview-Meta + Codebook */
+.transcript-sidebar {
+    background: var(--color-paper);
+    padding: var(--space-md);
+}
+
+.interview-info dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+}
+
+/* Teilnehmerliste */
+.participants-list {
+    list-style: none;
+    padding: 0;
+}
+
+.participants-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    border-left: 3px solid;
+    margin-bottom: var(--space-xs);
+}
+
+.participants-list .participant-id {
+    font-family: var(--font-mono);
+    font-weight: 600;
+}
+
+.participants-list .participant-role {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+/* Codebook */
+.codebook-panel {
+    margin-top: var(--space-lg);
+}
+
+.code-filter input {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    margin-bottom: var(--space-sm);
+}
+
+.code-list {
+    list-style: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.code-list li {
+    padding: var(--space-sm);
+    border-radius: 4px;
+    margin-bottom: var(--space-xs);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.code-list li:hover {
+    background: var(--color-paper-dark);
+}
+
+.code-list .code-name {
+    font-weight: 500;
+}
+
+.code-list .code-count {
+    float: right;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+/* Code-Chart */
+.code-chart {
+    margin-top: var(--space-md);
+}
+
+.code-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xs);
+}
+
+.code-bar .bar {
+    height: 6px;
+    border-radius: 3px;
+}
+
+/* Hauptbereich: Transkript */
+.transcript-content {
+    background: var(--color-paper);
+    padding: var(--space-xl);
+}
+
+/* Media-Controls */
+.media-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background: var(--color-paper-dark);
+    border-radius: 4px;
+    margin-bottom: var(--space-lg);
+}
+
+.play-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-archetype-reader);
+    color: white;
+    cursor: pointer;
+}
+
+.play-btn:disabled {
+    background: var(--color-ink-light);
+    cursor: not-allowed;
+}
+
+.timeline-slider {
+    flex: 1;
+    height: 4px;
+}
+
+.time-display {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+}
+
+/* Turns */
+.turns-container {
+    max-width: 700px;
+}
+
+.turn {
+    padding: var(--space-md);
+    margin-bottom: var(--space-sm);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.turn:hover {
+    background: var(--color-paper-dark);
+}
+
+.turn.active {
+    background: rgba(74, 124, 89, 0.1);
+    border-left: 3px solid var(--color-archetype-reader);
+}
+
+.turn-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+}
+
+.turn .speaker {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 4px;
+}
+
+/* Sprecher-Farben */
+.speaker-I { background: #DAE8FC; }
+.speaker-P { background: #D5E8D4; }
+.speaker-P1 { background: #D5E8D4; }
+.speaker-P2 { background: #FFE6CC; }
+
+.turn .timestamp {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+.turn-text {
+    font-family: var(--font-serif);
+    line-height: 1.7;
+}
+
+/* Parasprachliche Markierungen */
+.paralinguistic {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-ink-light);
+}
+
+.paralinguistic.pause {
+    color: var(--color-terracotta);
+}
+
+.paralinguistic.laugh::before {
+    content: "((";
+}
+
+.paralinguistic.laugh::after {
+    content: "))";
+}
+
+/* Codes am Turn */
+.turn-codes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-sm);
+}
+
+.code {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: var(--color-paper-dark);
+}
+
+/* Code-Farben */
+.code-career_transition { background: rgba(74, 124, 89, 0.2); }
+.code-emotional_reaction { background: rgba(184, 84, 80, 0.2); }
+.code-agency { background: rgba(123, 104, 166, 0.2); }
+.code-external_factors { background: rgba(196, 135, 90, 0.2); }
+.code-retrospective_eval { background: rgba(107, 107, 107, 0.2); }
+
+/* Navigation */
+.transcript-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.jump-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.jump-controls select {
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+/* Kontext-Panel */
+.transcript-context {
+    background: var(--color-paper);
+    padding: var(--space-md);
+}
+
+.turn-detail .turn-prompt {
+    color: var(--color-ink-light);
+    font-style: italic;
+}
+
+/* Coding Panel */
+.coding-panel {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.coding-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.coding-controls select {
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.assign-btn {
+    padding: var(--space-sm);
+    background: var(--color-archetype-reader);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.assign-btn:disabled {
+    background: var(--color-ink-light);
+    cursor: not-allowed;
+}
+
+.coding-history {
+    margin-top: var(--space-md);
+}
+
+.coding-history ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0.875rem;
+}
+
+.coding-history li {
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--color-paper-dark);
+}

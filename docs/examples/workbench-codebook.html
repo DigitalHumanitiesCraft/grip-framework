@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codebook - Workbench Spezialisierung - GRIP Framework</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/workbench.css">
+    <link rel="stylesheet" href="../css/specializations/codebook.css">
+</head>
+<body>
+    <header class="demo-header workbench-header codebook-header">
+        <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
+        <div class="header-main">
+            <h1>Codebook</h1>
+            <span class="specialization-badge">Workbench-Spezialisierung</span>
+        </div>
+        <p>Variablendefinitionen und Datenmodell-Dokumentation</p>
+    </header>
+
+    <main class="codebook-layout">
+        <!-- Sidebar: Variablengruppen + Suche -->
+        <aside class="codebook-sidebar">
+            <div class="codebook-meta">
+                <h2 id="codebook-title">Codebook</h2>
+                <dl>
+                    <dt>Version</dt>
+                    <dd id="codebook-version">-</dd>
+                    <dt>Variablen</dt>
+                    <dd id="codebook-var-count">-</dd>
+                    <dt>Aktualisiert</dt>
+                    <dd id="codebook-modified">-</dd>
+                </dl>
+            </div>
+
+            <div class="variable-search">
+                <h3>Suche</h3>
+                <input type="search" id="variable-search" placeholder="Variable oder Label...">
+            </div>
+
+            <div class="variable-groups">
+                <h3>Variablengruppen</h3>
+                <ul class="group-list" id="group-list">
+                    <!-- Dynamisch: Gruppen aufklappbar mit Variablen -->
+                </ul>
+            </div>
+
+            <div class="type-filter">
+                <h3>Variablentyp</h3>
+                <div class="type-checkboxes">
+                    <label><input type="checkbox" value="categorical" checked> Kategorial</label>
+                    <label><input type="checkbox" value="numeric" checked> Numerisch</label>
+                    <label><input type="checkbox" value="string" checked> Text</label>
+                    <label><input type="checkbox" value="date" checked> Datum</label>
+                </div>
+            </div>
+
+            <div class="export-options">
+                <h3>Export</h3>
+                <select id="export-format">
+                    <option value="json">JSON Schema</option>
+                    <option value="ddi">DDI-C</option>
+                    <option value="spss">SPSS Syntax</option>
+                    <option value="stata">Stata Do-File</option>
+                </select>
+                <button class="export-btn" id="export-btn">Exportieren</button>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Variablenliste + Editor -->
+        <section class="codebook-main">
+            <div class="view-controls">
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="list">Liste</button>
+                    <button class="view-btn" data-view="table">Tabelle</button>
+                </div>
+                <button class="add-variable" id="add-variable">+ Variable hinzufügen</button>
+            </div>
+
+            <!-- Listen-Ansicht -->
+            <div class="list-view" id="list-view">
+                <div class="variable-cards" id="variable-cards">
+                    <!-- Dynamisch: Variable-Cards -->
+                </div>
+            </div>
+
+            <!-- Tabellen-Ansicht -->
+            <div class="table-view hidden" id="table-view">
+                <table class="variable-table" id="variable-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Label</th>
+                            <th>Typ</th>
+                            <th>Messniveau</th>
+                            <th>Wertebereich</th>
+                            <th>Missings</th>
+                        </tr>
+                    </thead>
+                    <tbody id="variable-table-body">
+                        <!-- Dynamisch -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Validierungsregeln -->
+            <div class="validation-rules-section">
+                <h2>Validierungsregeln</h2>
+                <table class="rules-table" id="rules-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Beschreibung</th>
+                            <th>Ausdruck</th>
+                            <th>Betrifft</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rules-body">
+                        <!-- Dynamisch -->
+                    </tbody>
+                </table>
+                <button class="add-rule" id="add-rule">+ Regel hinzufügen</button>
+            </div>
+        </section>
+
+        <!-- Kontext-Panel: Variablen-Editor -->
+        <aside class="codebook-context">
+            <section class="variable-editor" id="variable-editor">
+                <h2>Variable bearbeiten</h2>
+                <p class="editor-prompt">Wählen Sie eine Variable aus der Liste.</p>
+                <form class="editor-form hidden" id="editor-form">
+                    <div class="form-group">
+                        <label for="edit-name">Name</label>
+                        <input type="text" id="edit-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-label">Label</label>
+                        <input type="text" id="edit-label">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-type">Typ</label>
+                        <select id="edit-type">
+                            <option value="categorical">Kategorial</option>
+                            <option value="numeric">Numerisch</option>
+                            <option value="string">Text</option>
+                            <option value="date">Datum</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-measurement">Messniveau</label>
+                        <select id="edit-measurement">
+                            <option value="nominal">Nominal</option>
+                            <option value="ordinal">Ordinal</option>
+                            <option value="interval">Intervall</option>
+                            <option value="ratio">Verhältnis</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-question">Fragetext</label>
+                        <textarea id="edit-question" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="save-btn">Speichern</button>
+                        <button type="button" class="cancel-btn" id="cancel-edit">Abbrechen</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="values-editor">
+                <h2>Werte</h2>
+                <div class="values-content hidden" id="values-content">
+                    <h4>Gültige Werte</h4>
+                    <table class="values-table" id="valid-values-table">
+                        <thead>
+                            <tr>
+                                <th>Wert</th>
+                                <th>Label</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="valid-values-body">
+                            <!-- Dynamisch -->
+                        </tbody>
+                    </table>
+                    <button class="add-value" id="add-valid-value">+ Wert</button>
+
+                    <h4>Missing-Werte</h4>
+                    <table class="values-table" id="missing-values-table">
+                        <thead>
+                            <tr>
+                                <th>Wert</th>
+                                <th>Label</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="missing-values-body">
+                            <!-- Dynamisch -->
+                        </tbody>
+                    </table>
+                    <button class="add-value" id="add-missing-value">+ Missing</button>
+                </div>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="archetype-info">
+            <h3>Warum Codebook?</h3>
+            <p><strong>Basis-Archetyp:</strong> Workbench (Hierarchisch + Kuratierung)</p>
+            <p><strong>Spezialisierung:</strong> Variablendefinitionen für Forschungsdaten</p>
+            <p><strong>Erkennungsheuristik:</strong> variables, valid_values, missing_values, measurement_level</p>
+        </div>
+
+        <div class="data-info-box">
+            <h3>Kognitive Aufgabe</h3>
+            <div class="info-content">
+                <p>Definieren und Dokumentieren von Datenstrukturen. Der Nutzer erstellt
+                konsistente Definitionen für Variablen und Werte.</p>
+                <h4>UI-Elemente</h4>
+                <ul>
+                    <li><strong>Variable-Liste:</strong> Mit Typ-Icons</li>
+                    <li><strong>Werte-Tabelle:</strong> Labels und Missings</li>
+                    <li><strong>Validierungsregeln-Editor:</strong> Logische Prüfungen</li>
+                    <li><strong>Multi-Format-Export:</strong> DDI, SPSS, JSON Schema</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-to-matrix workbench-btn">Zurück zur Entscheidungsmatrix</a>
+    </footer>
+
+    <script type="module" src="../js/specializations/codebook-entry.js"></script>
+</body>
+</html>

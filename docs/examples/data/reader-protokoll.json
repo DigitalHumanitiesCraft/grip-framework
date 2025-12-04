@@ -1,0 +1,144 @@
+{
+  "metadata": {
+    "specialization": "protokoll",
+    "source_standard": "Open Data Bundestag"
+  },
+  "session": {
+    "id": "GR-2024-12",
+    "date": "2024-12-04",
+    "number": 47,
+    "body": "Gemeinderat Beispielstadt",
+    "location": "Rathaus, Großer Sitzungssaal",
+    "chair": "Bgm. Dr. Maria Weber"
+  },
+  "attendance": [
+    { "name": "Dr. Maria Weber", "role": "Vorsitz", "party": "parteilos", "present": true },
+    { "name": "Thomas Müller", "role": "Finanzreferent", "party": "SPÖ", "present": true },
+    { "name": "Anna Schmidt", "role": "Mitglied", "party": "ÖVP", "present": true },
+    { "name": "Klaus Bauer", "role": "Mitglied", "party": "Grüne", "present": true },
+    { "name": "Lisa Hoffmann", "role": "Mitglied", "party": "FPÖ", "present": false, "excuse": "Krankheit" },
+    { "name": "Peter Gruber", "role": "Schriftführer", "party": "parteilos", "present": true }
+  ],
+  "agenda": [
+    { "top_id": 1, "title": "Genehmigung des Protokolls der letzten Sitzung", "status": "closed" },
+    { "top_id": 2, "title": "Voranschlag 2025", "status": "closed" },
+    { "top_id": 3, "title": "Kindergarten-Erweiterung", "status": "closed" },
+    { "top_id": 4, "title": "Allfälliges", "status": "closed" }
+  ],
+  "segments": [
+    {
+      "top_id": 1,
+      "speaker": "Dr. Maria Weber",
+      "role": "Chair",
+      "text": "Ich eröffne die 47. Sitzung des Gemeinderats und begrüße alle Anwesenden. Frau Hoffmann hat sich wegen Krankheit entschuldigt.",
+      "type": "procedure"
+    },
+    {
+      "top_id": 1,
+      "speaker": "Dr. Maria Weber",
+      "role": "Chair",
+      "text": "Ich rufe Tagesordnungspunkt 1 auf: Genehmigung des Protokolls der letzten Sitzung. Gibt es Einwände?",
+      "type": "procedure"
+    },
+    {
+      "top_id": 1,
+      "speaker": null,
+      "text": "Das Protokoll wird ohne Einwände genehmigt.",
+      "type": "resolution",
+      "resolution_id": "RES-001"
+    },
+    {
+      "top_id": 2,
+      "speaker": "Dr. Maria Weber",
+      "role": "Chair",
+      "text": "Wir kommen zu Tagesordnungspunkt 2: Voranschlag 2025. Herr Finanzreferent Müller hat das Wort.",
+      "type": "procedure"
+    },
+    {
+      "top_id": 2,
+      "speaker": "Thomas Müller",
+      "role": "Referent",
+      "text": "Der Voranschlagsentwurf sieht Einnahmen von 48,2 Millionen Euro vor. Die Ausgaben belaufen sich auf 47,8 Millionen. Wir erwarten somit einen Überschuss von 400.000 Euro.",
+      "type": "speech"
+    },
+    {
+      "top_id": 2,
+      "speaker": "Klaus Bauer",
+      "role": "Mitglied",
+      "text": "Welcher Anteil ist für Klimaschutzmaßnahmen vorgesehen?",
+      "type": "question"
+    },
+    {
+      "top_id": 2,
+      "speaker": "Thomas Müller",
+      "role": "Referent",
+      "text": "Der Umweltbereich erhält 2,1 Millionen Euro, das entspricht einer Steigerung von 15% gegenüber dem Vorjahr.",
+      "type": "answer"
+    },
+    {
+      "top_id": 2,
+      "speaker": "Anna Schmidt",
+      "role": "Mitglied",
+      "text": "Die ÖVP-Fraktion wird dem Voranschlag zustimmen.",
+      "type": "statement"
+    },
+    {
+      "top_id": 2,
+      "speaker": null,
+      "text": "Der Voranschlag 2025 wird mit 4 Ja-Stimmen bei 0 Gegenstimmen und 0 Enthaltungen angenommen.",
+      "type": "resolution",
+      "resolution_id": "RES-002"
+    },
+    {
+      "top_id": 3,
+      "speaker": "Dr. Maria Weber",
+      "role": "Chair",
+      "text": "Tagesordnungspunkt 3: Kindergarten-Erweiterung. Der Bauausschuss empfiehlt die Erweiterung um zwei Gruppen.",
+      "type": "procedure"
+    },
+    {
+      "top_id": 3,
+      "speaker": null,
+      "text": "Die Kindergarten-Erweiterung wird einstimmig beschlossen. Geschätzte Kosten: 1,2 Millionen Euro.",
+      "type": "resolution",
+      "resolution_id": "RES-003"
+    },
+    {
+      "top_id": 4,
+      "speaker": "Dr. Maria Weber",
+      "role": "Chair",
+      "text": "Unter Allfälliges: Gibt es Wortmeldungen?",
+      "type": "procedure"
+    },
+    {
+      "top_id": 4,
+      "speaker": "Dr. Maria Weber",
+      "role": "Chair",
+      "text": "Wenn keine weiteren Wortmeldungen vorliegen, schließe ich die Sitzung. Nächste Sitzung: 8. Januar 2025.",
+      "type": "procedure"
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "RES-001",
+      "related_top": 1,
+      "text": "Protokoll der 46. Sitzung genehmigt",
+      "vote": { "yes": 5, "no": 0, "abstain": 0 },
+      "outcome": "accepted"
+    },
+    {
+      "id": "RES-002",
+      "related_top": 2,
+      "text": "Voranschlag 2025 angenommen",
+      "vote": { "yes": 4, "no": 0, "abstain": 0 },
+      "outcome": "accepted"
+    },
+    {
+      "id": "RES-003",
+      "related_top": 3,
+      "text": "Kindergarten-Erweiterung beschlossen",
+      "vote": { "yes": 4, "no": 0, "abstain": 0 },
+      "outcome": "accepted"
+    }
+  ]
+}

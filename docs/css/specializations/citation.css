@@ -1,0 +1,317 @@
+/**
+ * Citation CSS
+ * Navigator-Spezialisierung: Bibliometrische Netzwerke
+ * Standard: MODS
+ */
+
+.citation-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr 320px;
+    gap: var(--space-lg);
+    min-height: calc(100vh - 200px);
+    padding: var(--space-lg);
+}
+
+.citation-header .specialization-badge {
+    color: var(--color-archetype-navigator);
+    background: rgba(123, 104, 166, 0.1);
+}
+
+/* Sidebar */
+.citation-sidebar {
+    background: var(--color-paper);
+    padding: var(--space-md);
+}
+
+.network-meta dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+}
+
+/* Zeit-Filter */
+.time-filter {
+    margin-top: var(--space-lg);
+}
+
+.year-range {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.year-range input {
+    width: 80px;
+    padding: var(--space-xs);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+}
+
+/* Cluster-Filter */
+.cluster-filter {
+    margin-top: var(--space-lg);
+}
+
+.cluster-list {
+    list-style: none;
+    padding: 0;
+}
+
+.cluster-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    cursor: pointer;
+}
+
+.cluster-list .color-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.cluster-list label {
+    flex: 1;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+/* Impact-Filter */
+.impact-filter {
+    margin-top: var(--space-lg);
+}
+
+.impact-filter input[type="range"] {
+    width: 100%;
+}
+
+/* Hauptbereich: Netzwerk */
+.citation-main {
+    background: var(--color-paper);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.network-controls {
+    display: flex;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.layout-selector,
+.node-sizing {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.layout-selector select,
+.node-sizing select {
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.reset-view {
+    margin-left: auto;
+    padding: var(--space-xs) var(--space-md);
+    background: var(--color-paper-dark);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.network-container {
+    flex: 1;
+    min-height: 500px;
+    position: relative;
+}
+
+/* Netzwerk-Knoten */
+.citation-node {
+    cursor: pointer;
+}
+
+.citation-node circle {
+    fill: var(--color-archetype-navigator);
+    stroke: white;
+    stroke-width: 2;
+    transition: all 0.2s;
+}
+
+.citation-node:hover circle {
+    stroke-width: 4;
+}
+
+.citation-node.selected circle {
+    stroke: var(--color-terracotta);
+    stroke-width: 4;
+}
+
+.citation-node text {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    fill: var(--color-ink);
+    pointer-events: none;
+}
+
+/* Kanten */
+.citation-edge {
+    stroke: var(--color-ink-light);
+    stroke-opacity: 0.3;
+    fill: none;
+}
+
+.citation-edge.highlighted {
+    stroke: var(--color-archetype-navigator);
+    stroke-opacity: 1;
+    stroke-width: 2;
+}
+
+/* Co-Citation Panel */
+.cocitation-panel {
+    padding: var(--space-md);
+    background: var(--color-paper-dark);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.cocitation-panel.hidden {
+    display: none;
+}
+
+.cocitation-panel ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.cocitation-panel li {
+    padding: var(--space-xs) var(--space-sm);
+    background: white;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+/* Kontext-Panel */
+.citation-context {
+    background: var(--color-paper);
+    padding: var(--space-md);
+}
+
+.publication-detail .detail-prompt {
+    color: var(--color-ink-light);
+    font-style: italic;
+}
+
+.detail-content.hidden {
+    display: none;
+}
+
+.detail-content h3 {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    margin-bottom: var(--space-sm);
+}
+
+.pub-authors {
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-md);
+}
+
+.detail-content dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-xs) var(--space-md);
+    font-size: 0.875rem;
+}
+
+.detail-content dt {
+    color: var(--color-ink-light);
+}
+
+.pub-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.pub-actions button {
+    padding: var(--space-sm);
+    background: var(--color-paper-dark);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.pub-actions button:hover {
+    background: var(--color-archetype-navigator);
+    color: white;
+}
+
+/* Zitationsliste */
+.citation-list-section {
+    margin-top: var(--space-xl);
+}
+
+.citation-direction-toggle {
+    display: flex;
+    gap: 0;
+    margin-bottom: var(--space-md);
+}
+
+.citation-direction-toggle button {
+    flex: 1;
+    padding: var(--space-sm);
+    background: var(--color-paper-dark);
+    border: none;
+    cursor: pointer;
+}
+
+.citation-direction-toggle button:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.citation-direction-toggle button:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.citation-direction-toggle button.active {
+    background: var(--color-archetype-navigator);
+    color: white;
+}
+
+.citation-reference-list {
+    list-style: none;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.citation-reference-list li {
+    padding: var(--space-sm);
+    border-bottom: 1px solid var(--color-paper-dark);
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.citation-reference-list li:hover {
+    background: var(--color-paper-dark);
+}
+
+.citation-reference-list .ref-title {
+    font-weight: 500;
+}
+
+.citation-reference-list .ref-year {
+    font-family: var(--font-mono);
+    color: var(--color-ink-light);
+}

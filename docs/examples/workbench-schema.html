@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schema - Workbench Spezialisierung - GRIP Framework</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/workbench.css">
+    <link rel="stylesheet" href="../css/specializations/schema.css">
+</head>
+<body>
+    <header class="demo-header workbench-header schema-header">
+        <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
+        <div class="header-main">
+            <h1>Schema</h1>
+            <span class="specialization-badge">Workbench-Spezialisierung</span>
+        </div>
+        <p>Datenstruktur-Validierung und JSON-Schema-Editierung</p>
+    </header>
+
+    <main class="schema-layout">
+        <!-- Sidebar: Schema-Struktur -->
+        <aside class="schema-sidebar">
+            <div class="schema-meta">
+                <h2 id="schema-title">Schema</h2>
+                <dl>
+                    <dt>Version</dt>
+                    <dd id="schema-version">-</dd>
+                    <dt>$schema</dt>
+                    <dd id="schema-dialect">-</dd>
+                </dl>
+            </div>
+
+            <div class="schema-tree-section">
+                <h3>Struktur</h3>
+                <div class="schema-tree" id="schema-tree">
+                    <!-- Dynamisch: Aufklappbarer Property-Baum -->
+                </div>
+            </div>
+
+            <div class="definitions-section">
+                <h3>Definitionen</h3>
+                <ul class="definitions-list" id="definitions-list">
+                    <!-- Dynamisch: $ref Definitionen -->
+                </ul>
+            </div>
+
+            <div class="import-export">
+                <h3>Import/Export</h3>
+                <button class="import-btn" id="import-schema">Schema importieren</button>
+                <button class="export-btn" id="export-schema">Schema exportieren</button>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Schema-Editor + Validator -->
+        <section class="schema-main">
+            <div class="editor-tabs">
+                <button class="tab-btn active" data-tab="visual">Visuell</button>
+                <button class="tab-btn" data-tab="source">Quelltext</button>
+                <button class="tab-btn" data-tab="test">Testen</button>
+            </div>
+
+            <!-- Visueller Editor -->
+            <div class="tab-content active" id="visual-tab">
+                <div class="property-editor" id="property-editor">
+                    <h3>Properties</h3>
+                    <table class="properties-table" id="properties-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Typ</th>
+                                <th>Required</th>
+                                <th>Beschreibung</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="properties-body">
+                            <!-- Dynamisch -->
+                        </tbody>
+                    </table>
+                    <button class="add-property" id="add-property">+ Property hinzufügen</button>
+                </div>
+            </div>
+
+            <!-- Quelltext-Editor -->
+            <div class="tab-content hidden" id="source-tab">
+                <div class="source-editor">
+                    <textarea id="schema-source" class="json-editor" spellcheck="false"></textarea>
+                    <div class="source-actions">
+                        <button id="format-json">Formatieren</button>
+                        <button id="apply-source">Übernehmen</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test-Tab: Live-Validierung -->
+            <div class="tab-content hidden" id="test-tab">
+                <div class="validation-split">
+                    <div class="test-input">
+                        <h3>Testdaten eingeben</h3>
+                        <textarea id="test-data" class="json-editor" placeholder='{"id": "...", "title": "..."}'></textarea>
+                        <button class="validate-btn" id="validate-btn">Validieren</button>
+                    </div>
+                    <div class="validation-result">
+                        <h3>Ergebnis</h3>
+                        <div class="result-indicator" id="result-indicator">
+                            <!-- Dynamisch: Erfolg/Fehler -->
+                        </div>
+                        <ul class="error-list" id="validation-errors">
+                            <!-- Dynamisch: Fehler mit JSON-Pointer -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="test-cases">
+                    <h3>Gespeicherte Testfälle</h3>
+                    <table class="test-cases-table" id="test-cases-table">
+                        <thead>
+                            <tr>
+                                <th>Beschreibung</th>
+                                <th>Erwartet</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="test-cases-body">
+                            <!-- Dynamisch -->
+                        </tbody>
+                    </table>
+                    <button class="add-test-case" id="add-test-case">+ Testfall</button>
+                    <button class="run-all-tests" id="run-all-tests">Alle ausführen</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontext-Panel: Property-Details -->
+        <aside class="schema-context">
+            <section class="property-detail" id="property-detail">
+                <h2>Property bearbeiten</h2>
+                <p class="detail-prompt">Wählen Sie eine Property aus der Liste.</p>
+                <form class="detail-form hidden" id="detail-form">
+                    <div class="form-group">
+                        <label for="prop-name">Name</label>
+                        <input type="text" id="prop-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="prop-type">Typ</label>
+                        <select id="prop-type">
+                            <option value="string">string</option>
+                            <option value="number">number</option>
+                            <option value="integer">integer</option>
+                            <option value="boolean">boolean</option>
+                            <option value="array">array</option>
+                            <option value="object">object</option>
+                            <option value="null">null</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="prop-description">Beschreibung</label>
+                        <textarea id="prop-description" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" id="prop-required"> Required</label>
+                    </div>
+
+                    <!-- Typ-spezifische Constraints -->
+                    <div class="constraints-section" id="constraints-section">
+                        <h4>Constraints</h4>
+                        <div class="string-constraints hidden" id="string-constraints">
+                            <div class="form-row">
+                                <label>minLength</label>
+                                <input type="number" id="prop-minLength" min="0">
+                            </div>
+                            <div class="form-row">
+                                <label>maxLength</label>
+                                <input type="number" id="prop-maxLength" min="0">
+                            </div>
+                            <div class="form-row">
+                                <label>pattern</label>
+                                <input type="text" id="prop-pattern" placeholder="^[A-Z].*">
+                            </div>
+                            <div class="form-row">
+                                <label>format</label>
+                                <select id="prop-format">
+                                    <option value="">-</option>
+                                    <option value="email">email</option>
+                                    <option value="uri">uri</option>
+                                    <option value="date">date</option>
+                                    <option value="date-time">date-time</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="number-constraints hidden" id="number-constraints">
+                            <div class="form-row">
+                                <label>minimum</label>
+                                <input type="number" id="prop-minimum">
+                            </div>
+                            <div class="form-row">
+                                <label>maximum</label>
+                                <input type="number" id="prop-maximum">
+                            </div>
+                        </div>
+                        <div class="array-constraints hidden" id="array-constraints">
+                            <div class="form-row">
+                                <label>minItems</label>
+                                <input type="number" id="prop-minItems" min="0">
+                            </div>
+                            <div class="form-row">
+                                <label>maxItems</label>
+                                <input type="number" id="prop-maxItems" min="0">
+                            </div>
+                            <div class="form-row">
+                                <label>items $ref</label>
+                                <select id="prop-items-ref">
+                                    <option value="">-</option>
+                                    <!-- Dynamisch: Definitionen -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="save-btn">Speichern</button>
+                        <button type="button" class="delete-btn" id="delete-property">Löschen</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="schema-stats">
+                <h3>Schema-Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Properties</dt>
+                    <dd id="stat-properties">-</dd>
+                    <dt>Required</dt>
+                    <dd id="stat-required">-</dd>
+                    <dt>Definitionen</dt>
+                    <dd id="stat-definitions">-</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="archetype-info">
+            <h3>Warum Schema?</h3>
+            <p><strong>Basis-Archetyp:</strong> Workbench (Hierarchisch + Kuratierung)</p>
+            <p><strong>Spezialisierung:</strong> JSON-Schema-Editierung und Validierung</p>
+            <p><strong>Erkennungsheuristik:</strong> $schema, properties, required, definitions</p>
+        </div>
+
+        <div class="data-info-box">
+            <h3>Kognitive Aufgabe</h3>
+            <div class="info-content">
+                <p>Definieren und Validieren von Datenstrukturen. Der Nutzer spezifiziert
+                erlaubte Formate und prüft Daten gegen diese.</p>
+                <h4>UI-Elemente</h4>
+                <ul>
+                    <li><strong>Schema-Tree:</strong> Mit Typ-Annotationen</li>
+                    <li><strong>Live-Validierung:</strong> Von Beispieldaten</li>
+                    <li><strong>Fehler-Highlighting:</strong> Mit JSON-Pointer</li>
+                    <li><strong>Constraint-Editor:</strong> Pattern, min/max, etc.</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-to-matrix workbench-btn">Zurück zur Entscheidungsmatrix</a>
+    </footer>
+
+    <script type="module" src="../js/specializations/schema-entry.js"></script>
+</body>
+</html>

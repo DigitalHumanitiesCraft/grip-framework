@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citation - Navigator Spezialisierung - GRIP Framework</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navigator.css">
+    <link rel="stylesheet" href="../css/specializations/citation.css">
+</head>
+<body>
+    <header class="demo-header navigator-header citation-header">
+        <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
+        <div class="header-main">
+            <h1>Citation</h1>
+            <span class="specialization-badge">Navigator-Spezialisierung</span>
+        </div>
+        <p>Bibliometrische Netzwerke und wissenschaftliche Referenzsysteme</p>
+    </header>
+
+    <main class="citation-layout">
+        <!-- Sidebar: Filter + Cluster -->
+        <aside class="citation-sidebar">
+            <div class="network-meta">
+                <h2>Netzwerk</h2>
+                <dl>
+                    <dt>Publikationen</dt>
+                    <dd id="stat-nodes">-</dd>
+                    <dt>Zitationen</dt>
+                    <dd id="stat-edges">-</dd>
+                    <dt>Dichte</dt>
+                    <dd id="stat-density">-</dd>
+                </dl>
+            </div>
+
+            <div class="time-filter">
+                <h3>Zeitraum</h3>
+                <div class="year-range">
+                    <input type="number" id="year-min" min="1900" max="2025" value="1950">
+                    <span>bis</span>
+                    <input type="number" id="year-max" min="1900" max="2025" value="2025">
+                </div>
+                <div class="year-slider" id="year-slider">
+                    <!-- Dynamisch: Range-Slider -->
+                </div>
+            </div>
+
+            <div class="cluster-filter">
+                <h3>Forschungsfelder</h3>
+                <ul class="cluster-list" id="cluster-list">
+                    <!-- Dynamisch: Cluster mit Farbe + Toggle -->
+                </ul>
+            </div>
+
+            <div class="impact-filter">
+                <h3>Zitationen (min)</h3>
+                <input type="range" id="citation-threshold" min="0" max="100" value="0">
+                <span id="citation-threshold-value">0</span>
+            </div>
+
+            <div class="publication-type-filter">
+                <h3>Publikationstyp</h3>
+                <div class="type-checkboxes" id="type-checkboxes">
+                    <!-- Dynamisch: book, article, chapter, etc. -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Netzwerk-Visualisierung -->
+        <section class="citation-main">
+            <div class="network-controls">
+                <div class="layout-selector">
+                    <label>Layout:</label>
+                    <select id="layout-mode">
+                        <option value="force">Force-Directed</option>
+                        <option value="temporal">Zeitlich (Jahr als Y-Achse)</option>
+                        <option value="radial">Radial (nach Impact)</option>
+                    </select>
+                </div>
+                <div class="node-sizing">
+                    <label>Knotengröße:</label>
+                    <select id="node-size-by">
+                        <option value="citations">Nach Zitationen</option>
+                        <option value="uniform">Einheitlich</option>
+                    </select>
+                </div>
+                <button class="reset-view" id="reset-view">Ansicht zurücksetzen</button>
+            </div>
+
+            <div class="network-container" id="network-container">
+                <!-- D3/Canvas Netzwerk-Visualisierung -->
+            </div>
+
+            <!-- Co-Citation Panel -->
+            <div class="cocitation-panel hidden" id="cocitation-panel">
+                <h3>Co-Zitationen</h3>
+                <p>Werke, die häufig gemeinsam zitiert werden</p>
+                <ul id="cocitation-list">
+                    <!-- Dynamisch -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- Kontext-Panel: Publikationsdetails -->
+        <aside class="citation-context">
+            <section class="publication-detail" id="publication-detail">
+                <h2>Publikation</h2>
+                <p class="detail-prompt">Klicken Sie auf einen Knoten im Netzwerk.</p>
+                <div class="detail-content hidden" id="detail-content">
+                    <h3 id="pub-title"></h3>
+                    <p class="pub-authors" id="pub-authors"></p>
+                    <dl>
+                        <dt>Jahr</dt>
+                        <dd id="pub-year">-</dd>
+                        <dt>Venue</dt>
+                        <dd id="pub-venue">-</dd>
+                        <dt>Typ</dt>
+                        <dd id="pub-type">-</dd>
+                        <dt>Zitationen</dt>
+                        <dd id="pub-citations">-</dd>
+                        <dt>Cluster</dt>
+                        <dd id="pub-cluster">-</dd>
+                    </dl>
+                    <div class="pub-actions">
+                        <button class="show-citing" id="show-citing">Zitierende zeigen</button>
+                        <button class="show-cited" id="show-cited">Zitierte zeigen</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="citation-list-section">
+                <h2>Zitationsliste</h2>
+                <div class="citation-direction-toggle">
+                    <button class="active" id="citing-btn">Zitiert von</button>
+                    <button id="cited-btn">Zitiert</button>
+                </div>
+                <ul class="citation-reference-list" id="citation-reference-list">
+                    <!-- Dynamisch: Bibliografische Referenzen -->
+                </ul>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer navigator-footer">
+        <div class="archetype-info">
+            <h3>Warum Citation?</h3>
+            <p><strong>Basis-Archetyp:</strong> Navigator (Vernetzt + Rekonstruktion)</p>
+            <p><strong>Spezialisierung:</strong> Bibliometrische Zitationsnetzwerke</p>
+            <p><strong>Erkennungsheuristik:</strong> publications, citations, authors, year, venue</p>
+        </div>
+
+        <div class="data-info-box">
+            <h3>Kognitive Aufgabe</h3>
+            <div class="info-content">
+                <p>Rekonstruktion intellektueller Genealogien. Der Nutzer identifiziert
+                einflussreiche Werke und Zitationsmuster.</p>
+                <h4>UI-Elemente</h4>
+                <ul>
+                    <li><strong>Jahr als Y-Achse:</strong> Zeitfluss von oben nach unten</li>
+                    <li><strong>Impact-Indikator:</strong> Knotengröße nach Zitationszahl</li>
+                    <li><strong>Cluster-Färbung:</strong> Nach Forschungsfeld</li>
+                    <li><strong>Co-Citation:</strong> Häufig gemeinsam zitierte Werke</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-to-matrix navigator-btn">Zurück zur Entscheidungsmatrix</a>
+    </footer>
+
+    <script type="module" src="../js/specializations/citation-entry.js"></script>
+</body>
+</html>

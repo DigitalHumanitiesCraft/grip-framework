@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "title": "Familie Bach",
+    "source": "Basierend auf GEDCOM-Standard",
+    "specialization": "genealogy"
+  },
+  "persons": [
+    {
+      "id": "I1",
+      "name": "Johann Ambrosius Bach",
+      "birth": { "date": "1645-02-22", "place": "Erfurt" },
+      "death": { "date": "1695-02-20", "place": "Eisenach" },
+      "gender": "male",
+      "generation": 0,
+      "occupation": "Stadtpfeifer"
+    },
+    {
+      "id": "I2",
+      "name": "Maria Elisabeth Lämmerhirt",
+      "birth": { "date": "1644-02-24", "place": "Erfurt" },
+      "death": { "date": "1694-05-03", "place": "Eisenach" },
+      "gender": "female",
+      "generation": 0
+    },
+    {
+      "id": "I3",
+      "name": "Johann Sebastian Bach",
+      "birth": { "date": "1685-03-21", "place": "Eisenach" },
+      "death": { "date": "1750-07-28", "place": "Leipzig" },
+      "gender": "male",
+      "generation": 1,
+      "occupation": "Komponist, Thomaskantor"
+    },
+    {
+      "id": "I4",
+      "name": "Maria Barbara Bach",
+      "birth": { "date": "1684-10-20", "place": "Gehren" },
+      "death": { "date": "1720-07-07", "place": "Köthen" },
+      "gender": "female",
+      "generation": 1
+    },
+    {
+      "id": "I5",
+      "name": "Anna Magdalena Wilcke",
+      "birth": { "date": "1701-09-22", "place": "Zeitz" },
+      "death": { "date": "1760-02-27", "place": "Leipzig" },
+      "gender": "female",
+      "generation": 1,
+      "occupation": "Sängerin"
+    },
+    {
+      "id": "I6",
+      "name": "Wilhelm Friedemann Bach",
+      "birth": { "date": "1710-11-22", "place": "Weimar" },
+      "death": { "date": "1784-07-01", "place": "Berlin" },
+      "gender": "male",
+      "generation": 2,
+      "occupation": "Komponist",
+      "note": "Ältester Sohn, 'Hallescher Bach'"
+    },
+    {
+      "id": "I7",
+      "name": "Carl Philipp Emanuel Bach",
+      "birth": { "date": "1714-03-08", "place": "Weimar" },
+      "death": { "date": "1788-12-14", "place": "Hamburg" },
+      "gender": "male",
+      "generation": 2,
+      "occupation": "Komponist",
+      "note": "'Hamburger Bach', Hofkomponist Friedrichs II."
+    },
+    {
+      "id": "I8",
+      "name": "Johann Christoph Friedrich Bach",
+      "birth": { "date": "1732-06-21", "place": "Leipzig" },
+      "death": { "date": "1795-01-26", "place": "Bückeburg" },
+      "gender": "male",
+      "generation": 2,
+      "occupation": "Komponist",
+      "note": "'Bückeburger Bach'"
+    },
+    {
+      "id": "I9",
+      "name": "Johann Christian Bach",
+      "birth": { "date": "1735-09-05", "place": "Leipzig" },
+      "death": { "date": "1782-01-01", "place": "London" },
+      "gender": "male",
+      "generation": 2,
+      "occupation": "Komponist",
+      "note": "'Londoner Bach', beeinflusste Mozart"
+    }
+  ],
+  "relations": [
+    { "type": "spouse", "person1": "I1", "person2": "I2", "marriage_date": "1668-04-08", "marriage_place": "Erfurt" },
+    { "type": "parent_child", "parent": "I1", "child": "I3" },
+    { "type": "parent_child", "parent": "I2", "child": "I3" },
+    { "type": "spouse", "person1": "I3", "person2": "I4", "marriage_date": "1707-10-17", "marriage_place": "Dornheim" },
+    { "type": "spouse", "person1": "I3", "person2": "I5", "marriage_date": "1721-12-03", "marriage_place": "Köthen" },
+    { "type": "parent_child", "parent": "I3", "child": "I6" },
+    { "type": "parent_child", "parent": "I4", "child": "I6" },
+    { "type": "parent_child", "parent": "I3", "child": "I7" },
+    { "type": "parent_child", "parent": "I4", "child": "I7" },
+    { "type": "parent_child", "parent": "I3", "child": "I8" },
+    { "type": "parent_child", "parent": "I5", "child": "I8" },
+    { "type": "parent_child", "parent": "I3", "child": "I9" },
+    { "type": "parent_child", "parent": "I5", "child": "I9" }
+  ],
+  "lineages": [
+    {
+      "id": "L1",
+      "name": "Bach-Musikerfamilie",
+      "description": "Über 50 Musiker in sieben Generationen",
+      "color": "#7B68A6"
+    }
+  ]
+}

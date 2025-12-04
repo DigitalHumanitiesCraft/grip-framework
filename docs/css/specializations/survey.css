@@ -1,0 +1,285 @@
+/**
+ * Survey CSS
+ * Scope-Spezialisierung: Umfragedaten
+ * Standard: DDI Codebook
+ */
+
+.survey-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-lg);
+    min-height: calc(100vh - 200px);
+    padding: var(--space-lg);
+}
+
+.survey-header .specialization-badge {
+    color: var(--color-archetype-scope);
+    background: rgba(184, 84, 80, 0.1);
+}
+
+/* Sidebar: Filter */
+.survey-filters {
+    background: var(--color-paper);
+    padding: var(--space-md);
+}
+
+.survey-meta dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+}
+
+/* Demografische Filter */
+.demographic-filters {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.demographic-filters .filter-group {
+    padding: var(--space-sm);
+    background: var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.demographic-filters label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+.demographic-filters select,
+.demographic-filters input[type="checkbox"] + span {
+    font-size: 0.875rem;
+}
+
+/* Skalen-Auswahl */
+.scale-selector {
+    margin-top: var(--space-lg);
+}
+
+.scale-selector select {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.scale-info {
+    margin-top: var(--space-sm);
+    font-size: 0.875rem;
+}
+
+.cronbach {
+    font-family: var(--font-mono);
+    color: var(--color-archetype-scope);
+}
+
+/* Hauptbereich */
+.survey-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+/* Skalen-Übersicht: KPI-Cards */
+.scales-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-md);
+}
+
+.scale-card {
+    background: var(--color-paper);
+    padding: var(--space-lg);
+    border-radius: 4px;
+    border-left: 4px solid var(--color-archetype-scope);
+}
+
+.scale-card .scale-name {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.scale-card .scale-value {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.scale-card .scale-alpha {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+/* Likert-Charts: Diverging Stacked Bar */
+.likert-charts {
+    background: var(--color-paper);
+    padding: var(--space-lg);
+    border-radius: 4px;
+}
+
+.likert-item {
+    display: grid;
+    grid-template-columns: 200px 1fr 60px;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.likert-item .item-label {
+    font-size: 0.875rem;
+    text-align: right;
+}
+
+.likert-bar {
+    display: flex;
+    height: 24px;
+    background: var(--color-paper-dark);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.likert-bar .segment {
+    height: 100%;
+    transition: width 0.3s;
+}
+
+/* Likert-Farben (divergierend) */
+.likert-bar .segment-1 { background: #B85450; }
+.likert-bar .segment-2 { background: #E8A9A7; }
+.likert-bar .segment-3 { background: #E0E0E0; }
+.likert-bar .segment-4 { background: #A8D5A2; }
+.likert-bar .segment-5 { background: #4A7C59; }
+
+.likert-item .mean-value {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    text-align: right;
+}
+
+/* Gruppenvergleich */
+.group-comparison {
+    background: var(--color-paper);
+    padding: var(--space-lg);
+    border-radius: 4px;
+}
+
+.comparison-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.comparison-chart {
+    min-height: 300px;
+}
+
+.significance-legend {
+    display: flex;
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+    font-size: 0.75rem;
+}
+
+.sig-marker {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.sig-marker.sig-yes { color: var(--color-archetype-scope); }
+.sig-marker.sig-high { color: var(--color-terracotta); }
+
+/* Korrelations-Heatmap */
+.correlation-section {
+    background: var(--color-paper);
+    padding: var(--space-lg);
+    border-radius: 4px;
+}
+
+.correlation-heatmap {
+    display: grid;
+    gap: 2px;
+}
+
+.correlation-cell {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    border-radius: 2px;
+}
+
+/* Korrelations-Farbskala */
+.corr-neg-strong { background: #B85450; color: white; }
+.corr-neg-weak { background: #E8A9A7; }
+.corr-neutral { background: #E0E0E0; }
+.corr-pos-weak { background: #A8D5A2; }
+.corr-pos-strong { background: #4A7C59; color: white; }
+
+/* Fragebogenstruktur */
+.questionnaire-structure {
+    background: var(--color-paper);
+    padding: var(--space-lg);
+    border-radius: 4px;
+}
+
+.items-accordion {
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.accordion-header {
+    padding: var(--space-md);
+    background: var(--color-paper-dark);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-header::after {
+    content: "▼";
+    font-size: 0.75rem;
+    transition: transform 0.2s;
+}
+
+.accordion-header.open::after {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    padding: var(--space-md);
+    display: none;
+}
+
+.accordion-content.open {
+    display: block;
+}
+
+.item-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 100px;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-paper-dark);
+    font-size: 0.875rem;
+}
+
+.item-row .item-id {
+    font-family: var(--font-mono);
+}
+
+.item-row .item-type {
+    color: var(--color-ink-light);
+}

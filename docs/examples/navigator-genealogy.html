@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genealogy - Navigator Spezialisierung - GRIP Framework</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navigator.css">
+    <link rel="stylesheet" href="../css/specializations/genealogy.css">
+</head>
+<body>
+    <header class="demo-header navigator-header genealogy-header">
+        <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
+        <div class="header-main">
+            <h1>Genealogy</h1>
+            <span class="specialization-badge">Navigator-Spezialisierung</span>
+        </div>
+        <p>Verwandtschafts-, Abstammungs- und Nachfolgebeziehungen</p>
+    </header>
+
+    <main class="genealogy-layout">
+        <!-- Sidebar: Suche + Filter -->
+        <aside class="genealogy-sidebar">
+            <div class="search-panel">
+                <h2>Personensuche</h2>
+                <input type="search" id="person-search" placeholder="Name eingeben...">
+                <ul class="search-results" id="search-results">
+                    <!-- Dynamisch -->
+                </ul>
+            </div>
+
+            <div class="view-mode">
+                <h3>Ansicht</h3>
+                <div class="view-buttons">
+                    <button class="view-btn active" data-view="tree">Stammbaum</button>
+                    <button class="view-btn" data-view="ancestors">Ahnentafel</button>
+                    <button class="view-btn" data-view="descendants">Nachkommen</button>
+                </div>
+            </div>
+
+            <div class="generation-control">
+                <h3>Generationen</h3>
+                <div class="generation-slider">
+                    <label>Anzeigen:</label>
+                    <input type="range" id="generation-depth" min="1" max="10" value="3">
+                    <span id="generation-depth-value">3</span>
+                </div>
+            </div>
+
+            <div class="lineages-panel">
+                <h3>Linien</h3>
+                <ul class="lineage-list" id="lineage-list">
+                    <!-- Dynamisch: Familien-Linien mit Farbe -->
+                </ul>
+            </div>
+
+            <div class="gender-legend">
+                <h3>Legende</h3>
+                <div class="legend-items">
+                    <span class="legend-male">♂ Männlich</span>
+                    <span class="legend-female">♀ Weiblich</span>
+                    <span class="legend-partner">── Partner</span>
+                    <span class="legend-child">│ Abstammung</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Stammbaum-Visualisierung -->
+        <section class="genealogy-main">
+            <div class="tree-controls">
+                <button class="zoom-in" id="zoom-in">+</button>
+                <button class="zoom-out" id="zoom-out">−</button>
+                <button class="fit-view" id="fit-view">Einpassen</button>
+                <button class="center-root" id="center-root">Wurzel zentrieren</button>
+            </div>
+
+            <div class="tree-container" id="tree-container">
+                <!-- D3 Stammbaum-Visualisierung mit horizontalen Generationen -->
+            </div>
+
+            <!-- Timeline am unteren Rand -->
+            <div class="life-timeline" id="life-timeline">
+                <div class="timeline-axis"></div>
+                <div class="timeline-persons" id="timeline-persons">
+                    <!-- Dynamisch: Lebensbalken pro sichtbarer Person -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontext-Panel: Personendetails -->
+        <aside class="genealogy-context">
+            <section class="person-detail" id="person-detail">
+                <h2>Person</h2>
+                <p class="detail-prompt">Klicken Sie auf eine Person im Stammbaum.</p>
+                <div class="detail-content hidden" id="detail-content">
+                    <div class="person-header">
+                        <span class="gender-symbol" id="person-gender"></span>
+                        <h3 id="person-name"></h3>
+                    </div>
+                    <dl>
+                        <dt>Geboren</dt>
+                        <dd id="person-birth">-</dd>
+                        <dt>Gestorben</dt>
+                        <dd id="person-death">-</dd>
+                        <dt>Generation</dt>
+                        <dd id="person-generation">-</dd>
+                    </dl>
+                </div>
+            </section>
+
+            <section class="relations-panel">
+                <h2>Beziehungen</h2>
+                <div class="relations-content hidden" id="relations-content">
+                    <div class="relation-group">
+                        <h4>Eltern</h4>
+                        <ul id="parents-list">
+                            <!-- Dynamisch -->
+                        </ul>
+                    </div>
+                    <div class="relation-group">
+                        <h4>Partner</h4>
+                        <ul id="partners-list">
+                            <!-- Dynamisch -->
+                        </ul>
+                    </div>
+                    <div class="relation-group">
+                        <h4>Kinder</h4>
+                        <ul id="children-list">
+                            <!-- Dynamisch -->
+                        </ul>
+                    </div>
+                    <div class="relation-group">
+                        <h4>Geschwister</h4>
+                        <ul id="siblings-list">
+                            <!-- Dynamisch -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="genealogy-stats">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Personen</dt>
+                    <dd id="stat-persons">-</dd>
+                    <dt>Generationen</dt>
+                    <dd id="stat-generations">-</dd>
+                    <dt>Ehen</dt>
+                    <dd id="stat-marriages">-</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer navigator-footer">
+        <div class="archetype-info">
+            <h3>Warum Genealogy?</h3>
+            <p><strong>Basis-Archetyp:</strong> Navigator (Vernetzt + Rekonstruktion)</p>
+            <p><strong>Spezialisierung:</strong> Verwandtschafts- und Abstammungsnetzwerke</p>
+            <p><strong>Erkennungsheuristik:</strong> persons, parent_child, spouse, generation</p>
+        </div>
+
+        <div class="data-info-box">
+            <h3>Kognitive Aufgabe</h3>
+            <div class="info-content">
+                <p>Rekonstruktion von Linien und Verzweigungen. Der Nutzer navigiert
+                vertikal (Generationen) und horizontal (Geschwister, Partner).</p>
+                <h4>UI-Elemente</h4>
+                <ul>
+                    <li><strong>Generationen-Layout:</strong> Horizontal geschichtet</li>
+                    <li><strong>Geschlechts-Symbole:</strong> Oder Farbkodierung</li>
+                    <li><strong>Partner-Verbindungen:</strong> Horizontal vs. Abstammung vertikal</li>
+                    <li><strong>Lebensdaten-Timeline:</strong> Zeitlicher Überblick</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-to-matrix navigator-btn">Zurück zur Entscheidungsmatrix</a>
+    </footer>
+
+    <script type="module" src="../js/specializations/genealogy-entry.js"></script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registry - Workbench Spezialisierung - GRIP Framework</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/workbench.css">
+    <link rel="stylesheet" href="../css/specializations/registry.css">
+</head>
+<body>
+    <header class="demo-header workbench-header registry-header">
+        <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
+        <div class="header-main">
+            <h1>Registry</h1>
+            <span class="specialization-badge">Workbench-Spezialisierung</span>
+        </div>
+        <p>Sammlungsinventare, Objektkataloge und Bestandsverwaltung</p>
+    </header>
+
+    <main class="registry-layout">
+        <!-- Sidebar: Filter + Standorte -->
+        <aside class="registry-sidebar">
+            <div class="collection-meta">
+                <h2 id="collection-name">Sammlung</h2>
+                <dl>
+                    <dt>Institution</dt>
+                    <dd id="collection-institution">-</dd>
+                    <dt>Objekte</dt>
+                    <dd id="collection-total">-</dd>
+                </dl>
+            </div>
+
+            <div class="inventory-search">
+                <h3>Inventarnummer</h3>
+                <input type="search" id="inventory-search" placeholder="z.B. GM-2024-*">
+                <button class="search-btn" id="search-btn">Suchen</button>
+            </div>
+
+            <div class="location-hierarchy">
+                <h3>Standorte</h3>
+                <ul class="location-tree" id="location-tree">
+                    <!-- Dynamisch: Gebäude > Räume aufklappbar -->
+                </ul>
+            </div>
+
+            <div class="filter-section">
+                <h3>Filter</h3>
+                <div class="filter-group">
+                    <label>Kategorie</label>
+                    <select id="filter-category">
+                        <option value="">Alle</option>
+                        <!-- Dynamisch aus controlled_vocabularies -->
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Zustand</label>
+                    <select id="filter-condition">
+                        <option value="">Alle</option>
+                        <!-- Dynamisch -->
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Vollständigkeit</label>
+                    <input type="range" id="filter-completeness" min="0" max="100" value="0">
+                    <span id="completeness-value">≥ 0%</span>
+                </div>
+            </div>
+
+            <div class="validation-summary">
+                <h3>Datenqualität</h3>
+                <div class="quality-indicator">
+                    <div class="quality-bar" id="quality-bar"></div>
+                    <span id="quality-percent">-%</span>
+                </div>
+                <ul class="error-types" id="error-types">
+                    <!-- Dynamisch: Fehlertypen mit Anzahl -->
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Objektliste + Editor -->
+        <section class="registry-main">
+            <div class="view-controls">
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="table">Tabelle</button>
+                    <button class="view-btn" data-view="cards">Karten</button>
+                </div>
+                <div class="bulk-actions">
+                    <select id="bulk-action">
+                        <option value="">Aktion wählen...</option>
+                        <option value="move">Standort ändern</option>
+                        <option value="condition">Zustand aktualisieren</option>
+                        <option value="export">Exportieren</option>
+                    </select>
+                    <button class="apply-bulk" id="apply-bulk" disabled>Anwenden</button>
+                </div>
+                <span class="selection-count">Ausgewählt: <span id="selection-count">0</span></span>
+            </div>
+
+            <!-- Tabellen-Ansicht -->
+            <div class="table-view" id="table-view">
+                <table class="registry-table" id="registry-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="select-all"></th>
+                            <th>Inv.Nr.</th>
+                            <th>Titel</th>
+                            <th>Urheber</th>
+                            <th>Datierung</th>
+                            <th>Kategorie</th>
+                            <th>Zustand</th>
+                            <th>Standort</th>
+                            <th>Vollst.</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="registry-body">
+                        <!-- Dynamisch -->
+                    </tbody>
+                </table>
+                <div class="table-pagination">
+                    <span id="pagination-info">Zeige 0-0 von 0</span>
+                    <div class="pagination-btns" id="pagination-btns"></div>
+                </div>
+            </div>
+
+            <!-- Karten-Ansicht -->
+            <div class="cards-view hidden" id="cards-view">
+                <div class="object-cards" id="object-cards">
+                    <!-- Dynamisch: Objekt-Karten -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontext-Panel: Objekt-Editor -->
+        <aside class="registry-context">
+            <section class="object-editor" id="object-editor">
+                <h2>Objekt bearbeiten</h2>
+                <p class="editor-prompt">Wählen Sie ein Objekt aus der Liste.</p>
+                <form class="editor-form hidden" id="editor-form">
+                    <div class="form-group">
+                        <label for="edit-inventory">Inventarnummer</label>
+                        <input type="text" id="edit-inventory" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-title">Titel</label>
+                        <input type="text" id="edit-title">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-creator">Urheber</label>
+                        <input type="text" id="edit-creator">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-date">Datierung</label>
+                        <input type="text" id="edit-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-category">Kategorie</label>
+                        <select id="edit-category">
+                            <!-- Dynamisch aus controlled_vocabularies -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-condition">Zustand</label>
+                        <select id="edit-condition">
+                            <!-- Dynamisch -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-location">Standort</label>
+                        <select id="edit-location">
+                            <!-- Dynamisch aus locations -->
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="save-btn">Speichern</button>
+                        <button type="button" class="cancel-btn" id="cancel-edit">Abbrechen</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="validation-panel">
+                <h2>Validierung</h2>
+                <div class="validation-errors" id="validation-errors">
+                    <!-- Dynamisch: Fehlermeldungen für aktuelles Objekt -->
+                </div>
+            </section>
+
+            <section class="duplicate-check">
+                <h3>Duplikat-Prüfung</h3>
+                <button id="check-duplicates">Prüfen</button>
+                <ul class="duplicate-list hidden" id="duplicate-list">
+                    <!-- Dynamisch -->
+                </ul>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="archetype-info">
+            <h3>Warum Registry?</h3>
+            <p><strong>Basis-Archetyp:</strong> Workbench (Hierarchisch + Kuratierung)</p>
+            <p><strong>Spezialisierung:</strong> Sammlungsinventare und Objektkataloge</p>
+            <p><strong>Erkennungsheuristik:</strong> inventory_number, location, condition, controlled_vocabularies</p>
+        </div>
+
+        <div class="data-info-box">
+            <h3>Kognitive Aufgabe</h3>
+            <div class="info-content">
+                <p>Sichten und Korrigieren von Bestandsdaten. Der Nutzer identifiziert
+                Lücken, Duplikate und Inkonsistenzen.</p>
+                <h4>UI-Elemente</h4>
+                <ul>
+                    <li><strong>Inventarnummer-Suche:</strong> Mit Wildcards</li>
+                    <li><strong>Standort-Hierarchie:</strong> Gebäude > Raum > Regal</li>
+                    <li><strong>Zustandsfelder:</strong> Mit kontrollierten Vokabularen</li>
+                    <li><strong>Vollständigkeitsanzeige:</strong> Pro Datensatz</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-to-matrix workbench-btn">Zurück zur Entscheidungsmatrix</a>
+    </footer>
+
+    <script type="module" src="../js/specializations/registry-entry.js"></script>
+</body>
+</html>

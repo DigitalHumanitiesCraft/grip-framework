@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor - Scope Spezialisierung - GRIP Framework</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/scope.css">
+    <link rel="stylesheet" href="../css/specializations/monitor.css">
+</head>
+<body>
+    <header class="demo-header scope-header monitor-header">
+        <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
+        <div class="header-main">
+            <h1>Monitor</h1>
+            <span class="specialization-badge">Scope-Spezialisierung</span>
+        </div>
+        <p>Echtzeit-Daten mit Schwellwerten und Anomalieerkennung</p>
+    </header>
+
+    <main class="monitor-layout">
+        <!-- Sidebar: System-Info + Alerts -->
+        <aside class="monitor-sidebar">
+            <div class="system-info">
+                <h2>System</h2>
+                <dl id="system-details">
+                    <dt>Name</dt>
+                    <dd id="system-name">-</dd>
+                    <dt>Standort</dt>
+                    <dd id="system-location">-</dd>
+                    <dt>Status</dt>
+                    <dd id="system-status" class="status-indicator">-</dd>
+                </dl>
+            </div>
+
+            <div class="refresh-controls">
+                <label>Auto-Refresh</label>
+                <select id="refresh-interval">
+                    <option value="0">Aus</option>
+                    <option value="5000">5 Sekunden</option>
+                    <option value="30000">30 Sekunden</option>
+                    <option value="60000">1 Minute</option>
+                </select>
+                <span class="last-update">Aktualisiert: <span id="last-update">-</span></span>
+            </div>
+
+            <div class="alerts-panel">
+                <h3>Alerts <span class="alert-count" id="alert-count">0</span></h3>
+                <div class="alert-filters">
+                    <label><input type="checkbox" id="filter-critical" checked> Kritisch</label>
+                    <label><input type="checkbox" id="filter-warning" checked> Warnung</label>
+                    <label><input type="checkbox" id="filter-acknowledged"> Bestätigt</label>
+                </div>
+                <ul class="alerts-list" id="alerts-list">
+                    <!-- Dynamisch: Alerts mit Timestamp + Metric + Typ -->
+                </ul>
+            </div>
+
+            <div class="metrics-selector">
+                <h3>Metriken</h3>
+                <div class="metrics-checkboxes" id="metrics-checkboxes">
+                    <!-- Dynamisch: Checkboxen für sichtbare Metriken -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Dashboard -->
+        <section class="monitor-main">
+            <!-- Ampel-Übersicht -->
+            <div class="status-overview" id="status-overview">
+                <!-- Dynamisch: Ampel-Karten pro Metrik -->
+            </div>
+
+            <!-- Sparklines-Reihe -->
+            <div class="sparklines-row" id="sparklines-row">
+                <!-- Dynamisch: Mini-Charts pro Metrik -->
+            </div>
+
+            <!-- Detail-Zeitreihen -->
+            <div class="timeseries-section">
+                <div class="timeseries-controls">
+                    <label>Zeitraum:</label>
+                    <select id="time-range">
+                        <option value="1h">Letzte Stunde</option>
+                        <option value="6h">Letzte 6 Stunden</option>
+                        <option value="24h" selected>Letzte 24 Stunden</option>
+                        <option value="7d">Letzte 7 Tage</option>
+                    </select>
+                </div>
+                <div class="timeseries-charts" id="timeseries-charts">
+                    <!-- Dynamisch: Detaillierte Zeitreihen mit Threshold-Linien -->
+                </div>
+            </div>
+
+            <!-- Anomalie-Tabelle -->
+            <div class="anomalies-section">
+                <h2>Anomalien</h2>
+                <table class="anomalies-table" id="anomalies-table">
+                    <thead>
+                        <tr>
+                            <th>Zeit</th>
+                            <th>Metrik</th>
+                            <th>Wert</th>
+                            <th>Score</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="anomalies-body">
+                        <!-- Dynamisch -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="demo-footer scope-footer">
+        <div class="archetype-info">
+            <h3>Warum Monitor?</h3>
+            <p><strong>Basis-Archetyp:</strong> Scope (Multidimensional + Vergleich)</p>
+            <p><strong>Spezialisierung:</strong> Zeitreihen mit Schwellwert-Überwachung</p>
+            <p><strong>Erkennungsheuristik:</strong> thresholds, alerts, anomaly_score, readings</p>
+        </div>
+
+        <div class="data-info-box">
+            <h3>Kognitive Aufgabe</h3>
+            <div class="info-content">
+                <p>Zustandsüberwachung und Ausreißererkennung. Der Nutzer identifiziert
+                Abweichungen vom Normalzustand.</p>
+                <h4>UI-Elemente</h4>
+                <ul>
+                    <li><strong>Ampel-Indikatoren:</strong> Rot/Gelb/Grün für Schwellwerte</li>
+                    <li><strong>Sparklines:</strong> Schneller Trendüberblick</li>
+                    <li><strong>Anomalie-Highlighting:</strong> In Zeitreihen</li>
+                    <li><strong>Alert-Log:</strong> Mit Zeitstempeln und Acknowledge</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-to-matrix scope-btn">Zurück zur Entscheidungsmatrix</a>
+    </footer>
+
+    <script type="module" src="../js/specializations/monitor-entry.js"></script>
+</body>
+</html>

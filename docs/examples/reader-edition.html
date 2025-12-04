@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edition - Reader Spezialisierung - GRIP Framework</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reader.css">
+    <link rel="stylesheet" href="../css/specializations/edition.css">
+</head>
+<body>
+    <header class="demo-header reader-header edition-header">
+        <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
+        <div class="header-main">
+            <h1>Edition</h1>
+            <span class="specialization-badge">Reader-Spezialisierung</span>
+        </div>
+        <p>Kritische Textausgaben mit Apparaten und Varianten</p>
+    </header>
+
+    <main class="edition-layout">
+        <!-- Sidebar: Textzeugen + Navigation -->
+        <aside class="edition-sidebar">
+            <div class="witnesses-panel">
+                <h2>Textzeugen</h2>
+                <ul class="witness-list" id="witness-list">
+                    <!-- Dynamisch: Siglum + Beschreibung -->
+                </ul>
+            </div>
+
+            <div class="text-nav">
+                <h3>Textstruktur</h3>
+                <nav class="section-nav" id="section-nav">
+                    <!-- Dynamisch: Kapitel/Abschnitte -->
+                </nav>
+            </div>
+
+            <div class="siglen-legend">
+                <h3>Siglenliste</h3>
+                <dl id="siglen-list">
+                    <!-- Dynamisch: Siglum → Repository -->
+                </dl>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Edierter Text -->
+        <article class="edition-content">
+            <header class="edition-text-header">
+                <h2 id="edition-title">Werktitel</h2>
+                <p class="edition-meta" id="edition-meta"></p>
+            </header>
+
+            <div class="text-container">
+                <!-- Leithandschrift-Anzeige -->
+                <div class="base-text-info">
+                    <span>Leithandschrift:</span>
+                    <select id="base-witness">
+                        <!-- Dynamisch -->
+                    </select>
+                </div>
+
+                <!-- Haupttext mit Lemma-Markierungen -->
+                <div class="edition-text" id="edition-text">
+                    <!-- Dynamisch: Text mit <span class="lemma"> für Varianten -->
+                </div>
+            </div>
+
+            <!-- Variantenapparat -->
+            <footer class="apparatus-panel">
+                <h3>Kritischer Apparat</h3>
+                <div class="apparatus-content" id="apparatus">
+                    <!-- Dynamisch: Lemma → Lesarten pro Zeuge -->
+                </div>
+            </footer>
+        </article>
+
+        <!-- Kontext-Panel: Aktive Variante -->
+        <aside class="edition-context">
+            <section class="variant-detail" id="variant-detail">
+                <h2>Variante</h2>
+                <p class="variant-prompt">Klicken Sie auf ein markiertes Lemma im Text.</p>
+
+                <div class="variant-info hidden" id="variant-info">
+                    <div class="lemma-display">
+                        <h3>Lemma</h3>
+                        <p id="variant-lemma"></p>
+                    </div>
+
+                    <div class="readings-display">
+                        <h3>Lesarten</h3>
+                        <table class="readings-table" id="readings-table">
+                            <thead>
+                                <tr>
+                                    <th>Siglum</th>
+                                    <th>Text</th>
+                                    <th>Anmerkung</th>
+                                </tr>
+                            </thead>
+                            <tbody id="readings-body">
+                                <!-- Dynamisch -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="editorial-notes">
+                <h2>Editorische Anmerkungen</h2>
+                <ul id="editorial-notes-list">
+                    <!-- Dynamisch: Konjekturen, Emendationen, Cruces -->
+                </ul>
+            </section>
+
+            <section class="edition-stats">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Textzeugen</dt>
+                    <dd id="stat-witnesses">-</dd>
+                    <dt>Varianten</dt>
+                    <dd id="stat-variants">-</dd>
+                    <dt>Ed. Anmerkungen</dt>
+                    <dd id="stat-notes">-</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer reader-footer">
+        <div class="archetype-info">
+            <h3>Warum Edition?</h3>
+            <p><strong>Basis-Archetyp:</strong> Reader (Sequenziell + Verstehen)</p>
+            <p><strong>Spezialisierung:</strong> Kritische Texteditionen mit Variantenapparaten</p>
+            <p><strong>Erkennungsheuristik:</strong> witnesses, apparatus, siglum, readings</p>
+        </div>
+
+        <div class="data-info-box">
+            <h3>Kognitive Aufgabe</h3>
+            <div class="info-content">
+                <p>Vergleichendes Lesen mit Bewusstsein für Textgeschichte. Der Nutzer muss
+                Varianten, Emendationen und editorische Eingriffe nachvollziehen.</p>
+                <h4>UI-Elemente</h4>
+                <ul>
+                    <li><strong>Variantenapparat:</strong> Unterhalb des Haupttexts</li>
+                    <li><strong>Siglenliste:</strong> Handschriften und Drucke</li>
+                    <li><strong>Lemma-Markierungen:</strong> Im Text mit Hover-Expansion</li>
+                    <li><strong>Zeilensynopse:</strong> Parallele Textversionen (optional)</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-to-matrix reader-btn">Zurück zur Entscheidungsmatrix</a>
+    </footer>
+
+    <script type="module" src="../js/specializations/edition-entry.js"></script>
+</body>
+</html>

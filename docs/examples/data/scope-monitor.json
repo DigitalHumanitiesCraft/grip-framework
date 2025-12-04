@@ -1,0 +1,93 @@
+{
+  "metadata": {
+    "specialization": "monitor",
+    "source_standard": "Prometheus Metrics / AWS IoT"
+  },
+  "system": {
+    "id": "PROD-SYS-01",
+    "name": "Produktionsanlage Halle 3",
+    "location": "Standort Wien-Süd",
+    "status": "operational"
+  },
+  "metrics": [
+    {
+      "id": "temperature",
+      "label": "Temperatur",
+      "unit": "°C",
+      "thresholds": {
+        "warning_low": 15,
+        "critical_low": 10,
+        "warning_high": 35,
+        "critical_high": 40
+      },
+      "normal_range": { "min": 18, "max": 28 }
+    },
+    {
+      "id": "humidity",
+      "label": "Luftfeuchtigkeit",
+      "unit": "%",
+      "thresholds": {
+        "warning_low": 30,
+        "critical_low": 20,
+        "warning_high": 70,
+        "critical_high": 80
+      },
+      "normal_range": { "min": 40, "max": 60 }
+    },
+    {
+      "id": "pressure",
+      "label": "Druck",
+      "unit": "bar",
+      "thresholds": {
+        "warning_low": 2.5,
+        "critical_low": 2.0,
+        "warning_high": 4.5,
+        "critical_high": 5.0
+      },
+      "normal_range": { "min": 3.0, "max": 4.0 }
+    }
+  ],
+  "readings": [
+    { "timestamp": "2024-12-04T08:00:00Z", "temperature": 22.1, "humidity": 48, "pressure": 3.5 },
+    { "timestamp": "2024-12-04T08:05:00Z", "temperature": 22.3, "humidity": 47, "pressure": 3.5 },
+    { "timestamp": "2024-12-04T08:10:00Z", "temperature": 23.0, "humidity": 46, "pressure": 3.6 },
+    { "timestamp": "2024-12-04T08:15:00Z", "temperature": 24.5, "humidity": 45, "pressure": 3.6 },
+    { "timestamp": "2024-12-04T08:20:00Z", "temperature": 27.2, "humidity": 44, "pressure": 3.7 },
+    { "timestamp": "2024-12-04T08:25:00Z", "temperature": 31.5, "humidity": 42, "pressure": 3.8, "status": { "temperature": "warning" }, "anomaly_score": 0.72 },
+    { "timestamp": "2024-12-04T08:30:00Z", "temperature": 34.8, "humidity": 40, "pressure": 3.9, "status": { "temperature": "warning" }, "anomaly_score": 0.85 },
+    { "timestamp": "2024-12-04T08:35:00Z", "temperature": 36.2, "humidity": 38, "pressure": 4.0, "status": { "temperature": "critical" }, "anomaly_score": 0.92 },
+    { "timestamp": "2024-12-04T08:40:00Z", "temperature": 33.0, "humidity": 39, "pressure": 3.9, "status": { "temperature": "warning" }, "anomaly_score": 0.78 },
+    { "timestamp": "2024-12-04T08:45:00Z", "temperature": 28.5, "humidity": 42, "pressure": 3.7 },
+    { "timestamp": "2024-12-04T08:50:00Z", "temperature": 25.0, "humidity": 45, "pressure": 3.6 },
+    { "timestamp": "2024-12-04T08:55:00Z", "temperature": 23.5, "humidity": 47, "pressure": 3.5 }
+  ],
+  "alerts": [
+    {
+      "id": "ALT-001",
+      "timestamp": "2024-12-04T08:25:00Z",
+      "metric": "temperature",
+      "type": "threshold_breach",
+      "level": "warning",
+      "value": 31.5,
+      "threshold": 35,
+      "message": "Temperatur nähert sich kritischem Bereich",
+      "acknowledged": true,
+      "acknowledged_by": "Techniker Müller",
+      "acknowledged_at": "2024-12-04T08:27:00Z"
+    },
+    {
+      "id": "ALT-002",
+      "timestamp": "2024-12-04T08:35:00Z",
+      "metric": "temperature",
+      "type": "threshold_breach",
+      "level": "critical",
+      "value": 36.2,
+      "threshold": 35,
+      "message": "Kritische Temperatur überschritten",
+      "acknowledged": true,
+      "acknowledged_by": "Techniker Müller",
+      "acknowledged_at": "2024-12-04T08:36:00Z",
+      "resolution": "Kühlsystem manuell aktiviert"
+    }
+  ]
+}

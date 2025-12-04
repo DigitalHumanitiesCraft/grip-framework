@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "title": "Bildungsabschluss nach Einkommensklasse",
+    "source": "Mikrozensus 2023 (fiktiv)",
+    "specialization": "matrix"
+  },
+  "dimensions": {
+    "rows": {
+      "id": "education",
+      "label": "Bildungsabschluss",
+      "values": ["Pflichtschule", "Lehre", "Matura", "Hochschule"]
+    },
+    "columns": {
+      "id": "income",
+      "label": "Brutto-Jahreseinkommen",
+      "values": ["<30k", "30k-50k", "50k-80k", ">80k"]
+    }
+  },
+  "cells": [
+    { "row": "Pflichtschule", "column": "<30k", "count": 2450, "expected": 1820.5, "residual": 4.2 },
+    { "row": "Pflichtschule", "column": "30k-50k", "count": 1200, "expected": 1540.2, "residual": -2.1 },
+    { "row": "Pflichtschule", "column": "50k-80k", "count": 320, "expected": 680.4, "residual": -3.8 },
+    { "row": "Pflichtschule", "column": ">80k", "count": 80, "expected": 209.0, "residual": -2.9 },
+
+    { "row": "Lehre", "column": "<30k", "count": 1800, "expected": 2240.3, "residual": -2.0 },
+    { "row": "Lehre", "column": "30k-50k", "count": 2800, "expected": 2680.1, "residual": 0.8 },
+    { "row": "Lehre", "column": "50k-80k", "count": 950, "expected": 920.5, "residual": 0.3 },
+    { "row": "Lehre", "column": ">80k", "count": 200, "expected": 410.2, "residual": -3.4 },
+
+    { "row": "Matura", "column": "<30k", "count": 950, "expected": 1120.4, "residual": -1.5 },
+    { "row": "Matura", "column": "30k-50k", "count": 1450, "expected": 1340.2, "residual": 0.9 },
+    { "row": "Matura", "column": "50k-80k", "count": 680, "expected": 580.3, "residual": 1.2 },
+    { "row": "Matura", "column": ">80k", "count": 420, "expected": 259.1, "residual": 3.1 },
+
+    { "row": "Hochschule", "column": "<30k", "count": 400, "expected": 720.8, "residual": -3.8 },
+    { "row": "Hochschule", "column": "30k-50k", "count": 850, "expected": 1140.5, "residual": -2.7 },
+    { "row": "Hochschule", "column": "50k-80k", "count": 1250, "expected": 918.8, "residual": 3.4 },
+    { "row": "Hochschule", "column": ">80k", "count": 1100, "expected": 519.7, "residual": 8.1 }
+  ],
+  "totals": {
+    "row_totals": {
+      "Pflichtschule": 4050,
+      "Lehre": 5750,
+      "Matura": 3500,
+      "Hochschule": 3600
+    },
+    "column_totals": {
+      "<30k": 5600,
+      "30k-50k": 6300,
+      "50k-80k": 3200,
+      ">80k": 1800
+    },
+    "grand_total": 16900
+  },
+  "statistics": {
+    "chi_square": 892.4,
+    "df": 9,
+    "p_value": 0.00001,
+    "cramers_v": 0.42,
+    "interpretation": "Starker Zusammenhang zwischen Bildung und Einkommen"
+  }
+}

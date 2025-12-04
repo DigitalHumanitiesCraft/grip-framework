@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey - Scope Spezialisierung - GRIP Framework</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/scope.css">
+    <link rel="stylesheet" href="../css/specializations/survey.css">
+</head>
+<body>
+    <header class="demo-header scope-header survey-header">
+        <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
+        <div class="header-main">
+            <h1>Survey</h1>
+            <span class="specialization-badge">Scope-Spezialisierung</span>
+        </div>
+        <p>Umfragedaten mit Likert-Skalen und Fragebogenstruktur</p>
+    </header>
+
+    <main class="survey-layout">
+        <!-- Sidebar: Demografische Filter -->
+        <aside class="survey-filters">
+            <div class="survey-meta">
+                <h2 id="survey-title">Umfrage</h2>
+                <dl>
+                    <dt>N</dt>
+                    <dd id="survey-n">-</dd>
+                    <dt>Rücklauf</dt>
+                    <dd id="survey-response-rate">-</dd>
+                    <dt>Zeitraum</dt>
+                    <dd id="survey-period">-</dd>
+                </dl>
+            </div>
+
+            <div class="filter-section">
+                <h3>Demografische Filter</h3>
+                <div class="demographic-filters" id="demographic-filters">
+                    <!-- Dynamisch: Filter pro demografischer Variable -->
+                </div>
+            </div>
+
+            <div class="scale-selector">
+                <h3>Skala auswählen</h3>
+                <select id="scale-select">
+                    <!-- Dynamisch: Skalen aus survey_meta -->
+                </select>
+                <div class="scale-info" id="scale-info">
+                    <span class="cronbach">Cronbach's α: <span id="cronbach-alpha">-</span></span>
+                </div>
+            </div>
+
+            <button class="reset-filters" id="reset-filters">Filter zurücksetzen</button>
+
+            <div class="filter-summary">
+                <h3>Aktive Auswahl</h3>
+                <p><strong>N = <span id="filtered-count">0</span></strong></p>
+                <p class="filter-detail">von <span id="total-count">0</span> (<span id="filter-percent">0</span>%)</p>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Visualisierungen -->
+        <section class="survey-main">
+            <!-- Skalen-Übersicht -->
+            <div class="scales-overview" id="scales-overview">
+                <h2>Skalenübersicht</h2>
+                <div class="scales-grid" id="scales-grid">
+                    <!-- Dynamisch: KPI-Cards pro Skala -->
+                </div>
+            </div>
+
+            <!-- Likert-Visualisierung -->
+            <div class="likert-section">
+                <h2>Itemverteilungen</h2>
+                <div class="likert-charts" id="likert-charts">
+                    <!-- Dynamisch: Diverging Stacked Bar Charts -->
+                </div>
+            </div>
+
+            <!-- Gruppenvergleich -->
+            <div class="group-comparison">
+                <h2>Gruppenvergleich</h2>
+                <div class="comparison-controls">
+                    <label>Vergleichen nach:</label>
+                    <select id="comparison-variable">
+                        <!-- Dynamisch: demografische Variablen -->
+                    </select>
+                </div>
+                <div class="comparison-chart" id="comparison-chart">
+                    <!-- Dynamisch: Balkendiagramm mit Signifikanzindikatoren -->
+                </div>
+                <div class="significance-legend">
+                    <span class="sig-marker sig-yes">* p < .05</span>
+                    <span class="sig-marker sig-high">** p < .01</span>
+                </div>
+            </div>
+
+            <!-- Korrelationsmatrix -->
+            <div class="correlation-section">
+                <h2>Korrelationen zwischen Skalen</h2>
+                <div class="correlation-heatmap" id="correlation-heatmap">
+                    <!-- Dynamisch: Heatmap -->
+                </div>
+            </div>
+
+            <!-- Fragebogenstruktur -->
+            <div class="questionnaire-structure">
+                <h2>Fragebogenstruktur</h2>
+                <div class="items-accordion" id="items-accordion">
+                    <!-- Dynamisch: Skalen → Items aufklappbar -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="demo-footer scope-footer">
+        <div class="archetype-info">
+            <h3>Warum Survey?</h3>
+            <p><strong>Basis-Archetyp:</strong> Scope (Multidimensional + Vergleich)</p>
+            <p><strong>Spezialisierung:</strong> Umfragedaten mit Fragebogenstruktur</p>
+            <p><strong>Erkennungsheuristik:</strong> scales, items, likert, demographics, cronbach_alpha</p>
+        </div>
+
+        <div class="data-info-box">
+            <h3>Kognitive Aufgabe</h3>
+            <div class="info-content">
+                <p>Identifikation von Gruppenunterschieden und Korrelationen. Der Nutzer
+                vergleicht Subgruppen und sucht Zusammenhänge.</p>
+                <h4>UI-Elemente</h4>
+                <ul>
+                    <li><strong>Demografische Filter:</strong> Alter, Geschlecht, Bildung</li>
+                    <li><strong>Likert-Scale-Visualisierung:</strong> Diverging Stacked Bar</li>
+                    <li><strong>Signifikanzindikatoren:</strong> Bei Gruppenvergleichen</li>
+                    <li><strong>Fragebogen-Struktur:</strong> Skalen und Items als Navigation</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-to-matrix scope-btn">Zurück zur Entscheidungsmatrix</a>
+    </footer>
+
+    <script type="module" src="../js/specializations/survey-entry.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript - Reader Spezialisierung - GRIP Framework</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reader.css">
+    <link rel="stylesheet" href="../css/specializations/transcript.css">
+</head>
+<body>
+    <header class="demo-header reader-header transcript-header">
+        <a href="../index.html" class="back-link">&larr; Zurück zur Matrix</a>
+        <div class="header-main">
+            <h1>Transcript</h1>
+            <span class="specialization-badge">Reader-Spezialisierung</span>
+        </div>
+        <p>Interviewtranskripte und Gesprächsanalysen</p>
+    </header>
+
+    <main class="transcript-layout">
+        <!-- Sidebar: Interview-Meta + Codebook -->
+        <aside class="transcript-sidebar">
+            <div class="interview-info">
+                <h2>Interview</h2>
+                <dl id="interview-details">
+                    <dt>ID</dt>
+                    <dd id="interview-id">-</dd>
+                    <dt>Datum</dt>
+                    <dd id="interview-date">-</dd>
+                    <dt>Dauer</dt>
+                    <dd id="interview-duration">-</dd>
+                </dl>
+            </div>
+
+            <div class="participants-panel">
+                <h3>Teilnehmer</h3>
+                <ul class="participants-list" id="participants-list">
+                    <!-- Dynamisch: ID + Rolle + Pseudonym -->
+                </ul>
+            </div>
+
+            <div class="codebook-panel">
+                <h3>Codebuch</h3>
+                <div class="code-filter">
+                    <input type="search" id="code-search" placeholder="Code suchen...">
+                </div>
+                <ul class="code-list" id="code-list">
+                    <!-- Dynamisch: Code + Definition + Häufigkeit -->
+                </ul>
+            </div>
+
+            <div class="code-stats">
+                <h3>Code-Häufigkeiten</h3>
+                <div class="code-chart" id="code-chart">
+                    <!-- Dynamisch: Balkendiagramm der Codes -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Transkript -->
+        <article class="transcript-content">
+            <header class="transcript-header-info">
+                <div class="media-controls" id="media-controls">
+                    <!-- Optional: Audio/Video-Synchronisation -->
+                    <button class="play-btn" id="play-btn" disabled>Play</button>
+                    <input type="range" class="timeline-slider" id="timeline-slider" min="0" max="100" value="0" disabled>
+                    <span class="time-display" id="time-display">00:00 / 00:00</span>
+                </div>
+            </header>
+
+            <!-- Turn-basiertes Transkript -->
+            <div class="turns-container" id="turns-container">
+                <!-- Dynamisch: Turns mit Codes und Parasprachlichen Markierungen -->
+                <!-- <div class="turn" data-start="0" data-end="4500">
+                    <div class="turn-header">
+                        <span class="speaker speaker-I">I</span>
+                        <span class="timestamp">00:00-00:04</span>
+                    </div>
+                    <div class="turn-text">
+                        <span class="text">Text mit <span class="paralinguistic pause">(.) </span>Pausen</span>
+                    </div>
+                    <div class="turn-codes">
+                        <span class="code code-biography">biography</span>
+                    </div>
+                </div> -->
+            </div>
+
+            <nav class="transcript-navigation">
+                <div class="jump-controls">
+                    <label>Springe zu Code:</label>
+                    <select id="jump-to-code">
+                        <option value="">-- Auswählen --</option>
+                        <!-- Dynamisch -->
+                    </select>
+                </div>
+                <div class="turn-counter">
+                    <span id="turn-counter">Turn 0 / 0</span>
+                </div>
+            </nav>
+        </article>
+
+        <!-- Kontext-Panel: Aktiver Turn + Code-Margin -->
+        <aside class="transcript-context">
+            <section class="turn-detail" id="turn-detail">
+                <h2>Aktiver Turn</h2>
+                <p class="turn-prompt">Klicken Sie auf einen Turn im Transkript.</p>
+                <div class="turn-info hidden" id="turn-info">
+                    <dl>
+                        <dt>Sprecher</dt>
+                        <dd id="detail-speaker">-</dd>
+                        <dt>Zeit</dt>
+                        <dd id="detail-time">-</dd>
+                        <dt>Codes</dt>
+                        <dd id="detail-codes">-</dd>
+                    </dl>
+                    <div class="paralinguistics-info">
+                        <h4>Parasprachliches</h4>
+                        <ul id="paralinguistics-list">
+                            <!-- Dynamisch: Pausen, Betonungen, etc. -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="coding-panel">
+                <h2>Codierung</h2>
+                <div class="coding-controls">
+                    <label>Neuen Code zuweisen:</label>
+                    <select id="assign-code">
+                        <option value="">-- Code wählen --</option>
+                        <!-- Dynamisch aus Codebook -->
+                    </select>
+                    <button class="assign-btn" id="assign-btn" disabled>Zuweisen</button>
+                </div>
+                <div class="coding-history">
+                    <h3>Letzte Codierungen</h3>
+                    <ul id="coding-history-list">
+                        <!-- Dynamisch -->
+                    </ul>
+                </div>
+            </section>
+
+            <section class="transcript-stats">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Turns</dt>
+                    <dd id="stat-turns">-</dd>
+                    <dt>Codierte Turns</dt>
+                    <dd id="stat-coded">-</dd>
+                    <dt>Codes verwendet</dt>
+                    <dd id="stat-codes-used">-</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer reader-footer">
+        <div class="archetype-info">
+            <h3>Warum Transcript?</h3>
+            <p><strong>Basis-Archetyp:</strong> Reader (Sequenziell + Verstehen)</p>
+            <p><strong>Spezialisierung:</strong> Interviewtranskripte mit qualitativer Codierung</p>
+            <p><strong>Erkennungsheuristik:</strong> turns, start_ms, codes, paralinguistics</p>
+        </div>
+
+        <div class="data-info-box">
+            <h3>Kognitive Aufgabe</h3>
+            <div class="info-content">
+                <p>Qualitative Analyse von Gesprochenem. Der Nutzer codiert, annotiert
+                und vergleicht Äußerungen.</p>
+                <h4>UI-Elemente</h4>
+                <ul>
+                    <li><strong>Turn-Taking:</strong> Visualisierung mit Überlappungen</li>
+                    <li><strong>Code-Margin:</strong> Qualitative Codes am Rand</li>
+                    <li><strong>Timestamp-Sync:</strong> Optional mit Audio/Video</li>
+                    <li><strong>Parasprachliche Markierungen:</strong> Pausen, Betonungen</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-to-matrix reader-btn">Zurück zur Entscheidungsmatrix</a>
+    </footer>
+
+    <script type="module" src="../js/specializations/transcript-entry.js"></script>
+</body>
+</html>

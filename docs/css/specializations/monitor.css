@@ -1,0 +1,284 @@
+/**
+ * Monitor CSS
+ * Scope-Spezialisierung: Echtzeit-/Zeitreihendaten
+ * Standard: OGC SensorThings API
+ */
+
+.monitor-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-lg);
+    min-height: calc(100vh - 200px);
+    padding: var(--space-lg);
+}
+
+.monitor-header .specialization-badge {
+    color: var(--color-archetype-scope);
+    background: rgba(184, 84, 80, 0.1);
+}
+
+/* Sidebar */
+.monitor-sidebar {
+    background: var(--color-paper);
+    padding: var(--space-md);
+}
+
+.system-info dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+}
+
+.status-indicator {
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.status-indicator.ok { background: rgba(74, 124, 89, 0.2); color: #4A7C59; }
+.status-indicator.warning { background: rgba(196, 135, 90, 0.2); color: #C4875A; }
+.status-indicator.critical { background: rgba(184, 84, 80, 0.2); color: #B85450; }
+
+/* Refresh Controls */
+.refresh-controls {
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background: var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.refresh-controls select {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    margin-bottom: var(--space-sm);
+}
+
+.last-update {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+/* Alerts Panel */
+.alerts-panel {
+    margin-top: var(--space-lg);
+}
+
+.alerts-panel h3 {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.alert-count {
+    background: var(--color-archetype-scope);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
+
+.alert-filters {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin: var(--space-sm) 0;
+    font-size: 0.875rem;
+}
+
+.alerts-list {
+    list-style: none;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.alerts-list li {
+    padding: var(--space-sm);
+    margin-bottom: var(--space-xs);
+    border-left: 3px solid;
+    background: var(--color-paper-dark);
+    font-size: 0.875rem;
+}
+
+.alerts-list li.critical { border-color: #B85450; }
+.alerts-list li.warning { border-color: #C4875A; }
+.alerts-list li.acknowledged { opacity: 0.6; }
+
+.alerts-list .alert-time {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+.alerts-list .alert-message {
+    margin-top: var(--space-xs);
+}
+
+/* Hauptbereich */
+.monitor-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+/* Status-Übersicht: Ampeln */
+.status-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-md);
+}
+
+.status-card {
+    background: var(--color-paper);
+    padding: var(--space-lg);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.status-card .metric-name {
+    font-size: 0.875rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.status-card .metric-value {
+    font-size: 2.5rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+}
+
+.status-card .metric-unit {
+    font-size: 1rem;
+    color: var(--color-ink-light);
+}
+
+.status-card .status-light {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin: var(--space-md) auto 0;
+}
+
+.status-light.ok { background: #4A7C59; box-shadow: 0 0 8px #4A7C59; }
+.status-light.warning { background: #C4875A; box-shadow: 0 0 8px #C4875A; }
+.status-light.critical { background: #B85450; box-shadow: 0 0 8px #B85450; animation: pulse 1s infinite; }
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Sparklines */
+.sparklines-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-md);
+}
+
+.sparkline-card {
+    background: var(--color-paper);
+    padding: var(--space-md);
+    border-radius: 4px;
+}
+
+.sparkline-card .metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+}
+
+.sparkline-card .metric-label {
+    font-size: 0.875rem;
+}
+
+.sparkline-card .current-value {
+    font-family: var(--font-mono);
+    font-weight: 600;
+}
+
+.sparkline {
+    height: 40px;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.sparkline .bar {
+    flex: 1;
+    background: var(--color-archetype-scope);
+    border-radius: 2px 2px 0 0;
+    min-height: 2px;
+}
+
+.sparkline .bar.warning { background: #C4875A; }
+.sparkline .bar.critical { background: #B85450; }
+
+/* Zeitreihen-Charts */
+.timeseries-section {
+    background: var(--color-paper);
+    padding: var(--space-lg);
+    border-radius: 4px;
+}
+
+.timeseries-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.timeseries-charts {
+    min-height: 400px;
+}
+
+/* Threshold-Linien */
+.threshold-line {
+    stroke-dasharray: 5, 5;
+}
+
+.threshold-line.warning { stroke: #C4875A; }
+.threshold-line.critical { stroke: #B85450; }
+
+/* Anomalie-Tabelle */
+.anomalies-section {
+    background: var(--color-paper);
+    padding: var(--space-lg);
+    border-radius: 4px;
+}
+
+.anomalies-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.anomalies-table th {
+    text-align: left;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding: var(--space-sm);
+    border-bottom: 2px solid var(--color-paper-dark);
+}
+
+.anomalies-table td {
+    padding: var(--space-sm);
+    border-bottom: 1px solid var(--color-paper-dark);
+    font-size: 0.875rem;
+}
+
+.anomalies-table .time {
+    font-family: var(--font-mono);
+}
+
+.anomalies-table .score {
+    font-family: var(--font-mono);
+}
+
+.anomalies-table .score.high {
+    color: #B85450;
+    font-weight: 600;
+}

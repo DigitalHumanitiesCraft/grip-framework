@@ -1,0 +1,346 @@
+/**
+ * Genealogy CSS
+ * Navigator-Spezialisierung: Verwandtschaftsnetzwerke
+ * Standard: GEDCOM X
+ */
+
+.genealogy-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr 300px;
+    gap: var(--space-lg);
+    min-height: calc(100vh - 200px);
+    padding: var(--space-lg);
+}
+
+.genealogy-header .specialization-badge {
+    color: var(--color-archetype-navigator);
+    background: rgba(123, 104, 166, 0.1);
+}
+
+/* Sidebar */
+.genealogy-sidebar {
+    background: var(--color-paper);
+    padding: var(--space-md);
+}
+
+/* Personensuche */
+.search-panel input {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    margin-bottom: var(--space-sm);
+}
+
+.search-results {
+    list-style: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.search-results li {
+    padding: var(--space-sm);
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.search-results li:hover {
+    background: var(--color-paper-dark);
+}
+
+/* Ansichts-Modi */
+.view-mode {
+    margin-top: var(--space-lg);
+}
+
+.view-buttons {
+    display: flex;
+    gap: 0;
+}
+
+.view-btn {
+    flex: 1;
+    padding: var(--space-sm);
+    background: var(--color-paper-dark);
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.view-btn:first-child { border-radius: 4px 0 0 4px; }
+.view-btn:last-child { border-radius: 0 4px 4px 0; }
+.view-btn.active {
+    background: var(--color-archetype-navigator);
+    color: white;
+}
+
+/* Generationen-Kontrolle */
+.generation-control {
+    margin-top: var(--space-lg);
+}
+
+.generation-slider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.generation-slider input {
+    flex: 1;
+}
+
+/* Linien-Filter */
+.lineages-panel {
+    margin-top: var(--space-lg);
+}
+
+.lineage-list {
+    list-style: none;
+    padding: 0;
+}
+
+.lineage-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    cursor: pointer;
+}
+
+.lineage-list .color-bar {
+    width: 4px;
+    height: 20px;
+    border-radius: 2px;
+}
+
+/* Legende */
+.gender-legend {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.legend-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    font-size: 0.875rem;
+}
+
+.legend-male { color: #5B8DBE; }
+.legend-female { color: #BE5B8D; }
+.legend-partner { color: var(--color-ink-light); }
+.legend-child { color: var(--color-ink); }
+
+/* Hauptbereich: Stammbaum */
+.genealogy-main {
+    background: var(--color-paper);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tree-controls {
+    display: flex;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.tree-controls button {
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-paper-dark);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.tree-controls button:hover {
+    background: var(--color-ink-light);
+    color: white;
+}
+
+.tree-container {
+    flex: 1;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Stammbaum-Knoten */
+.person-node {
+    cursor: pointer;
+}
+
+.person-node rect {
+    fill: white;
+    stroke: var(--color-ink-light);
+    stroke-width: 2;
+    rx: 4;
+}
+
+.person-node.male rect { stroke: #5B8DBE; }
+.person-node.female rect { stroke: #BE5B8D; }
+
+.person-node.selected rect {
+    stroke-width: 4;
+    stroke: var(--color-archetype-navigator);
+}
+
+.person-node text {
+    font-family: var(--font-sans);
+    font-size: 12px;
+}
+
+.person-node .name {
+    font-weight: 500;
+}
+
+.person-node .dates {
+    font-size: 10px;
+    fill: var(--color-ink-light);
+}
+
+/* Verbindungslinien */
+.parent-child-link {
+    fill: none;
+    stroke: var(--color-ink-light);
+    stroke-width: 2;
+}
+
+.spouse-link {
+    fill: none;
+    stroke: var(--color-ink-light);
+    stroke-width: 1;
+    stroke-dasharray: 4, 4;
+}
+
+/* Lebensdaten-Timeline */
+.life-timeline {
+    height: 80px;
+    padding: var(--space-md);
+    border-top: 1px solid var(--color-paper-dark);
+    position: relative;
+}
+
+.timeline-axis {
+    position: absolute;
+    bottom: 20px;
+    left: var(--space-md);
+    right: var(--space-md);
+    height: 1px;
+    background: var(--color-ink-light);
+}
+
+.timeline-persons {
+    position: absolute;
+    bottom: 25px;
+    left: var(--space-md);
+    right: var(--space-md);
+}
+
+.life-bar {
+    position: absolute;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--color-archetype-navigator);
+    opacity: 0.6;
+}
+
+.life-bar.selected {
+    opacity: 1;
+    height: 12px;
+}
+
+/* Kontext-Panel */
+.genealogy-context {
+    background: var(--color-paper);
+    padding: var(--space-md);
+}
+
+.person-detail .detail-prompt {
+    color: var(--color-ink-light);
+    font-style: italic;
+}
+
+.detail-content.hidden {
+    display: none;
+}
+
+.person-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.gender-symbol {
+    font-size: 1.5rem;
+}
+
+.gender-symbol.male::before { content: "♂"; color: #5B8DBE; }
+.gender-symbol.female::before { content: "♀"; color: #BE5B8D; }
+
+.detail-content dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-xs) var(--space-md);
+    font-size: 0.875rem;
+}
+
+/* Beziehungen */
+.relations-panel {
+    margin-top: var(--space-xl);
+}
+
+.relations-content.hidden {
+    display: none;
+}
+
+.relation-group {
+    margin-bottom: var(--space-md);
+}
+
+.relation-group h4 {
+    font-size: 0.875rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+.relation-group ul {
+    list-style: none;
+    padding: 0;
+}
+
+.relation-group li {
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-paper-dark);
+    border-radius: 4px;
+    margin-bottom: var(--space-xs);
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.relation-group li:hover {
+    background: rgba(123, 104, 166, 0.2);
+}
+
+/* Stats */
+.genealogy-stats {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.genealogy-stats dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+}
+
+.genealogy-stats dd {
+    text-align: right;
+    font-family: var(--font-mono);
+}

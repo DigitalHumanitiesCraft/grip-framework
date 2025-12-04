@@ -1,0 +1,298 @@
+/**
+ * Protokoll CSS
+ * Reader-Spezialisierung: Sitzungsmitschriften
+ * Standard: Akoma Ntoso (LegalDocML)
+ */
+
+.protokoll-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr 300px;
+    gap: var(--space-lg);
+    min-height: calc(100vh - 200px);
+    padding: var(--space-lg);
+}
+
+.protokoll-header .specialization-badge {
+    color: var(--color-archetype-reader);
+    background: rgba(74, 124, 89, 0.1);
+}
+
+/* Sidebar */
+.protokoll-sidebar {
+    background: var(--color-paper);
+    padding: var(--space-md);
+}
+
+.session-info dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+}
+
+.session-info dt {
+    color: var(--color-ink-light);
+}
+
+.session-info dd {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Anwesenheitsliste */
+.attendance-panel {
+    margin-top: var(--space-lg);
+}
+
+.attendance-filter {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
+    font-size: 0.875rem;
+}
+
+.attendance-list {
+    list-style: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.attendance-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+}
+
+.attendance-list li.absent {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+.attendance-list .role {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+/* Tagesordnung als Navigation */
+.agenda-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.agenda-nav button {
+    text-align: left;
+    padding: var(--space-sm);
+    background: none;
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.agenda-nav button:hover {
+    background: var(--color-paper-dark);
+}
+
+.agenda-nav button.active {
+    border-color: var(--color-archetype-reader);
+    background: rgba(74, 124, 89, 0.1);
+}
+
+.agenda-nav .top-number {
+    font-weight: 600;
+    margin-right: var(--space-sm);
+}
+
+/* Beschluss-Summary */
+.resolutions-summary {
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background: rgba(74, 124, 89, 0.1);
+    border-radius: 4px;
+}
+
+.resolution-count {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-archetype-reader);
+}
+
+/* Hauptbereich: Segmentierter Text */
+.protokoll-content {
+    background: var(--color-paper);
+    padding: var(--space-xl);
+}
+
+.segments-container {
+    max-width: 700px;
+}
+
+/* Segment-Typen */
+.segment {
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    border-left: 4px solid transparent;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.segment:hover {
+    background: var(--color-paper-dark);
+}
+
+.segment.active {
+    background: rgba(74, 124, 89, 0.1);
+}
+
+/* Sprecherwechsel */
+.segment .speaker {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 4px;
+    margin-bottom: var(--space-sm);
+}
+
+/* Sprecher-Farbkodierung */
+.speaker.speaker-chair { background: #E8D5B7; }
+.speaker.speaker-member { background: #D5E8D4; }
+.speaker.speaker-guest { background: #DAE8FC; }
+
+.segment-text {
+    font-family: var(--font-serif);
+    line-height: 1.7;
+}
+
+.segment-type {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+    float: right;
+}
+
+/* Beschluss-Segmente */
+.segment[data-type="resolution"] {
+    border-left-color: var(--color-archetype-reader);
+    background: rgba(74, 124, 89, 0.05);
+}
+
+.segment[data-type="procedure"] {
+    border-left-color: var(--color-ink-light);
+    font-style: italic;
+}
+
+/* Beschlussübersicht */
+.resolutions-section {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 2px solid var(--color-paper-dark);
+}
+
+.resolutions-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.resolutions-table th {
+    text-align: left;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding: var(--space-sm);
+    border-bottom: 2px solid var(--color-paper-dark);
+}
+
+.resolutions-table td {
+    padding: var(--space-sm);
+    border-bottom: 1px solid var(--color-paper-dark);
+    font-size: 0.875rem;
+}
+
+.resolutions-table .vote {
+    font-family: var(--font-mono);
+}
+
+/* Kontext-Panel */
+.protokoll-context {
+    background: var(--color-paper);
+    padding: var(--space-md);
+}
+
+.speaker-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.speaker-legend .legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.75rem;
+}
+
+.speaker-legend .color-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+/* Redeanteile-Chart */
+.speaker-chart {
+    margin-top: var(--space-md);
+}
+
+.speaker-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xs);
+    font-size: 0.875rem;
+}
+
+.speaker-bar .bar {
+    height: 8px;
+    background: var(--color-archetype-reader);
+    border-radius: 4px;
+}
+
+/* Pagination */
+.protokoll-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.protokoll-pagination button {
+    font-family: var(--font-sans);
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-paper-dark);
+    background: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.protokoll-pagination button:hover {
+    background: var(--color-paper-dark);
+}
+
+@media (max-width: 1200px) {
+    .protokoll-layout {
+        grid-template-columns: 240px 1fr;
+    }
+
+    .protokoll-context {
+        display: none;
+    }
+}
