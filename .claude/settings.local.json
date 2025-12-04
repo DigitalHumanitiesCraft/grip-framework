@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nWissensbasis operationalisiert und harmonisiert\n\nNeue Dokumente erstellt:\n- 04-SYSTEM-PROMPT.md: Master Prompt v1.0 fuer LLM-Nutzung\n- 05-ARCHETYPEN.md: Spezifikation der vier Interface-Grundformen\n- 06-DIALOG.md: Rueckfrage-Protokoll mit Szenarien\n- JOURNAL.md: Arbeitstagebuch mit Meilensteinen\n\nBestehende Dokumente aktualisiert:\n- 00-PROJEKTAUFTRAG.md: Sechs Module durch vier Archetypen ersetzt\n- 01-ARCHITEKTUR.md: Dokumentstruktur statt Modul-Beschreibung\n- 02-MAPPINGS.md: Wenn-Dann-Logik fuer Archetyp-Auswahl\n- 03-BEISPIEL.md: Neue Terminologie (Navigator/Scope statt Patterns)\n\nDas Framework verwendet nun konsistente Terminologie:\n- Vier Archetypen: Reader, Scope, Navigator, Workbench\n- Vier Topologien: Sequenziell, Multidimensional, Vernetzt, Hierarchisch\n- Vier Intentionen: Verstehen, Vergleich, Rekonstruktion, Kuratierung\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nWebsite-Prototyp und Design-System implementiert\n\nNeue Dateien:\n- docs/index.html: Interaktive Framework-Präsentation\n- docs/css/style.css: Organic Academic Design-System\n- docs/js/main.js: 4x4 Entscheidungsmatrix mit Klick-Interaktion\n- knowledge/DESIGN.md: Visuelle Identitätsdokumentation\n\nAktualisierte Dateien:\n- knowledge/02-MAPPINGS.md: Vollständige 16-Felder-Matrix\n- knowledge/JOURNAL.md: Design-System Meilenstein\n\nDie Website zeigt:\n- Interaktive Entscheidungsmatrix (4 primär, 8 sekundär, 4 ambig)\n- Archetypen-Cards mit Beispieldaten\n- Workflow-Visualisierung\n\nDesign-Philosophie \"Organic Academic\":\n- Paper Sand (#FDFBF7) statt hartem Weiß\n- Lora Serif für Headlines, Inter Sans für UI\n- Terracotta (#C4705A) als organischer Akzent\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nPrototyp-Auftrag und UI-Verfeinerungen\n\nNeue Dateien:\n- knowledge/07-PROTOTYP.md: Selbstreferenzieller Prototyp-Auftrag\n\nAktualisierte Dateien:\n- docs/index.html: \"Dialog\" statt \"?\" in ambigen Zellen\n- docs/css/style.css: Vier UI-Verbesserungen implementiert\n- knowledge/01-ARCHITEKTUR.md: Verweise auf 07-PROTOTYP und DESIGN\n- knowledge/JOURNAL.md: Zwei neue Meilensteine dokumentiert\n\nUI-Verbesserungen:\n1. Matrix-Lesbarkeit: Small Caps, verstärkte Spaltenüberschriften\n2. Semantik: Terracotta statt Warn-Gelb für Dialog-Zellen\n3. Affordance: Hover-Effekte mit Elevation und Pfeil-Cue\n4. Organic Touch: Asymmetrische Border-Radii\n\nDer Prototyp-Auftrag definiert das Ziel: GRIP erklärt sich selbst,\nindem die Wissensbasis nach eigenen Prinzipien visualisiert wird.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit:*)",
+      "Bash(move:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

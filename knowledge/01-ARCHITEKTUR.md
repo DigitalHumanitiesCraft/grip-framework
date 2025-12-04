@@ -34,6 +34,8 @@ Der Projektauftrag definiert Vision und Grundannahmen. Die Archetypen-Spezifikat
 
 07-PROTOTYP.md definiert den Auftrag für den selbstreferenziellen Website-Prototypen.
 
+09-WORKFLOWS.md beschreibt typische Pfade durch die Archetypen für verschiedene Forschungstypen.
+
 DESIGN.md spezifiziert die visuelle Identität (Organic Academic) für UI-Generierung.
 
 ### Meta-Dokumente
@@ -86,5 +88,6 @@ Die Versionierung erfolgt über das JOURNAL.md, das jeden Meilenstein dokumentie
 - [[05-ARCHETYPEN]] spezifiziert die Interface-Grundformen
 - [[02-MAPPINGS]] enthält die Zuordnungslogik
 - [[07-PROTOTYP]] definiert den Website-Prototypen
+- [[09-WORKFLOWS]] beschreibt Pfade durch die Archetypen
 - [[DESIGN]] spezifiziert die visuelle Identität
 - [[CLAUDE.md]] definiert die Formatierungsregeln
