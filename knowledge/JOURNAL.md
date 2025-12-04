@@ -151,3 +151,20 @@ docs/
       navigator-citations.json     Zitationsnetzwerk
       workbench-metadata.json      Kunstsammlung mit Fehlern
 ```
+
+---
+
+## 2025-12-04: Workflow-Dokumentation
+
+Das Dokument 09-WORKFLOWS.md beschreibt typische Pfade durch die Archetypen für verschiedene Forschungstypen.
+
+Fünf Referenz-Workflows wurden dokumentiert:
+- Qualitative Analyse (Reader → Workbench → Navigator → Scope)
+- Systematisches Literaturreview (Navigator → Reader → Workbench → Scope)
+- Datenbereinigung und Migration (Scope → Workbench → Scope)
+- Digitale Edition (Reader → Workbench → Navigator → Reader)
+- Survey-Forschung (Workbench → Scope → Navigator → Reader)
+
+Jeder Workflow enthält ein ASCII-Diagramm, Phasenbeschreibungen mit Übergangsbedingungen, Iterationsschleifen und eine User Story.
+
+Das Konzept: Archetypen sind Momentaufnahmen, Forschung ist Prozess. Workflows zeigen, wie sich Topologie und Intention im Projektverlauf ändern und jeder Phasenwechsel eine neue Matrix-Abfrage auslöst.
