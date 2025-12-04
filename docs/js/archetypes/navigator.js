@@ -52,7 +52,9 @@ export class AdaptiveNavigator {
         document.getElementById('network-title').textContent = this.data.metadata.title.split(':')[0];
         document.getElementById('network-description').textContent = this.data.metadata.description;
 
-        const years = this.data.nodes.map(n => n.year);
+        // Support both old (nodes) and new (publications) schema
+        const rawNodes = this.data.publications || this.data.nodes || [];
+        const years = rawNodes.map(n => n.year);
         const minYear = Math.min(...years);
         const maxYear = Math.max(...years);
         const yearFilter = document.getElementById('year-filter');
@@ -64,8 +66,14 @@ export class AdaptiveNavigator {
     }
 
     processData() {
-        this.nodes = this.data.nodes.map(node => ({
+        // Support both old (nodes) and new (publications) schema
+        const rawNodes = this.data.publications || this.data.nodes || [];
+        const rawEdges = this.data.citations || this.data.edges || [];
+
+        this.nodes = rawNodes.map(node => ({
             ...node,
+            // Normalize author field: new schema uses 'authors' array
+            author: node.author || (node.authors ? node.authors.join(', ') : 'Unknown'),
             inDegree: 0,
             outDegree: 0,
             x: Math.random() * 600 + 100,
@@ -77,7 +85,7 @@ export class AdaptiveNavigator {
 
         const nodeMap = new Map(this.nodes.map(n => [n.id, n]));
 
-        this.edges = this.data.edges.map(edge => {
+        this.edges = rawEdges.map(edge => {
             const source = nodeMap.get(edge.source);
             const target = nodeMap.get(edge.target);
 
@@ -87,17 +95,27 @@ export class AdaptiveNavigator {
             return {
                 source: source,
                 target: target,
-                type: edge.type,
+                type: edge.type || edge.context || 'cites',
                 visible: true
             };
         }).filter(e => e.source && e.target);
 
-        Object.keys(this.data.clusters).forEach(c => this.visibleClusters.add(c));
+        // Support both old (object) and new (array) clusters format
+        this.clustersMap = {};
+        if (Array.isArray(this.data.clusters)) {
+            this.data.clusters.forEach(c => {
+                this.clustersMap[c.id] = c;
+                this.visibleClusters.add(c.id);
+            });
+        } else if (this.data.clusters) {
+            this.clustersMap = this.data.clusters;
+            Object.keys(this.data.clusters).forEach(c => this.visibleClusters.add(c));
+        }
     }
 
     renderLegend() {
         const container = document.getElementById('legend-items');
-        container.innerHTML = Object.entries(this.data.clusters).map(([key, cluster]) => `
+        container.innerHTML = Object.entries(this.clustersMap).map(([key, cluster]) => `
             <div class="legend-item" data-cluster="${key}">
                 <span class="legend-circle" style="border-color: ${cluster.color}"></span>
                 <span>${cluster.label}</span>
@@ -107,7 +125,7 @@ export class AdaptiveNavigator {
 
     renderClusterToggles() {
         const container = document.getElementById('cluster-toggles');
-        container.innerHTML = Object.entries(this.data.clusters).map(([key, cluster]) => `
+        container.innerHTML = Object.entries(this.clustersMap).map(([key, cluster]) => `
             <button class="cluster-btn active" data-cluster="${key}" style="--cluster-color: ${cluster.color}">
                 ${cluster.label}
             </button>
@@ -207,7 +225,7 @@ export class AdaptiveNavigator {
             const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
             circle.setAttribute('r', radius);
             circle.classList.add('node-circle');
-            circle.style.stroke = this.data.clusters[node.cluster]?.color || '#888';
+            circle.style.stroke = this.clustersMap[node.cluster]?.color || '#888';
 
             const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
             text.classList.add('node-label');
@@ -321,8 +339,8 @@ export class AdaptiveNavigator {
 
         if (this.currentLayout === 'cluster') {
             const clusterCenters = {};
-            Object.keys(this.data.clusters).forEach((cluster, i) => {
-                const angle = (i / Object.keys(this.data.clusters).length) * 2 * Math.PI;
+            Object.keys(this.clustersMap).forEach((cluster, i) => {
+                const angle = (i / Object.keys(this.clustersMap).length) * 2 * Math.PI;
                 clusterCenters[cluster] = {
                     x: centerX + Math.cos(angle) * 150,
                     y: centerY + Math.sin(angle) * 150
@@ -630,7 +648,7 @@ export class AdaptiveNavigator {
         document.getElementById('detail-cites').textContent = `${node.outDegree} Paper`;
 
         const clusterTag = document.getElementById('detail-cluster');
-        const cluster = this.data.clusters[node.cluster];
+        const cluster = this.clustersMap[node.cluster];
         clusterTag.textContent = cluster?.label || node.cluster;
         clusterTag.style.background = cluster?.color ? `${cluster.color}20` : '#eee';
         clusterTag.style.color = cluster?.color || '#666';

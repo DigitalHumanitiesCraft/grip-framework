@@ -416,3 +416,35 @@ Die aktualisierten Daten dienen als Testfälle für den System Prompt v2.1. Wenn
 1. Die Topologie korrekt erkennen (vernetzt/multidimensional/hierarchisch)
 2. Die Spezialisierung aus den Feldnamen ableiten
 3. Die passenden UI-Elemente vorschlagen (Zeitachse für Citation, Likert-Bars für Survey, etc.)
+
+---
+
+## 2025-12-04: Wissensbasis-Destillation
+
+Die Wissensbasis wurde von 16 auf 13 Dokumente konsolidiert. Redundanzen wurden eliminiert, Wissen präziser gefasst.
+
+### Zusammengeführte Dokumente
+
+CLAUDE.md + CLAUDE-METHODE.md → CLAUDE.md
+Die Trennung zwischen Regeln und Methode war künstlich. Das neue Dokument enthält beides unter dem Titel "Stilregeln und Methode".
+
+DESIGN.md + 08-DESIGN-RATIONALE.md → DESIGN.md
+Design-Spezifikation und kognitive Begründungen gehören zusammen. Jede Entscheidung ist jetzt mit ihrer Begründung dokumentiert. Das neue Dokument enthält sowohl CSS-Tokens als auch HCI-Prinzipien pro Archetyp.
+
+### JavaScript-Fixes
+
+Die ES6-Module wurden an die neuen Spezialisierungs-Schemata angepasst:
+
+navigator.js: Unterstützt jetzt sowohl altes (nodes/edges/clusters als Object) als auch neues Format (publications/citations/clusters als Array). Feldnormalisierung für authors → author.
+
+workbench.js: Unterstützt sowohl altes (key: description string) als auch neues Schema-Format (required_fields, controlled_vocabularies). Objektnormalisierung für inventory_number → id, creator → artist.
+
+### Dokumentenstatus
+
+13 Dokumente total:
+- Kerndokumente: 00-PROJEKTAUFTRAG, 05-ARCHETYPEN, 02-MAPPINGS, 06-DIALOG
+- Operative: 04-SYSTEM-PROMPT, 03-BEISPIEL, 07-PROTOTYP, 09-WORKFLOWS, 10-SPEZIALISIERUNGEN
+- Technisch: 11-CODE-MAP, DESIGN
+- Meta: CLAUDE, JOURNAL
+
+Gelöscht: CLAUDE-METHODE.md (in CLAUDE.md integriert), 08-DESIGN-RATIONALE.md (in DESIGN.md integriert)

@@ -24,12 +24,30 @@ export class AdaptiveWorkbench {
             const response = await fetch(this.dataUrl);
             this.data = await response.json();
             this.schema = this.data.schema;
-            this.objects = this.data.objects.map((obj, i) => ({
-                ...obj,
-                _index: i,
-                _status: 'valid',
-                _errors: []
-            }));
+            this.objects = this.data.objects.map((obj, i) => {
+                // Normalize fields: support both old (id/artist) and new (inventory_number/creator) schemas
+                const normalized = {
+                    ...obj,
+                    // Ensure 'id' field exists (from inventory_number if needed)
+                    id: obj.id || obj.inventory_number || '',
+                    // Ensure 'artist' field exists (from creator if needed)
+                    artist: obj.artist || obj.creator || null,
+                    // Normalize date if it's an object
+                    date: typeof obj.date === 'object' ? obj.date.text : obj.date,
+                    // Normalize location if it's an object
+                    location: typeof obj.location === 'object'
+                        ? `${obj.location.building || ''}, ${obj.location.room || ''}${obj.location.position ? ', ' + obj.location.position : ''}`
+                        : obj.location,
+                    // Normalize condition if it's a string (new format)
+                    condition: typeof obj.condition === 'string'
+                        ? { 'excellent': 1, 'good': 2, 'fair': 3, 'poor': 4, 'unknown': 5 }[obj.condition] || obj.condition
+                        : obj.condition,
+                    _index: i,
+                    _status: 'valid',
+                    _errors: []
+                };
+                return normalized;
+            });
             this.validationErrors = this.data.validation_errors || [];
 
             this.setupDOM();
@@ -52,17 +70,47 @@ export class AdaptiveWorkbench {
 
     renderSchema() {
         const container = document.getElementById('schema-fields');
-        const fields = Object.entries(this.schema);
 
-        container.innerHTML = fields.map(([key, description]) => {
-            const isRequired = description.includes('Pflicht');
-            return `
-                <div class="schema-field ${isRequired ? 'required' : ''}">
-                    <span class="field-name">${key}</span>
-                    <span class="field-desc">${description}</span>
-                </div>
-            `;
-        }).join('');
+        // Support both old (key: description string) and new (required_fields array) schema formats
+        const requiredFields = this.schema.required_fields || [];
+
+        // Build display fields from either format
+        let displayFields = [];
+
+        if (this.schema.required_fields) {
+            // New Registry schema format
+            requiredFields.forEach(field => {
+                displayFields.push({
+                    key: field,
+                    description: `Pflichtfeld`,
+                    required: true
+                });
+            });
+            // Add controlled vocabularies
+            if (this.schema.controlled_vocabularies) {
+                Object.entries(this.schema.controlled_vocabularies).forEach(([key, values]) => {
+                    displayFields.push({
+                        key: key,
+                        description: `Erlaubte Werte: ${Array.isArray(values) ? values.join(', ') : values}`,
+                        required: false
+                    });
+                });
+            }
+        } else {
+            // Old schema format (key: description string)
+            displayFields = Object.entries(this.schema).map(([key, description]) => ({
+                key,
+                description: typeof description === 'string' ? description : JSON.stringify(description),
+                required: typeof description === 'string' && description.includes('Pflicht')
+            }));
+        }
+
+        container.innerHTML = displayFields.map(field => `
+            <div class="schema-field ${field.required ? 'required' : ''}">
+                <span class="field-name">${field.key}</span>
+                <span class="field-desc">${field.description}</span>
+            </div>
+        `).join('');
     }
 
     validateAll() {

@@ -38,13 +38,11 @@ Der Projektauftrag definiert Vision und Grundannahmen. Die Archetypen-Spezifikat
 
 10-SPEZIALISIERUNGEN.md definiert drei operationalisierte Varianten pro Archetyp mit unterscheidenden UI-Elementen, spezifischen Datenfeldern und Erkennungsheuristiken.
 
-DESIGN.md spezifiziert die visuelle Identität (Organic Academic) für UI-Generierung.
-
-08-DESIGN-RATIONALE.md liefert die kognitiven Begründungen für Interface-Entscheidungen (HCI-Forschung).
+DESIGN.md spezifiziert die visuelle Identität (Organic Academic) und die kognitiven Begründungen für Interface-Entscheidungen.
 
 ### Meta-Dokumente
 
-CLAUDE.md und CLAUDE-METHODE.md definieren Stilrichtlinien für die Wissensbasis.
+CLAUDE.md definiert Stilrichtlinien und die Knowledge-Engineering-Methode für die Wissensbasis.
 
 JOURNAL.md protokolliert die Entwicklung des Frameworks.
 
@@ -95,6 +93,5 @@ Die Versionierung erfolgt über das JOURNAL.md, das jeden Meilenstein dokumentie
 - [[09-WORKFLOWS]] beschreibt Pfade durch die Archetypen
 - [[10-SPEZIALISIERUNGEN]] definiert operationalisierte Archetyp-Varianten
 - [[11-CODE-MAP]] dokumentiert die JavaScript-Architektur
-- [[DESIGN]] spezifiziert die visuelle Identität
-- [[08-DESIGN-RATIONALE]] liefert kognitive Begründungen
-- [[CLAUDE.md]] definiert die Formatierungsregeln
+- [[DESIGN]] spezifiziert visuelle Identität und kognitive Begründungen
+- [[CLAUDE.md]] definiert Stilregeln und Knowledge-Engineering-Methode

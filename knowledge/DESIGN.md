@@ -1,8 +1,8 @@
-# Design: Visuelle Identität
+# Design: Visuelle Identität und Kognitive Begründungen
 
-Dieses Dokument definiert die visuelle Sprache für GRIP-Interfaces und die Framework-Website. Es dient als Referenz für konsistentes Design und kann von einem LLM bei der UI-Generierung herangezogen werden.
+Dieses Dokument definiert die visuelle Sprache für GRIP-Interfaces und liefert die wissenschaftlichen Begründungen für Interface-Entscheidungen. Es dient als Referenz für konsistentes Design und kann von einem LLM bei der UI-Generierung herangezogen werden.
 
-Abhängigkeiten: [[00-PROJEKTAUFTRAG]], [[05-ARCHETYPEN]], [[08-DESIGN-RATIONALE]]
+Abhängigkeiten: [[00-PROJEKTAUFTRAG]], [[05-ARCHETYPEN]]
 
 ---
 
@@ -10,196 +10,109 @@ Abhängigkeiten: [[00-PROJEKTAUFTRAG]], [[05-ARCHETYPEN]], [[08-DESIGN-RATIONALE
 
 Das Design kommuniziert Sicherheit, Substanz und Menschlichkeit. Es vermeidet aggressive Technologie-Ästhetik und orientiert sich an klassischem Editorial Design, kombiniert mit organischen Elementen.
 
-### Kernwerte
-
 Ruhe: Keine überladenen Interfaces, großzügiger Weißraum.
 
 Wärme: Verzicht auf klinisches Weiß zugunsten von Erdtönen.
 
 Substanz: Typografie steht im Vordergrund, Bilder sind metaphorisch, nicht dekorativ.
 
+Wissenschaftliche Arbeit erfordert lange Bildschirmzeiten. Das Design muss Ermüdung reduzieren. Warme Hintergrundfarbe (Paper Sand #FDFBF7) simuliert Papier und reduziert Blaulicht-Anteil. Weiches Schwarz (#1A1A1A) statt hartem Schwarz reduziert Kontrast-Stress.
+
 ---
 
 ## Farbpalette
 
-Die Farbgebung ist warm, gedämpft und augenfreundlich. Sie wirkt wie Papier, nicht wie ein Bildschirm.
+Die Farbgebung ist warm, gedämpft und augenfreundlich.
 
-### Primärfarben
+Paper Sand ist der Hintergrund (#FDFBF7). Ink Black ist die Textfarbe (#1A1A1A). Terracotta ist die Highlight-Farbe (#C4705A). Slate ist für dunkle Elemente (#1E1E1E).
 
-Paper Sand ist der Hintergrund. Ein sehr helles, warmes Beige oder Creme. Vermeidet hartes Weiß. Hexadezimal etwa FDFBF7 oder F5F1EB.
-
-Ink Black ist die Textfarbe. Ein tiefes Anthrazit oder Off-Black. Starker Kontrast, aber weicher als reines Schwarz. Hexadezimal etwa 1A1A1A oder 2D2D2D.
-
-### Akzentfarben
-
-Terracotta ist die Highlight-Farbe. Ein erdiger, rötlich-orangefarbener Ton. Symbolisiert organisches Wachstum. Hexadezimal etwa C4705A oder D4826A.
-
-Slate ist die Farbe für dunkle Elemente. Ein dunkles Grau für Modals oder Footer. Hexadezimal etwa 1E1E1E oder 252525.
-
-### Archetypen-Farben
-
-Reader: Grün (7EE787) für Wachstum und Lesen.
-Scope: Rot-Orange (FF7B72) für Analyse und Aufmerksamkeit.
-Navigator: Violett (D2A8FF) für Verbindungen und Exploration.
-Workbench: Orange (FFA657) für Arbeit und Manipulation.
+Archetypen-Farben: Reader grün (#4A7C59), Scope rot (#B85450), Navigator violett (#7B68A6), Workbench orange (#C4875A).
 
 ---
 
 ## Typografie
 
-Die Typografie trennt emotionale Ansprache von funktionaler Information.
+Serif-Fonts (Lora) für Forschungsinhalte und Headlines. Humanistische Wirkung, traditionelle Assoziation mit gedruckten Büchern.
 
-### Headlines
+Sans-Serif (Inter) für UI-Elemente. Neutrale, technische Wirkung. Klare Unterscheidung von Inhalt und Interface.
 
-Stil: Klassische Serifen-Schrift (Serif).
-
-Anmutung: Editorial, literarisch, akademisch. Erinnert an Buchdruck.
-
-Verwendung: Große Überschriften und Titel. Die Serifen vermitteln Tradition und Vertrauenswürdigkeit.
-
-Empfohlene Schriften: Lora, Merriweather, Source Serif Pro, Playfair Display.
-
-### UI und Body
-
-Stil: Moderne Grotesk-Schrift (Sans-Serif).
-
-Anmutung: Neutral, geometrisch, gut lesbar.
-
-Verwendung: Navigation, Buttons, Fließtext und funktionale UI-Elemente. Schafft klaren Kontrast zur emotionalen Headline.
-
-Empfohlene Schriften: Inter, Source Sans Pro, IBM Plex Sans.
-
-### Monospace
-
-Stil: Technische Monospace-Schrift für Code und Daten.
-
-Verwendung: Codeblöcke, Dateinamen, technische Bezeichner.
-
-Empfohlene Schriften: JetBrains Mono, Fira Code, SF Mono.
+Monospace (JetBrains Mono) für Code und Daten.
 
 ---
 
-## Ikonografie und Illustration
+## Kognitive Anforderungen pro Archetyp
 
-Die Bildsprache ist abstrakt und metaphorisch.
+### Reader: Deep Reading
 
-### Illustrationsstil
+Immersives Lesen erfordert ungestörten Textfluss. Das Auge bewegt sich in Sakkaden und Return-Sweeps.
 
-Die Illustrationen wirken wie Linolschnitte, Scherenschnitte oder Pinselzeichnungen.
+Zeilenlänge: 60-75 Zeichen (ca. 700px bei 16px Font). Zu lange Zeilen erschweren den Return-Sweep.
 
-Die Linienführung ist unperfekt mit organischen Kanten. Ungleichmäßige Strichstärken suggerieren Menschlichkeit.
+Zeilenhöhe: Mindestens 1.6em. Unterstützt das Auge beim Finden der nächsten Zeile.
 
-Die Formen sind organische Strukturen, die Pflanzen oder neuronalen Netzen ähneln, aber weich und natürlich wirken.
+Keine Unterstreichungen im Fließtext. Unterstreichungen zerstören Wortbilder und verlangsamen das Lesen.
 
-### Icons
+Ablenkungsfreie Umgebung. Charts und Sidebars konkurrieren um Aufmerksamkeit.
 
-Stil: Feine Line-Art, reduziert auf das Wesentliche.
+### Scope: Prä-attentive Wahrnehmung
 
-Strichstärke: Konsistent, etwa 1.5 bis 2 Pixel.
+Mustererkennung nutzt prä-attentive Verarbeitung: Das visuelle System erkennt Abweichungen vor dem bewussten Denken.
 
-Komplexität: Minimal, sofort erkennbar.
+Small Multiples statt interaktiver Einzel-Charts. Nebeneinanderliegende Grafiken ermöglichen direkten Vergleich ohne Gedächtnisbelastung.
 
----
+Semantische Farbkodierung für Abweichungen. Positive/negative Änderungen müssen ohne Legende erkennbar sein.
 
-## Layout
+Filter-Sidebar statt sequenzieller Dialoge. Facettierte Suche zeigt alle Dimensionen gleichzeitig.
 
-### Whitespace
+KPI-Cards mit Änderungsindikator. Trend-Pfeile oder Sparklines liefern sofort Orientierung.
 
-Extrem großzügiger Einsatz von Negativraum. Das Layout atmet. Inhalte sind oft linksbündig mit viel Platz rechts.
+### Navigator: Hairball-Vermeidung
 
-### Struktur
+Netzwerkvisualisierung muss Struktur sichtbar machen, ohne in visuellem Rauschen zu ertrinken.
 
-Klare Zweiteilung zwischen Textbereich (rational) und Bildbereich (emotional) wo anwendbar.
+Filtermechanismen bei mehr als 50 Knoten. Ungefiltertes Force-Directed Layout wird bei Größe unlesbar.
 
-Maximale Inhaltsbreite: 1200 Pixel für Lesbarkeit.
+Progressive Disclosure für Kanten und Labels. Labels erscheinen bei Hover/Fokus, nicht alle gleichzeitig.
 
-### Grid
+Mehrere Layout-Modi. Force-Directed für Standardfall, Radial für hierarchische Strukturen, Cluster für Gruppenvergleich.
 
-Flexibles Grid mit 12 Spalten für komplexe Layouts, 8 Spalten für fokussierte Inhalte.
+Netzwerk-Metriken im Panel. Cognitive Offloading statt mentaler Berechnung.
+
+### Workbench: Mode Awareness
+
+Kuratierung erfordert klare Unterscheidung zwischen Betrachten und Editieren.
+
+Visuell abgegrenzte Editier-Modi. Editierbare Zellen haben Rahmen, Hintergrund oder Icon.
+
+Sofortiges Validierungs-Feedback. Gamification der Bereinigung. Fehleranzahl sinkt sichtbar.
+
+Undo/Redo mit Ctrl+Z/Y. Rückgängig-Funktion reduziert Angst vor Änderungen.
+
+Batch-Operationen für gleichartige Fehler. Effizienz bei Massenbereinigung.
 
 ---
 
 ## UI-Komponenten
 
-### Buttons
+Buttons: Solide Rechtecke mit 4-8px Radius. Primär dunkel, Sekundär mit Rahmen.
 
-Form: Solide Rechtecke mit leicht abgerundeten Ecken (4-8 Pixel Radius). Nicht pillenförmig, nicht scharfkantig.
+Cards: Subtil abgesetzt vom Hintergrund. Farbige linke Bordüre für Kategorisierung.
 
-Primär: Dunkler Hintergrund, helle Schrift.
+Modals: Dunkles Overlay (0.8 Opazität), fokussierter Inhalt.
 
-Sekundär: Transparenter Hintergrund, dunkle Schrift, dünner Rahmen.
-
-### Cards
-
-Hintergrund: Subtil abgesetzt vom Seitenhintergrund (etwa 2-3% dunkler oder heller).
-
-Rahmen: Kein harter Rahmen, nur Hintergrundfarbe zur Abgrenzung.
-
-Akzent: Farbige linke Bordüre für Kategorisierung (etwa bei Archetypen).
-
-### Modals
-
-Overlay: Dunkler Hintergrund mit hoher Opazität (etwa 0.8).
-
-Inhalt: Fokussiert, minimalistisch, keine Dekoration.
-
-### Tabellen und Matrizen
-
-Rahmen: Subtile Linien in Grau, nicht dominant.
-
-Hover: Leichte Hervorhebung der Zeile oder Zelle.
-
-Interaktive Zellen: Cursor-Änderung und visuelle Rückmeldung.
+Tabellen: Subtile Rahmen, Hover-Hervorhebung, Cursor-Feedback bei interaktiven Zellen.
 
 ---
 
-## Responsive Design
-
-### Breakpoints
-
-Klein: bis 600 Pixel (Mobile).
-Mittel: 601 bis 900 Pixel (Tablet).
-Groß: ab 901 Pixel (Desktop).
-
-### Anpassungen
-
-Mobile: Einspaltiges Layout, reduzierte Typografie-Größen, Touch-optimierte Interaktionen.
-
-Desktop: Mehrspaltiges Layout, volle typografische Hierarchie.
-
----
-
-## Anwendung auf Archetypen
-
-Die Design-Sprache passt zur kognitiven Aufgabe jedes Archetyps.
-
-Reader: Maximaler Fokus auf Text. Warme Hintergrundfarbe reduziert Augenermüdung. Serifen-Schrift für längere Lesepassagen.
-
-Scope: Klare visuelle Hierarchie für Dashboards. Charts nutzen die Akzentfarben sparsam. Viel Weißraum zwischen Widgets.
-
-Navigator: Zurückhaltender Hintergrund, damit Graph-Visualisierungen hervortreten. Knoten nutzen Archetyp-Farben.
-
-Workbench: Funktionale Ästhetik. Monospace für Datenwerte. Klare Abgrenzung editierbarer Bereiche.
-
----
-
-## Design Tokens
-
-Die folgenden CSS-Variablen erzwingen Konsistenz und ermöglichen LLMs, das Design-System maschinenlesbar zu nutzen.
-
-### Farben
+## Design Tokens (CSS)
 
 ```css
-/* Basis */
+/* Farben */
 --color-paper: #FDFBF7;
 --color-paper-dark: #F5F1EB;
 --color-ink: #1A1A1A;
 --color-ink-light: #6B6B6B;
---color-ink-muted: #9A9A9A;
-
-/* Akzent */
 --color-terracotta: #C4705A;
---color-terracotta-light: #D4826A;
 --color-slate: #1E1E1E;
 
 /* Archetypen */
@@ -207,32 +120,36 @@ Die folgenden CSS-Variablen erzwingen Konsistenz und ermöglichen LLMs, das Desi
 --color-archetype-scope: #B85450;
 --color-archetype-navigator: #7B68A6;
 --color-archetype-workbench: #C4875A;
-```
 
-### Typografie
+/* Typografie */
+--font-serif: 'Lora', Georgia, serif;
+--font-sans: 'Inter', system-ui, sans-serif;
+--font-mono: 'JetBrains Mono', monospace;
 
-```css
-/* Semantische Fonts */
---font-serif: 'Lora', Georgia, serif;          /* Emotional: Inhalte, Headlines */
---font-sans: 'Inter', system-ui, sans-serif;   /* Funktional: UI, Navigation */
---font-mono: 'JetBrains Mono', monospace;      /* Technisch: Daten, Code */
-```
-
-### Spacing
-
-```css
+/* Spacing */
 --space-xs: 0.25rem;
 --space-sm: 0.5rem;
 --space-md: 1rem;
 --space-lg: 1.5rem;
 --space-xl: 2rem;
---space-2xl: 3rem;
 ```
+
+---
+
+## Design Constraints für LLM-Codegenerierung
+
+1. Niemals #FFFFFF oder #000000 verwenden. Immer --color-paper und --color-ink.
+2. Lesetexte zwingend in Serif-Font.
+3. UI-Kontrollen zwingend in Sans-Serif-Font.
+4. Zeilenlänge im Reader maximal 75 Zeichen.
+5. Bei Netzwerken über 50 Knoten: Filtermechanismus implementieren.
+6. Editierbare Felder visuell abgrenzen.
+7. Alle Farbkodierungen müssen barrierefrei sein (nicht nur Rot/Grün).
 
 ---
 
 ## Verknüpfungen
 
-- [[05-ARCHETYPEN]] definiert die kognitiven Aufgaben, die das Design unterstützen muss
-- [[00-PROJEKTAUFTRAG]] beschreibt den akademischen Kontext des Frameworks
-- [[08-DESIGN-RATIONALE]] liefert die wissenschaftlichen Begründungen
+- [[05-ARCHETYPEN]] definiert die kognitiven Aufgaben pro Archetyp
+- [[00-PROJEKTAUFTRAG]] beschreibt den akademischen Kontext
+- [[04-SYSTEM-PROMPT]] nutzt diese Begründungen für Empfehlungen
