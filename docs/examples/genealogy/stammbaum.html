@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stammbaum - Genealogy - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navigator.css">
+    <link rel="stylesheet" href="../../css/modes/genealogy-stammbaum.css">
+</head>
+<body>
+    <header class="demo-header navigator-header genealogy-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Genealogy</h1>
+            <span class="mode-badge">Stammbaum-Modus</span>
+        </div>
+        <p>Abstammungslinien visualisiert</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="stammbaum.html" role="tab" aria-selected="true" class="active">Stammbaum</a>
+        <a href="ahnentafel.html" role="tab">Ahnentafel</a>
+        <a href="familienblatt.html" role="tab">Familienblatt</a>
+        <a href="zeitstrahl.html" role="tab">Zeitstrahl</a>
+    </nav>
+
+    <main class="genealogy-layout stammbaum-layout">
+        <aside class="genealogy-sidebar">
+            <div class="search-section">
+                <h3>Suche</h3>
+                <input type="text" id="person-search" placeholder="Name eingeben...">
+            </div>
+
+            <div class="view-controls">
+                <h3>Ansicht</h3>
+                <label>
+                    <span>Generationen</span>
+                    <input type="range" id="generation-depth" min="1" max="5" value="3">
+                    <span id="depth-value">3</span>
+                </label>
+                <label>
+                    <input type="checkbox" id="show-dates" checked>
+                    Lebensdaten anzeigen
+                </label>
+                <label>
+                    <input type="checkbox" id="show-photos">
+                    Fotos anzeigen
+                </label>
+            </div>
+
+            <div class="stats-section">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Personen</dt>
+                    <dd id="stat-persons">0</dd>
+                    <dt>Familien</dt>
+                    <dd id="stat-families">0</dd>
+                    <dt>Generationen</dt>
+                    <dd id="stat-generations">0</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <section class="genealogy-main">
+            <div class="tree-toolbar">
+                <button id="zoom-in" title="Vergroessern">+</button>
+                <button id="zoom-out" title="Verkleinern">−</button>
+                <button id="zoom-reset" title="Zuruecksetzen">↺</button>
+                <span class="zoom-level" id="zoom-level">100%</span>
+            </div>
+
+            <div class="tree-container" id="tree-container">
+                <!-- Dynamisch: Stammbaum-Visualisierung -->
+            </div>
+        </section>
+
+        <aside class="genealogy-context">
+            <section class="person-detail hidden" id="person-detail">
+                <h3>Person</h3>
+                <div class="person-card">
+                    <div class="person-photo" id="detail-photo"></div>
+                    <h4 id="detail-name"></h4>
+                    <p class="life-dates" id="detail-dates"></p>
+                </div>
+                <dl>
+                    <dt>Geburtsort</dt>
+                    <dd id="detail-birthplace"></dd>
+                    <dt>Beruf</dt>
+                    <dd id="detail-occupation"></dd>
+                    <dt>Eltern</dt>
+                    <dd id="detail-parents"></dd>
+                    <dt>Partner</dt>
+                    <dd id="detail-spouse"></dd>
+                    <dt>Kinder</dt>
+                    <dd id="detail-children"></dd>
+                </dl>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkuerzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>+ / −</dt>
+                    <dd>Zoom</dd>
+                    <dt>← →</dt>
+                    <dd>Navigation</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer navigator-footer">
+        <div class="mode-info">
+            <h3>Stammbaum-Modus</h3>
+            <p><strong>Relevanz:</strong> Klassische Abstammungsvisualisierung von einem Stammvater abwaerts.</p>
+            <p><strong>Innovation:</strong> Interaktiver Zoom, Generationentiefe, Klick-Navigation.</p>
+        </div>
+        <a href="../navigator-genealogy.html" class="back-to-spec navigator-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/genealogy-stammbaum.js"></script>
+</body>
+</html>

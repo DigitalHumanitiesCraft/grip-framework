@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export - Codebook - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/workbench.css">
+    <link rel="stylesheet" href="../../css/modes/codebook-export.css">
+</head>
+<body>
+    <header class="demo-header workbench-header codebook-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Codebook</h1>
+            <span class="mode-badge">Export-Modus</span>
+        </div>
+        <p>Dokumentation generieren</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="variablenliste.html" role="tab">Variablenliste</a>
+        <a href="variablendetail.html" role="tab">Variablendetail</a>
+        <a href="validierung.html" role="tab">Validierung</a>
+        <a href="export.html" role="tab" aria-selected="true" class="active">Export</a>
+    </nav>
+
+    <main class="codebook-layout export-layout">
+        <aside class="codebook-sidebar">
+            <div class="format-section">
+                <h3>Exportformat</h3>
+                <div class="format-options">
+                    <label class="format-option">
+                        <input type="radio" name="format" value="ddi" checked>
+                        <span class="format-icon">📋</span>
+                        <span class="format-name">DDI-Lifecycle</span>
+                        <span class="format-desc">XML nach DDI 3.2</span>
+                    </label>
+                    <label class="format-option">
+                        <input type="radio" name="format" value="pdf">
+                        <span class="format-icon">📄</span>
+                        <span class="format-name">PDF</span>
+                        <span class="format-desc">Druckbares Codebook</span>
+                    </label>
+                    <label class="format-option">
+                        <input type="radio" name="format" value="html">
+                        <span class="format-icon">🌐</span>
+                        <span class="format-name">HTML</span>
+                        <span class="format-desc">Interaktive Web-Doku</span>
+                    </label>
+                    <label class="format-option">
+                        <input type="radio" name="format" value="csv">
+                        <span class="format-icon">📊</span>
+                        <span class="format-name">CSV</span>
+                        <span class="format-desc">Tabellenformat</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Inhalt</h3>
+                <label>
+                    <input type="checkbox" id="include-metadata" checked>
+                    Studienmeta daten
+                </label>
+                <label>
+                    <input type="checkbox" id="include-variables" checked>
+                    Variablendefinitionen
+                </label>
+                <label>
+                    <input type="checkbox" id="include-values" checked>
+                    Wertelabels
+                </label>
+                <label>
+                    <input type="checkbox" id="include-stats">
+                    Deskriptive Statistik
+                </label>
+                <label>
+                    <input type="checkbox" id="include-frequencies">
+                    Häufigkeitstabellen
+                </label>
+            </div>
+        </aside>
+
+        <section class="codebook-main">
+            <div class="preview-header">
+                <h2>Vorschau</h2>
+                <div class="preview-controls">
+                    <button id="refresh-preview" class="action-btn">↻ Aktualisieren</button>
+                    <button id="download-export" class="action-btn primary">⬇ Download</button>
+                </div>
+            </div>
+
+            <div class="preview-container" id="preview-container">
+                <!-- Dynamisch: Format-spezifische Vorschau -->
+            </div>
+        </section>
+
+        <aside class="codebook-context">
+            <section class="export-info">
+                <h3>Format-Info</h3>
+                <div id="format-info">
+                    <h4>DDI-Lifecycle 3.2</h4>
+                    <p>Data Documentation Initiative Standard für sozialwissenschaftliche Metadaten.</p>
+                    <ul>
+                        <li>Maschinenlesbar</li>
+                        <li>Archivierungsstandard</li>
+                        <li>Interoperabel</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>Cmd/Ctrl + S</dt>
+                    <dd>Download</dd>
+                    <dt>R</dt>
+                    <dd>Vorschau aktualisieren</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="mode-info">
+            <h3>Export-Modus</h3>
+            <p><strong>Relevanz:</strong> Generierung von Codebook-Dokumentation in verschiedenen Formaten.</p>
+            <p><strong>Innovation:</strong> Live-Vorschau, Format-Optionen, DDI-Export.</p>
+        </div>
+        <a href="../workbench-codebook.html" class="back-to-spec workbench-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/codebook-export.js"></script>
+</body>
+</html>

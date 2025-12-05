@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variablenliste - Codebook - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/workbench.css">
+    <link rel="stylesheet" href="../../css/modes/codebook-variablenliste.css">
+</head>
+<body>
+    <header class="demo-header workbench-header codebook-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Codebook</h1>
+            <span class="mode-badge">Variablenliste-Modus</span>
+        </div>
+        <p>DDI-Lifecycle Variablenübersicht</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="variablenliste.html" role="tab" aria-selected="true" class="active">Variablenliste</a>
+        <a href="variablendetail.html" role="tab">Variablendetail</a>
+        <a href="validierung.html" role="tab">Validierung</a>
+        <a href="export.html" role="tab">Export</a>
+    </nav>
+
+    <main class="codebook-layout variablenliste-layout">
+        <aside class="codebook-sidebar">
+            <div class="search-section">
+                <h3>Suche</h3>
+                <input type="text" id="var-search" placeholder="Variable suchen...">
+            </div>
+
+            <div class="filter-section">
+                <h3>Filter</h3>
+                <label>
+                    <span>Typ</span>
+                    <select id="filter-type">
+                        <option value="">Alle Typen</option>
+                        <option value="numeric">Numerisch</option>
+                        <option value="string">String</option>
+                        <option value="date">Datum</option>
+                        <option value="categorical">Kategorial</option>
+                    </select>
+                </label>
+                <label>
+                    <span>Gruppe</span>
+                    <select id="filter-group">
+                        <option value="">Alle Gruppen</option>
+                    </select>
+                </label>
+                <label>
+                    <input type="checkbox" id="filter-missing">
+                    Nur mit fehlenden Werten
+                </label>
+            </div>
+
+            <div class="stats-section">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Variablen</dt>
+                    <dd id="stat-total">0</dd>
+                    <dt>Gefiltert</dt>
+                    <dd id="stat-filtered">0</dd>
+                    <dt>Gruppen</dt>
+                    <dd id="stat-groups">0</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <section class="codebook-main">
+            <div class="list-header">
+                <div class="bulk-actions">
+                    <button id="select-all" class="action-btn">☐ Alle</button>
+                    <button id="export-selected" class="action-btn" disabled>📄 Export</button>
+                </div>
+                <div class="sort-controls">
+                    <label>Sortieren:
+                        <select id="sort-by">
+                            <option value="position">Position</option>
+                            <option value="name">Name</option>
+                            <option value="type">Typ</option>
+                            <option value="completeness">Vollständigkeit</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+            <table class="variable-table">
+                <thead>
+                    <tr>
+                        <th class="col-select"></th>
+                        <th class="col-pos">#</th>
+                        <th class="col-name">Name</th>
+                        <th class="col-label">Label</th>
+                        <th class="col-type">Typ</th>
+                        <th class="col-values">Werte</th>
+                        <th class="col-missing">Missing</th>
+                    </tr>
+                </thead>
+                <tbody id="variable-tbody">
+                    <!-- Dynamisch -->
+                </tbody>
+            </table>
+        </section>
+
+        <aside class="codebook-context">
+            <section class="quick-info hidden" id="quick-info">
+                <h3>Schnellansicht</h3>
+                <h4 id="qi-name"></h4>
+                <p id="qi-label"></p>
+                <dl>
+                    <dt>Typ</dt>
+                    <dd id="qi-type"></dd>
+                    <dt>Wertebereich</dt>
+                    <dd id="qi-range"></dd>
+                    <dt>Missing</dt>
+                    <dd id="qi-missing"></dd>
+                </dl>
+                <a href="#" id="qi-detail" class="detail-link">Details →</a>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>/</dt>
+                    <dd>Suche fokussieren</dd>
+                    <dt>↑ ↓</dt>
+                    <dd>Navigation</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="mode-info">
+            <h3>Variablenliste-Modus</h3>
+            <p><strong>Relevanz:</strong> Übersicht aller Variablen eines Datensatzes.</p>
+            <p><strong>Innovation:</strong> Filterbare Tabelle, Bulk-Aktionen, Schnellansicht.</p>
+        </div>
+        <a href="../workbench-codebook.html" class="back-to-spec workbench-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/codebook-variablenliste.js"></script>
+</body>
+</html>

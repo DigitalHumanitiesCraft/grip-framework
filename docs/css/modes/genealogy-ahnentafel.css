@@ -1,0 +1,293 @@
+/**
+ * Genealogy Ahnentafel Mode Styles
+ */
+
+.ahnentafel-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr 260px;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    min-height: calc(100vh - 200px);
+}
+
+.proband-section select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-light, #E5E7EB);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    background: white;
+}
+
+.display-format {
+    display: flex;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+.format-btn {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--border-light, #E5E7EB);
+    background: white;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: all 0.15s ease;
+}
+
+.format-btn:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.format-btn:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.format-btn.active {
+    background: #A16207;
+    color: white;
+    border-color: #A16207;
+}
+
+.numbering-info {
+    padding: 0.75rem;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid var(--border-light, #E5E7EB);
+}
+
+.numbering-legend {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.75rem;
+}
+
+.numbering-legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.125rem 0;
+}
+
+.numbering-legend .num {
+    font-family: var(--font-mono, monospace);
+    background: #FEF3C7;
+    padding: 0.125rem 0.375rem;
+    border-radius: 3px;
+    min-width: 2rem;
+    text-align: center;
+}
+
+/* Main Ahnentafel Area */
+#ahnentafel-container {
+    padding: 1.5rem;
+    overflow: auto;
+}
+
+.no-selection {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary, #6B7280);
+}
+
+/* Tree View */
+.ahnentafel-tree {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.generation-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.generation-label {
+    min-width: 60px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary, #6B7280);
+}
+
+.ancestor-cell {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    border: 2px solid;
+    background: white;
+    min-width: 100px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.ancestor-cell.male {
+    border-color: #3B82F6;
+}
+
+.ancestor-cell.female {
+    border-color: #EC4899;
+}
+
+.ancestor-cell.missing {
+    border-color: var(--border-light, #E5E7EB);
+    background: #F9FAFB;
+    border-style: dashed;
+}
+
+.ancestor-cell:hover:not(.missing) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.kekule-num {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.625rem;
+    background: #FEF3C7;
+    padding: 0.125rem 0.25rem;
+    border-radius: 3px;
+    align-self: flex-start;
+    margin-bottom: 0.25rem;
+}
+
+.ancestor-name {
+    font-weight: 600;
+    font-size: 0.8125rem;
+}
+
+.ancestor-dates {
+    font-size: 0.6875rem;
+    color: var(--text-secondary, #6B7280);
+}
+
+/* List View */
+.ahnentafel-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ancestor-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-light, #E5E7EB);
+    cursor: pointer;
+    transition: background 0.1s ease;
+}
+
+.ancestor-item:hover:not(.missing) {
+    background: #FEF3C7;
+}
+
+.ancestor-item.male {
+    border-left: 3px solid #3B82F6;
+}
+
+.ancestor-item.female {
+    border-left: 3px solid #EC4899;
+}
+
+.ancestor-item.missing {
+    opacity: 0.5;
+    border-left: 3px solid var(--border-light, #E5E7EB);
+}
+
+.ancestor-item .kekule-badge {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    background: #FEF3C7;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    min-width: 2.5rem;
+    text-align: center;
+}
+
+.ancestor-item .ancestor-name {
+    flex: 1;
+}
+
+.ancestor-item .ancestor-dates {
+    font-size: 0.75rem;
+}
+
+.ancestor-item .relation {
+    font-size: 0.6875rem;
+    color: var(--text-tertiary, #9CA3AF);
+    min-width: 100px;
+    text-align: right;
+}
+
+/* Context Panel */
+#ancestor-detail {
+    background: var(--paper-sand, #FDFBF7);
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid var(--border-light, #E5E7EB);
+}
+
+#ancestor-detail.hidden {
+    display: none;
+}
+
+#ancestor-detail h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary, #6B7280);
+    margin: 0 0 0.75rem 0;
+}
+
+.kekule-badge {
+    display: inline-block;
+    font-family: var(--font-mono, monospace);
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: #FEF3C7;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+#ancestor-detail h4 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.125rem;
+}
+
+.generation-info {
+    font-size: 0.75rem;
+    color: var(--text-secondary, #6B7280);
+    margin: 0 0 1rem 0;
+}
+
+#ancestor-detail dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25rem 0.75rem;
+    margin: 0;
+    font-size: 0.8125rem;
+}
+
+#ancestor-detail dt {
+    color: var(--text-secondary, #6B7280);
+}
+
+#ancestor-detail dd {
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .ahnentafel-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .genealogy-sidebar,
+    .genealogy-context {
+        display: none;
+    }
+}

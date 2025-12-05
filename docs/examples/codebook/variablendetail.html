@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variablendetail - Codebook - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/workbench.css">
+    <link rel="stylesheet" href="../../css/modes/codebook-variablendetail.css">
+</head>
+<body>
+    <header class="demo-header workbench-header codebook-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Codebook</h1>
+            <span class="mode-badge">Variablendetail-Modus</span>
+        </div>
+        <p>Einzelvariable im Detail</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="variablenliste.html" role="tab">Variablenliste</a>
+        <a href="variablendetail.html" role="tab" aria-selected="true" class="active">Variablendetail</a>
+        <a href="validierung.html" role="tab">Validierung</a>
+        <a href="export.html" role="tab">Export</a>
+    </nav>
+
+    <main class="codebook-layout variablendetail-layout">
+        <aside class="codebook-sidebar">
+            <div class="var-navigation">
+                <h3>Variable wählen</h3>
+                <select id="var-select">
+                    <option value="">Variable wählen...</option>
+                </select>
+                <div class="nav-buttons">
+                    <button id="prev-var" class="nav-btn">← Vorherige</button>
+                    <button id="next-var" class="nav-btn">Nächste →</button>
+                </div>
+            </div>
+
+            <div class="var-list-mini">
+                <h3>Alle Variablen</h3>
+                <ul id="var-list">
+                    <!-- Dynamisch -->
+                </ul>
+            </div>
+        </aside>
+
+        <section class="codebook-main">
+            <article class="variable-detail" id="variable-detail">
+                <header class="var-header">
+                    <div class="var-identity">
+                        <span class="var-position" id="var-position">#1</span>
+                        <h2 id="var-name">Variablenname</h2>
+                    </div>
+                    <span class="var-type-badge" id="var-type">Typ</span>
+                </header>
+
+                <section class="var-section label-section">
+                    <h3>Label & Beschreibung</h3>
+                    <p class="var-label" id="var-label"></p>
+                    <p class="var-description" id="var-description"></p>
+                </section>
+
+                <section class="var-section values-section">
+                    <h3>Wertebereich</h3>
+                    <div class="value-info">
+                        <dl>
+                            <dt>Min</dt>
+                            <dd id="val-min">–</dd>
+                            <dt>Max</dt>
+                            <dd id="val-max">–</dd>
+                            <dt>Gültig</dt>
+                            <dd id="val-valid">–</dd>
+                            <dt>Missing</dt>
+                            <dd id="val-missing">–</dd>
+                        </dl>
+                    </div>
+                    <div class="value-codes" id="value-codes">
+                        <!-- Für kategoriale Variablen: Werteliste -->
+                    </div>
+                </section>
+
+                <section class="var-section distribution-section">
+                    <h3>Verteilung</h3>
+                    <div class="distribution-chart" id="distribution-chart">
+                        <!-- Einfaches Balkendiagramm -->
+                    </div>
+                </section>
+
+                <section class="var-section metadata-section">
+                    <h3>Metadaten</h3>
+                    <dl class="metadata-list">
+                        <dt>Gruppe</dt>
+                        <dd id="meta-group">–</dd>
+                        <dt>Quelle</dt>
+                        <dd id="meta-source">–</dd>
+                        <dt>Derivation</dt>
+                        <dd id="meta-derivation">–</dd>
+                        <dt>Anmerkungen</dt>
+                        <dd id="meta-notes">–</dd>
+                    </dl>
+                </section>
+            </article>
+        </section>
+
+        <aside class="codebook-context">
+            <section class="related-vars">
+                <h3>Verwandte Variablen</h3>
+                <ul id="related-list">
+                    <!-- Dynamisch -->
+                </ul>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>← →</dt>
+                    <dd>Variable wechseln</dd>
+                    <dt>E</dt>
+                    <dd>Bearbeiten</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="mode-info">
+            <h3>Variablendetail-Modus</h3>
+            <p><strong>Relevanz:</strong> Vollständige Dokumentation einer Einzelvariable.</p>
+            <p><strong>Innovation:</strong> Verteilungsvisualisierung, Wertecodierung, Metadaten.</p>
+        </div>
+        <a href="../workbench-codebook.html" class="back-to-spec workbench-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/codebook-variablendetail.js"></script>
+</body>
+</html>

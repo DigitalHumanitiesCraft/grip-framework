@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validator - Schema - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/workbench.css">
+    <link rel="stylesheet" href="../../css/modes/schema-validator.css">
+</head>
+<body>
+    <header class="demo-header workbench-header schema-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Schema</h1>
+            <span class="mode-badge">Validator-Modus</span>
+        </div>
+        <p>Daten gegen Schema prüfen</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="struktur.html" role="tab">Struktur</a>
+        <a href="editor.html" role="tab">Editor</a>
+        <a href="validator.html" role="tab" aria-selected="true" class="active">Validator</a>
+        <a href="diff.html" role="tab">Diff</a>
+    </nav>
+
+    <main class="schema-layout validator-layout">
+        <aside class="schema-sidebar">
+            <div class="schema-loader">
+                <h3>Schema</h3>
+                <select id="schema-select">
+                    <option value="">Schema wählen...</option>
+                    <option value="demo">Demo-Schema</option>
+                </select>
+                <span class="or-divider">oder</span>
+                <input type="file" id="schema-file" accept=".json">
+            </div>
+
+            <div class="validation-options">
+                <h3>Optionen</h3>
+                <label>
+                    <input type="checkbox" id="opt-all-errors" checked>
+                    Alle Fehler zeigen
+                </label>
+                <label>
+                    <input type="checkbox" id="opt-verbose">
+                    Verbose Output
+                </label>
+            </div>
+
+            <div class="stats-section">
+                <h3>Ergebnis</h3>
+                <dl class="stats-list">
+                    <dt>Status</dt>
+                    <dd id="stat-status">–</dd>
+                    <dt>Fehler</dt>
+                    <dd id="stat-errors">0</dd>
+                    <dt>Warnungen</dt>
+                    <dd id="stat-warnings">0</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <section class="schema-main">
+            <div class="validator-panels">
+                <div class="panel schema-panel">
+                    <div class="panel-header">
+                        <h3>Schema</h3>
+                        <span class="schema-status" id="schema-status">Kein Schema</span>
+                    </div>
+                    <div class="panel-body">
+                        <textarea id="schema-input" placeholder="JSON Schema hier einfügen..."></textarea>
+                    </div>
+                </div>
+
+                <div class="panel data-panel">
+                    <div class="panel-header">
+                        <h3>Daten</h3>
+                        <button id="validate-btn" class="action-btn primary">▶ Validieren</button>
+                    </div>
+                    <div class="panel-body">
+                        <textarea id="data-input" placeholder="JSON Daten hier einfügen..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="validation-results" id="validation-results">
+                <div class="results-header">
+                    <h3>Validierungsergebnis</h3>
+                </div>
+                <div class="results-body" id="results-body">
+                    <div class="empty-state">
+                        <p>Fügen Sie Schema und Daten ein, dann klicken Sie "Validieren".</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="schema-context">
+            <section class="error-detail hidden" id="error-detail">
+                <h3>Fehler-Detail</h3>
+                <dl>
+                    <dt>Pfad</dt>
+                    <dd id="detail-path"></dd>
+                    <dt>Keyword</dt>
+                    <dd id="detail-keyword"></dd>
+                    <dt>Nachricht</dt>
+                    <dd id="detail-message"></dd>
+                    <dt>Erwartet</dt>
+                    <dd id="detail-expected"></dd>
+                    <dt>Gefunden</dt>
+                    <dd id="detail-actual"></dd>
+                </dl>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>Cmd/Ctrl + Enter</dt>
+                    <dd>Validieren</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="mode-info">
+            <h3>Validator-Modus</h3>
+            <p><strong>Relevanz:</strong> Echtzeit-Validierung von JSON gegen Schema.</p>
+            <p><strong>Innovation:</strong> Detaillierte Fehlermeldungen, Pfad-Highlighting.</p>
+        </div>
+        <a href="../workbench-schema.html" class="back-to-spec workbench-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/schema-validator.js"></script>
+</body>
+</html>

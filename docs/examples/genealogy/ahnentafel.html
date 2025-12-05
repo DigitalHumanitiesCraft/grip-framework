@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahnentafel - Genealogy - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navigator.css">
+    <link rel="stylesheet" href="../../css/modes/genealogy-ahnentafel.css">
+</head>
+<body>
+    <header class="demo-header navigator-header genealogy-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Genealogy</h1>
+            <span class="mode-badge">Ahnentafel-Modus</span>
+        </div>
+        <p>Vorfahren systematisch nummeriert</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="stammbaum.html" role="tab">Stammbaum</a>
+        <a href="ahnentafel.html" role="tab" aria-selected="true" class="active">Ahnentafel</a>
+        <a href="familienblatt.html" role="tab">Familienblatt</a>
+        <a href="zeitstrahl.html" role="tab">Zeitstrahl</a>
+    </nav>
+
+    <main class="genealogy-layout ahnentafel-layout">
+        <aside class="genealogy-sidebar">
+            <div class="proband-section">
+                <h3>Proband</h3>
+                <select id="proband-select">
+                    <option value="">Waehlen...</option>
+                </select>
+            </div>
+
+            <div class="view-controls">
+                <h3>Ansicht</h3>
+                <label>
+                    <span>Generationen</span>
+                    <input type="range" id="generation-depth" min="2" max="6" value="4">
+                    <span id="depth-value">4</span>
+                </label>
+                <div class="display-format">
+                    <button class="format-btn active" data-format="tree">Baum</button>
+                    <button class="format-btn" data-format="list">Liste</button>
+                </div>
+            </div>
+
+            <div class="numbering-info">
+                <h3>Kekule-Nummerierung</h3>
+                <ul class="numbering-legend">
+                    <li><span class="num">1</span> Proband</li>
+                    <li><span class="num">2</span> Vater</li>
+                    <li><span class="num">3</span> Mutter</li>
+                    <li><span class="num">2n</span> Vater von n</li>
+                    <li><span class="num">2n+1</span> Mutter von n</li>
+                </ul>
+            </div>
+
+            <div class="stats-section">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Ahnen erfasst</dt>
+                    <dd id="stat-ancestors">0</dd>
+                    <dt>Luecken</dt>
+                    <dd id="stat-missing">0</dd>
+                    <dt>Vollstaendigkeit</dt>
+                    <dd id="stat-completeness">0%</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <section class="genealogy-main">
+            <div class="ahnentafel-container" id="ahnentafel-container">
+                <!-- Dynamisch: Ahnentafel mit Kekule-Nummern -->
+            </div>
+        </section>
+
+        <aside class="genealogy-context">
+            <section class="ancestor-detail hidden" id="ancestor-detail">
+                <h3>Ahne</h3>
+                <div class="kekule-badge" id="detail-kekule">1</div>
+                <h4 id="detail-name"></h4>
+                <p class="generation-info" id="detail-generation"></p>
+                <dl>
+                    <dt>Lebensdaten</dt>
+                    <dd id="detail-dates"></dd>
+                    <dt>Geburtsort</dt>
+                    <dd id="detail-birthplace"></dd>
+                    <dt>Relation</dt>
+                    <dd id="detail-relation"></dd>
+                </dl>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkuerzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>↑ ↓</dt>
+                    <dd>Ahne wechseln</dd>
+                    <dt>L</dt>
+                    <dd>Listenansicht</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer navigator-footer">
+        <div class="mode-info">
+            <h3>Ahnentafel-Modus</h3>
+            <p><strong>Relevanz:</strong> Systematische Vorfahrenerfassung mit Kekule-Nummerierung.</p>
+            <p><strong>Innovation:</strong> Vollstaendigkeitsanzeige, Luecken-Highlighting, Export.</p>
+        </div>
+        <a href="../navigator-genealogy.html" class="back-to-spec navigator-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/genealogy-ahnentafel.js"></script>
+</body>
+</html>

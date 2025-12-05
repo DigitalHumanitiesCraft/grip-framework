@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Familienblatt - Genealogy - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navigator.css">
+    <link rel="stylesheet" href="../../css/modes/genealogy-familienblatt.css">
+</head>
+<body>
+    <header class="demo-header navigator-header genealogy-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Genealogy</h1>
+            <span class="mode-badge">Familienblatt-Modus</span>
+        </div>
+        <p>Kernfamilie im Detail</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="stammbaum.html" role="tab">Stammbaum</a>
+        <a href="ahnentafel.html" role="tab">Ahnentafel</a>
+        <a href="familienblatt.html" role="tab" aria-selected="true" class="active">Familienblatt</a>
+        <a href="zeitstrahl.html" role="tab">Zeitstrahl</a>
+    </nav>
+
+    <main class="genealogy-layout familienblatt-layout">
+        <aside class="genealogy-sidebar">
+            <div class="family-selector">
+                <h3>Familie waehlen</h3>
+                <select id="family-select">
+                    <option value="">Familie waehlen...</option>
+                </select>
+            </div>
+
+            <div class="navigation-section">
+                <h3>Navigation</h3>
+                <button id="nav-parents" class="nav-btn">↑ Elternfamilie</button>
+                <div class="children-nav" id="children-nav">
+                    <!-- Dynamisch: Links zu Kindfamilien -->
+                </div>
+            </div>
+
+            <div class="print-section">
+                <h3>Export</h3>
+                <button id="print-sheet" class="action-btn">🖨 Drucken</button>
+                <button id="export-gedcom" class="action-btn">📄 GEDCOM</button>
+            </div>
+        </aside>
+
+        <section class="genealogy-main">
+            <article class="family-sheet" id="family-sheet">
+                <header class="sheet-header">
+                    <h2 id="family-title">Familie</h2>
+                    <span class="family-id" id="family-id"></span>
+                </header>
+
+                <section class="couple-section">
+                    <div class="person-block husband">
+                        <h3>Ehemann</h3>
+                        <div class="person-info" id="husband-info">
+                            <!-- Dynamisch -->
+                        </div>
+                    </div>
+                    <div class="marriage-block">
+                        <div class="marriage-symbol">⚭</div>
+                        <div class="marriage-info" id="marriage-info">
+                            <!-- Dynamisch -->
+                        </div>
+                    </div>
+                    <div class="person-block wife">
+                        <h3>Ehefrau</h3>
+                        <div class="person-info" id="wife-info">
+                            <!-- Dynamisch -->
+                        </div>
+                    </div>
+                </section>
+
+                <section class="children-section">
+                    <h3>Kinder</h3>
+                    <table class="children-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Geboren</th>
+                                <th>Gestorben</th>
+                                <th>Partner</th>
+                            </tr>
+                        </thead>
+                        <tbody id="children-tbody">
+                            <!-- Dynamisch -->
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="notes-section">
+                    <h3>Anmerkungen</h3>
+                    <div class="notes-content" id="family-notes">
+                        <!-- Dynamisch -->
+                    </div>
+                </section>
+
+                <section class="sources-section">
+                    <h3>Quellen</h3>
+                    <ul class="sources-list" id="family-sources">
+                        <!-- Dynamisch -->
+                    </ul>
+                </section>
+            </article>
+        </section>
+
+        <aside class="genealogy-context">
+            <section class="person-quickview hidden" id="person-quickview">
+                <h3>Schnellansicht</h3>
+                <h4 id="qv-name"></h4>
+                <dl>
+                    <dt>Lebensdaten</dt>
+                    <dd id="qv-dates"></dd>
+                    <dt>Beruf</dt>
+                    <dd id="qv-occupation"></dd>
+                </dl>
+                <button id="qv-goto" class="action-btn">Zur Person →</button>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkuerzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>Cmd/Ctrl + P</dt>
+                    <dd>Drucken</dd>
+                    <dt>↑</dt>
+                    <dd>Elternfamilie</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer navigator-footer">
+        <div class="mode-info">
+            <h3>Familienblatt-Modus</h3>
+            <p><strong>Relevanz:</strong> Detailansicht einer Kernfamilie mit allen relevanten Daten.</p>
+            <p><strong>Innovation:</strong> Druckoptimiert, GEDCOM-Export, Quellenverwaltung.</p>
+        </div>
+        <a href="../navigator-genealogy.html" class="back-to-spec navigator-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/genealogy-familienblatt.js"></script>
+</body>
+</html>
