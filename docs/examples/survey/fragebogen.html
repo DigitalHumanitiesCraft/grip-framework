@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragebogen - Survey - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/scope.css">
+    <link rel="stylesheet" href="../../css/modes/survey-fragebogen.css">
+</head>
+<body>
+    <header class="demo-header scope-header survey-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Survey</h1>
+            <span class="mode-badge">Fragebogen-Modus</span>
+        </div>
+        <p>Erhebungsinstrument nachvollziehen</p>
+    </header>
+
+    <!-- Modus-Navigation -->
+    <nav class="mode-tabs" role="tablist">
+        <a href="fragebogen.html" role="tab" aria-selected="true" class="active">Fragebogen</a>
+        <a href="verteilung.html" role="tab">Verteilung</a>
+        <a href="skalen.html" role="tab">Skalen</a>
+        <a href="codebook.html" role="tab">Codebook</a>
+    </nav>
+
+    <main class="survey-layout fragebogen-layout">
+        <!-- Sidebar: Navigation und Optionen -->
+        <aside class="survey-sidebar">
+            <div class="survey-meta">
+                <h2 id="survey-title">Umfrage</h2>
+                <dl class="meta-list">
+                    <dt>Befragte</dt>
+                    <dd id="meta-n">-</dd>
+                    <dt>Rücklauf</dt>
+                    <dd id="meta-response-rate">-</dd>
+                    <dt>Zeitraum</dt>
+                    <dd id="meta-period">-</dd>
+                </dl>
+            </div>
+
+            <div class="section-nav">
+                <h3>Abschnitte</h3>
+                <ul id="section-list">
+                    <!-- Dynamisch: Fragebogen-Abschnitte -->
+                </ul>
+            </div>
+
+            <div class="display-options">
+                <h3>Anzeige</h3>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="show-scale-labels" checked>
+                    Skalenbeschriftung
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="show-item-ids">
+                    Variablennamen
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="interactive-mode" checked>
+                    Interaktiver Modus
+                </label>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Fragebogen-Darstellung -->
+        <article class="fragebogen-content">
+            <header class="fragebogen-header">
+                <h2>Fragebogen-Vorschau</h2>
+                <p class="fragebogen-intro" id="fragebogen-intro">
+                    Dieser Modus zeigt das Erhebungsinstrument in seiner ursprünglichen Form.
+                </p>
+            </header>
+
+            <div class="fragebogen-items" id="fragebogen-items">
+                <!-- Dynamisch: Items werden hier gerendert -->
+            </div>
+
+            <div class="fragebogen-pagination">
+                <button class="btn-secondary" id="prev-section" disabled>&larr; Voriger Abschnitt</button>
+                <span id="section-indicator">Abschnitt 1 von 1</span>
+                <button class="btn-secondary" id="next-section">Nächster Abschnitt &rarr;</button>
+            </div>
+        </article>
+
+        <!-- Kontext-Panel: Item-Details -->
+        <aside class="survey-context">
+            <section class="item-detail">
+                <h2>Item-Details</h2>
+                <p class="detail-prompt" id="detail-prompt">Klicken Sie auf ein Item für Details.</p>
+
+                <div class="detail-info hidden" id="detail-info">
+                    <div class="detail-field">
+                        <span class="label">Variable</span>
+                        <code id="detail-id">-</code>
+                    </div>
+                    <div class="detail-field">
+                        <span class="label">Typ</span>
+                        <span id="detail-type">-</span>
+                    </div>
+                    <div class="detail-field">
+                        <span class="label">Skala</span>
+                        <span id="detail-scale">-</span>
+                    </div>
+                    <div class="detail-field">
+                        <span class="label">Teil von</span>
+                        <span id="detail-parent-scale">-</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="response-preview">
+                <h3>Antwortverteilung</h3>
+                <div class="mini-histogram" id="mini-histogram">
+                    <!-- Mini-Vorschau der Verteilung -->
+                </div>
+                <a href="verteilung.html" class="link-to-mode">Zur Verteilungsansicht &rarr;</a>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>↑ / ↓</dt>
+                    <dd>Item wechseln</dd>
+                    <dt>Enter</dt>
+                    <dd>Item auswählen</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer scope-footer">
+        <div class="mode-info">
+            <h3>Fragebogen-Modus</h3>
+            <p><strong>Relevanz:</strong> Instrument nachvollziehen. Für Methodendokumentation und Replikation.</p>
+            <p><strong>Innovation:</strong> Interaktiver Fragebogen-Prototyp. Filterführung visualisiert.</p>
+        </div>
+        <a href="../scope-survey.html" class="back-to-spec scope-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/survey-fragebogen.js"></script>
+</body>
+</html>

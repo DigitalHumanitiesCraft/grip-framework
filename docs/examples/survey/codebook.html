@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codebook - Survey - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/scope.css">
+    <link rel="stylesheet" href="../../css/modes/survey-codebook.css">
+</head>
+<body>
+    <header class="demo-header scope-header survey-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Survey</h1>
+            <span class="mode-badge">Codebook-Modus</span>
+        </div>
+        <p>Variablendokumentation lesen</p>
+    </header>
+
+    <!-- Modus-Navigation -->
+    <nav class="mode-tabs" role="tablist">
+        <a href="fragebogen.html" role="tab">Fragebogen</a>
+        <a href="verteilung.html" role="tab">Verteilung</a>
+        <a href="skalen.html" role="tab">Skalen</a>
+        <a href="codebook.html" role="tab" aria-selected="true" class="active">Codebook</a>
+    </nav>
+
+    <main class="survey-layout codebook-layout">
+        <!-- Sidebar: Suche und Filter -->
+        <aside class="survey-sidebar">
+            <div class="search-section">
+                <h2>Suche</h2>
+                <input type="search" id="var-search" placeholder="Variable suchen...">
+            </div>
+
+            <div class="filter-section">
+                <h3>Variablentyp</h3>
+                <div class="type-filters">
+                    <label class="checkbox-label">
+                        <input type="checkbox" data-type="likert" checked>
+                        Likert-Skala
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" data-type="numeric" checked>
+                        Numerisch
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" data-type="categorical" checked>
+                        Kategorial
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" data-type="binary" checked>
+                        Binär
+                    </label>
+                </div>
+            </div>
+
+            <div class="export-section">
+                <h3>Export</h3>
+                <button class="btn-secondary" id="export-ddi">DDI-XML</button>
+                <button class="btn-secondary" id="export-spss">SPSS-Syntax</button>
+                <button class="btn-secondary" id="export-stata">Stata Do-File</button>
+            </div>
+
+            <div class="stats-summary">
+                <h3>Übersicht</h3>
+                <dl class="stats-list">
+                    <dt>Variablen</dt>
+                    <dd id="stat-vars">0</dd>
+                    <dt>Angezeigt</dt>
+                    <dd id="stat-shown">0</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Variablen-Liste -->
+        <article class="codebook-content">
+            <header class="codebook-header">
+                <h2>Variablen</h2>
+                <div class="sort-controls">
+                    <label>Sortierung:</label>
+                    <select id="sort-by">
+                        <option value="order">Reihenfolge</option>
+                        <option value="name">Name</option>
+                        <option value="type">Typ</option>
+                        <option value="scale">Skala</option>
+                    </select>
+                </div>
+            </header>
+
+            <div class="variable-list" id="variable-list">
+                <!-- Dynamisch: Variable Cards -->
+            </div>
+        </article>
+
+        <!-- Kontext-Panel: Variable Detail -->
+        <aside class="survey-context">
+            <section class="variable-detail">
+                <h2>Variable</h2>
+                <p class="detail-prompt" id="var-prompt">Wählen Sie eine Variable.</p>
+
+                <div class="var-info hidden" id="var-info">
+                    <h3 id="var-label">-</h3>
+                    <code id="var-id">-</code>
+
+                    <div class="var-field">
+                        <span class="label">Fragetext</span>
+                        <p id="var-question">-</p>
+                    </div>
+
+                    <div class="var-field">
+                        <span class="label">Typ</span>
+                        <span id="var-type" class="type-badge">-</span>
+                    </div>
+
+                    <div class="value-labels">
+                        <h4>Wertelabels</h4>
+                        <table class="labels-table" id="labels-table">
+                            <thead>
+                                <tr>
+                                    <th>Wert</th>
+                                    <th>Label</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Dynamisch -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="missing-values">
+                        <h4>Fehlende Werte</h4>
+                        <p id="missing-def">-</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>Cmd/Ctrl + F</dt>
+                    <dd>Suchen</dd>
+                    <dt>↑ / ↓</dt>
+                    <dd>Variable wechseln</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer scope-footer">
+        <div class="mode-info">
+            <h3>Codebook-Modus</h3>
+            <p><strong>Relevanz:</strong> Variablendokumentation lesen. Für Sekundäranalyse.</p>
+            <p><strong>Innovation:</strong> Such- und filterbare Variablenliste. SPSS/Stata-Export.</p>
+        </div>
+        <a href="../scope-survey.html" class="back-to-spec scope-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/survey-codebook.js"></script>
+</body>
+</html>

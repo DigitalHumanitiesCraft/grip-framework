@@ -854,3 +854,107 @@ Alle Links zeigen jetzt auf:
 - Repo: https://github.com/DigitalHumanitiesCraft/grip-framework
 
 Betroffene Dateien: index.html, about.html, README.md
+
+---
+
+## 2025-12-05: Survey- und Citation-Modi vollständig implementiert
+
+### Survey-Modi (4/4 fertig)
+
+Alle vier Modi der Survey-Spezialisierung sind nun funktionsfähig:
+
+1. **Fragebogen-Modus** (`survey/fragebogen.html`)
+   - Virtualisiertes Scrolling durch Fragebogen
+   - Ausfüllbares Formular mit Validierung
+   - Tastaturnavigation (Tab, Enter)
+
+2. **Verteilung-Modus** (`survey/verteilung.html`)
+   - Histogramm-Grid für Antwortverteilungen
+   - Filter nach demografischen Variablen
+   - Vergleichsgruppen-Auswahl
+
+3. **Skalen-Modus** (`survey/skalen.html`)
+   - Cronbach's Alpha-Berechnung live
+   - Item-Korrelationsmatrix (Heatmap)
+   - "Alpha wenn Item entfernt" für jeden Item
+
+4. **Codebook-Modus** (`survey/codebook.html`)
+   - Durchsuchbare Variablenliste
+   - Export: DDI-XML, SPSS-Syntax, Stata Do-File
+   - Typ-Filter (Likert, Numerisch, Kategorial)
+
+### Citation-Modi (4/4 fertig)
+
+Alle vier Modi der Citation-Spezialisierung implementiert:
+
+1. **Netzwerk-Modus** (`citation/netzwerk.html`)
+   - Force-Directed Graph
+   - Cluster-Färbung
+   - Drag-and-Drop für Knoten
+   - Zoom-Steuerung
+
+2. **Timeline-Modus** (`citation/timeline.html`)
+   - Chronologische Anordnung
+   - Zitationslinien zwischen Publikationen
+   - Zeitraum-Filter
+
+3. **Bibliometrie-Modus** (`citation/bibliometrie.html`)
+   - Sortierbare Metriken-Tabelle
+   - Export: CSV, BibTeX
+   - Vergleichsfunktion (Shift+Click)
+   - Trend-Sparklines
+
+4. **Ego-Netzwerk-Modus** (`citation/ego.html`)
+   - Radiales Layout um Fokus-Publikation
+   - 1-Grad und 2-Grad Tiefe
+   - Co-Citation-Visualisierung
+   - Doppelklick zum Fokus-Wechsel
+
+### Neue Dateien erstellt
+
+CSS-Dateien (8 neu):
+- `docs/css/modes/survey-fragebogen.css`
+- `docs/css/modes/survey-verteilung.css`
+- `docs/css/modes/survey-skalen.css`
+- `docs/css/modes/survey-codebook.css`
+- `docs/css/modes/citation-netzwerk.css`
+- `docs/css/modes/citation-timeline.css`
+- `docs/css/modes/citation-bibliometrie.css`
+- `docs/css/modes/citation-ego.css`
+
+JS-Dateien (8 neu):
+- `docs/js/modes/survey-fragebogen.js`
+- `docs/js/modes/survey-verteilung.js`
+- `docs/js/modes/survey-skalen.js`
+- `docs/js/modes/survey-codebook.js`
+- `docs/js/modes/citation-netzwerk.js`
+- `docs/js/modes/citation-timeline.js`
+- `docs/js/modes/citation-bibliometrie.js`
+- `docs/js/modes/citation-ego.js`
+
+HTML-Dateien (8 neu):
+- `docs/examples/survey/fragebogen.html`
+- `docs/examples/survey/verteilung.html`
+- `docs/examples/survey/skalen.html`
+- `docs/examples/survey/codebook.html`
+- `docs/examples/citation/netzwerk.html`
+- `docs/examples/citation/timeline.html`
+- `docs/examples/citation/bibliometrie.html`
+- `docs/examples/citation/ego.html`
+
+### Implementierungsdetails
+
+**Statistik-Funktionen in survey-skalen.js:**
+- Pearson-Korrelation für Item-Total-Korrelation
+- Cronbach's Alpha mit Varianz-Kovarianz-Methode
+- "Alpha wenn Item entfernt" für Reliabilitätsdiagnose
+
+**Graph-Algorithmen in citation-netzwerk.js:**
+- Force-Directed Layout mit Repulsion und Attraktion
+- Radiales und Cluster-Layout als Alternativen
+- SVG-basiertes Rendering mit CSS-Transitions
+
+**Ego-Netzwerk in citation-ego.js:**
+- BFS für Nachbarschaftsberechnung
+- Co-Citation-Erkennung
+- Radiale Positionierung nach Tiefe

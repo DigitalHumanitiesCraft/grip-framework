@@ -1,0 +1,289 @@
+/**
+ * Citation Ego-Netzwerk-Modus Styles
+ */
+
+/* Layout */
+.ego-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr 280px;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    min-height: calc(100vh - 200px);
+}
+
+/* Sidebar */
+.focus-selector h2,
+.depth-selector h3,
+.direction-filter h3,
+.ego-stats h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.focus-selector {
+    margin-bottom: var(--space-lg);
+}
+
+.focus-selector select {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.depth-selector {
+    margin-bottom: var(--space-lg);
+}
+
+.depth-buttons {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+.depth-btn {
+    flex: 1;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.depth-btn:hover {
+    background: var(--color-paper);
+}
+
+.depth-btn.active {
+    background: var(--color-archetype-navigator);
+    color: white;
+    border-color: var(--color-archetype-navigator);
+}
+
+.direction-filter {
+    margin-bottom: var(--space-lg);
+}
+
+.ego-stats {
+    background: var(--color-paper-dark);
+    padding: var(--space-md);
+    border-radius: 6px;
+}
+
+/* Hauptbereich */
+.ego-content {
+    background: white;
+    border-radius: 8px;
+    padding: var(--space-lg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.ego-container {
+    flex: 1;
+    min-height: 450px;
+    position: relative;
+}
+
+#ego-graph {
+    width: 100%;
+    height: 100%;
+}
+
+/* Ego Graph Elements */
+.ego-center {
+    cursor: default;
+}
+
+.ego-center circle {
+    stroke: var(--color-ink);
+    stroke-width: 3;
+}
+
+.ego-node {
+    cursor: pointer;
+}
+
+.ego-node circle {
+    stroke: white;
+    stroke-width: 2;
+    transition: all 0.2s;
+}
+
+.ego-node:hover circle {
+    stroke-width: 3;
+    filter: brightness(1.1);
+}
+
+.ego-node.selected circle {
+    stroke: var(--color-ink);
+    stroke-width: 3;
+}
+
+.ego-edge {
+    fill: none;
+    stroke-width: 1.5;
+    opacity: 0.6;
+}
+
+.ego-edge.cites {
+    stroke: var(--color-archetype-navigator);
+}
+
+.ego-edge.cited-by {
+    stroke: var(--color-archetype-scope);
+}
+
+.ego-edge.co-citation {
+    stroke: var(--color-ink-light);
+    stroke-dasharray: 4,4;
+}
+
+.ego-edge:hover {
+    opacity: 1;
+    stroke-width: 2.5;
+}
+
+.ego-label {
+    font-size: 10px;
+    fill: var(--color-ink-light);
+    pointer-events: none;
+}
+
+.ego-center-label {
+    font-size: 12px;
+    font-weight: 600;
+    fill: var(--color-ink);
+}
+
+/* Legend */
+.ego-legend {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-paper-dark);
+    margin-top: var(--space-md);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+}
+
+.legend-item.cites::before {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background: var(--color-archetype-navigator);
+}
+
+.legend-item.cited-by::before {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background: var(--color-archetype-scope);
+}
+
+.legend-item.co-citation::before {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background: var(--color-ink-light);
+    background: repeating-linear-gradient(
+        90deg,
+        var(--color-ink-light) 0,
+        var(--color-ink-light) 4px,
+        transparent 4px,
+        transparent 8px
+    );
+}
+
+/* Context Panel */
+.focus-detail h2,
+.neighbor-detail h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.focus-info h3,
+.neighbor-info h3 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: var(--space-xs);
+}
+
+.focus-authors,
+.neighbor-authors {
+    font-size: 0.9rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+.focus-year {
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-md);
+}
+
+.focus-abstract {
+    margin-top: var(--space-md);
+}
+
+.focus-abstract h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+.focus-abstract p,
+#focus-abstract {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--color-ink-light);
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.neighbor-detail {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.neighbor-relation {
+    font-size: 0.85rem;
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-paper-dark);
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .ego-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .citation-sidebar,
+    .citation-context {
+        display: none;
+    }
+
+    .ego-container {
+        min-height: 350px;
+    }
+}

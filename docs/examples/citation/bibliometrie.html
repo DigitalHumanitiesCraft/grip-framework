@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliometrie - Citation - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navigator.css">
+    <link rel="stylesheet" href="../../css/modes/citation-bibliometrie.css">
+</head>
+<body>
+    <header class="demo-header navigator-header citation-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Citation</h1>
+            <span class="mode-badge">Bibliometrie-Modus</span>
+        </div>
+        <p>Metriken und Rankings</p>
+    </header>
+
+    <!-- Modus-Navigation -->
+    <nav class="mode-tabs" role="tablist">
+        <a href="netzwerk.html" role="tab">Netzwerk</a>
+        <a href="timeline.html" role="tab">Timeline</a>
+        <a href="bibliometrie.html" role="tab" aria-selected="true" class="active">Bibliometrie</a>
+        <a href="ego.html" role="tab">Ego-Netzwerk</a>
+    </nav>
+
+    <main class="citation-layout bibliometrie-layout">
+        <!-- Sidebar: Filter und Aggregate -->
+        <aside class="citation-sidebar">
+            <div class="metric-selector">
+                <h2>Metriken</h2>
+                <label class="checkbox-label">
+                    <input type="checkbox" data-metric="citations" checked>
+                    Zitationen
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" data-metric="in_degree" checked>
+                    In-Degree
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" data-metric="out_degree" checked>
+                    Out-Degree
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" data-metric="year">
+                    Jahr
+                </label>
+            </div>
+
+            <div class="cluster-filter">
+                <h3>Cluster</h3>
+                <select id="filter-cluster">
+                    <option value="all">Alle</option>
+                </select>
+            </div>
+
+            <div class="aggregate-stats">
+                <h3>Aggregiert</h3>
+                <dl class="stats-list">
+                    <dt>Gesamt-Zitationen</dt>
+                    <dd id="stat-total-citations">0</dd>
+                    <dt>Durchschnitt</dt>
+                    <dd id="stat-avg-citations">0</dd>
+                    <dt>Maximum</dt>
+                    <dd id="stat-max-citations">0</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Tabelle -->
+        <article class="bibliometrie-content">
+            <div class="table-controls">
+                <input type="search" id="search-publications" placeholder="Publikation suchen...">
+                <div class="export-buttons">
+                    <button class="btn-secondary" id="export-csv">CSV</button>
+                    <button class="btn-secondary" id="export-bibtex">BibTeX</button>
+                </div>
+            </div>
+
+            <table class="metrics-table" id="metrics-table">
+                <thead>
+                    <tr>
+                        <th data-sort="title">Titel</th>
+                        <th data-sort="authors">Autoren</th>
+                        <th data-sort="year" class="numeric">Jahr</th>
+                        <th data-sort="citations" class="numeric sortable">Zitationen ↓</th>
+                        <th data-sort="in_degree" class="numeric">In</th>
+                        <th data-sort="out_degree" class="numeric">Out</th>
+                        <th data-sort="cluster">Cluster</th>
+                    </tr>
+                </thead>
+                <tbody id="metrics-tbody">
+                    <!-- Dynamisch -->
+                </tbody>
+            </table>
+        </article>
+
+        <!-- Kontext-Panel: Trend-Visualisierung -->
+        <aside class="citation-context">
+            <section class="trend-chart">
+                <h2>Zitationstrend</h2>
+                <p class="detail-prompt" id="trend-prompt">Wählen Sie eine Publikation.</p>
+
+                <div class="trend-info hidden" id="trend-info">
+                    <h3 id="trend-title">-</h3>
+                    <div class="trend-graph" id="trend-graph">
+                        <!-- Sparkline -->
+                    </div>
+                    <p class="trend-summary" id="trend-summary">-</p>
+                </div>
+            </section>
+
+            <section class="comparison">
+                <h3>Vergleich</h3>
+                <p class="comparison-hint">Shift+Klick für Mehrfachauswahl</p>
+                <div id="comparison-list">
+                    <!-- Ausgewählte Publikationen -->
+                </div>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>Cmd/Ctrl + F</dt>
+                    <dd>Suchen</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer navigator-footer">
+        <div class="mode-info">
+            <h3>Bibliometrie-Modus</h3>
+            <p><strong>Relevanz:</strong> Metriken und Rankings. Für Evaluation.</p>
+            <p><strong>Innovation:</strong> Sortierbare Tabelle. Vergleich zwischen Entitäten. Trendkurven.</p>
+        </div>
+        <a href="../navigator-citation.html" class="back-to-spec navigator-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/citation-bibliometrie.js"></script>
+</body>
+</html>

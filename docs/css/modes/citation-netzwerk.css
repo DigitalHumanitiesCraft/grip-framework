@@ -1,0 +1,303 @@
+/**
+ * Citation Netzwerk-Modus Styles
+ */
+
+/* Layout */
+.netzwerk-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr 280px;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    min-height: calc(100vh - 200px);
+}
+
+/* Sidebar */
+.citation-sidebar {
+    background: var(--color-paper);
+    border-radius: 8px;
+    padding: var(--space-md);
+}
+
+.cluster-legend h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.cluster-legend ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cluster-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) 0;
+    cursor: pointer;
+}
+
+.cluster-item:hover {
+    background: var(--color-paper-dark);
+    margin: 0 calc(-1 * var(--space-md));
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+}
+
+.cluster-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.cluster-label {
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.cluster-count {
+    font-size: 0.75rem;
+    background: var(--color-paper-dark);
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+.layout-options,
+.display-options,
+.network-stats {
+    margin-top: var(--space-lg);
+}
+
+.layout-options h3,
+.display-options h3,
+.network-stats h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.layout-options select {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    background: white;
+}
+
+.network-stats {
+    background: var(--color-paper-dark);
+    padding: var(--space-md);
+    border-radius: 6px;
+    margin-top: var(--space-lg);
+}
+
+.stats-list dt {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+.stats-list dd {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 var(--space-sm) 0;
+}
+
+/* Hauptbereich */
+.netzwerk-content {
+    background: white;
+    border-radius: 8px;
+    padding: var(--space-md);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.graph-controls {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    display: flex;
+    gap: var(--space-xs);
+    align-items: center;
+    z-index: 10;
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon:hover {
+    background: var(--color-paper);
+}
+
+#zoom-level {
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+    margin-left: var(--space-sm);
+}
+
+.graph-container {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
+#citation-graph {
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    transform-origin: center;
+    transition: transform 0.2s;
+}
+
+#citation-graph:active {
+    cursor: grabbing;
+}
+
+/* Graph Elements */
+.edge {
+    stroke: #ccc;
+    stroke-width: 1;
+    fill: none;
+}
+
+.edge:hover {
+    stroke: var(--color-archetype-navigator);
+    stroke-width: 2;
+}
+
+.node {
+    cursor: pointer;
+}
+
+.node circle {
+    stroke: white;
+    stroke-width: 2;
+    transition: all 0.2s;
+}
+
+.node:hover circle {
+    stroke-width: 3;
+    filter: brightness(1.1);
+}
+
+.node.selected circle {
+    stroke: var(--color-ink);
+    stroke-width: 3;
+}
+
+.node-label {
+    font-size: 10px;
+    fill: var(--color-ink-light);
+    pointer-events: none;
+}
+
+/* Context Panel */
+.citation-context {
+    background: var(--color-paper);
+    border-radius: 8px;
+    padding: var(--space-md);
+}
+
+.node-detail h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.node-info h3 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: var(--space-xs);
+}
+
+.node-authors {
+    font-size: 0.9rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+.node-venue {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--color-ink-light);
+}
+
+.node-metrics {
+    margin: var(--space-md) 0;
+    padding: var(--space-sm);
+    background: var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.node-metrics dl {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-xs);
+}
+
+.node-metrics dt {
+    font-size: 0.7rem;
+    color: var(--color-ink-light);
+    text-transform: uppercase;
+}
+
+.node-metrics dd {
+    font-weight: 600;
+    margin: 0;
+}
+
+.node-connections h4 {
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+    margin: var(--space-md) 0 var(--space-xs) 0;
+}
+
+.node-connections ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.node-connections li {
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--color-paper-dark);
+    cursor: pointer;
+}
+
+.node-connections li:hover {
+    color: var(--color-archetype-navigator);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .netzwerk-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .citation-sidebar,
+    .citation-context {
+        display: none;
+    }
+
+    .graph-container {
+        height: 400px;
+    }
+}

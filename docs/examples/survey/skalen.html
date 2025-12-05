@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skalen - Survey - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/scope.css">
+    <link rel="stylesheet" href="../../css/modes/survey-skalen.css">
+</head>
+<body>
+    <header class="demo-header scope-header survey-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Survey</h1>
+            <span class="mode-badge">Skalen-Modus</span>
+        </div>
+        <p>Skalenkonstruktion prüfen</p>
+    </header>
+
+    <!-- Modus-Navigation -->
+    <nav class="mode-tabs" role="tablist">
+        <a href="fragebogen.html" role="tab">Fragebogen</a>
+        <a href="verteilung.html" role="tab">Verteilung</a>
+        <a href="skalen.html" role="tab" aria-selected="true" class="active">Skalen</a>
+        <a href="codebook.html" role="tab">Codebook</a>
+    </nav>
+
+    <main class="survey-layout skalen-layout">
+        <!-- Sidebar: Skalen-Liste -->
+        <aside class="survey-sidebar">
+            <div class="scales-list">
+                <h2>Skalen</h2>
+                <ul id="scale-list">
+                    <!-- Dynamisch: Skalen mit Alpha-Werten -->
+                </ul>
+            </div>
+
+            <div class="reliability-thresholds">
+                <h3>Schwellenwerte</h3>
+                <dl class="threshold-list">
+                    <dt class="excellent">&ge; 0.90</dt>
+                    <dd>Exzellent</dd>
+                    <dt class="good">&ge; 0.80</dt>
+                    <dd>Gut</dd>
+                    <dt class="acceptable">&ge; 0.70</dt>
+                    <dd>Akzeptabel</dd>
+                    <dt class="questionable">&ge; 0.60</dt>
+                    <dd>Fragwürdig</dd>
+                    <dt class="poor">&lt; 0.60</dt>
+                    <dd>Unzureichend</dd>
+                </dl>
+            </div>
+
+            <div class="analysis-options">
+                <h3>Analyse</h3>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="show-if-deleted" checked>
+                    Alpha bei Item-Ausschluss
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="show-corrected-corr" checked>
+                    Trennschärfe (r<sub>it</sub>)
+                </label>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Skalen-Analyse -->
+        <article class="skalen-content">
+            <header class="skalen-header">
+                <h2 id="scale-title">Skala auswählen</h2>
+                <div class="scale-summary" id="scale-summary">
+                    <!-- Dynamisch: Alpha, Items, etc. -->
+                </div>
+            </header>
+
+            <!-- Item-Tabelle -->
+            <div class="item-analysis">
+                <table class="analysis-table" id="item-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>M</th>
+                            <th>SD</th>
+                            <th>r<sub>it</sub></th>
+                            <th>α ohne Item</th>
+                        </tr>
+                    </thead>
+                    <tbody id="item-tbody">
+                        <!-- Dynamisch -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Korrelationsmatrix -->
+            <div class="correlation-section">
+                <h3>Item-Korrelationsmatrix</h3>
+                <div class="correlation-matrix" id="correlation-matrix">
+                    <!-- Dynamisch: Heatmap der Korrelationen -->
+                </div>
+            </div>
+        </article>
+
+        <!-- Kontext-Panel: Item-Detail -->
+        <aside class="survey-context">
+            <section class="item-detail">
+                <h2>Item-Analyse</h2>
+                <p class="detail-prompt" id="item-prompt">Wählen Sie ein Item aus der Tabelle.</p>
+
+                <div class="item-info hidden" id="item-info">
+                    <h3 id="item-label">-</h3>
+                    <code id="item-id">-</code>
+
+                    <div class="item-recommendation">
+                        <h4>Empfehlung</h4>
+                        <p id="item-recommendation">-</p>
+                    </div>
+
+                    <div class="item-histogram">
+                        <h4>Verteilung</h4>
+                        <div id="item-histogram-chart">
+                            <!-- Mini-Histogramm -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>↑ / ↓</dt>
+                    <dd>Item wechseln</dd>
+                    <dt>← / →</dt>
+                    <dd>Skala wechseln</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer scope-footer">
+        <div class="mode-info">
+            <h3>Skalen-Modus</h3>
+            <p><strong>Relevanz:</strong> Skalenkonstruktion prüfen. Für Reliabilitätsanalyse.</p>
+            <p><strong>Innovation:</strong> Item-Korrelationsmatrix. Cronbach-Alpha live bei Item-Ausschluss.</p>
+        </div>
+        <a href="../scope-survey.html" class="back-to-spec scope-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/survey-skalen.js"></script>
+</body>
+</html>

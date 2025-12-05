@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ego-Netzwerk - Citation - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navigator.css">
+    <link rel="stylesheet" href="../../css/modes/citation-ego.css">
+</head>
+<body>
+    <header class="demo-header navigator-header citation-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Citation</h1>
+            <span class="mode-badge">Ego-Netzwerk-Modus</span>
+        </div>
+        <p>Eine Publikation im Zentrum</p>
+    </header>
+
+    <!-- Modus-Navigation -->
+    <nav class="mode-tabs" role="tablist">
+        <a href="netzwerk.html" role="tab">Netzwerk</a>
+        <a href="timeline.html" role="tab">Timeline</a>
+        <a href="bibliometrie.html" role="tab">Bibliometrie</a>
+        <a href="ego.html" role="tab" aria-selected="true" class="active">Ego-Netzwerk</a>
+    </nav>
+
+    <main class="citation-layout ego-layout">
+        <!-- Sidebar: Fokus-Auswahl -->
+        <aside class="citation-sidebar">
+            <div class="focus-selector">
+                <h2>Fokus-Publikation</h2>
+                <select id="focus-publication">
+                    <!-- Dynamisch: Alle Publikationen -->
+                </select>
+            </div>
+
+            <div class="depth-selector">
+                <h3>Tiefe</h3>
+                <div class="depth-buttons">
+                    <button class="depth-btn active" data-depth="1">1 Grad</button>
+                    <button class="depth-btn" data-depth="2">2 Grad</button>
+                </div>
+            </div>
+
+            <div class="direction-filter">
+                <h3>Richtung</h3>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="show-cites" checked>
+                    Zitiert (→)
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="show-cited-by" checked>
+                    Zitiert von (←)
+                </label>
+            </div>
+
+            <div class="ego-stats">
+                <h3>Ego-Netzwerk</h3>
+                <dl class="stats-list">
+                    <dt>Zitiert</dt>
+                    <dd id="stat-cites">0</dd>
+                    <dt>Zitiert von</dt>
+                    <dd id="stat-cited-by">0</dd>
+                    <dt>Co-Citation</dt>
+                    <dd id="stat-co-citation">0</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Radiales Ego-Netzwerk -->
+        <article class="ego-content">
+            <div class="ego-container" id="ego-container">
+                <svg id="ego-graph">
+                    <!-- Dynamisch: Radiales Layout -->
+                </svg>
+            </div>
+
+            <div class="ego-legend">
+                <span class="legend-item cites">→ Zitiert</span>
+                <span class="legend-item cited-by">← Zitiert von</span>
+                <span class="legend-item co-citation">⟷ Co-Citation</span>
+            </div>
+        </article>
+
+        <!-- Kontext-Panel: Fokus-Details -->
+        <aside class="citation-context">
+            <section class="focus-detail">
+                <h2>Fokus</h2>
+                <div class="focus-info" id="focus-info">
+                    <h3 id="focus-title">-</h3>
+                    <p class="focus-authors" id="focus-authors">-</p>
+                    <p class="focus-year" id="focus-year">-</p>
+
+                    <div class="focus-abstract">
+                        <h4>Abstract</h4>
+                        <p id="focus-abstract">-</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="neighbor-detail hidden" id="neighbor-section">
+                <h2>Nachbar</h2>
+                <div class="neighbor-info" id="neighbor-info">
+                    <h3 id="neighbor-title">-</h3>
+                    <p class="neighbor-authors" id="neighbor-authors">-</p>
+                    <p class="neighbor-relation" id="neighbor-relation">-</p>
+                </div>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>1 / 2</dt>
+                    <dd>Tiefe wechseln</dd>
+                    <dt>Tab</dt>
+                    <dd>Nächster Nachbar</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer navigator-footer">
+        <div class="mode-info">
+            <h3>Ego-Netzwerk-Modus</h3>
+            <p><strong>Relevanz:</strong> Eine Publikation im Zentrum. Für tiefe Analyse.</p>
+            <p><strong>Innovation:</strong> Radiales Layout. Zitiert-von vs. zitiert Trennung. Co-Citation-Cluster.</p>
+        </div>
+        <a href="../navigator-citation.html" class="back-to-spec navigator-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/citation-ego.js"></script>
+</body>
+</html>

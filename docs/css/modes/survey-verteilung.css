@@ -1,0 +1,336 @@
+/**
+ * Survey Verteilungs-Modus Styles
+ */
+
+/* Layout */
+.verteilung-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr 280px;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    min-height: calc(100vh - 200px);
+}
+
+/* Filter Section */
+.filter-section {
+    margin-bottom: var(--space-lg);
+}
+
+.filter-section h2,
+.filter-section h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.filter-group {
+    margin-bottom: var(--space-md);
+}
+
+.filter-group label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: var(--space-xs);
+}
+
+.filter-group select {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    background: white;
+}
+
+.filter-group input[type="range"] {
+    width: 100%;
+    margin: var(--space-sm) 0;
+}
+
+#filter-remote-value {
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+}
+
+#reset-filters {
+    width: 100%;
+    margin-top: var(--space-sm);
+}
+
+/* Subgroup Section */
+.subgroup-section {
+    margin-bottom: var(--space-lg);
+}
+
+.subgroup-section h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.subgroup-section select {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+/* Stats Summary */
+.stats-summary {
+    background: var(--color-paper-dark);
+    padding: var(--space-md);
+    border-radius: 6px;
+}
+
+.stats-summary h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.stats-list dt {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+.stats-list dd {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 var(--space-sm) 0;
+}
+
+/* Hauptbereich */
+.verteilung-content {
+    background: white;
+    border-radius: 8px;
+    padding: var(--space-lg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.verteilung-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.verteilung-header h2 {
+    font-family: var(--font-serif);
+}
+
+.view-controls {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+.view-btn {
+    padding: var(--space-xs) var(--space-md);
+    background: var(--color-paper);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.view-btn:hover {
+    background: var(--color-paper-dark);
+}
+
+.view-btn.active {
+    background: var(--color-archetype-scope);
+    color: white;
+    border-color: var(--color-archetype-scope);
+}
+
+/* Histogram Grid */
+.histogram-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-lg);
+}
+
+.histogram-card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 8px;
+    padding: var(--space-md);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.histogram-card:hover {
+    border-color: var(--color-archetype-scope);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.histogram-card.selected {
+    border-color: var(--color-archetype-scope);
+    background: rgba(184, 84, 80, 0.05);
+}
+
+.histogram-header {
+    margin-bottom: var(--space-md);
+}
+
+.histogram-header h3 {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    line-height: 1.3;
+    margin-bottom: var(--space-xs);
+}
+
+.histogram-header code {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+/* Histogram Chart */
+.histogram-chart {
+    height: 120px;
+    margin-bottom: var(--space-md);
+}
+
+.bars-wrapper {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    gap: 6px;
+    padding-bottom: 20px;
+}
+
+.bar-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.bar {
+    width: 100%;
+    background: var(--color-archetype-scope);
+    border-radius: 3px 3px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 4px;
+    min-height: 4px;
+    transition: height 0.3s ease;
+}
+
+.bar-value {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: white;
+}
+
+.bar-label {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+    margin-top: 4px;
+}
+
+/* Histogram Stats */
+.histogram-stats {
+    display: flex;
+    gap: var(--space-md);
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+    border-top: 1px solid var(--color-paper-dark);
+    padding-top: var(--space-sm);
+}
+
+/* Context Panel - Variable Detail */
+.variable-detail h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.var-info h3 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: var(--space-xs);
+}
+
+.var-info code {
+    font-size: 0.75rem;
+    background: var(--color-paper-dark);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.var-stats {
+    margin: var(--space-md) 0;
+    padding: var(--space-sm);
+    background: var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.var-stats dl {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xs);
+}
+
+.var-stats dt {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+.var-stats dd {
+    font-weight: 600;
+    margin: 0;
+}
+
+.var-distribution h4 {
+    font-size: 0.8rem;
+    margin-bottom: var(--space-sm);
+}
+
+.freq-table {
+    width: 100%;
+    font-size: 0.85rem;
+    border-collapse: collapse;
+}
+
+.freq-table th,
+.freq-table td {
+    padding: var(--space-xs) var(--space-sm);
+    text-align: left;
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.freq-table th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-ink-light);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .verteilung-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .survey-sidebar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-md);
+    }
+
+    .survey-context {
+        display: none;
+    }
+}

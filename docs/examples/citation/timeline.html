@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Citation - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navigator.css">
+    <link rel="stylesheet" href="../../css/modes/citation-timeline.css">
+</head>
+<body>
+    <header class="demo-header navigator-header citation-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Citation</h1>
+            <span class="mode-badge">Timeline-Modus</span>
+        </div>
+        <p>Publikationen chronologisch</p>
+    </header>
+
+    <!-- Modus-Navigation -->
+    <nav class="mode-tabs" role="tablist">
+        <a href="netzwerk.html" role="tab">Netzwerk</a>
+        <a href="timeline.html" role="tab" aria-selected="true" class="active">Timeline</a>
+        <a href="bibliometrie.html" role="tab">Bibliometrie</a>
+        <a href="ego.html" role="tab">Ego-Netzwerk</a>
+    </nav>
+
+    <main class="citation-layout timeline-layout">
+        <!-- Sidebar: Filter -->
+        <aside class="citation-sidebar">
+            <div class="time-filter">
+                <h2>Zeitraum</h2>
+                <div class="range-inputs">
+                    <label>
+                        Von
+                        <input type="number" id="year-from" min="1900" max="2030">
+                    </label>
+                    <label>
+                        Bis
+                        <input type="number" id="year-to" min="1900" max="2030">
+                    </label>
+                </div>
+                <input type="range" id="time-range" min="0" max="100" value="100">
+            </div>
+
+            <div class="cluster-filter">
+                <h3>Cluster</h3>
+                <div id="cluster-checkboxes">
+                    <!-- Dynamisch -->
+                </div>
+            </div>
+
+            <div class="connection-options">
+                <h3>Verbindungen</h3>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="show-citations" checked>
+                    Zitationslinien zeigen
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="highlight-path">
+                    Pfade hervorheben
+                </label>
+            </div>
+
+            <div class="timeline-stats">
+                <h3>Übersicht</h3>
+                <dl class="stats-list">
+                    <dt>Zeitraum</dt>
+                    <dd id="stat-range">-</dd>
+                    <dt>Publikationen</dt>
+                    <dd id="stat-count">0</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Timeline -->
+        <article class="timeline-content">
+            <div class="timeline-axis" id="timeline-axis">
+                <!-- Jahres-Marker -->
+            </div>
+
+            <div class="timeline-graph" id="timeline-graph">
+                <!-- Dynamisch: Nodes mit Verbindungslinien -->
+            </div>
+        </article>
+
+        <!-- Kontext-Panel -->
+        <aside class="citation-context">
+            <section class="node-detail">
+                <h2>Publikation</h2>
+                <p class="detail-prompt" id="node-prompt">Klicken Sie auf eine Publikation.</p>
+
+                <div class="node-info hidden" id="node-info">
+                    <h3 id="node-title">-</h3>
+                    <p class="node-authors" id="node-authors">-</p>
+
+                    <div class="node-metrics">
+                        <dl>
+                            <dt>Jahr</dt>
+                            <dd id="node-year">-</dd>
+                            <dt>Zitationen</dt>
+                            <dd id="node-citations">-</dd>
+                        </dl>
+                    </div>
+
+                    <div class="node-abstract">
+                        <h4>Abstract</h4>
+                        <p id="node-abstract">-</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>← / →</dt>
+                    <dd>Zeitraum verschieben</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer navigator-footer">
+        <div class="mode-info">
+            <h3>Timeline-Modus</h3>
+            <p><strong>Relevanz:</strong> Publikationen chronologisch. Für Entwicklungslinien.</p>
+            <p><strong>Innovation:</strong> Zeitleiste mit Verbindungslinien. Filtert nach Zeitraum.</p>
+        </div>
+        <a href="../navigator-citation.html" class="back-to-spec navigator-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/citation-timeline.js"></script>
+</body>
+</html>

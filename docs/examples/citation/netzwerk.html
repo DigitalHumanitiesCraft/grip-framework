@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netzwerk - Citation - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navigator.css">
+    <link rel="stylesheet" href="../../css/modes/citation-netzwerk.css">
+</head>
+<body>
+    <header class="demo-header navigator-header citation-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Citation</h1>
+            <span class="mode-badge">Netzwerk-Modus</span>
+        </div>
+        <p>Zitationsbeziehungen als Graph</p>
+    </header>
+
+    <!-- Modus-Navigation -->
+    <nav class="mode-tabs" role="tablist">
+        <a href="netzwerk.html" role="tab" aria-selected="true" class="active">Netzwerk</a>
+        <a href="timeline.html" role="tab">Timeline</a>
+        <a href="bibliometrie.html" role="tab">Bibliometrie</a>
+        <a href="ego.html" role="tab">Ego-Netzwerk</a>
+    </nav>
+
+    <main class="citation-layout netzwerk-layout">
+        <!-- Sidebar: Cluster und Filter -->
+        <aside class="citation-sidebar">
+            <div class="cluster-legend">
+                <h2>Cluster</h2>
+                <ul id="cluster-list">
+                    <!-- Dynamisch -->
+                </ul>
+            </div>
+
+            <div class="layout-options">
+                <h3>Layout</h3>
+                <select id="layout-mode">
+                    <option value="force">Force-Directed</option>
+                    <option value="radial">Radial</option>
+                    <option value="cluster">Nach Cluster</option>
+                </select>
+            </div>
+
+            <div class="display-options">
+                <h3>Anzeige</h3>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="show-labels" checked>
+                    Beschriftungen
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="show-arrows" checked>
+                    Zitationsrichtung
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="scale-by-citations">
+                    Knotengröße nach Zitationen
+                </label>
+            </div>
+
+            <div class="network-stats">
+                <h3>Netzwerk</h3>
+                <dl class="stats-list">
+                    <dt>Publikationen</dt>
+                    <dd id="stat-nodes">0</dd>
+                    <dt>Zitationen</dt>
+                    <dd id="stat-edges">0</dd>
+                    <dt>Dichte</dt>
+                    <dd id="stat-density">0</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Graph -->
+        <article class="netzwerk-content">
+            <div class="graph-controls">
+                <button class="btn-icon" id="zoom-in" title="Vergrößern">+</button>
+                <button class="btn-icon" id="zoom-out" title="Verkleinern">−</button>
+                <button class="btn-icon" id="zoom-reset" title="Zurücksetzen">⟲</button>
+                <span id="zoom-level">100%</span>
+            </div>
+
+            <div class="graph-container" id="graph-container">
+                <svg id="citation-graph">
+                    <!-- Dynamisch: Graph wird hier gerendert -->
+                </svg>
+            </div>
+        </article>
+
+        <!-- Kontext-Panel: Node-Details -->
+        <aside class="citation-context">
+            <section class="node-detail">
+                <h2>Publikation</h2>
+                <p class="detail-prompt" id="node-prompt">Klicken Sie auf eine Publikation.</p>
+
+                <div class="node-info hidden" id="node-info">
+                    <h3 id="node-title">-</h3>
+                    <p class="node-authors" id="node-authors">-</p>
+                    <p class="node-venue" id="node-venue">-</p>
+
+                    <div class="node-metrics">
+                        <dl>
+                            <dt>Jahr</dt>
+                            <dd id="node-year">-</dd>
+                            <dt>Zitationen</dt>
+                            <dd id="node-citations">-</dd>
+                            <dt>Cluster</dt>
+                            <dd id="node-cluster">-</dd>
+                        </dl>
+                    </div>
+
+                    <div class="node-connections">
+                        <h4>Zitiert</h4>
+                        <ul id="cites-list"></ul>
+                        <h4>Zitiert von</h4>
+                        <ul id="cited-by-list"></ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>+/−</dt>
+                    <dd>Zoom</dd>
+                    <dt>Drag</dt>
+                    <dd>Knoten verschieben</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer navigator-footer">
+        <div class="mode-info">
+            <h3>Netzwerk-Modus</h3>
+            <p><strong>Relevanz:</strong> Zitationsbeziehungen als Graph. Für Überblick über Diskursstrukturen.</p>
+            <p><strong>Innovation:</strong> Force-Layout mit Cluster-Erkennung. Zoom auf Subgraph.</p>
+        </div>
+        <a href="../navigator-citation.html" class="back-to-spec navigator-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/citation-netzwerk.js"></script>
+</body>
+</html>

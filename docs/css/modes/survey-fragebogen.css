@@ -1,0 +1,417 @@
+/**
+ * Survey Fragebogen-Modus Styles
+ */
+
+/* Layout */
+.fragebogen-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr 280px;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    min-height: calc(100vh - 200px);
+}
+
+/* Sidebar */
+.survey-sidebar {
+    background: var(--color-paper);
+    border-radius: 8px;
+    padding: var(--space-md);
+}
+
+.survey-meta h2 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    margin-bottom: var(--space-sm);
+}
+
+.meta-list {
+    font-size: 0.85rem;
+}
+
+.meta-list dt {
+    color: var(--color-ink-light);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.meta-list dd {
+    margin: 0 0 var(--space-sm) 0;
+    font-weight: 500;
+}
+
+.section-nav {
+    margin-top: var(--space-lg);
+}
+
+.section-nav h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.section-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.section-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) var(--space-md);
+    background: transparent;
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: var(--space-xs);
+    transition: all 0.2s;
+}
+
+.section-btn:hover {
+    background: var(--color-paper-dark);
+}
+
+.section-btn.active {
+    background: var(--color-archetype-scope);
+    color: white;
+    border-color: var(--color-archetype-scope);
+}
+
+.item-count {
+    font-size: 0.75rem;
+    background: rgba(0,0,0,0.1);
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+.display-options {
+    margin-top: var(--space-lg);
+}
+
+.display-options h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: var(--space-xs) 0;
+}
+
+/* Hauptbereich */
+.fragebogen-content {
+    background: white;
+    border-radius: 8px;
+    padding: var(--space-lg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.fragebogen-header h2 {
+    font-family: var(--font-serif);
+    margin-bottom: var(--space-sm);
+}
+
+.fragebogen-intro {
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+/* Items */
+.fragebogen-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.fragebogen-item {
+    padding: var(--space-md);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 8px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.fragebogen-item:hover {
+    border-color: var(--color-archetype-scope);
+}
+
+.fragebogen-item.selected {
+    border-color: var(--color-archetype-scope);
+    background: rgba(184, 84, 80, 0.05);
+}
+
+.item-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.item-number {
+    font-weight: 600;
+    color: var(--color-archetype-scope);
+}
+
+.item-id {
+    font-size: 0.75rem;
+    background: var(--color-paper-dark);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.item-text {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: var(--space-md);
+}
+
+.item-input {
+    margin-top: var(--space-md);
+}
+
+.item-input.readonly {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Likert-Skala */
+.likert-scale {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-sm);
+}
+
+.likert-point {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    cursor: pointer;
+    padding: var(--space-sm);
+    border-radius: 4px;
+    transition: background 0.2s;
+    flex: 1;
+    text-align: center;
+}
+
+.likert-point:hover {
+    background: var(--color-paper-dark);
+}
+
+.likert-point input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.point-value {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.scale-label {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+    max-width: 80px;
+}
+
+/* Numerische Eingabe */
+.numeric-input input {
+    width: 120px;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Binäre Auswahl */
+.binary-choice {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.choice-option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    cursor: pointer;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.choice-option:hover {
+    border-color: var(--color-archetype-scope);
+}
+
+/* Kategoriale Auswahl */
+.categorical-choice select {
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    font-size: 1rem;
+    min-width: 200px;
+}
+
+/* Pagination */
+.fragebogen-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+#section-indicator {
+    color: var(--color-ink-light);
+    font-size: 0.9rem;
+}
+
+/* Kontext-Panel */
+.survey-context {
+    background: var(--color-paper);
+    border-radius: 8px;
+    padding: var(--space-md);
+}
+
+.item-detail h2,
+.response-preview h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.detail-prompt {
+    color: var(--color-ink-light);
+    font-style: italic;
+}
+
+.detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.detail-field {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.detail-field .label {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+    text-transform: uppercase;
+}
+
+.detail-field code {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    background: var(--color-paper-dark);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+/* Mini-Histogramm */
+.mini-histogram {
+    margin-top: var(--space-md);
+}
+
+.mini-bars {
+    display: flex;
+    align-items: flex-end;
+    height: 60px;
+    gap: 4px;
+}
+
+.mini-bar {
+    flex: 1;
+    background: var(--color-archetype-scope);
+    border-radius: 2px 2px 0 0;
+    min-height: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.mini-bar .bar-label {
+    font-size: 0.65rem;
+    color: var(--color-ink-light);
+    margin-top: 4px;
+}
+
+.link-to-mode {
+    display: block;
+    margin-top: var(--space-md);
+    font-size: 0.85rem;
+    color: var(--color-archetype-scope);
+}
+
+.link-to-mode:hover {
+    text-decoration: underline;
+}
+
+/* Keyboard Hints */
+.keyboard-hints {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.keyboard-hints h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.hint-list {
+    font-size: 0.8rem;
+}
+
+.hint-list dt {
+    font-family: var(--font-mono);
+    background: var(--color-paper-dark);
+    padding: 2px 6px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 2px;
+}
+
+.hint-list dd {
+    margin: 0 0 var(--space-sm) 0;
+    color: var(--color-ink-light);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .fragebogen-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .survey-sidebar,
+    .survey-context {
+        display: none;
+    }
+}
