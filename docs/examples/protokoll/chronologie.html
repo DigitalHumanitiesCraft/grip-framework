@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronologie - Protokoll - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/reader.css">
+    <link rel="stylesheet" href="../../css/modes/protokoll-chronologie.css">
+</head>
+<body>
+    <header class="demo-header reader-header protokoll-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Protokoll</h1>
+            <span class="mode-badge">Chronologie-Modus</span>
+        </div>
+        <p>Sitzungsverlauf in Echtzeit-Abfolge</p>
+    </header>
+
+    <!-- Modus-Navigation -->
+    <nav class="mode-tabs" role="tablist">
+        <a href="chronologie.html" role="tab" aria-selected="true" class="active">Chronologie</a>
+        <a href="sprecher.html" role="tab">Sprecher</a>
+        <a href="abstimmung.html" role="tab">Abstimmung</a>
+        <a href="agenda.html" role="tab">Agenda</a>
+    </nav>
+
+    <main class="protokoll-layout chronologie-layout">
+        <!-- Sidebar: Session-Info und Timeline -->
+        <aside class="protokoll-sidebar">
+            <div class="session-info">
+                <h2>Sitzung</h2>
+                <dl class="session-meta">
+                    <dt>Datum</dt>
+                    <dd id="session-date">-</dd>
+                    <dt>Nummer</dt>
+                    <dd id="session-number">-</dd>
+                    <dt>Vorsitz</dt>
+                    <dd id="session-chair">-</dd>
+                </dl>
+            </div>
+
+            <div class="timeline-scrubber">
+                <h3>Zeitverlauf</h3>
+                <div class="time-range">
+                    <span id="time-start">14:00</span>
+                    <span id="time-end">17:45</span>
+                </div>
+                <input type="range" id="timeline-slider" min="0" max="100" value="0">
+                <span id="current-time">14:00</span>
+            </div>
+
+            <div class="segment-filter">
+                <h3>Filter</h3>
+                <label class="checkbox-label">
+                    <input type="checkbox" data-type="statement" checked>
+                    Wortmeldungen
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" data-type="procedural" checked>
+                    Verfahren
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" data-type="vote" checked>
+                    Abstimmungen
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" data-type="resolution" checked>
+                    Beschlüsse
+                </label>
+            </div>
+
+            <div class="session-stats">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Dauer</dt>
+                    <dd id="stat-duration">-</dd>
+                    <dt>Segmente</dt>
+                    <dd id="stat-segments">-</dd>
+                    <dt>Sprecher</dt>
+                    <dd id="stat-speakers">-</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Chronologischer Verlauf -->
+        <article class="chronologie-content">
+            <div class="speaking-time-bar" id="speaking-time-bar">
+                <!-- Redezeit-Balken pro Sprecher -->
+            </div>
+
+            <div class="segments-list" id="segments-list">
+                <!-- Dynamisch: Segmente in zeitlicher Reihenfolge -->
+            </div>
+        </article>
+
+        <!-- Kontext-Panel: Segment-Details -->
+        <aside class="protokoll-context">
+            <section class="segment-detail">
+                <h2>Segment</h2>
+                <p class="detail-prompt" id="segment-prompt">Klicken Sie auf ein Segment.</p>
+
+                <div class="segment-info hidden" id="segment-info">
+                    <div class="segment-meta">
+                        <span class="segment-time" id="seg-time">-</span>
+                        <span class="segment-type" id="seg-type">-</span>
+                    </div>
+                    <h3 id="seg-speaker">-</h3>
+                    <p class="seg-party" id="seg-party">-</p>
+                    <div class="seg-text" id="seg-text">-</div>
+
+                    <div class="seg-context" id="seg-context">
+                        <h4>Tagesordnung</h4>
+                        <p id="seg-agenda">-</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>↑ / ↓</dt>
+                    <dd>Segment wechseln</dd>
+                    <dt>Space</dt>
+                    <dd>Play/Pause Timeline</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer reader-footer">
+        <div class="mode-info">
+            <h3>Chronologie-Modus</h3>
+            <p><strong>Relevanz:</strong> Sitzungsverlauf in Echtzeit-Abfolge. Für Prozessanalyse und Narrativ.</p>
+            <p><strong>Innovation:</strong> Timeline-Scrubber springt zu Zeitpunkten. Redezeitbalken zeigt Sprechanteile.</p>
+        </div>
+        <a href="../reader-protokoll.html" class="back-to-spec reader-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/protokoll-chronologie.js"></script>
+</body>
+</html>

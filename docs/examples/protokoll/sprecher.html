@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprecher - Protokoll - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/reader.css">
+    <link rel="stylesheet" href="../../css/modes/protokoll-sprecher.css">
+</head>
+<body>
+    <header class="demo-header reader-header protokoll-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Protokoll</h1>
+            <span class="mode-badge">Sprecher-Modus</span>
+        </div>
+        <p>Wer sagt was? Akteuranalyse</p>
+    </header>
+
+    <!-- Modus-Navigation -->
+    <nav class="mode-tabs" role="tablist">
+        <a href="chronologie.html" role="tab">Chronologie</a>
+        <a href="sprecher.html" role="tab" aria-selected="true" class="active">Sprecher</a>
+        <a href="abstimmung.html" role="tab">Abstimmung</a>
+        <a href="agenda.html" role="tab">Agenda</a>
+    </nav>
+
+    <main class="protokoll-layout sprecher-layout">
+        <!-- Sidebar: Sprecher-Liste -->
+        <aside class="protokoll-sidebar">
+            <div class="speakers-list">
+                <h2>Sprecher</h2>
+                <ul id="speakers-list">
+                    <!-- Dynamisch: Sprecher mit Redeanteilen -->
+                </ul>
+            </div>
+
+            <div class="party-filter">
+                <h3>Fraktion</h3>
+                <div id="party-checkboxes">
+                    <!-- Dynamisch: Partei-Filter -->
+                </div>
+            </div>
+
+            <div class="interaction-stats">
+                <h3>Interaktion</h3>
+                <button class="btn-secondary" id="show-network">Netzwerk zeigen</button>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Sprecher-zentrierte Ansicht -->
+        <article class="sprecher-content">
+            <div class="speaker-comparison" id="speaker-comparison">
+                <h2>Redebeiträge nach Sprecher</h2>
+                <div class="comparison-chart" id="comparison-chart">
+                    <!-- Balkendiagramm der Redezeiten -->
+                </div>
+            </div>
+
+            <div class="speaker-segments" id="speaker-segments">
+                <!-- Dynamisch: Segmente gefiltert nach Sprecher -->
+            </div>
+        </article>
+
+        <!-- Kontext-Panel: Sprecher-Details -->
+        <aside class="protokoll-context">
+            <section class="speaker-detail">
+                <h2>Sprecher</h2>
+                <p class="detail-prompt" id="speaker-prompt">Wählen Sie einen Sprecher.</p>
+
+                <div class="speaker-info hidden" id="speaker-info">
+                    <h3 id="spk-name">-</h3>
+                    <p class="spk-party" id="spk-party">-</p>
+                    <p class="spk-role" id="spk-role">-</p>
+
+                    <div class="spk-stats">
+                        <dl>
+                            <dt>Wortmeldungen</dt>
+                            <dd id="spk-count">-</dd>
+                            <dt>Redezeit</dt>
+                            <dd id="spk-time">-</dd>
+                            <dt>Anteil</dt>
+                            <dd id="spk-share">-</dd>
+                        </dl>
+                    </div>
+
+                    <div class="spk-topics">
+                        <h4>Hauptthemen</h4>
+                        <ul id="spk-topics">
+                            <!-- Agenda-Punkte, zu denen gesprochen wurde -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>↑ / ↓</dt>
+                    <dd>Sprecher wechseln</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer reader-footer">
+        <div class="mode-info">
+            <h3>Sprecher-Modus</h3>
+            <p><strong>Relevanz:</strong> Wer sagt was? Für Akteuranalyse und Positionsvergleich.</p>
+            <p><strong>Innovation:</strong> Sprecher-Filter isoliert einzelne Stimmen. Sprechernetzwerk zeigt Interaktionsmuster.</p>
+        </div>
+        <a href="../reader-protokoll.html" class="back-to-spec reader-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/protokoll-sprecher.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda - Protokoll - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/reader.css">
+    <link rel="stylesheet" href="../../css/modes/protokoll-agenda.css">
+</head>
+<body>
+    <header class="demo-header reader-header protokoll-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Protokoll</h1>
+            <span class="mode-badge">Agenda-Modus</span>
+        </div>
+        <p>Strukturierter Zugang über Tagesordnung</p>
+    </header>
+
+    <!-- Modus-Navigation -->
+    <nav class="mode-tabs" role="tablist">
+        <a href="chronologie.html" role="tab">Chronologie</a>
+        <a href="sprecher.html" role="tab">Sprecher</a>
+        <a href="abstimmung.html" role="tab">Abstimmung</a>
+        <a href="agenda.html" role="tab" aria-selected="true" class="active">Agenda</a>
+    </nav>
+
+    <main class="protokoll-layout agenda-layout">
+        <!-- Sidebar: Tagesordnung -->
+        <aside class="protokoll-sidebar">
+            <div class="agenda-list">
+                <h2>Tagesordnung</h2>
+                <ol id="agenda-list">
+                    <!-- Dynamisch: TOP-Liste -->
+                </ol>
+            </div>
+
+            <div class="progress-indicator">
+                <h3>Fortschritt</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span id="progress-text">0 / 5 TOP</span>
+            </div>
+
+            <div class="status-legend">
+                <h3>Status</h3>
+                <ul class="status-list">
+                    <li><span class="status-dot approved"></span> Angenommen</li>
+                    <li><span class="status-dot rejected"></span> Abgelehnt</li>
+                    <li><span class="status-dot deferred"></span> Vertagt</li>
+                    <li><span class="status-dot noted"></span> Kenntnisnahme</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: TOP-Details -->
+        <article class="agenda-content">
+            <div class="top-detail" id="top-detail">
+                <div class="top-header">
+                    <span class="top-number" id="top-number">TOP 1</span>
+                    <span class="top-status" id="top-status">-</span>
+                </div>
+                <h2 id="top-title">Tagesordnungspunkt wählen</h2>
+
+                <div class="top-segments" id="top-segments">
+                    <!-- Dynamisch: Alle Segmente zu diesem TOP -->
+                </div>
+
+                <div class="top-resolution" id="top-resolution">
+                    <!-- Beschluss, falls vorhanden -->
+                </div>
+            </div>
+        </article>
+
+        <!-- Kontext-Panel: TOP-Zusammenfassung -->
+        <aside class="protokoll-context">
+            <section class="top-summary">
+                <h2>Zusammenfassung</h2>
+                <p class="detail-prompt" id="summary-prompt">Wählen Sie einen TOP.</p>
+
+                <div class="summary-info hidden" id="summary-info">
+                    <div class="summary-stats">
+                        <dl>
+                            <dt>Dauer</dt>
+                            <dd id="sum-duration">-</dd>
+                            <dt>Beiträge</dt>
+                            <dd id="sum-segments">-</dd>
+                            <dt>Sprecher</dt>
+                            <dd id="sum-speakers">-</dd>
+                        </dl>
+                    </div>
+
+                    <div class="summary-speakers">
+                        <h4>Redner</h4>
+                        <ul id="sum-speaker-list">
+                            <!-- Sprecher, die zu diesem TOP gesprochen haben -->
+                        </ul>
+                    </div>
+
+                    <div class="summary-result">
+                        <h4>Ergebnis</h4>
+                        <p id="sum-result">-</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>↑ / ↓</dt>
+                    <dd>TOP wechseln</dd>
+                    <dt>Enter</dt>
+                    <dd>Zum TOP springen</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer reader-footer">
+        <div class="mode-info">
+            <h3>Agenda-Modus</h3>
+            <p><strong>Relevanz:</strong> Strukturierter Zugang über Tagesordnung. Für gezielte Recherche.</p>
+            <p><strong>Innovation:</strong> Klick auf TOP springt zum Segment. Fortschrittsanzeige zeigt Sitzungsstand.</p>
+        </div>
+        <a href="../reader-protokoll.html" class="back-to-spec reader-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/protokoll-agenda.js"></script>
+</body>
+</html>

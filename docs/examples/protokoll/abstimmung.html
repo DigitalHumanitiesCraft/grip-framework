@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstimmung - Protokoll - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/reader.css">
+    <link rel="stylesheet" href="../../css/modes/protokoll-abstimmung.css">
+</head>
+<body>
+    <header class="demo-header reader-header protokoll-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Protokoll</h1>
+            <span class="mode-badge">Abstimmungs-Modus</span>
+        </div>
+        <p>Entscheidungsfindung nachvollziehen</p>
+    </header>
+
+    <!-- Modus-Navigation -->
+    <nav class="mode-tabs" role="tablist">
+        <a href="chronologie.html" role="tab">Chronologie</a>
+        <a href="sprecher.html" role="tab">Sprecher</a>
+        <a href="abstimmung.html" role="tab" aria-selected="true" class="active">Abstimmung</a>
+        <a href="agenda.html" role="tab">Agenda</a>
+    </nav>
+
+    <main class="protokoll-layout abstimmung-layout">
+        <!-- Sidebar: Abstimmungs-Übersicht -->
+        <aside class="protokoll-sidebar">
+            <div class="votes-overview">
+                <h2>Abstimmungen</h2>
+                <ul id="votes-list">
+                    <!-- Dynamisch: Liste aller Abstimmungen -->
+                </ul>
+            </div>
+
+            <div class="party-legend">
+                <h3>Fraktionen</h3>
+                <ul id="party-legend">
+                    <!-- Dynamisch: Parteien mit Farben -->
+                </ul>
+            </div>
+
+            <div class="vote-stats">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Abstimmungen</dt>
+                    <dd id="stat-votes">-</dd>
+                    <dt>Einstimmig</dt>
+                    <dd id="stat-unanimous">-</dd>
+                    <dt>Abgelehnt</dt>
+                    <dd id="stat-rejected">-</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <!-- Hauptbereich: Abstimmungsmatrix -->
+        <article class="abstimmung-content">
+            <div class="vote-detail" id="vote-detail">
+                <h2 id="vote-title">Abstimmung wählen</h2>
+                <p class="vote-motion" id="vote-motion">-</p>
+
+                <div class="vote-result" id="vote-result">
+                    <div class="result-bar">
+                        <div class="bar-yes" id="bar-yes"></div>
+                        <div class="bar-no" id="bar-no"></div>
+                        <div class="bar-abstain" id="bar-abstain"></div>
+                    </div>
+                    <div class="result-counts">
+                        <span class="count-yes"><strong id="count-yes">0</strong> Ja</span>
+                        <span class="count-no"><strong id="count-no">0</strong> Nein</span>
+                        <span class="count-abstain"><strong id="count-abstain">0</strong> Enthaltung</span>
+                    </div>
+                </div>
+
+                <div class="vote-matrix" id="vote-matrix">
+                    <!-- Dynamisch: Matrix mit Mitgliedern und Stimmen -->
+                </div>
+            </div>
+
+            <div class="party-breakdown" id="party-breakdown">
+                <h3>Fraktionsverhalten</h3>
+                <div class="party-bars">
+                    <!-- Dynamisch: Balken pro Partei -->
+                </div>
+            </div>
+        </article>
+
+        <!-- Kontext-Panel: Debatte zur Abstimmung -->
+        <aside class="protokoll-context">
+            <section class="debate-context">
+                <h2>Debatte</h2>
+                <p class="detail-prompt" id="debate-prompt">Wählen Sie eine Abstimmung.</p>
+
+                <div class="debate-info hidden" id="debate-info">
+                    <h4>Vorherige Diskussion</h4>
+                    <div class="debate-segments" id="debate-segments">
+                        <!-- Segmente, die zur Abstimmung führten -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>← / →</dt>
+                    <dd>Abstimmung wechseln</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer reader-footer">
+        <div class="mode-info">
+            <h3>Abstimmungs-Modus</h3>
+            <p><strong>Relevanz:</strong> Entscheidungsfindung nachvollziehen. Für Politikanalyse.</p>
+            <p><strong>Innovation:</strong> Abstimmungsmatrix zeigt Fraktionsverhalten. Vergleich über Sitzungen hinweg.</p>
+        </div>
+        <a href="../reader-protokoll.html" class="back-to-spec reader-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/protokoll-abstimmung.js"></script>
+</body>
+</html>

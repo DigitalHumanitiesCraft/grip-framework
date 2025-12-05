@@ -1,0 +1,288 @@
+/**
+ * Protokoll Chronologie-Modus Styles
+ */
+
+/* Layout */
+.chronologie-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr 280px;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    min-height: calc(100vh - 200px);
+}
+
+/* Sidebar */
+.protokoll-sidebar {
+    background: var(--color-paper);
+    border-radius: 8px;
+    padding: var(--space-md);
+}
+
+.session-info h2,
+.timeline-scrubber h3,
+.segment-filter h3,
+.session-stats h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.session-meta dt {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+.session-meta dd {
+    font-weight: 500;
+    margin: 0 0 var(--space-sm) 0;
+}
+
+/* Timeline Scrubber */
+.timeline-scrubber {
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background: var(--color-paper-dark);
+    border-radius: 6px;
+}
+
+.time-range {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+#timeline-slider {
+    width: 100%;
+    margin-bottom: var(--space-xs);
+}
+
+#current-time {
+    display: block;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-archetype-reader);
+}
+
+/* Segment Filter */
+.segment-filter {
+    margin-top: var(--space-lg);
+}
+
+/* Session Stats */
+.session-stats {
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background: var(--color-paper-dark);
+    border-radius: 6px;
+}
+
+/* Hauptbereich */
+.chronologie-content {
+    background: white;
+    border-radius: 8px;
+    padding: var(--space-lg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Speaking Time Bar */
+.speaking-time-bar {
+    display: flex;
+    height: 24px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: var(--space-lg);
+    background: var(--color-paper-dark);
+}
+
+.time-segment {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: white;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+.time-segment:hover {
+    filter: brightness(1.1);
+}
+
+.time-segment span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 4px;
+}
+
+/* Segments List */
+.segments-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.segment-card {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.segment-card:hover {
+    border-color: var(--color-archetype-reader);
+    transform: translateX(4px);
+}
+
+.segment-card.selected {
+    border-color: var(--color-archetype-reader);
+    background: rgba(84, 132, 174, 0.05);
+    border-left: 4px solid var(--color-archetype-reader);
+}
+
+.segment-timestamp {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+}
+
+.segment-body {
+    min-width: 0;
+}
+
+.segment-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xs);
+}
+
+.segment-speaker {
+    font-weight: 600;
+}
+
+.segment-party-badge {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    color: white;
+}
+
+.segment-type-badge {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    background: var(--color-paper-dark);
+    color: var(--color-ink-light);
+}
+
+.segment-type-badge.vote {
+    background: #4A7C59;
+    color: white;
+}
+
+.segment-type-badge.resolution {
+    background: var(--color-archetype-reader);
+    color: white;
+}
+
+.segment-type-badge.procedural {
+    background: #6c757d;
+    color: white;
+}
+
+.segment-text {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-ink);
+}
+
+/* Context Panel */
+.protokoll-context {
+    background: var(--color-paper);
+    border-radius: 8px;
+    padding: var(--space-md);
+}
+
+.segment-detail h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.segment-meta {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.segment-time {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.segment-type {
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--color-paper-dark);
+}
+
+.segment-info h3 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+}
+
+.seg-party {
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-md);
+}
+
+.seg-text {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: var(--space-sm);
+    background: white;
+    border-radius: 4px;
+    border-left: 3px solid var(--color-archetype-reader);
+}
+
+.seg-context {
+    margin-top: var(--space-md);
+}
+
+.seg-context h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .chronologie-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .protokoll-sidebar,
+    .protokoll-context {
+        display: none;
+    }
+}

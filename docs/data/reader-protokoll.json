@@ -1,0 +1,358 @@
+{
+  "session": {
+    "id": "GR-1923-042",
+    "date": "1923-05-15",
+    "number": 42,
+    "title": "Ordentliche Gemeinderatssitzung",
+    "location": "Rathaus, Großer Saal",
+    "start_time": "14:00",
+    "end_time": "17:45",
+    "chair": {
+      "id": "P001",
+      "name": "Dr. Heinrich Müller",
+      "role": "Bürgermeister"
+    },
+    "secretary": {
+      "id": "P010",
+      "name": "Karl Weber",
+      "role": "Stadtschreiber"
+    }
+  },
+  "attendance": [
+    { "id": "P001", "name": "Dr. Heinrich Müller", "party": "DVP", "role": "Vorsitz", "present": true },
+    { "id": "P002", "name": "Otto Schmidt", "party": "SPD", "role": "Mitglied", "present": true },
+    { "id": "P003", "name": "Franz Bauer", "party": "Zentrum", "role": "Mitglied", "present": true },
+    { "id": "P004", "name": "Wilhelm Hoffmann", "party": "DVP", "role": "Mitglied", "present": true },
+    { "id": "P005", "name": "Ernst Wagner", "party": "KPD", "role": "Mitglied", "present": true },
+    { "id": "P006", "name": "Ludwig Fischer", "party": "SPD", "role": "Mitglied", "present": true },
+    { "id": "P007", "name": "Gustav Richter", "party": "DNVP", "role": "Mitglied", "present": false, "excuse": "Krankheit" },
+    { "id": "P008", "name": "Hermann Schulz", "party": "Zentrum", "role": "Mitglied", "present": true },
+    { "id": "P009", "name": "Friedrich Meier", "party": "DVP", "role": "Mitglied", "present": true }
+  ],
+  "parties": [
+    { "id": "SPD", "name": "Sozialdemokratische Partei", "color": "#E3000F", "seats": 2 },
+    { "id": "DVP", "name": "Deutsche Volkspartei", "color": "#FFCC00", "seats": 3 },
+    { "id": "Zentrum", "name": "Zentrumspartei", "color": "#000000", "seats": 2 },
+    { "id": "KPD", "name": "Kommunistische Partei", "color": "#BE0000", "seats": 1 },
+    { "id": "DNVP", "name": "Deutschnationale Volkspartei", "color": "#003366", "seats": 1 }
+  ],
+  "agenda": [
+    {
+      "number": 1,
+      "title": "Genehmigung des Protokolls der letzten Sitzung",
+      "start_segment": 0,
+      "end_segment": 2,
+      "status": "approved"
+    },
+    {
+      "number": 2,
+      "title": "Bericht des Bürgermeisters zur Haushaltslage",
+      "start_segment": 3,
+      "end_segment": 8,
+      "status": "noted"
+    },
+    {
+      "number": 3,
+      "title": "Antrag auf Erweiterung der Straßenbeleuchtung",
+      "start_segment": 9,
+      "end_segment": 18,
+      "status": "approved",
+      "vote_id": "V001"
+    },
+    {
+      "number": 4,
+      "title": "Diskussion über den Neubau einer Volksschule",
+      "start_segment": 19,
+      "end_segment": 28,
+      "status": "deferred"
+    },
+    {
+      "number": 5,
+      "title": "Verschiedenes",
+      "start_segment": 29,
+      "end_segment": 31,
+      "status": "noted"
+    }
+  ],
+  "segments": [
+    {
+      "id": 0,
+      "timestamp": "14:00",
+      "speaker": "P001",
+      "type": "procedural",
+      "text": "Ich eröffne die 42. ordentliche Sitzung des Gemeinderats und stelle die Beschlussfähigkeit fest. Es sind 8 von 9 Mitgliedern anwesend."
+    },
+    {
+      "id": 1,
+      "timestamp": "14:02",
+      "speaker": "P001",
+      "type": "procedural",
+      "text": "Wir kommen zu Tagesordnungspunkt 1: Genehmigung des Protokolls der letzten Sitzung. Gibt es Einwände oder Ergänzungen?"
+    },
+    {
+      "id": 2,
+      "timestamp": "14:03",
+      "speaker": null,
+      "type": "resolution",
+      "text": "Das Protokoll wird ohne Einwände genehmigt.",
+      "resolution_id": "R001"
+    },
+    {
+      "id": 3,
+      "timestamp": "14:05",
+      "speaker": "P001",
+      "type": "report",
+      "text": "Ich komme nun zu Tagesordnungspunkt 2 und berichte über die aktuelle Haushaltslage. Die Einnahmen aus der Gewerbesteuer sind im ersten Quartal um 12 Prozent gegenüber dem Vorjahr gestiegen."
+    },
+    {
+      "id": 4,
+      "timestamp": "14:08",
+      "speaker": "P001",
+      "type": "report",
+      "text": "Gleichzeitig verzeichnen wir gestiegene Ausgaben im Bereich der Armenfürsorge. Die Inflation belastet den städtischen Haushalt erheblich."
+    },
+    {
+      "id": 5,
+      "timestamp": "14:12",
+      "speaker": "P002",
+      "type": "statement",
+      "text": "Herr Bürgermeister, wie gedenkt die Verwaltung die Mehrausgaben für die Armenfürsorge zu decken? Die Arbeiterfamilien leiden unter der wirtschaftlichen Lage."
+    },
+    {
+      "id": 6,
+      "timestamp": "14:15",
+      "speaker": "P001",
+      "type": "response",
+      "text": "Wir prüfen derzeit eine Erhöhung der Zuweisungen aus dem Reichshaushalt. Zudem haben wir die Verwaltungskosten um 8 Prozent gesenkt."
+    },
+    {
+      "id": 7,
+      "timestamp": "14:18",
+      "speaker": "P005",
+      "type": "statement",
+      "text": "Das reicht nicht aus! Die Arbeiterschaft braucht sofortige Hilfe, nicht bürokratische Sparmaßnahmen!"
+    },
+    {
+      "id": 8,
+      "timestamp": "14:20",
+      "speaker": "P001",
+      "type": "procedural",
+      "text": "Ich nehme Ihre Anmerkung zu Protokoll, Herr Wagner. Wir fahren fort mit Tagesordnungspunkt 3."
+    },
+    {
+      "id": 9,
+      "timestamp": "14:22",
+      "speaker": "P001",
+      "type": "procedural",
+      "text": "Es liegt ein Antrag der Fraktion der Deutschen Volkspartei vor: Erweiterung der Straßenbeleuchtung in der Bahnhofstraße und Marktgasse."
+    },
+    {
+      "id": 10,
+      "timestamp": "14:24",
+      "speaker": "P004",
+      "type": "statement",
+      "text": "Die mangelnde Beleuchtung stellt ein Sicherheitsrisiko dar. In den letzten Monaten gab es mehrere Überfälle in den dunklen Straßen. Die Kosten von 2.400 Mark sind eine Investition in die öffentliche Sicherheit."
+    },
+    {
+      "id": 11,
+      "timestamp": "14:28",
+      "speaker": "P006",
+      "type": "statement",
+      "text": "Die SPD-Fraktion unterstützt diesen Antrag grundsätzlich. Wir schlagen jedoch vor, auch die Arbeiterviertel im Osten der Stadt einzubeziehen."
+    },
+    {
+      "id": 12,
+      "timestamp": "14:31",
+      "speaker": "P003",
+      "type": "statement",
+      "text": "Das Zentrum sieht die Notwendigkeit, mahnt aber zur Sparsamkeit. Können wir eine Kostenschätzung für die Erweiterung erhalten?"
+    },
+    {
+      "id": 13,
+      "timestamp": "14:34",
+      "speaker": "P001",
+      "type": "response",
+      "text": "Nach Rücksprache mit dem Stadtbauamt würden drei zusätzliche Laternen im Ostviertel weitere 900 Mark kosten."
+    },
+    {
+      "id": 14,
+      "timestamp": "14:36",
+      "speaker": "P005",
+      "type": "statement",
+      "text": "Die KPD beantragt, den Antrag zu erweitern: Alle Arbeiterviertel sollen gleichberechtigt mit Beleuchtung versorgt werden!"
+    },
+    {
+      "id": 15,
+      "timestamp": "14:39",
+      "speaker": "P009",
+      "type": "statement",
+      "text": "Das würde den Rahmen sprengen. Ich plädiere für den ursprünglichen Antrag plus die drei Laternen im Osten."
+    },
+    {
+      "id": 16,
+      "timestamp": "14:42",
+      "speaker": "P001",
+      "type": "procedural",
+      "text": "Ich lasse über den erweiterten Antrag abstimmen: Straßenbeleuchtung Bahnhofstraße, Marktgasse und Ostviertel, Gesamtkosten 3.300 Mark."
+    },
+    {
+      "id": 17,
+      "timestamp": "14:44",
+      "speaker": null,
+      "type": "vote",
+      "text": "Der erweiterte Antrag wird mit 6 Ja-Stimmen, 1 Nein-Stimme und 1 Enthaltung angenommen.",
+      "vote_id": "V001"
+    },
+    {
+      "id": 18,
+      "timestamp": "14:45",
+      "speaker": "P001",
+      "type": "procedural",
+      "text": "Der Antrag ist angenommen. Die Verwaltung wird die Umsetzung bis zum Herbst einleiten."
+    },
+    {
+      "id": 19,
+      "timestamp": "14:48",
+      "speaker": "P001",
+      "type": "procedural",
+      "text": "Wir kommen zu Tagesordnungspunkt 4: Diskussion über den Neubau einer Volksschule. Hierzu liegt ein Bericht des Schulausschusses vor."
+    },
+    {
+      "id": 20,
+      "timestamp": "14:50",
+      "speaker": "P008",
+      "type": "report",
+      "text": "Der Schulausschuss hat drei mögliche Standorte geprüft. Das Grundstück an der Lindenstraße bietet die beste Eignung, ist aber das teuerste."
+    },
+    {
+      "id": 21,
+      "timestamp": "14:55",
+      "speaker": "P002",
+      "type": "statement",
+      "text": "Die SPD fordert eine moderne Schule mit ausreichend Platz. Sparen an der Bildung ist Sparen an der Zukunft."
+    },
+    {
+      "id": 22,
+      "timestamp": "14:58",
+      "speaker": "P009",
+      "type": "statement",
+      "text": "Die Finanzierung ist ungeklärt. Wir können nicht Schulden für Generationen aufhäufen."
+    },
+    {
+      "id": 23,
+      "timestamp": "15:02",
+      "speaker": "P003",
+      "type": "statement",
+      "text": "Das Zentrum schlägt vor, zunächst Verhandlungen mit dem Land über Zuschüsse zu führen."
+    },
+    {
+      "id": 24,
+      "timestamp": "15:06",
+      "speaker": "P005",
+      "type": "statement",
+      "text": "Während die Bourgeoisie debattiert, lernen Arbeiterkinder in überfüllten Klassenzimmern!"
+    },
+    {
+      "id": 25,
+      "timestamp": "15:08",
+      "speaker": "P001",
+      "type": "procedural",
+      "text": "Ich bitte um sachliche Debatte, Herr Wagner."
+    },
+    {
+      "id": 26,
+      "timestamp": "15:10",
+      "speaker": "P004",
+      "type": "statement",
+      "text": "Die DVP unterstützt den Vorschlag des Zentrums. Ohne gesicherte Finanzierung können wir nicht beschließen."
+    },
+    {
+      "id": 27,
+      "timestamp": "15:14",
+      "speaker": "P006",
+      "type": "statement",
+      "text": "Wir beantragen, die Entscheidung zu vertagen, bis Klarheit über die Landeszuschüsse besteht."
+    },
+    {
+      "id": 28,
+      "timestamp": "15:16",
+      "speaker": null,
+      "type": "resolution",
+      "text": "Der Antrag auf Vertagung wird einstimmig angenommen. Die Verwaltung wird beauftragt, Verhandlungen mit dem Land aufzunehmen.",
+      "resolution_id": "R002"
+    },
+    {
+      "id": 29,
+      "timestamp": "15:20",
+      "speaker": "P001",
+      "type": "procedural",
+      "text": "Wir kommen zu Tagesordnungspunkt 5: Verschiedenes. Gibt es Wortmeldungen?"
+    },
+    {
+      "id": 30,
+      "timestamp": "15:22",
+      "speaker": "P008",
+      "type": "statement",
+      "text": "Ich weise auf den schlechten Zustand der Brücke über den Stadtbach hin. Eine Inspektion ist dringend erforderlich."
+    },
+    {
+      "id": 31,
+      "timestamp": "15:25",
+      "speaker": "P001",
+      "type": "procedural",
+      "text": "Ich nehme dies zur Kenntnis und werde das Stadtbauamt anweisen. Wenn keine weiteren Wortmeldungen vorliegen, schließe ich die Sitzung. Die nächste Sitzung findet am 12. Juni statt."
+    }
+  ],
+  "votes": [
+    {
+      "id": "V001",
+      "agenda_item": 3,
+      "motion": "Erweiterung der Straßenbeleuchtung (Bahnhofstraße, Marktgasse, Ostviertel) - 3.300 Mark",
+      "result": "approved",
+      "breakdown": {
+        "yes": ["P001", "P002", "P004", "P005", "P006", "P009"],
+        "no": ["P003"],
+        "abstain": ["P008"]
+      },
+      "counts": { "yes": 6, "no": 1, "abstain": 1, "absent": 1 }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "R001",
+      "agenda_item": 1,
+      "text": "Das Protokoll der 41. Sitzung wird genehmigt.",
+      "vote": "unanimous"
+    },
+    {
+      "id": "R002",
+      "agenda_item": 4,
+      "text": "Die Entscheidung über den Schulneubau wird vertagt. Die Verwaltung wird beauftragt, Verhandlungen mit dem Land über Zuschüsse aufzunehmen.",
+      "vote": "unanimous"
+    }
+  ],
+  "statistics": {
+    "duration_minutes": 85,
+    "total_segments": 32,
+    "speakers": {
+      "P001": 16,
+      "P002": 3,
+      "P003": 3,
+      "P004": 3,
+      "P005": 4,
+      "P006": 3,
+      "P008": 3,
+      "P009": 3
+    },
+    "speaking_time_minutes": {
+      "P001": 28,
+      "P002": 8,
+      "P003": 7,
+      "P004": 9,
+      "P005": 10,
+      "P006": 7,
+      "P008": 8,
+      "P009": 8
+    }
+  }
+}
