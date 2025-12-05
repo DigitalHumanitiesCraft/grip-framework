@@ -1,960 +1,152 @@
-# JOURNAL: Arbeitstagebuch
+# JOURNAL: Entwicklungschronik
 
-Dieses Dokument protokolliert die Entwicklung des GRIP-Frameworks in chronologischer Reihenfolge.
-
----
-
-## 2025-12-04: Projektinitialisierung
-
-Das Repository enthielt fünf Konzeptdokumente ohne lauffähige Software. Die zentrale Erkenntnis war, dass GRIP primär eine Wissensbasis für LLM-gestützte Entwicklung ist, kein klassisches Software-Projekt.
-
-Drei Bereiche wurden spezifiziert. Die vier Archetypen (Reader, Scope, Navigator, Workbench) mit klaren Grenzen und Ausschlüssen. Die Mapping-Logik als Wenn-Dann-Heuristik mit Fallback-Regel. Das Dialog-Protokoll mit drei Kategorien von Rückfragen.
-
-Die Entscheidung fiel auf Praxistest vor weiterer Dokumentation. Um den Test zu ermöglichen, wurde ein Master System Prompt erstellt.
+Dieses Dokument protokolliert Entscheidungen und deren Begründungen. Für Dateistrukturen siehe [[11-CODE-MAP]].
 
 ---
 
-## 2025-12-04: Wissensbasis-Dokumentation
+## 2025-12-04: Projektstart
 
-Vier neue Dokumente wurden erstellt.
+Das Repository enthielt fünf Konzeptdokumente ohne lauffähige Software.
 
-04-SYSTEM-PROMPT.md kondensiert das methodische Wissen für Frontier-Modelle. 05-ARCHETYPEN.md spezifiziert kognitive Aufgaben, geeignete Daten und UI-Elemente pro Archetyp. 02-MAPPINGS.md wurde überarbeitet mit vier Topologien, vier Intentionen und Wenn-Dann-Regeln. 06-DIALOG.md dokumentiert Szenarien und Beispielfragen für Rückfragen.
+**Erkenntnis:** GRIP ist primär eine Wissensbasis für LLM-gestützte Entwicklung, kein klassisches Software-Projekt. Das eigentliche Produkt ist der System-Prompt und das mentale Modell.
 
-Das Repository umfasst nun neun Dokumente mit konsistenter Terminologie.
-
----
-
-## 2025-12-04: Terminologie-Harmonisierung
-
-Die alte Terminologie (sechs Module, Datentypen wie tabellarisch/relational) wurde durch die neue ersetzt (vier Archetypen, vier Topologien). Drei Dokumente wurden aktualisiert: 00-PROJEKTAUFTRAG.md, 01-ARCHITEKTUR.md, 03-BEISPIEL.md.
-
----
-
-## 2025-12-04: Vollständige Entscheidungsmatrix
-
-Die 4×4-Matrix wurde vervollständigt mit allen 16 Kombinationen.
-
-Vier primäre Zuordnungen bilden die Diagonale. Acht sekundäre Zuordnungen sind eindeutig ableitbar. Vier ambige Fälle (Sequenziell+Rekonstruktion, Vernetzt+Verstehen, Vernetzt+Vergleich, Hierarchisch+Verstehen) erfordern Rückfragen.
-
-Die Matrix wurde als interaktives Element im Website-Prototyp implementiert.
-
----
-
-## 2025-12-04: Design-System
-
-Das Design-System "Organic Academic" wurde in DESIGN.md dokumentiert.
-
-Farbpalette mit Paper Sand (#FDFBF7), Ink Black (#1A1A1A), Terracotta (#C4705A) und Archetypen-Farben. Typografie mit Lora (Headlines), Inter (UI), JetBrains Mono (Code). Asymmetrische Border-Radii für organischen Charakter.
-
----
-
-## 2025-12-04: UI-Verfeinerung
-
-Vier Verbesserungen wurden implementiert. Vertikale Führungslinien und Small Caps für Matrix-Lesbarkeit. Semantisches Reframing von "Ambig" zu "Dialog" mit Terracotta statt Warn-Gelb. Hover-Effekte mit Elevation und Pfeil-Cue für Affordance. Asymmetrische Border-Radii für Organic Touch.
-
----
-
-## 2025-12-04: Selbstreferenzieller Prototyp-Auftrag
-
-Das Dokument 08-PROTOTYP-AUFTRAG.md definiert einen Prototypen, der GRIP auf sich selbst anwendet.
-
-Die Wissensbasis ist vernetzt (Wikilinks) und hierarchisch (Ableitungsstruktur). Die Intention ist Verstehen. Nach der Matrix ist Vernetzt×Verstehen ambig. Die Antwort (lokal und global) führt zu Navigator für Gesamtstruktur, Reader für Details, Scope für die Matrix.
-
-Erfolgskriterium: Ein Besucher kann nach fünf Minuten erklären, was die Archetypen sind, wie die Matrix funktioniert und warum der Prototyp so aufgebaut ist.
-
----
-
-## 2025-12-04: Archetypen-Demos
-
-Vier interaktive Demo-Seiten wurden implementiert. Jede zeigt einen Archetyp mit realistischen Beispieldaten und passendem Interface.
-
-Der Reader zeigt die Korrespondenz Hannah Arendt / Karl Jaspers (1926-1969). Drei-Spalten-Layout mit Brief-Navigation, annotiertem Lesebereich und Kontext-Panel. Keyboard-Navigation mit Pfeiltasten. Die Daten sind sequenziell, die Intention ist Verstehen.
-
-Der Scope zeigt Umfragedaten einer Mitarbeiterbefragung. Filter-Sidebar, KPI-Cards mit Veränderungsindikatoren, Balken- und Liniendiagramme, paginierte Datentabelle. Die Daten sind multidimensional, die Intention ist Vergleich.
-
-Der Navigator zeigt ein Zitationsnetzwerk mit zehn Publikationen. SVG-Graph mit farbcodierten Clustern (Methoden, Theorie, Anwendung). Node-Selektion mit Detail-Panel, Cluster-Filter, Zoom-Controls. Die Daten sind vernetzt, die Intention ist Rekonstruktion.
-
-Die Workbench zeigt einen JSON-Metadaten-Export mit Validierungsfehlern. Tree-View der Datenstruktur, editierbare Tabelle mit Inline-Bearbeitung, Inspector-Panel mit Fehleranalyse, Quick-Fix für Datumsformate. Die Daten sind hierarchisch, die Intention ist Kuratierung.
-
-Jede Demo erklärt im Footer die GRIP-Matrix-Zuordnung. Die Hauptseite verlinkt alle Demos über farbcodierte Buttons in den Archetypen-Cards.
-
----
-
-## 2025-12-04: Adaptive Interfaces
-
-Die statischen Demo-Seiten wurden zu dynamischen, JSON-basierten Interfaces umgebaut. Jeder Archetyp lädt Daten via fetch() und passt die UI automatisch an.
-
-### Reader: Arendt-Jaspers Korrespondenz
-
-AdaptiveReader-Klasse mit positionsbasierten Annotationen (start/end-Zeichen). Interaktive Timeline mit historischen Perioden. Brief-Referenzen als klickbare Links. Statistik-Panel zeigt Wortanzahl, Annotationen und Referenzen.
-
-Datenformat: Fünf fiktive Briefe mit Annotations-Array, Referenzen auf andere Briefe und Timeline-Perioden.
-
-### Scope: Umfragedaten zur Digitalisierung
-
-AdaptiveScope-Klasse mit Echtzeit-Aggregation aus 120 Rohdatensätzen. Dynamische Filter für Abteilung, Altersgruppe, Home-Office-Tage. Pearson-Korrelationsmatrix zeigt Zusammenhänge zwischen Variablen. KPI-Cards mit Änderungsindikatoren. CSV-Export und Pagination.
-
-Datenformat: 120 Befragte mit 12 Variablen (Zufriedenheit, Kommunikation, Training, Veränderungsbereitschaft auf Skala 1-10).
-
-### Navigator: Zitationsnetzwerk
-
-AdaptiveNavigator-Klasse mit Force-Directed Layout ohne D3-Dependency. Drei Layout-Modi (Force, Radial, Cluster). Physik-Simulation mit Alpha-Decay-Visualisierung. Node-Dragging, Pan, Zoom. Cluster-Filter und Jahr-Filter. Netzwerk-Metriken (Degree, In-Degree, Out-Degree, Dichte).
-
-Datenformat: 10 Publikationen in drei thematischen Clustern (Methoden, Theorie, Anwendung). 19 gerichtete Kanten für Zitationsbeziehungen.
-
-### Workbench: Sammlungsmetadaten mit Fehlern
-
-AdaptiveWorkbench-Klasse mit Auto-Validierung gegen Schema. Drei Ansichten: Tabelle (editierbar), JSON, Fehlerübersicht. Quick-Fix-Vorschläge für bekannte Fehlermuster (Datumsformate, Kategorien, fehlende Felder). Batch-Operationen für Massenkorrektur. Undo/Redo mit Ctrl+Z/Y. Export als JSON, CSV oder Validierungsreport.
-
-Datenformat: 25 Kunstobjekte mit absichtlichen Fehlern (ungültige Datumsformate, Duplikate, Tippfehler, fehlende Pflichtfelder).
-
-### Info-Boxen mit User Stories
-
-Jede Demo-Seite enthält eine Info-Box mit drei Sektionen:
-- **Datensatz**: Beschreibung der Beispieldaten
-- **Visualisierung**: Auflistung der UI-Features
-- **User Story**: Konkrete Nutzerperspektive im Format "Als [Rolle] möchte ich [Aktion], indem ich [Methode], um [Ziel]."
-
-User Stories:
-- Reader: Editionsphilologin rekonstruiert intellektuelle Beziehung
-- Scope: Personalentwicklerin plant zielgerichtete Trainingsmaßnahmen
-- Navigator: Wissenschaftshistorikerin macht intellektuelle Genealogien sichtbar
-- Workbench: Sammlungsregistrarin bereinigt Metadaten für Systemimport
-
----
-
-## Dateistruktur nach Adaptive-Implementierung
-
-```
-docs/
-  index.html              Hauptseite mit Matrix und Archetypen
-  css/
-    style.css             Basis-Styles, Demo-Footer, Info-Boxen
-    reader.css            Reader: Timeline, Annotationen, Referenzen
-    scope.css             Scope: KPIs, Korrelationsmatrix, Pagination
-    navigator.css         Navigator: Simulation, Metriken, Graph-Controls
-    workbench.css         Workbench: Schema, Fehler-Cards, JSON-View
-  js/
-    main.js               Matrix-Interaktion
-    reader.js             AdaptiveReader-Klasse
-    scope.js              AdaptiveScope-Klasse (NEU)
-    navigator.js          AdaptiveNavigator-Klasse
-    workbench.js          AdaptiveWorkbench-Klasse
-  examples/
-    reader.html           Dynamische Korrespondenz-Ansicht
-    scope.html            Dynamisches Umfrage-Dashboard
-    navigator.html        Dynamisches Zitationsnetzwerk
-    workbench.html        Dynamische Metadaten-Kuratierung
-    data/
-      reader-correspondence.json   Arendt-Jaspers Briefe
-      scope-survey.json            120 Umfrage-Rohdaten
-      navigator-citations.json     Zitationsnetzwerk
-      workbench-metadata.json      Kunstsammlung mit Fehlern
-```
-
----
-
-## 2025-12-04: Workflow-Dokumentation
-
-Das Dokument 09-WORKFLOWS.md beschreibt typische Pfade durch die Archetypen für verschiedene Forschungstypen.
-
-Fünf Referenz-Workflows wurden dokumentiert:
-- Qualitative Analyse (Reader → Workbench → Navigator → Scope)
-- Systematisches Literaturreview (Navigator → Reader → Workbench → Scope)
-- Datenbereinigung und Migration (Scope → Workbench → Scope)
-- Digitale Edition (Reader → Workbench → Navigator → Reader)
-- Survey-Forschung (Workbench → Scope → Navigator → Reader)
-
-Jeder Workflow enthält ein ASCII-Diagramm, Phasenbeschreibungen mit Übergangsbedingungen, Iterationsschleifen und eine User Story.
-
-Das Konzept: Archetypen sind Momentaufnahmen, Forschung ist Prozess. Workflows zeigen, wie sich Topologie und Intention im Projektverlauf ändern und jeder Phasenwechsel eine neue Matrix-Abfrage auslöst.
-
----
-
-## 2025-12-04: Strategische Planrevision
-
-Der IMPLEMENTIERUNGSPLAN.md wurde nach kritischer Analyse überarbeitet.
-
-Kern-Erkenntnis: Das eigentliche Produkt ist der System Prompt und das mentale Modell. Die Website ist der Beweis, dass das Modell funktioniert. Das LLM ist der primäre User des Frameworks.
-
-Fünf strategische Änderungen wurden vorgenommen:
-
-1. Spezialisierungen mit Operationalisierungs-Anforderung: Jede Spezialisierung muss unterscheidende UI-Elemente, spezifische Datenfelder und eigene Heuristiken definieren. Ohne diese Substanz sind Spezialisierungen nur Taxonomie-Dekoration.
-
-2. Phase 5 umbenannt zu GRIP-Configurator: Keine automatische Schema-Inferenz. Client-side ML für Topologie-Erkennung ist fragil. Stattdessen manuelle Konfiguration mit Struktur-Preview.
-
-3. Phase 6 umbenannt zu Prompt-Generator: Keine direkte LLM-API-Integration. GRIP generiert Prompts, die Nutzer in ihr bevorzugtes LLM kopieren. Vermeidet API-Kosten und Backend-Komplexität.
-
-4. Technische Schulden priorisiert: JS-Modularisierung als Voraussetzung für Phase 5 eingestuft.
-
-5. Prioritäten revidiert: System Prompt auf Platz 1. Alle anderen Phasen hängen davon ab, dass die Entscheidungslogik robust ist.
-
----
-
-## 2025-12-04: System Prompt v2.0
-
-Der System Prompt wurde von v1.0 auf v2.0 erweitert.
-
-Neue Inhalte:
-
-1. Vollständige 4×4 Entscheidungsmatrix mit allen 16 Feldern. DIALOG-Felder ersetzen "ambig" für bessere Lesbarkeit.
-
-2. Strukturierte Topologie-Erkennung mit Leitfragen. Sequenziell, Multidimensional, Vernetzt, Hierarchisch.
-
-3. Strukturierte Intentions-Erkennung mit Schlüsselwörtern. Verstehen, Vergleich, Rekonstruktion, Kuratierung.
-
-4. Detailliertes Dialog-Protokoll mit exakten Rückfragen für alle vier ambigen Matrix-Felder.
-
-5. Workflow-Erkennung für Gesamtprojekte. Fünf Referenz-Workflows mit Phasensequenz und Kurzbeschreibung.
-
-6. Überarbeitetes Protokoll unterscheidet jetzt zwischen Datei-Upload und Projektbeschreibung.
-
-Der Prompt ist von 81 auf 157 Zeilen gewachsen. Die Struktur folgt der Nummerierung 1-8 für bessere Navigierbarkeit.
-
----
-
-## 2025-12-04: Design Rationale
-
-Das Dokument 08-DESIGN-RATIONALE.md wurde erstellt. Es liefert wissenschaftliche Begründungen für Interface-Entscheidungen basierend auf HCI-Forschung.
-
-Vier Abschnitte dokumentieren kognitive Anforderungen pro Archetyp:
-
-1. Reader: Sakkaden-Forschung. Zeilenlänge 60-75 Zeichen, Zeilenhöhe 1.6em, keine Unterstreichungen im Fließtext.
-
-2. Scope: Prä-attentive Wahrnehmung. Small Multiples statt interaktiver Einzel-Charts, semantische Farbkodierung, Filter-Sidebar.
-
-3. Navigator: Hairball-Problem. Filterpflicht ab 50 Knoten, Progressive Disclosure für Labels, mehrere Layout-Modi.
-
-4. Workbench: Mode Awareness. Visuell abgegrenzte Editier-Modi, sofortiges Validierungs-Feedback, Undo/Redo.
-
-Zusätzlich: Design Constraints für LLM-Codegenerierung als harte Regeln formuliert.
-
----
-
-## 2025-12-04: Spezialisierungen
-
-Das Dokument 10-SPEZIALISIERUNGEN.md wurde erstellt. Es definiert 12 operationalisierte Archetyp-Varianten (drei pro Archetyp).
-
-### Reader-Spezialisierungen
-
-Edition für kritische Textausgaben mit Variantenapparat, Siglenliste und Lemma-Markierungen. Protokoll für Sitzungsmitschriften mit Sprecherwechsel-Markierungen, Beschluss-Highlighting und Tagesordnungsnavigation. Transcript für Interviewtranskripte mit Turn-Taking-Visualisierung, Code-Margin und Timestamp-Syncing.
-
-### Scope-Spezialisierungen
-
-Survey für Umfragedaten mit Likert-Visualisierung, demografischen Filtern und Korrelationsmatrix. Monitor für Echtzeitdaten mit Ampel-Indikatoren, Anomalie-Highlighting und Threshold-Linien. Matrix für Kreuztabellen mit Heatmap-Färbung, Residuen-Anzeige und Chi-Quadrat-Indikator.
-
-### Navigator-Spezialisierungen
-
-Citation für bibliometrische Netzwerke mit Publikationsjahr-Achse, Impact-Indikator und Co-Citation-Hervorhebung. Genealogy für Verwandtschaftsbeziehungen mit Generationen-Layout, Geschlechts-Symbolen und Ahnentafel-Ansichten. Concept für Ontologien mit hierarchischer Baumansicht, Kantentyp-Legende und Pfad-Hervorhebung.
-
-### Workbench-Spezialisierungen
-
-Registry für Sammlungsinventare mit Inventarnummer-Suche, Standort-Hierarchie und Duplikat-Warnung. Codebook für Variablendefinitionen mit Variable-Liste, Werte-Tabelle und Validierungsregeln-Editor. Schema für JSON-Schema-Editierung mit Schema-Tree, Live-Validierung und Fehler-Highlighting.
-
-Jede Spezialisierung ist vollständig operationalisiert mit unterscheidenden UI-Elementen, spezifischen JSON-Datenfeldern und Erkennungsheuristiken für den System Prompt.
-
----
-
-## 2025-12-04: Workflow-Visualisierung
-
-Die Website wurde um eine interaktive Workflow-Sektion erweitert.
-
-### Neue Komponenten
-
-Workflow-Picker mit fünf Buttons für die Referenz-Workflows (Qualitative Analyse, Literaturreview, Datenbereinigung, Digitale Edition, Survey-Forschung).
-
-Animierte Workflow-Pfade zeigen die Phasensequenz mit farbcodierten Archetyp-Icons. Jede Phase ist klickbar und verlinkt zur entsprechenden Demo-Seite.
-
-Iterationshinweise zeigen an, welche Phasen typischerweise Rücksprünge haben.
-
-User Stories und Zusammenfassungen werden dynamisch unter dem Pfad angezeigt.
-
-### Technische Umsetzung
-
-HTML: Neue Section "workflows" mit Picker-Buttons und Container für dynamischen Content.
-
-CSS: Styles für workflow-picker, workflow-path, workflow-phase, workflow-arrow und workflow-iteration. Responsive Layout für Mobile (vertikale Anordnung).
-
-JavaScript: workflows-Objekt mit allen fünf Workflows, initWorkflows() und renderWorkflow() Funktionen. Phasen-Icons zeigen den ersten Buchstaben des Archetyps.
-
----
-
-## 2025-12-04: ES6-Modularisierung
-
-Die JavaScript-Architektur wurde auf native ES6-Module umgestellt. Die Entscheidung gegen Build-Tooling (Vite, Webpack) folgt dem Prinzip der Einfachheit.
-
-### Neue Struktur
-
-```
-docs/js/
-  main.js                 Entry Point für index.html (11 Zeilen)
-  modules/
-    matrix.js             matrixData, reasonings, initMatrix()
-    workflows.js          workflows, initWorkflows()
-  archetypes/
-    reader.js             export class AdaptiveReader
-    scope.js              export class AdaptiveScope
-    navigator.js          export class AdaptiveNavigator
-    workbench.js          export class AdaptiveWorkbench
-  reader-entry.js         Entry Point für reader.html
-  scope-entry.js          Entry Point für scope.html
-  navigator-entry.js      Entry Point für navigator.html
-  workbench-entry.js      Entry Point für workbench.html
-```
-
-### Änderungen
-
-main.js wurde von 249 Zeilen auf 11 Zeilen reduziert. Der Code importiert jetzt initMatrix() und initWorkflows() aus den Modulen.
-
-Alle HTML-Dateien verwenden jetzt script type="module".
-
-Die Archetyp-Klassen exportieren jetzt mit export class und export default.
-
-Entry-Point-Dateien instanziieren die Klassen mit den korrekten Datenpfaden.
-
-### Neue Dokumentation
-
-Das Dokument 11-CODE-MAP.md wurde erstellt. Es dokumentiert die JavaScript-Architektur, Modul-Abhängigkeiten, HTML-zu-JS-Mapping und den Datenfluss.
-
----
-
-## 2025-12-04: Wissensbasis-Analyse
-
-Die 15 Markdown-Dokumente wurden auf Redundanzen und Verbesserungspotenzial analysiert.
-
-### Identifizierte Redundanzen
-
-Archetypen-Beschreibungen existieren dreifach (00-PROJEKTAUFTRAG, 05-ARCHETYPEN, 04-SYSTEM-PROMPT). Die Redundanz im Projektauftrag ist problematisch.
-
-Die Entscheidungsmatrix existiert zweifach (02-MAPPINGS, 04-SYSTEM-PROMPT). Die System-Prompt-Kopie ist notwendig, da der Prompt autark sein muss.
-
-Design-Dokumentation hat Überlappungen zwischen DESIGN.md und 08-DESIGN-RATIONALE.md im Bereich "Organic Academic".
-
-### Verbesserungspotenzial
-
-System Prompt v2.0 fehlt die Spezialisierungs-Heuristiken aus 10-SPEZIALISIERUNGEN.md.
-
-Die Code Map (11-CODE-MAP.md) fehlte und wurde erstellt.
-
-### Status-Übersicht
-
-Aktuell: 00-PROJEKTAUFTRAG, 02-MAPPINGS, 03-BEISPIEL, 05-ARCHETYPEN, 06-DIALOG, 07-PROTOTYP, 09-WORKFLOWS, 10-SPEZIALISIERUNGEN, DESIGN, CLAUDE, CLAUDE-METHODE.
-
-Unvollständig: 01-ARCHITEKTUR (fehlte 11-CODE-MAP), 04-SYSTEM-PROMPT (fehlen Spezialisierungen), 08-DESIGN-RATIONALE (redundant mit DESIGN).
-
-Neu erstellt: 11-CODE-MAP.
+**Entscheidung:** Praxistest vor weiterer Dokumentation. Master System Prompt als erste Implementierung.
 
 ---
 
 ## 2025-12-04: Wissensbasis-Konsolidierung
 
-Zwei Maßnahmen zur Redundanzbereinigung wurden umgesetzt.
+Vier Archetypen (Reader, Scope, Navigator, Workbench) mit klaren Grenzen definiert. Alte Terminologie (sechs Module, Datentypen) durch neue ersetzt (vier Archetypen, vier Topologien).
 
-### Projektauftrag verschlankt
+**Entscheidungen:**
+- 4×4-Matrix als Kernstruktur: 4 primäre, 8 sekundäre, 4 ambige Zuordnungen
+- Ambige Fälle erfordern Dialog statt automatischer Zuweisung
+- Spezialisierungen müssen operationalisiert sein (UI-Elemente, Datenfelder, Heuristiken)
 
-Das Dokument 00-PROJEKTAUFTRAG.md enthielt redundante Archetypen-Beschreibungen (13 Zeilen), die bereits ausführlicher in 05-ARCHETYPEN.md dokumentiert sind. Der Abschnitt wurde auf zwei Sätze mit Verweisen zur kanonischen Quelle reduziert.
-
-05-ARCHETYPEN.md ist jetzt die Single Source of Truth für Archetypen-Definitionen.
-
-### System Prompt auf v2.1 aktualisiert
-
-Der System Prompt wurde um die 12 Spezialisierungen aus 10-SPEZIALISIERUNGEN.md erweitert.
-
-Neuer Abschnitt 6 "SPEZIALISIERUNGEN" mit Erkennungsheuristiken für alle drei Varianten pro Archetyp:
-- Reader: Edition, Protokoll, Transcript
-- Scope: Survey, Monitor, Matrix
-- Navigator: Citation, Genealogy, Concept
-- Workbench: Registry, Codebook, Schema
-
-Die nachfolgenden Abschnitte wurden renummeriert (7. WORKFLOW-ERKENNUNG, 8. DEIN PROTOKOLL, 9. REGELN).
-
-Version wurde auf 2.1 hochgesetzt.
+**Dokumente:** 00-PROJEKTAUFTRAG bis 06-DIALOG, später 10-SPEZIALISIERUNGEN
 
 ---
 
-## 2025-12-04: Spezialisierungs-Schemata in Demo-Daten
-
-Die JSON-Dateien der Demo-Seiten wurden aktualisiert, um die Spezialisierungs-Heuristiken aus 10-SPEZIALISIERUNGEN.md zu implementieren. Dies ermöglicht die automatische Erkennung durch den System Prompt.
-
-### Navigator → Citation
-
-Die Datei navigator-citations.json wurde von generischen `nodes`/`edges` auf das Citation-Schema umgestellt:
-
-- `publications` statt `nodes` mit vollständigen bibliografischen Daten (authors, venue, type, citations_received)
-- `citations` statt `edges` mit Kontext (context, section)
-- `clusters` als Array mit id, label, color, description
-- `metrics` mit Netzwerk-Kennzahlen
-
-Erkennbare Felder: `publications`, `citations`, `year` → System Prompt erkennt Citation-Spezialisierung
-
-### Scope → Survey
-
-Die Datei scope-survey.json wurde um das Survey-Schema erweitert:
-
-- `survey_meta` mit n, response_rate, collection_period
-- `scales` mit item-Listen und cronbach_alpha
-- `items` mit type=likert und vollständiger Skalenbeschreibung
-- `demographics` mit Typ-Annotationen (categorical, numeric, ordinal)
-
-Erkennbare Felder: `scales`, `items`, `likert` → System Prompt erkennt Survey-Spezialisierung
-
-### Workbench → Registry
-
-Die Datei workbench-metadata.json wurde um das Registry-Schema erweitert:
-
-- `collection_meta` mit Institution und Objektzahl
-- `schema.required_fields` und `schema.controlled_vocabularies`
-- `locations` als hierarchische Struktur (building, rooms)
-- Erstes Objekt als Referenz mit `inventory_number`, strukturierter `location`, `completeness_score`
-
-Erkennbare Felder: `inventory_number`, `location`, `condition` → System Prompt erkennt Registry-Spezialisierung
-
-### Testbarkeit
-
-Die aktualisierten Daten dienen als Testfälle für den System Prompt v2.1. Wenn ein LLM diese JSONs analysiert, sollte es:
-
-1. Die Topologie korrekt erkennen (vernetzt/multidimensional/hierarchisch)
-2. Die Spezialisierung aus den Feldnamen ableiten
-3. Die passenden UI-Elemente vorschlagen (Zeitachse für Citation, Likert-Bars für Survey, etc.)
-
----
-
-## 2025-12-04: Wissensbasis-Destillation
-
-Die Wissensbasis wurde von 16 auf 13 Dokumente konsolidiert. Redundanzen wurden eliminiert, Wissen präziser gefasst.
-
-### Zusammengeführte Dokumente
-
-CLAUDE.md + CLAUDE-METHODE.md → CLAUDE.md
-Die Trennung zwischen Regeln und Methode war künstlich. Das neue Dokument enthält beides unter dem Titel "Stilregeln und Methode".
-
-DESIGN.md + 08-DESIGN-RATIONALE.md → DESIGN.md
-Design-Spezifikation und kognitive Begründungen gehören zusammen. Jede Entscheidung ist jetzt mit ihrer Begründung dokumentiert. Das neue Dokument enthält sowohl CSS-Tokens als auch HCI-Prinzipien pro Archetyp.
-
-### JavaScript-Fixes
-
-Die ES6-Module wurden an die neuen Spezialisierungs-Schemata angepasst:
-
-navigator.js: Unterstützt jetzt sowohl altes (nodes/edges/clusters als Object) als auch neues Format (publications/citations/clusters als Array). Feldnormalisierung für authors → author.
-
-workbench.js: Unterstützt sowohl altes (key: description string) als auch neues Schema-Format (required_fields, controlled_vocabularies). Objektnormalisierung für inventory_number → id, creator → artist.
-
-### Dokumentenstatus
-
-13 Dokumente total:
-- Kerndokumente: 00-PROJEKTAUFTRAG, 05-ARCHETYPEN, 02-MAPPINGS, 06-DIALOG
-- Operative: 04-SYSTEM-PROMPT, 03-BEISPIEL, 07-PROTOTYP, 09-WORKFLOWS, 10-SPEZIALISIERUNGEN
-- Technisch: 11-CODE-MAP, DESIGN
-- Meta: CLAUDE, JOURNAL
-
-Gelöscht: CLAUDE-METHODE.md (in CLAUDE.md integriert), 08-DESIGN-RATIONALE.md (in DESIGN.md integriert)
-
----
-
-## 2025-12-04: 12 Spezialisierungen – Skeleton-Implementierung
-
-Die vollständige Dateistruktur für alle 12 Spezialisierungen wurde erstellt. 59 neue Dateien mit 9.529 Zeilen Code.
-
-### HTML-Templates (12 Dateien)
-
-Jede Spezialisierung hat ein eigenes HTML-Template mit spezifischen UI-Elementen gemäß 10-SPEZIALISIERUNGEN.md:
-
-Reader: reader-edition.html (Variantenapparat), reader-protokoll.html (Sprecherwechsel), reader-transcript.html (Turn-Taking)
-
-Scope: scope-survey.html (Likert-Skalen), scope-monitor.html (Sparklines), scope-matrix.html (Heatmap)
-
-Navigator: navigator-citation.html (Zeitachse), navigator-genealogy.html (Generationen), navigator-concept.html (Hierarchie)
-
-Workbench: workbench-registry.html (Standort-Hierarchie), workbench-codebook.html (Variablen-Editor), workbench-schema.html (Live-Validierung)
-
-### JSON-Referenzdaten (9 Dateien)
-
-Neue Datensätze basierend auf wissenschaftlichen Metadatenstandards:
-
-- reader-edition.json: Goethes Faust mit TEI-Apparat (witnesses, apparatus, siglum)
-- reader-protokoll.json: Gemeinderatssitzung nach Akoma Ntoso
-- reader-transcript.json: Narratives Interview nach EXMARaLDA
-- scope-monitor.json: Temperatursensor nach OGC SensorThings
-- scope-matrix.json: Bildung×Einkommen nach SDMX-JSON
-- navigator-genealogy.json: Bach-Familie nach GEDCOM X
-- navigator-concept.json: Forschungsmethoden-Thesaurus nach SKOS
-- workbench-codebook.json: ALLBUS-Variablen nach DDI-Lifecycle
-- workbench-schema.json: Publikations-Schema nach JSON Schema
-
-### JavaScript-Module (24 Dateien)
-
-Für jede Spezialisierung wurden Entry-Point und Klassen-Modul erstellt:
-
-```
-docs/js/specializations/
-  edition.js + edition-entry.js
-  protokoll.js + protokoll-entry.js
-  transcript.js + transcript-entry.js
-  survey.js + survey-entry.js
-  monitor.js + monitor-entry.js
-  matrix.js + matrix-entry.js
-  citation.js + citation-entry.js
-  genealogy.js + genealogy-entry.js
-  concept.js + concept-entry.js
-  registry.js + registry-entry.js
-  codebook.js + codebook-entry.js
-  schema.js + schema-entry.js
-```
-
-### CSS-Dateien (12 Dateien)
-
-Spezialisierungsspezifische Styles in docs/css/specializations/ mit vollständigen Layouts für Drei-Spalten-Ansicht, Sidebar, Hauptbereich und Kontext-Panel.
-
-### Neue Wissensbasis-Dokumente
-
-12-STANDARDS.md wurde erstellt mit:
-- Container-Erkennungstabelle (Dateiendung → MIME → Standard)
-- Standard-Mappings für alle 12 Spezialisierungen
-- JSON-Schema-Beispiele
-- Parser-Architektur-Dokumentation
-
-11-CODE-MAP.md wurde aktualisiert mit:
-- Vollständiger Verzeichnisstruktur
-- Spezialisierungs-zu-Standard-Mapping-Tabelle
-- Parser-Module-Planung
-- Erweiterungs-Anleitung
-
----
-
-## 2025-12-04: Navigation zu Spezialisierungen
-
-Die index.html wurde erweitert, um alle 16 Demos (4 Basis + 12 Spezialisierungen) erreichbar zu machen.
-
-### Neue UI-Struktur
-
-Jede Archetyp-Card enthält jetzt:
-1. Titel, Tagline, Beschreibung
-2. Basis-Demo-Button
-3. Spezialisierungs-Grid mit drei Cards
-
-```
-┌─────────────────────────────────────────┐
-│ The Reader                              │
-│ Sequenz + Verstehen                     │
-│ Beschreibung...                         │
-│ [Basis-Demo →]                          │
-├─────────────────────────────────────────┤
-│ SPEZIALISIERUNGEN                       │
-│ ┌──────────┐ ┌──────────┐ ┌──────────┐ │
-│ │Edition  →│ │Protokoll→│ │Transcript│ │
-│ │TEI P5   │ │Akoma Nto │ │EXMARaLDA │ │
-│ │Krit.App.│ │Sitzungen │ │Interviews│ │
-│ └──────────┘ └──────────┘ └──────────┘ │
-└─────────────────────────────────────────┘
-```
-
-### UI-Verbesserungen
-
-Vier Änderungen basierend auf Design-Review:
-
-1. 2×2-Grid statt auto-fit: Archetypen-Grid verwendet jetzt `repeat(2, 1fr)` für symmetrisches Layout. Workbench ist nicht mehr isoliert.
-
-2. Stärkere Trennlinie: `border-top: 2px solid` und mehr Padding vor "SPEZIALISIERUNGEN" für bessere visuelle Hierarchie.
-
-3. Klick-Affordance: Pfeil `→` in jeder Spec-Card, der beim Hover animiert wird und die Archetyp-Farbe annimmt.
-
-4. Größere Standard-Font: Von 0.65rem auf 0.7rem für bessere Lesbarkeit der Metadatenstandards (TEI P5, DDI-C, etc.)
-
-### Responsive Anpassungen
-
-Mobile-Breakpoint (768px): Spec-Grid wechselt auf einspaltiges Layout.
-
----
-
-## 2025-12-04: Bugfixes und Refactoring
-
-Mehrere technische Schulden wurden behoben.
-
-### JS-Bereinigung
-
-Vier redundante Standalone-Dateien wurden gelöscht (reader.js, scope.js, navigator.js, workbench.js). Diese enthielten alte Versionen der Archetyp-Klassen, die durch die ES6-Module in archetypes/ ersetzt wurden.
-
-### Fetch-Pfad-Korrektur
-
-Alle 12 Spezialisierungs-JS-Dateien hatten falsche Pfade (`../examples/data/` statt `data/`). Der Pfad ist relativ zur HTML-Datei, nicht zur JS-Datei.
-
-### HTML-ID-Korrekturen
-
-Zwei Demo-Seiten zeigten keine Daten wegen ID-Mismatches zwischen JS und HTML:
-
-navigator-citation.html: `network-container` → `network-canvas`, plus fehlende IDs für `network-title`, `network-stats`, `time-filter`, `type-filter`.
-
-workbench-registry.html: `collection-name` → `collection-title`, plus `collection-stats`, `quality-indicator`, `objects-tbody`, `objects-cards`, `editor-panel`, `objects-count`.
-
-### Wikilink-Korrektur
-
-In 10-SPEZIALISIERUNGEN.md wurde `[[08-DESIGN-RATIONALE]]` durch `[[DESIGN]]` ersetzt, da die Datei in DESIGN.md integriert wurde.
-
-### README erstellt
-
-Umfassende README.md im Wurzelverzeichnis mit Projektübersicht, Archetypen-Beschreibungen, Projektstruktur, Quick Start, Technologie-Stack und Standards-Übersicht.
-
----
-
-## 2025-12-04: Landing Page erweitert
-
-Die index.html wurde um strukturierte Einstiegselemente erweitert.
-
-### Hero-Section
-
-Neuer Header mit GRIP-Titel, Untertitel "Generative Research Interface Protocol" und sachlicher Tagline: "Systematische Zuordnung von Interface-Archetypen zu Datentopologien und epistemischen Intentionen."
-
-CTA-Buttons führen zur Entscheidungsmatrix und zum GitHub-Repository.
-
-Stats-Banner zeigt die Kennzahlen: 4 Archetypen, 12 Spezialisierungen, 16 Live-Demos.
-
-### Zielgruppen-Karten
-
-Drei Cards für unterschiedliche Nutzergruppen:
-- Forschende: Interface-Empfehlung basierend auf Datenstruktur und Ziel
-- LLM-Entwickler: Wissensbasis als System-Prompt
-- Designer: Kognitive Prinzipien und bewährte Patterns
-
-### Footer-Erweiterung
-
-Links zu GitHub, System-Prompt und Dokumentation. Tagline "Context Engineering für Forschungsinterfaces".
-
-### CSS-Erweiterungen
-
-~200 Zeilen neue Styles für Hero, Buttons, Stats-Grid, Audience-Grid und Footer. Responsive Breakpoints für Mobile.
-
-### Tonalität
-
-Bewusst sachlich, neutral und präzise gehalten. Keine Marketing-Sprache. Das Framework erklärt Forschung, es verkauft sie nicht.
-
----
-
-## Learnings aus dieser Session
-
-### 1. Fetch-Pfade sind relativ zur HTML-Datei
-
-JavaScript-Module, die per `<script type="module" src="...">` eingebunden werden, lösen `fetch()`-Pfade relativ zur HTML-Datei auf, nicht relativ zur JS-Datei. Daher: `data/file.json` statt `../examples/data/file.json`.
-
-### 2. ID-Konsistenz zwischen JS und HTML prüfen
-
-Bei `getElementById()` muss die ID exakt übereinstimmen. Nach HTML-Refactoring alle JS-Referenzen prüfen.
-
-### 3. ES6-Module ersetzen Standalone-Dateien
-
-Nach Migration zu ES6-Modulen alte Standalone-Versionen löschen, um Verwirrung zu vermeiden.
-
-### 4. Sachliche Kommunikation
-
-Wissenschaftliche Frameworks kommunizieren neutral. Keine Verkaufssprache ("Das richtige Interface für Sie!"), sondern präzise Beschreibungen ("Systematische Zuordnung von...").
-
----
-
-## Nächste Schritte
-
-### Priorität 1: Interface-Qualität der Demos
-
-Die 16 Demos funktionieren, aber die Interaktionen sind noch oberflächlich. Konkret:
-
-- **Reader-Demos**: Annotation-Interaktion, Referenz-Navigation zwischen Briefen/Dokumenten
-- **Scope-Demos**: Echte Korrelationsberechnung, Filter-Kombinationen, Export
-- **Navigator-Demos**: Graph-Physik verfeinern, Pfadanalyse zwischen Knoten
-- **Workbench-Demos**: Validierungslogik vervollständigen, Batch-Operationen
-
-### Priorität 2: Wissenschaftliche Fundierung vertiefen
-
-Die kognitiven Prinzipien pro Archetyp sind benannt, aber nicht durchgehend im Code umgesetzt:
-
-- Reader: Zeilenlänge 60-75 Zeichen, Sakkaden-optimierte Typografie
-- Scope: Small Multiples statt Einzel-Charts, prä-attentive Farbkodierung
-- Navigator: Hairball-Prevention ab 50 Knoten, Progressive Disclosure
+## 2025-12-04: Design-System "Organic Academic"
+
+**Entscheidungen:**
+- Paper Sand (#FDFBF7) statt hartem Weiß (reduziert Augenbelastung)
+- Lora Serif für Lesetexte, Inter Sans für UI (Lesbarkeit vs. Kompaktheit)
+- Terracotta (#C4705A) für Dialog-Zellen statt Warn-Gelb (semantisch korrekt)
+- Asymmetrische Border-Radii für organischen Charakter
+
+**Kognitive Prinzipien pro Archetyp:**
+- Reader: Zeilenlänge 60-75 Zeichen, keine Unterstreichungen
+- Scope: Small Multiples, prä-attentive Farbkodierung
+- Navigator: Filterpflicht ab 50 Knoten, Progressive Disclosure
 - Workbench: Mode Awareness, sofortiges Validierungs-Feedback
 
-### Priorität 3: Spezialisierungs-Differenzierung
+---
 
-Die 12 Spezialisierungen haben eigene HTML-Templates, aber die JS-Logik ist oft generisch. Jede Spezialisierung sollte ihre spezifischen UI-Elemente vollständig implementieren:
+## 2025-12-04: Adaptive Interfaces
 
-- Edition: Variantenapparat mit Lemma-Markierungen
-- Citation: Co-Citation-Analyse, Zeitachsen-Layout
-- Registry: Standort-Hierarchie, Duplikat-Erkennung
+Statische Demo-Seiten zu dynamischen, JSON-basierten Interfaces umgebaut.
 
-### Priorität 4: Reale Testdatensätze
+**Entscheidungen:**
+- ES6-Module ohne Build-Tooling (Einfachheit > Optimierung)
+- Fetch-Pfade relativ zur HTML-Datei, nicht zur JS-Datei
+- Jede Klasse: init() → render() → bindEvents() → bindKeyboard()
+- Keyboard-Navigation: Cmd/Ctrl + 1-4 für Moduswechsel
 
-Die JSON-Daten sind synthetisch. Für wissenschaftliche Validierung brauchen wir:
+**Technische Lösungen:**
+- Force-Directed Layout ohne D3-Dependency (AdaptiveNavigator)
+- Pearson-Korrelation client-side (AdaptiveScope)
+- Undo/Redo mit Stack (AdaptiveWorkbench)
 
-- Ein echter TEI-Text (Edition)
-- Echte Umfragedaten (Survey)
-- Ein reales Zitationsnetzwerk (Citation)
+---
+
+## 2025-12-04: 12 Spezialisierungen
+
+Skeleton-Implementierung für alle 12 Spezialisierungen (3 pro Archetyp).
+
+**Entscheidung:** Jede Spezialisierung orientiert sich an wissenschaftlichen Standards:
+
+| Spezialisierung | Standard | Erkennungsfelder |
+|-----------------|----------|------------------|
+| Edition | TEI P5 | witnesses, apparatus, siglum |
+| Protokoll | Akoma Ntoso | session, agenda, speaker |
+| Transcript | EXMARaLDA | turns, start_ms, codes |
+| Survey | DDI-C | scales, items, likert |
+| Monitor | SensorThings | thresholds, alerts, readings |
+| Matrix | SDMX-JSON | dimensions.rows, cells |
+| Citation | MODS | publications, citations |
+| Genealogy | GEDCOM X | persons, parent_child |
+| Concept | SKOS | concepts, broader, narrower |
+| Registry | LIDO | inventory_number, location |
+| Codebook | DDI-Lifecycle | variables, valid_values |
+| Schema | JSON Schema | $schema, properties |
 
 ---
 
 ## 2025-12-04: Modi-Taxonomie
 
-Die dritte Ebene der Interface-Taxonomie wurde definiert.
+Die dritte Ebene der Interface-Hierarchie wurde definiert: Archetyp → Spezialisierung → Modus.
 
-### Terminologie
+**Entscheidung:** 4 Modi pro Spezialisierung = 48 Modi total. Ein Modus ist eine Perspektive auf denselben Datensatz. Der Modus ändert die Darstellung, nicht die Daten.
 
-Die Hierarchie lautet nun: Archetyp → Spezialisierung → Modus
-
-Ein Modus ist eine Perspektive auf denselben Datensatz innerhalb einer Spezialisierung. Der Modus ändert die Darstellung, nicht die Daten. Nutzende wechseln zwischen Modi über Tabs, Toggles oder Tastenkürzel.
-
-### 48 Modi dokumentiert
-
-Für jede der 12 Spezialisierungen wurden vier Modi definiert:
-
-**Reader:**
-- Edition: Synopse, Apparat, Genetik, Faksimile
-- Protokoll: Chronologie, Sprecher, Abstimmung, Agenda
-- Transcript: Partitur, Fließtext, Codierung, Audio-Sync
-
-**Scope:**
-- Survey: Fragebogen, Verteilung, Skalen, Codebook
-- Monitor: Dashboard, Timeline, Anomalie, Korrelation
-- Matrix: Tabelle, Heatmap, Residuen, Pivot
-
-**Navigator:**
-- Citation: Netzwerk, Timeline, Bibliometrie, Ego-Netzwerk
-- Genealogy: Stammbaum, Ahnentafel, Familienblatt, Zeitstrahl
-- Concept: Hierarchie, Graph, Definition, Mapping
-
-**Workbench:**
-- Registry: Liste, Karteikarte, Standort, Zustand
-- Codebook: Variablenliste, Variablendetail, Validierung, Export
-- Schema: Struktur, Editor, Validator, Diff
-
-### Dokumentation
-
-Jeder Modus ist in 15-MODI.md mit vier Spalten dokumentiert:
-- Relevanz: Warum dieser Modus für die Domäne wichtig ist
-- Benötigte Daten: Welche JSON-Felder der Modus voraussetzt
-- Innovation: Was das Interface gegenüber existierenden Tools bietet
-
-### UI-Pattern
-
-Der Moduswechsel erfolgt über Tab-Leiste, Tastenkürzel (Cmd/Ctrl + 1-4) oder Kontextmenü. State-Erhaltung beim Wechsel (Selektion, Scroll, Filter). Deep-Link-URLs codieren Spezialisierung und Modus.
+**UI-Pattern:** Tab-Leiste, Cmd/Ctrl + 1-4, State-Erhaltung beim Wechsel.
 
 ---
 
-## 2025-12-04: Edition-Modi Skeleton-Implementierung
+## 2025-12-05: Modi-Implementierung
 
-Die erste vollständige Modus-Implementierung wurde für Edition erstellt.
+24 von 48 Modi implementiert (50%).
 
-### Neue Dateien
+### Phase 1: Edition, Survey, Citation
 
-Wissensbasis:
-- 16-CONTEXT-MAP.md dokumentiert Dateistruktur und Wissensbedarf pro Modus
+**Technische Lösungen:**
+- Survey-Skalen: Cronbach's Alpha mit Varianz-Kovarianz-Methode
+- Citation-Netzwerk: Force-Directed mit Repulsion/Attraktion, SVG-basiert
+- Citation-Ego: BFS für Nachbarschaftsberechnung, radiale Positionierung
 
-Edition-Modi (16 Dateien):
-- HTML: synopse.html, apparat.html, genetik.html, faksimile.html
-- CSS: edition-synopse.css, edition-apparat.css, edition-genetik.css, edition-faksimile.css
-- JS: edition-synopse.js, edition-apparat.js, edition-genetik.js, edition-faksimile.js
+### Phase 2: Protokoll, Transcript, Monitor
 
-### Modus-Features
+**Entscheidungen:**
+- Transcript-Partitur: Mehrspurige Darstellung statt Tabelle (bessere Zeitachsen-Lesbarkeit)
+- Monitor-Korrelation: Lag-Slider statt fester Offset (flexiblere Analyse)
+- Monitor-Dashboard: Auto-Refresh konfigurierbar (60s Default)
 
-Synopse: Lock-Scroll für parallele Textzeugen-Spalten, Diff-Highlighting on-the-fly, Zeugen-Auswahl per Checkbox.
-
-Apparat: Klassisches Lesetext-mit-Apparat-Layout, Lemma-Klick zeigt Varianten, Hover-Preview optional, Zeilennummern toggle.
-
-Genetik: Zeit-Slider blendet Schichten ein/aus, Filterung nach Hand und Korrekturtyp, Farbcodierung für Streichungen/Ergänzungen/Ersetzungen.
-
-Faksimile: Split-View mit resizable Panels, Zoom-Controls, Text-Bild-Zonen-Mapping, Transkription-Overlay mit einstellbarer Transparenz.
-
-### Infrastruktur
-
-Mode-Tabs CSS in style.css für einheitliche Tab-Navigation. Keyboard-Shortcuts Cmd/Ctrl + 1-4 für Moduswechsel. 12 leere Verzeichnisse für weitere Spezialisierungen vorbereitet.
-
-### Aktualisierte Dateien
-
-- reader-edition.html: Modi-Tabs hinzugefügt
-- 01-ARCHITEKTUR.md: Verweis auf 16-CONTEXT-MAP
-- README.md: 3-Ebenen-Taxonomie dokumentiert, Datei-Übersicht aktualisiert
+**Technische Lösungen:**
+- SVG-Charts statt Canvas (bessere CSS-Integration)
+- Anomalie-Score als Bar-Chart mit Threshold-Linie
 
 ---
 
-## Aktueller Stand
+## Learnings
+
+1. **Fetch-Pfade:** Relativ zur HTML-Datei, nicht zur JS-Datei
+2. **ID-Konsistenz:** Nach HTML-Refactoring alle JS-Referenzen prüfen
+3. **ES6-Module:** Nach Migration alte Standalone-Versionen löschen
+4. **Kommunikation:** Sachlich und präzise, keine Marketing-Sprache
+
+---
+
+## Aktueller Stand (2025-12-05)
 
 ### Wissensbasis
+17 Markdown-Dokumente: 4 Archetypen, 12 Spezialisierungen, 48 Modi
 
-17 Markdown-Dokumente mit vollständiger Taxonomie:
-- 4 Archetypen
-- 12 Spezialisierungen (3 pro Archetyp)
-- 48 Modi (4 pro Spezialisierung)
+### Modi-Implementierung
 
-### Implementierung
+| Spezialisierung | Status | | Spezialisierung | Status |
+|-----------------|--------|-|-----------------|--------|
+| Edition | ✅ 4/4 | | Matrix | ⏳ 0/4 |
+| Survey | ✅ 4/4 | | Genealogy | ⏳ 0/4 |
+| Citation | ✅ 4/4 | | Concept | ⏳ 0/4 |
+| Protokoll | ✅ 4/4 | | Registry | ⏳ 0/4 |
+| Transcript | ✅ 4/4 | | | |
+| Monitor | ✅ 4/4 | | | |
 
-| Ebene | Definiert | Implementiert |
-|-------|-----------|---------------|
-| Archetypen | 4 | 4 (Basis-Demos) |
-| Spezialisierungen | 12 | 12 (Demo-Seiten) |
-| Modi | 48 | 4 (nur Edition) |
+**Fortschritt: 24/48 Modi (50%)**
 
 ### Nächste Schritte
 
-1. Weitere Modi implementieren (Survey, Citation, Registry als Priorität)
-2. Reale Testdatensätze beschaffen
-3. Modi-Navigation auf index.html erweitern
-
----
-
-## 2025-12-04: index.html Modi-Integration
-
-Die Landing Page wurde aktualisiert, um die 3-Ebenen-Taxonomie abzubilden.
-
-### Hero-Stats erweitert
-
-Neue Statistik-Anzeige: 4 Archetypen, 12 Spezialisierungen, 48 Modi, 20 Live-Demos.
-
-Die Demo-Zahl wurde von 16 auf 20 korrigiert (4 Basis + 12 Spezialisierungen + 4 Edition-Modi).
-
-### Spezialisierungs-Cards
-
-Edition-Card erhält visuellen Indikator für implementierte Modi:
-- mode-badge Element mit "4 Modi" Label
-- has-modes Klasse für Terracotta-Akzent am linken Rand
-
-### Neue CSS-Styles
-
-.mode-badge: Terracotta-Hintergrund, Monospace-Font, kompakte Darstellung
-.spec-card.has-modes: Linker Rand-Akzent zur Unterscheidung von Spezialisierungen mit Modi
-
----
-
-## 2025-12-04: About-Seite und README-Finalisierung
-
-### about.html erstellt
-
-Neue About-Seite mit folgenden Sektionen:
-- Was ist GRIP? (mit konkretem Beispiel)
-- Die 3-Ebenen-Taxonomie (visuelle Darstellung)
-- Kognitive Grundlagen (vereinfacht für Laien)
-- Die Entscheidungsmatrix (mit Alltagsbeispielen)
-- Für LLM-Entwickler
-- Technologie
-- Wissenschaftliche Standards
-- Autor (Dr. Christopher Pollin)
-
-Verbesserungen gegenüber Erstversion:
-- Alle Umlaute korrigiert
-- Fachbegriffe erklärt (HCI, präattentive Wahrnehmung)
-- Konkrete Beispiele statt abstrakter Beschreibungen
-- Autor-Sektion mit Link
-
-### README.md finalisiert
-
-Neue Elemente:
-- Badges für Live Demo und MIT-Lizenz
-- Online Demo URL (https://dhcraft.org/grip-framework/)
-- Autor: Dr. Christopher Pollin
-- Links-Sektion mit Demo, Repo und Autor-Website
-- Korrigierte Datei-Anzahl (22 HTML, 19 MD)
-
-### GitHub-URLs aktualisiert
-
-Alle Links zeigen jetzt auf:
-- Demo: https://dhcraft.org/grip-framework/
-- Repo: https://github.com/DigitalHumanitiesCraft/grip-framework
-
-Betroffene Dateien: index.html, about.html, README.md
-
----
-
-## 2025-12-05: Survey- und Citation-Modi vollständig implementiert
-
-### Survey-Modi (4/4 fertig)
-
-Alle vier Modi der Survey-Spezialisierung sind nun funktionsfähig:
-
-1. **Fragebogen-Modus** (`survey/fragebogen.html`)
-   - Virtualisiertes Scrolling durch Fragebogen
-   - Ausfüllbares Formular mit Validierung
-   - Tastaturnavigation (Tab, Enter)
-
-2. **Verteilung-Modus** (`survey/verteilung.html`)
-   - Histogramm-Grid für Antwortverteilungen
-   - Filter nach demografischen Variablen
-   - Vergleichsgruppen-Auswahl
-
-3. **Skalen-Modus** (`survey/skalen.html`)
-   - Cronbach's Alpha-Berechnung live
-   - Item-Korrelationsmatrix (Heatmap)
-   - "Alpha wenn Item entfernt" für jeden Item
-
-4. **Codebook-Modus** (`survey/codebook.html`)
-   - Durchsuchbare Variablenliste
-   - Export: DDI-XML, SPSS-Syntax, Stata Do-File
-   - Typ-Filter (Likert, Numerisch, Kategorial)
-
-### Citation-Modi (4/4 fertig)
-
-Alle vier Modi der Citation-Spezialisierung implementiert:
-
-1. **Netzwerk-Modus** (`citation/netzwerk.html`)
-   - Force-Directed Graph
-   - Cluster-Färbung
-   - Drag-and-Drop für Knoten
-   - Zoom-Steuerung
-
-2. **Timeline-Modus** (`citation/timeline.html`)
-   - Chronologische Anordnung
-   - Zitationslinien zwischen Publikationen
-   - Zeitraum-Filter
-
-3. **Bibliometrie-Modus** (`citation/bibliometrie.html`)
-   - Sortierbare Metriken-Tabelle
-   - Export: CSV, BibTeX
-   - Vergleichsfunktion (Shift+Click)
-   - Trend-Sparklines
-
-4. **Ego-Netzwerk-Modus** (`citation/ego.html`)
-   - Radiales Layout um Fokus-Publikation
-   - 1-Grad und 2-Grad Tiefe
-   - Co-Citation-Visualisierung
-   - Doppelklick zum Fokus-Wechsel
-
-### Neue Dateien erstellt
-
-CSS-Dateien (8 neu):
-- `docs/css/modes/survey-fragebogen.css`
-- `docs/css/modes/survey-verteilung.css`
-- `docs/css/modes/survey-skalen.css`
-- `docs/css/modes/survey-codebook.css`
-- `docs/css/modes/citation-netzwerk.css`
-- `docs/css/modes/citation-timeline.css`
-- `docs/css/modes/citation-bibliometrie.css`
-- `docs/css/modes/citation-ego.css`
-
-JS-Dateien (8 neu):
-- `docs/js/modes/survey-fragebogen.js`
-- `docs/js/modes/survey-verteilung.js`
-- `docs/js/modes/survey-skalen.js`
-- `docs/js/modes/survey-codebook.js`
-- `docs/js/modes/citation-netzwerk.js`
-- `docs/js/modes/citation-timeline.js`
-- `docs/js/modes/citation-bibliometrie.js`
-- `docs/js/modes/citation-ego.js`
-
-HTML-Dateien (8 neu):
-- `docs/examples/survey/fragebogen.html`
-- `docs/examples/survey/verteilung.html`
-- `docs/examples/survey/skalen.html`
-- `docs/examples/survey/codebook.html`
-- `docs/examples/citation/netzwerk.html`
-- `docs/examples/citation/timeline.html`
-- `docs/examples/citation/bibliometrie.html`
-- `docs/examples/citation/ego.html`
-
-### Implementierungsdetails
-
-**Statistik-Funktionen in survey-skalen.js:**
-- Pearson-Korrelation für Item-Total-Korrelation
-- Cronbach's Alpha mit Varianz-Kovarianz-Methode
-- "Alpha wenn Item entfernt" für Reliabilitätsdiagnose
-
-**Graph-Algorithmen in citation-netzwerk.js:**
-- Force-Directed Layout mit Repulsion und Attraktion
-- Radiales und Cluster-Layout als Alternativen
-- SVG-basiertes Rendering mit CSS-Transitions
-
-**Ego-Netzwerk in citation-ego.js:**
-- BFS für Nachbarschaftsberechnung
-- Co-Citation-Erkennung
-- Radiale Positionierung nach Tiefe
+1. Matrix-Modi (Tabelle, Heatmap, Residuen, Pivot)
+2. Genealogy-Modi (Stammbaum, Ahnentafel, Familienblatt, Zeitstrahl)
+3. Concept-Modi (Hierarchie, Graph, Definition, Mapping)
+4. Registry-Modi (Liste, Karteikarte, Standort, Zustand)

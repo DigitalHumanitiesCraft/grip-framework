@@ -36,6 +36,31 @@ docs/
       registry.css              Registry (Workbench)
       codebook.css              Codebook (Workbench)
       schema.css                Schema (Workbench)
+    modes/                      Modi-CSS (24 implementiert)
+      edition-synopse.css       Edition: Synopse
+      edition-apparat.css       Edition: Apparat
+      edition-genetik.css       Edition: Genetik
+      edition-faksimile.css     Edition: Faksimile
+      survey-fragebogen.css     Survey: Fragebogen
+      survey-verteilung.css     Survey: Verteilung
+      survey-skalen.css         Survey: Skalen
+      survey-codebook.css       Survey: Codebook
+      citation-netzwerk.css     Citation: Netzwerk
+      citation-timeline.css     Citation: Timeline
+      citation-bibliometrie.css Citation: Bibliometrie
+      citation-ego.css          Citation: Ego-Netzwerk
+      protokoll-chronologie.css Protokoll: Chronologie
+      protokoll-sprecher.css    Protokoll: Sprecher
+      protokoll-abstimmung.css  Protokoll: Abstimmung
+      protokoll-agenda.css      Protokoll: Agenda
+      transcript-partitur.css   Transcript: Partitur
+      transcript-fliesstext.css Transcript: Fliesstext
+      transcript-codierung.css  Transcript: Codierung
+      transcript-audio-sync.css Transcript: Audio-Sync
+      monitor-dashboard.css     Monitor: Dashboard
+      monitor-timeline.css      Monitor: Timeline
+      monitor-anomalie.css      Monitor: Anomalie
+      monitor-korrelation.css   Monitor: Korrelation
   js/
     main.js                     Entry Point für index.html
     modules/
@@ -71,6 +96,31 @@ docs/
       codebook-entry.js         Entry Point
       schema.js                 Schema-Klasse
       schema-entry.js           Entry Point
+    modes/                      Modi-Module (24 implementiert)
+      edition-synopse.js        Edition: Synopse
+      edition-apparat.js        Edition: Apparat
+      edition-genetik.js        Edition: Genetik
+      edition-faksimile.js      Edition: Faksimile
+      survey-fragebogen.js      Survey: Fragebogen
+      survey-verteilung.js      Survey: Verteilung
+      survey-skalen.js          Survey: Skalen
+      survey-codebook.js        Survey: Codebook
+      citation-netzwerk.js      Citation: Netzwerk
+      citation-timeline.js      Citation: Timeline
+      citation-bibliometrie.js  Citation: Bibliometrie
+      citation-ego.js           Citation: Ego-Netzwerk
+      protokoll-chronologie.js  Protokoll: Chronologie
+      protokoll-sprecher.js     Protokoll: Sprecher
+      protokoll-abstimmung.js   Protokoll: Abstimmung
+      protokoll-agenda.js       Protokoll: Agenda
+      transcript-partitur.js    Transcript: Partitur
+      transcript-fliesstext.js  Transcript: Fliesstext
+      transcript-codierung.js   Transcript: Codierung
+      transcript-audio-sync.js  Transcript: Audio-Sync
+      monitor-dashboard.js      Monitor: Dashboard
+      monitor-timeline.js       Monitor: Timeline
+      monitor-anomalie.js       Monitor: Anomalie
+      monitor-korrelation.js    Monitor: Korrelation
   examples/
     reader.html                 Reader-Demo (Basis)
     scope.html                  Scope-Demo (Basis)
@@ -88,20 +138,50 @@ docs/
     workbench-registry.html     Registry-Spezialisierung
     workbench-codebook.html     Codebook-Spezialisierung
     workbench-schema.html       Schema-Spezialisierung
-    data/
-      reader-correspondence.json    Arendt-Jaspers Korrespondenz
-      reader-edition.json           TEI-Edition (Faust)
-      reader-protokoll.json         Akoma Ntoso Protokoll
-      reader-transcript.json        EXMARaLDA Interview
-      scope-survey.json             DDI-C Umfragedaten
-      scope-monitor.json            SensorThings Zeitreihen
-      scope-matrix.json             SDMX Kreuztabelle
-      navigator-citations.json      MODS Zitationsnetzwerk
-      navigator-genealogy.json      GEDCOM X Stammbaum
-      navigator-concept.json        SKOS Ontologie
-      workbench-metadata.json       LIDO Sammlungsdaten
-      workbench-codebook.json       DDI-Lifecycle Codebook
-      workbench-schema.json         JSON Schema Definition
+    edition/                    Edition-Modi (4)
+      synopse.html
+      apparat.html
+      genetik.html
+      faksimile.html
+    survey/                     Survey-Modi (4)
+      fragebogen.html
+      verteilung.html
+      skalen.html
+      codebook.html
+    citation/                   Citation-Modi (4)
+      netzwerk.html
+      timeline.html
+      bibliometrie.html
+      ego.html
+    protokoll/                  Protokoll-Modi (4)
+      chronologie.html
+      sprecher.html
+      abstimmung.html
+      agenda.html
+    transcript/                 Transcript-Modi (4)
+      partitur.html
+      fliesstext.html
+      codierung.html
+      audio-sync.html
+    monitor/                    Monitor-Modi (4)
+      dashboard.html
+      timeline.html
+      anomalie.html
+      korrelation.html
+  data/
+    reader-correspondence.json    Arendt-Jaspers Korrespondenz
+    reader-edition.json           TEI-Edition (Faust)
+    reader-protokoll.json         Akoma Ntoso Protokoll
+    reader-transcript.json        EXMARaLDA Interview (Mauerfall 1989)
+    scope-survey.json             DDI-C Umfragedaten
+    scope-monitor.json            SensorThings Zeitreihen (Berlin-Mitte)
+    scope-matrix.json             SDMX Kreuztabelle
+    navigator-citations.json      MODS Zitationsnetzwerk
+    navigator-genealogy.json      GEDCOM X Stammbaum
+    navigator-concept.json        SKOS Ontologie
+    workbench-metadata.json       LIDO Sammlungsdaten
+    workbench-codebook.json       DDI-Lifecycle Codebook
+    workbench-schema.json         JSON Schema Definition
 ```
 
 ---

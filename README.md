@@ -82,14 +82,19 @@ grip-framework/
     ├── index.html          # Interaktive Entscheidungsmatrix
     ├── css/
     │   ├── style.css       # Design-System (Organic Academic)
-    │   └── modes/          # Modi-spezifische Styles
+    │   └── modes/          # Modi-spezifische Styles (24 implementiert)
     ├── js/
     │   ├── archetypes/     # 4 Basis-Archetypen
     │   ├── specializations/# 12 Spezialisierungen
-    │   └── modes/          # Modi-Module (z.B. edition-synopse.js)
+    │   └── modes/          # Modi-Module (24 implementiert)
     └── examples/
         ├── *.html          # 16 Demo-Seiten (Basis + Spezialisierungen)
         ├── edition/        # 4 Edition-Modi
+        ├── survey/         # 4 Survey-Modi
+        ├── citation/       # 4 Citation-Modi
+        ├── protokoll/      # 4 Protokoll-Modi
+        ├── transcript/     # 4 Transcript-Modi
+        ├── monitor/        # 4 Monitor-Modi
         └── data/           # JSON-Testdatensätze
 ```
 
@@ -113,11 +118,26 @@ python -m http.server 8000
 
 | Typ | Anzahl | Beschreibung |
 |-----|--------|--------------|
-| HTML | 22 | Landing Page + About + 16 Demo-Seiten + 4 Edition-Modi |
-| JavaScript | 39 | Module, Archetypen, Spezialisierungen, Modi |
-| CSS | 21 | Design-System + Archetyp-Styles + Modi-Styles |
+| HTML | 42 | Landing Page + About + 16 Spezialisierungen + 24 Modi |
+| JavaScript | 63 | Module, Archetypen, Spezialisierungen, 24 Modi |
+| CSS | 45 | Design-System + Archetyp-Styles + 24 Modi-Styles |
 | JSON | 13 | Demo-Datensätze |
 | Markdown | 19 | Wissensbasis |
+
+### Implementierungsfortschritt: 24/48 Modi (50%)
+
+| Spezialisierung | Status |
+|-----------------|--------|
+| Edition | ✅ 4/4 |
+| Survey | ✅ 4/4 |
+| Citation | ✅ 4/4 |
+| Protokoll | ✅ 4/4 |
+| Transcript | ✅ 4/4 |
+| Monitor | ✅ 4/4 |
+| Matrix | ⏳ 0/4 |
+| Genealogy | ⏳ 0/4 |
+| Concept | ⏳ 0/4 |
+| Registry | ⏳ 0/4 |
 
 ## Technologie
 
