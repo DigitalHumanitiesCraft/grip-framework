@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codierung | Transcript | GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/modes/transcript-codierung.css">
+</head>
+<body>
+    <header class="mode-header">
+        <div class="header-left">
+            <a href="../../index.html" class="back-link">&larr; GRIP</a>
+            <span class="breadcrumb">Reader &rsaquo; Transcript &rsaquo; Codierung</span>
+        </div>
+        <nav class="mode-tabs">
+            <a href="partitur.html" class="mode-tab">Partitur</a>
+            <a href="fliesstext.html" class="mode-tab">Fließtext</a>
+            <a href="codierung.html" class="mode-tab active">Codierung</a>
+            <a href="audio-sync.html" class="mode-tab">Audio-Sync</a>
+        </nav>
+        <div class="header-right">
+            <span class="keyboard-hint">⌘1-4 Modi</span>
+        </div>
+    </header>
+
+    <main class="codierung-layout">
+        <!-- Sidebar: Codebook -->
+        <aside class="codierung-sidebar">
+            <section class="codebook-section">
+                <h2>Codebook</h2>
+                <div class="codebook-search">
+                    <input type="text" id="code-search" placeholder="Code suchen...">
+                </div>
+                <div id="codebook-tree" class="codebook-tree">
+                    <!-- Dynamisch: Kategorien mit Codes -->
+                </div>
+            </section>
+
+            <section class="quick-codes">
+                <h3>Schnellcodes</h3>
+                <div id="recent-codes" class="recent-codes">
+                    <!-- Zuletzt verwendete Codes -->
+                </div>
+            </section>
+
+            <section class="codebook-actions">
+                <button id="add-code" class="action-btn">+ Neuer Code</button>
+                <button id="import-codebook" class="action-btn secondary">Import</button>
+            </section>
+        </aside>
+
+        <!-- Hauptbereich: Text mit Codierung -->
+        <section class="codierung-content">
+            <div class="codierung-header">
+                <h1>Qualitative Codierung</h1>
+                <div class="coding-toolbar">
+                    <button id="select-mode" class="toolbar-btn active" title="Auswahl-Modus">
+                        <span class="icon">↔</span> Auswahl
+                    </button>
+                    <button id="code-mode" class="toolbar-btn" title="Codier-Modus">
+                        <span class="icon">🏷</span> Codieren
+                    </button>
+                    <span class="toolbar-sep"></span>
+                    <button id="undo-btn" class="toolbar-btn" title="Rückgängig">↩</button>
+                    <button id="redo-btn" class="toolbar-btn" title="Wiederholen">↪</button>
+                </div>
+            </div>
+
+            <div class="coding-workspace">
+                <div class="text-column" id="text-column">
+                    <!-- Transkript mit codierbaren Segmenten -->
+                </div>
+                <div class="margin-column" id="margin-column">
+                    <!-- Marginalien: Code-Marker -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontext-Panel: Analyse -->
+        <aside class="codierung-context">
+            <section class="selection-info">
+                <h2>Auswahl</h2>
+                <div id="selection-prompt" class="context-prompt">
+                    Markieren Sie Text zum Codieren.
+                </div>
+                <div id="selection-info" class="context-info hidden">
+                    <p id="selected-text" class="selected-text"></p>
+                    <div class="apply-codes">
+                        <h4>Code zuweisen</h4>
+                        <div id="apply-code-list" class="apply-code-list">
+                            <!-- Schnellauswahl -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="co-occurrence">
+                <h3>Code-Kookkurrenz</h3>
+                <div id="co-occurrence-matrix" class="co-occurrence-mini">
+                    <!-- Mini-Matrix der häufigsten Kombinationen -->
+                </div>
+            </section>
+
+            <section class="coding-progress">
+                <h3>Codierfortschritt</h3>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <div class="progress-stats">
+                    <span id="coded-segments">0</span> / <span id="total-segments">0</span> Turns codiert
+                </div>
+            </section>
+
+            <section class="export-coding">
+                <h3>Export</h3>
+                <div class="export-buttons">
+                    <button id="export-maxqda" class="export-btn">MAXQDA</button>
+                    <button id="export-atlas" class="export-btn">ATLAS.ti</button>
+                    <button id="export-csv" class="export-btn">CSV</button>
+                </div>
+            </section>
+        </aside>
+    </main>
+
+    <script type="module" src="../../js/modes/transcript-codierung.js"></script>
+</body>
+</html>

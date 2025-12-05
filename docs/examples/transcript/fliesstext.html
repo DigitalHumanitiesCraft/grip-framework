@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fließtext | Transcript | GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/modes/transcript-fliesstext.css">
+</head>
+<body>
+    <header class="mode-header">
+        <div class="header-left">
+            <a href="../../index.html" class="back-link">&larr; GRIP</a>
+            <span class="breadcrumb">Reader &rsaquo; Transcript &rsaquo; Fließtext</span>
+        </div>
+        <nav class="mode-tabs">
+            <a href="partitur.html" class="mode-tab">Partitur</a>
+            <a href="fliesstext.html" class="mode-tab active">Fließtext</a>
+            <a href="codierung.html" class="mode-tab">Codierung</a>
+            <a href="audio-sync.html" class="mode-tab">Audio-Sync</a>
+        </nav>
+        <div class="header-right">
+            <span class="keyboard-hint">⌘1-4 Modi</span>
+        </div>
+    </header>
+
+    <main class="fliesstext-layout">
+        <!-- Sidebar: Navigation & Filter -->
+        <aside class="fliesstext-sidebar">
+            <section class="interview-info">
+                <h2>Interview</h2>
+                <div class="info-card">
+                    <div id="interview-id" class="interview-id">INT-2024-017</div>
+                    <div id="interview-title" class="interview-title">Zeitzeugengespräch</div>
+                </div>
+            </section>
+
+            <section class="speaker-filter">
+                <h2>Sprecher filtern</h2>
+                <div id="speaker-checkboxes" class="checkbox-group">
+                    <!-- Dynamisch -->
+                </div>
+            </section>
+
+            <section class="display-options">
+                <h2>Darstellung</h2>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="show-timestamps" checked>
+                        Zeitmarken anzeigen
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="show-codes" checked>
+                        Codes als Marginalien
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="show-paralinguistics" checked>
+                        Paralinguistik zeigen
+                    </label>
+                </div>
+            </section>
+
+            <section class="jump-to-section">
+                <h2>Springen zu</h2>
+                <select id="jump-to-turn" class="jump-select">
+                    <option value="">Turn auswählen...</option>
+                </select>
+            </section>
+
+            <section class="reading-stats">
+                <h3>Leseansicht</h3>
+                <dl>
+                    <dt>Sichtbare Turns</dt>
+                    <dd id="stat-visible">0</dd>
+                    <dt>Wörter</dt>
+                    <dd id="stat-words">0</dd>
+                    <dt>Lesezeit</dt>
+                    <dd id="stat-reading-time">0 min</dd>
+                </dl>
+            </section>
+        </aside>
+
+        <!-- Hauptbereich: Fließtext -->
+        <section class="fliesstext-content">
+            <div class="fliesstext-header">
+                <h1 id="fliesstext-title">Lesbare Transkription</h1>
+                <div class="fliesstext-meta">
+                    <span id="interview-date">15.03.2024</span>
+                    <span class="meta-sep">|</span>
+                    <span id="interview-duration">57 Min.</span>
+                    <span class="meta-sep">|</span>
+                    <span id="interview-participants">3 Teilnehmer</span>
+                </div>
+            </div>
+
+            <article class="transcript-text" id="transcript-text">
+                <!-- Dynamisch gefüllt -->
+            </article>
+        </section>
+
+        <!-- Kontext-Panel: Codes & Details -->
+        <aside class="fliesstext-context">
+            <section class="active-codes">
+                <h2>Aktive Codes</h2>
+                <div id="code-prompt" class="context-prompt">
+                    Codes erscheinen hier, wenn Sie über codierten Text hovern.
+                </div>
+                <div id="code-info" class="context-info hidden">
+                    <div id="active-code-list" class="active-code-list">
+                        <!-- Dynamisch -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="code-overview">
+                <h3>Verwendete Codes</h3>
+                <ul id="code-summary" class="code-summary-list">
+                    <!-- Dynamisch: Top-Codes mit Häufigkeit -->
+                </ul>
+            </section>
+
+            <section class="export-section">
+                <h3>Export</h3>
+                <div class="export-buttons">
+                    <button id="export-txt" class="export-btn">TXT</button>
+                    <button id="export-rtf" class="export-btn">RTF</button>
+                    <button id="export-docx" class="export-btn">DOCX</button>
+                </div>
+            </section>
+        </aside>
+    </main>
+
+    <script type="module" src="../../js/modes/transcript-fliesstext.js"></script>
+</body>
+</html>

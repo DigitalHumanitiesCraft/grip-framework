@@ -1,0 +1,444 @@
+/**
+ * Transcript Partitur-Modus Styles
+ * Mehrspur-Darstellung wie Notensystem
+ */
+
+/* Layout */
+.partitur-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr 280px;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    min-height: calc(100vh - 200px);
+}
+
+/* Sidebar */
+.partitur-sidebar section {
+    margin-bottom: var(--space-lg);
+}
+
+.partitur-sidebar h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.info-card {
+    padding: var(--space-sm);
+    background: var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.interview-id {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-archetype-reader);
+}
+
+.interview-title {
+    font-weight: 600;
+    margin: var(--space-xs) 0;
+}
+
+.interview-date {
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+}
+
+/* Speaker Tracks */
+.speaker-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.speaker-track-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
+    margin-bottom: var(--space-xs);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.speaker-track-item:hover {
+    background: var(--color-paper-dark);
+}
+
+.speaker-track-item.active {
+    background: var(--color-paper-dark);
+    font-weight: 600;
+}
+
+.speaker-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.speaker-name {
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.speaker-turns {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+/* Time Navigation */
+.time-display {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    margin-bottom: var(--space-sm);
+}
+
+.time-separator {
+    color: var(--color-ink-light);
+    margin: 0 var(--space-xs);
+}
+
+.time-slider {
+    width: 100%;
+    margin-bottom: var(--space-sm);
+}
+
+.zoom-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+}
+
+.zoom-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--color-ink-lighter);
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.zoom-btn:hover {
+    background: var(--color-paper-dark);
+}
+
+#zoom-level {
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+}
+
+/* Stats */
+.partitur-stats dl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xs);
+}
+
+.partitur-stats dt {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+.partitur-stats dd {
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Main Content */
+.partitur-content {
+    background: white;
+    border-radius: 8px;
+    padding: var(--space-lg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow-x: auto;
+}
+
+.partitur-header h1 {
+    font-family: var(--font-serif);
+    margin-bottom: var(--space-xs);
+}
+
+.partitur-subtitle {
+    font-size: 0.9rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-lg);
+}
+
+/* Partitur Container */
+.partitur-container {
+    position: relative;
+    min-width: 800px;
+}
+
+/* Timeline */
+.partitur-timeline {
+    display: flex;
+    align-items: flex-end;
+    height: 30px;
+    border-bottom: 1px solid var(--color-ink-lighter);
+    margin-bottom: var(--space-sm);
+    padding-left: 100px; /* Space for speaker names */
+}
+
+.timeline-tick {
+    position: absolute;
+    font-size: 0.7rem;
+    color: var(--color-ink-light);
+    font-family: var(--font-mono);
+}
+
+.timeline-tick::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 8px;
+    background: var(--color-ink-lighter);
+    margin-top: 2px;
+}
+
+/* Partitur Tracks */
+.partitur-tracks {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.partitur-track {
+    display: flex;
+    align-items: stretch;
+    min-height: 50px;
+    position: relative;
+}
+
+.track-label {
+    width: 100px;
+    flex-shrink: 0;
+    padding: var(--space-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-right: 2px solid;
+}
+
+.track-content {
+    flex: 1;
+    position: relative;
+    min-height: 50px;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 99px,
+        var(--color-paper-dark) 99px,
+        var(--color-paper-dark) 100px
+    );
+}
+
+/* Turn Segments */
+.turn-segment {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    border-radius: 4px;
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 3px solid;
+}
+
+.turn-segment:hover {
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.turn-segment.selected {
+    z-index: 20;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    outline: 2px solid var(--color-archetype-reader);
+}
+
+.turn-segment.overlap {
+    border: 2px dashed currentColor;
+}
+
+.turn-text-preview {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Paralinguistics Markers */
+.para-marker {
+    background: rgba(255,255,255,0.7);
+    border-radius: 2px;
+    padding: 0 2px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+}
+
+.para-marker.pause {
+    color: #6B7280;
+}
+
+.para-marker.hesitation {
+    color: #F59E0B;
+}
+
+.para-marker.emphasis {
+    font-weight: 700;
+    color: #DC2626;
+}
+
+/* Context Panel */
+.partitur-context section {
+    margin-bottom: var(--space-lg);
+}
+
+.partitur-context h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.context-prompt {
+    padding: var(--space-md);
+    background: var(--color-paper-dark);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+    font-style: italic;
+}
+
+.context-info.hidden {
+    display: none;
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+}
+
+.turn-speaker {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.turn-time {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+}
+
+.turn-text {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+    padding: var(--space-sm);
+    background: var(--color-paper);
+    border-radius: 4px;
+}
+
+.paralinguistics-section h4,
+.codes-section h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+.paralinguistics-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-md) 0;
+    font-size: 0.85rem;
+}
+
+.paralinguistics-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.para-type {
+    font-weight: 500;
+}
+
+.para-symbol {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+}
+
+.codes-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.code-badge {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    color: white;
+}
+
+/* Legend */
+.legend-section h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.legend-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.legend-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) 0;
+}
+
+.legend-symbol {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    background: var(--color-paper-dark);
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .partitur-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .partitur-sidebar,
+    .partitur-context {
+        display: none;
+    }
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline | Monitor | GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/modes/monitor-timeline.css">
+</head>
+<body>
+    <header class="mode-header">
+        <div class="header-left">
+            <a href="../../index.html" class="back-link">&larr; GRIP</a>
+            <span class="breadcrumb">Scope &rsaquo; Monitor &rsaquo; Timeline</span>
+        </div>
+        <nav class="mode-tabs">
+            <a href="dashboard.html" class="mode-tab">Dashboard</a>
+            <a href="timeline.html" class="mode-tab active">Timeline</a>
+            <a href="anomalie.html" class="mode-tab">Anomalie</a>
+            <a href="korrelation.html" class="mode-tab">Korrelation</a>
+        </nav>
+        <div class="header-right">
+            <span class="keyboard-hint">⌘1-4 Modi</span>
+        </div>
+    </header>
+
+    <main class="timeline-layout">
+        <!-- Sidebar: Metric-Auswahl -->
+        <aside class="timeline-sidebar">
+            <section class="metric-selector">
+                <h2>Metriken</h2>
+                <div id="metric-checkboxes" class="checkbox-group">
+                    <!-- Dynamisch -->
+                </div>
+            </section>
+
+            <section class="time-range">
+                <h2>Zeitraum</h2>
+                <div class="range-buttons">
+                    <button class="range-btn" data-range="1h">1h</button>
+                    <button class="range-btn" data-range="6h">6h</button>
+                    <button class="range-btn active" data-range="24h">24h</button>
+                    <button class="range-btn" data-range="7d">7d</button>
+                </div>
+                <div class="custom-range">
+                    <label>Von:</label>
+                    <input type="datetime-local" id="range-from">
+                    <label>Bis:</label>
+                    <input type="datetime-local" id="range-to">
+                </div>
+            </section>
+
+            <section class="chart-options">
+                <h2>Darstellung</h2>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="show-thresholds" checked>
+                        Schwellwerte anzeigen
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="show-annotations" checked>
+                        Ereignisse markieren
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="smooth-lines">
+                        Linien glätten
+                    </label>
+                </div>
+            </section>
+
+            <section class="timeline-stats">
+                <h3>Statistik</h3>
+                <dl>
+                    <dt>Datenpunkte</dt>
+                    <dd id="stat-points">--</dd>
+                    <dt>Zeitspanne</dt>
+                    <dd id="stat-span">--</dd>
+                </dl>
+            </section>
+        </aside>
+
+        <!-- Hauptbereich: Zeitreihen-Chart -->
+        <section class="timeline-content">
+            <div class="timeline-header">
+                <h1 id="timeline-title">Zeitreihenanalyse</h1>
+                <div class="timeline-tools">
+                    <button id="zoom-in" class="tool-btn" title="Hineinzoomen">+</button>
+                    <button id="zoom-out" class="tool-btn" title="Herauszoomen">−</button>
+                    <button id="pan-mode" class="tool-btn" title="Verschieben">⇔</button>
+                    <button id="reset-view" class="tool-btn" title="Zurücksetzen">↺</button>
+                </div>
+            </div>
+
+            <div class="chart-container" id="chart-container">
+                <!-- SVG Zeitreihen-Chart -->
+                <svg id="timeline-chart" class="timeline-chart">
+                    <!-- Dynamisch -->
+                </svg>
+                <div class="chart-tooltip hidden" id="chart-tooltip"></div>
+            </div>
+
+            <!-- Event-Annotations unterhalb -->
+            <div class="events-strip" id="events-strip">
+                <!-- Ereignis-Marker -->
+            </div>
+        </section>
+
+        <!-- Kontext-Panel: Punkt-Details -->
+        <aside class="timeline-context">
+            <section class="point-detail">
+                <h2>Datenpunkt</h2>
+                <div id="point-prompt" class="context-prompt">
+                    Hovern Sie über den Chart für Details.
+                </div>
+                <div id="point-info" class="context-info hidden">
+                    <div class="point-time" id="point-time">--</div>
+                    <div class="point-values" id="point-values">
+                        <!-- Dynamisch: Werte aller sichtbaren Metriken -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="events-section">
+                <h3>Ereignisse im Zeitraum</h3>
+                <ul id="events-list" class="events-list">
+                    <!-- Dynamisch -->
+                </ul>
+            </section>
+
+            <section class="export-section">
+                <h3>Export</h3>
+                <div class="export-buttons">
+                    <button id="export-csv" class="export-btn">CSV</button>
+                    <button id="export-png" class="export-btn">PNG</button>
+                </div>
+            </section>
+        </aside>
+    </main>
+
+    <script type="module" src="../../js/modes/monitor-timeline.js"></script>
+</body>
+</html>

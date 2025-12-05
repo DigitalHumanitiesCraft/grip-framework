@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomalie | Monitor | GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/modes/monitor-anomalie.css">
+</head>
+<body>
+    <header class="mode-header">
+        <div class="header-left">
+            <a href="../../index.html" class="back-link">&larr; GRIP</a>
+            <span class="breadcrumb">Scope &rsaquo; Monitor &rsaquo; Anomalie</span>
+        </div>
+        <nav class="mode-tabs">
+            <a href="dashboard.html" class="mode-tab">Dashboard</a>
+            <a href="timeline.html" class="mode-tab">Timeline</a>
+            <a href="anomalie.html" class="mode-tab active">Anomalie</a>
+            <a href="korrelation.html" class="mode-tab">Korrelation</a>
+        </nav>
+        <div class="header-right">
+            <span class="keyboard-hint">⌘1-4 Modi</span>
+        </div>
+    </header>
+
+    <main class="anomalie-layout">
+        <!-- Sidebar: Schwellwert-Editor -->
+        <aside class="anomalie-sidebar">
+            <section class="detection-config">
+                <h2>Erkennung</h2>
+                <div class="config-item">
+                    <label>Sensitivität</label>
+                    <input type="range" id="sensitivity" min="0" max="100" value="70">
+                    <span id="sensitivity-value">70%</span>
+                </div>
+                <div class="config-item">
+                    <label>Methode</label>
+                    <select id="detection-method">
+                        <option value="zscore">Z-Score</option>
+                        <option value="iqr">IQR</option>
+                        <option value="isolation">Isolation Forest</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="threshold-editor">
+                <h2>Schwellwerte</h2>
+                <div id="threshold-list" class="threshold-list">
+                    <!-- Dynamisch: Metrik-Schwellwerte -->
+                </div>
+            </section>
+
+            <section class="anomalie-stats">
+                <h3>Übersicht</h3>
+                <dl>
+                    <dt>Erkannte Anomalien</dt>
+                    <dd id="stat-anomalies">--</dd>
+                    <dt>Letzte Anomalie</dt>
+                    <dd id="stat-last-anomaly">--</dd>
+                    <dt>Normalbereich</dt>
+                    <dd id="stat-normal-rate">--</dd>
+                </dl>
+            </section>
+        </aside>
+
+        <!-- Hauptbereich: Anomalie-Visualisierung -->
+        <section class="anomalie-content">
+            <div class="anomalie-header">
+                <h1>Anomalie-Erkennung</h1>
+                <div class="filter-tabs">
+                    <button class="filter-btn active" data-filter="all">Alle</button>
+                    <button class="filter-btn" data-filter="unacknowledged">Offen</button>
+                    <button class="filter-btn" data-filter="acknowledged">Bestätigt</button>
+                </div>
+            </div>
+
+            <!-- Anomalie-Score Timeline -->
+            <div class="anomaly-score-chart">
+                <h3>Anomalie-Score über Zeit</h3>
+                <div class="score-chart" id="score-chart">
+                    <!-- SVG Chart -->
+                </div>
+            </div>
+
+            <!-- Anomalie-Liste -->
+            <div class="anomaly-list-container">
+                <h3>Erkannte Anomalien</h3>
+                <ul id="anomaly-list" class="anomaly-list">
+                    <!-- Dynamisch -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- Kontext-Panel: Anomalie-Details -->
+        <aside class="anomalie-context">
+            <section class="anomaly-detail">
+                <h2>Anomalie-Details</h2>
+                <div id="anomaly-prompt" class="context-prompt">
+                    Wählen Sie eine Anomalie aus der Liste.
+                </div>
+                <div id="anomaly-info" class="context-info hidden">
+                    <div class="anomaly-header-detail">
+                        <span id="anomaly-id" class="anomaly-id">ANO-001</span>
+                        <span id="anomaly-score" class="anomaly-score">0.92</span>
+                    </div>
+                    <div class="anomaly-time" id="anomaly-time">--</div>
+
+                    <div class="affected-metrics">
+                        <h4>Betroffene Metriken</h4>
+                        <ul id="affected-metrics-list">
+                            <!-- Dynamisch -->
+                        </ul>
+                    </div>
+
+                    <div class="anomaly-description">
+                        <h4>Beschreibung</h4>
+                        <p id="anomaly-description">--</p>
+                    </div>
+
+                    <div class="probable-cause">
+                        <h4>Mögliche Ursache</h4>
+                        <p id="anomaly-cause">--</p>
+                    </div>
+
+                    <div class="anomaly-actions">
+                        <button id="acknowledge-btn" class="action-btn">✓ Bestätigen</button>
+                        <button id="investigate-btn" class="action-btn secondary">🔍 Untersuchen</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="alert-history">
+                <h3>Alert-Historie</h3>
+                <ul id="alert-history" class="alert-history-list">
+                    <!-- Dynamisch -->
+                </ul>
+            </section>
+        </aside>
+    </main>
+
+    <script type="module" src="../../js/modes/monitor-anomalie.js"></script>
+</body>
+</html>

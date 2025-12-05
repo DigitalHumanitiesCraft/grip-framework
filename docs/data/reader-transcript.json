@@ -1,0 +1,253 @@
+{
+  "interview": {
+    "id": "INT-2024-017",
+    "title": "Zeitzeugengespräch: Mauerfall 1989",
+    "date": "2024-03-15",
+    "location": "Berlin, Studioraum",
+    "duration_seconds": 3420,
+    "audio_url": "audio/INT-2024-017.mp3",
+    "participants": [
+      { "id": "I", "role": "interviewer", "pseudonym": "Interviewer", "color": "#6B7280" },
+      { "id": "P1", "role": "interviewee", "pseudonym": "Frau M.", "color": "#3B82F6", "birth_year": 1965, "gender": "f" },
+      { "id": "P2", "role": "interviewee", "pseudonym": "Herr K.", "color": "#10B981", "birth_year": 1958, "gender": "m" }
+    ]
+  },
+  "turns": [
+    {
+      "id": 1,
+      "speaker": "I",
+      "start_ms": 0,
+      "end_ms": 4500,
+      "text": "Vielen Dank, dass Sie beide heute hier sind. Können Sie mir erzählen, wie Sie den 9. November 1989 erlebt haben?",
+      "codes": []
+    },
+    {
+      "id": 2,
+      "speaker": "P1",
+      "start_ms": 4800,
+      "end_ms": 18200,
+      "text": "Also, das war so (.) äh, ich war damals noch bei der Arbeit, in Prenzlauer Berg, und eine Kollegin kam rein und sagte: 'Hast du gehört? Die Mauer ist auf!'",
+      "paralinguistics": [
+        { "type": "pause", "position": 18, "duration": "short", "symbol": "(.)" },
+        { "type": "hesitation", "position": 22, "symbol": "äh" }
+      ],
+      "codes": ["biography", "workplace", "first_information"]
+    },
+    {
+      "id": 3,
+      "speaker": "P2",
+      "start_ms": 18500,
+      "end_ms": 19800,
+      "text": "Ja, genau!",
+      "paralinguistics": [],
+      "codes": ["confirmation"],
+      "overlap_with": 2
+    },
+    {
+      "id": 4,
+      "speaker": "P1",
+      "start_ms": 19200,
+      "end_ms": 35600,
+      "text": "Und ich dachte erst, das kann doch nicht sein. Wir haben dann zusammen Radio gehört, und dann- dann haben wir beschlossen, sofort zur Bornholmer Straße zu fahren.",
+      "paralinguistics": [
+        { "type": "repair", "position": 89, "symbol": "dann- dann" }
+      ],
+      "codes": ["disbelief", "media_consumption", "decision_making", "location"]
+    },
+    {
+      "id": 5,
+      "speaker": "I",
+      "start_ms": 36000,
+      "end_ms": 39500,
+      "text": "Und Sie, Herr K.? Wo waren Sie zu dem Zeitpunkt?",
+      "codes": []
+    },
+    {
+      "id": 6,
+      "speaker": "P2",
+      "start_ms": 40000,
+      "end_ms": 62000,
+      "text": "Ich saß zu Hause vor dem Fernseher. (2.0) Das war ((lacht)) ja eigentlich ein ganz normaler Abend. Ich wollte die Aktuelle Kamera gucken, und dann kam Schabowski in der Pressekonferenz.",
+      "paralinguistics": [
+        { "type": "pause", "position": 35, "duration": "long", "symbol": "(2.0)" },
+        { "type": "laughter", "position": 48, "symbol": "((lacht))" }
+      ],
+      "codes": ["biography", "home", "media_consumption", "schabowski"]
+    },
+    {
+      "id": 7,
+      "speaker": "I",
+      "start_ms": 62500,
+      "end_ms": 65000,
+      "text": "Wie haben Sie das interpretiert, als Sie das gehört haben?",
+      "codes": []
+    },
+    {
+      "id": 8,
+      "speaker": "P2",
+      "start_ms": 65500,
+      "end_ms": 89000,
+      "text": "Na ja, ich war (.) skeptisch. Man hatte so viel Enttäuschungen erlebt, wissen Sie? Aber dann habe ich meine Frau gerufen und gesagt: 'Komm mal, das musst du sehen!' Und wir haben beide geweint.",
+      "paralinguistics": [
+        { "type": "pause", "position": 15, "duration": "short", "symbol": "(.)" }
+      ],
+      "codes": ["emotion", "skepticism", "family", "crying"]
+    },
+    {
+      "id": 9,
+      "speaker": "P1",
+      "start_ms": 89500,
+      "end_ms": 112000,
+      "text": "Bei mir war das ähnlich. An der Bornholmer Straße war eine RIESENmenschenmenge. Man konnte kaum atmen. Und dann:: als sie die Schranke geöffnet haben ((Stimme bricht)) das vergesse ich nie.",
+      "paralinguistics": [
+        { "type": "emphasis", "position": 41, "symbol": "RIESEN", "type_detail": "loud" },
+        { "type": "lengthening", "position": 89, "symbol": "dann::" },
+        { "type": "voice_quality", "position": 118, "symbol": "((Stimme bricht))" }
+      ],
+      "codes": ["location", "crowd", "emotion", "gate_opening", "memory"]
+    },
+    {
+      "id": 10,
+      "speaker": "I",
+      "start_ms": 112500,
+      "end_ms": 117000,
+      "text": "Sind Sie dann rüber gegangen, nach West-Berlin?",
+      "codes": []
+    },
+    {
+      "id": 11,
+      "speaker": "P1",
+      "start_ms": 117500,
+      "end_ms": 145000,
+      "text": "Ja, natürlich! Wir sind stundenlang durch den Wedding gelaufen. Alles war so- so anders. Die Leuchtreklamen, die Autos, der Geruch sogar. Ich habe mir eine Cola gekauft ((lacht)) echte Coca-Cola! Das klingt heute absurd, aber damals...",
+      "paralinguistics": [
+        { "type": "repair", "position": 71, "symbol": "so- so" },
+        { "type": "laughter", "position": 145, "symbol": "((lacht))" },
+        { "type": "trail_off", "position": 205, "symbol": "..." }
+      ],
+      "codes": ["border_crossing", "west_berlin", "sensory_experience", "consumption", "nostalgia"]
+    },
+    {
+      "id": 12,
+      "speaker": "P2",
+      "start_ms": 145500,
+      "end_ms": 168000,
+      "text": "Wir sind erst am nächsten Morgen rüber. Meine Frau wollte nicht in dem Trubel. Aber dann:: am Checkpoint Charlie, da standen West-Berliner und haben uns Sekt gegeben. Wildfremde Menschen!",
+      "paralinguistics": [
+        { "type": "lengthening", "position": 74, "symbol": "dann::" }
+      ],
+      "codes": ["family", "border_crossing", "checkpoint_charlie", "west_berlin", "solidarity", "celebration"]
+    },
+    {
+      "id": 13,
+      "speaker": "I",
+      "start_ms": 168500,
+      "end_ms": 174000,
+      "text": "Was würden Sie sagen, wie hat dieser Tag Ihr Leben verändert?",
+      "codes": []
+    },
+    {
+      "id": 14,
+      "speaker": "P1",
+      "start_ms": 174500,
+      "end_ms": 205000,
+      "text": "(3.0) Das ist schwer zu sagen. Einerseits war es natürlich eine Befreiung. Andererseits (.) kam dann ja auch viel Unsicherheit. Mein Betrieb wurde abgewickelt, ich musste mich komplett neu orientieren. Aber diese Nacht- diese eine Nacht- die war pures GLÜCK.",
+      "paralinguistics": [
+        { "type": "pause", "position": 0, "duration": "long", "symbol": "(3.0)" },
+        { "type": "pause", "position": 87, "duration": "short", "symbol": "(.)" },
+        { "type": "repair", "position": 213, "symbol": "Nacht- diese eine Nacht-" },
+        { "type": "emphasis", "position": 244, "symbol": "GLÜCK", "type_detail": "loud" }
+      ],
+      "codes": ["reflection", "freedom", "insecurity", "unemployment", "transformation", "emotion", "memory"]
+    },
+    {
+      "id": 15,
+      "speaker": "P2",
+      "start_ms": 205500,
+      "end_ms": 235000,
+      "text": "Ja, ich stimme zu. Es war ein Wendepunkt. Im wahrsten Sinne des Wortes ((lacht leise)). Aber wissen Sie, was mir am meisten geblieben ist? Diese Spontaneität. Dass plötzlich alles möglich schien. Das habe ich seitdem nie wieder so erlebt.",
+      "paralinguistics": [
+        { "type": "laughter", "position": 72, "symbol": "((lacht leise))" }
+      ],
+      "codes": ["turning_point", "possibility", "spontaneity", "reflection", "nostalgia"]
+    },
+    {
+      "id": 16,
+      "speaker": "I",
+      "start_ms": 235500,
+      "end_ms": 240000,
+      "text": "Vielen Dank für diese bewegenden Schilderungen.",
+      "codes": []
+    }
+  ],
+  "codebook": [
+    { "id": "biography", "label": "Biographischer Hintergrund", "color": "#3B82F6", "category": "Kontext" },
+    { "id": "workplace", "label": "Arbeitsplatz", "color": "#6366F1", "category": "Kontext" },
+    { "id": "home", "label": "Zuhause", "color": "#8B5CF6", "category": "Kontext" },
+    { "id": "family", "label": "Familie", "color": "#A855F7", "category": "Kontext" },
+    { "id": "first_information", "label": "Erste Information", "color": "#EC4899", "category": "Ereignisablauf" },
+    { "id": "media_consumption", "label": "Medienkonsum", "color": "#F43F5E", "category": "Ereignisablauf" },
+    { "id": "schabowski", "label": "Schabowski-PK", "color": "#EF4444", "category": "Ereignisablauf" },
+    { "id": "decision_making", "label": "Entscheidungsfindung", "color": "#F97316", "category": "Ereignisablauf" },
+    { "id": "border_crossing", "label": "Grenzübertritt", "color": "#F59E0B", "category": "Ereignisablauf" },
+    { "id": "gate_opening", "label": "Grenzöffnung", "color": "#EAB308", "category": "Ereignisablauf" },
+    { "id": "location", "label": "Ortsangabe", "color": "#84CC16", "category": "Raum" },
+    { "id": "west_berlin", "label": "West-Berlin", "color": "#22C55E", "category": "Raum" },
+    { "id": "checkpoint_charlie", "label": "Checkpoint Charlie", "color": "#10B981", "category": "Raum" },
+    { "id": "crowd", "label": "Menschenmenge", "color": "#14B8A6", "category": "Soziales" },
+    { "id": "solidarity", "label": "Solidarität", "color": "#06B6D4", "category": "Soziales" },
+    { "id": "celebration", "label": "Feier", "color": "#0EA5E9", "category": "Soziales" },
+    { "id": "emotion", "label": "Emotion", "color": "#DC2626", "category": "Erleben" },
+    { "id": "disbelief", "label": "Unglaube", "color": "#B91C1C", "category": "Erleben" },
+    { "id": "skepticism", "label": "Skepsis", "color": "#991B1B", "category": "Erleben" },
+    { "id": "crying", "label": "Weinen", "color": "#7F1D1D", "category": "Erleben" },
+    { "id": "memory", "label": "Erinnerung", "color": "#1E40AF", "category": "Reflexion" },
+    { "id": "reflection", "label": "Reflexion", "color": "#1E3A8A", "category": "Reflexion" },
+    { "id": "freedom", "label": "Freiheit", "color": "#15803D", "category": "Reflexion" },
+    { "id": "insecurity", "label": "Unsicherheit", "color": "#B45309", "category": "Reflexion" },
+    { "id": "transformation", "label": "Transformation", "color": "#7C3AED", "category": "Reflexion" },
+    { "id": "turning_point", "label": "Wendepunkt", "color": "#6D28D9", "category": "Reflexion" },
+    { "id": "nostalgia", "label": "Nostalgie", "color": "#5B21B6", "category": "Reflexion" },
+    { "id": "possibility", "label": "Möglichkeit", "color": "#4C1D95", "category": "Reflexion" },
+    { "id": "spontaneity", "label": "Spontaneität", "color": "#581C87", "category": "Reflexion" },
+    { "id": "sensory_experience", "label": "Sinneseindruck", "color": "#701A75", "category": "Erleben" },
+    { "id": "consumption", "label": "Konsum", "color": "#86198F", "category": "Erleben" },
+    { "id": "unemployment", "label": "Arbeitslosigkeit", "color": "#A21CAF", "category": "Kontext" },
+    { "id": "confirmation", "label": "Bestätigung", "color": "#6B7280", "category": "Interaktion" }
+  ],
+  "code_categories": [
+    { "id": "Kontext", "label": "Biographischer Kontext", "color": "#6366F1" },
+    { "id": "Ereignisablauf", "label": "Ereignisablauf", "color": "#F43F5E" },
+    { "id": "Raum", "label": "Räumliche Bezüge", "color": "#22C55E" },
+    { "id": "Soziales", "label": "Soziale Interaktion", "color": "#06B6D4" },
+    { "id": "Erleben", "label": "Subjektives Erleben", "color": "#DC2626" },
+    { "id": "Reflexion", "label": "Reflexion & Bewertung", "color": "#7C3AED" },
+    { "id": "Interaktion", "label": "Gesprächsinteraktion", "color": "#6B7280" }
+  ],
+  "statistics": {
+    "total_turns": 16,
+    "duration_minutes": 4,
+    "word_count": 623,
+    "speakers": {
+      "I": 6,
+      "P1": 6,
+      "P2": 4
+    },
+    "speaking_time_ms": {
+      "I": 20500,
+      "P1": 107400,
+      "P2": 87000
+    },
+    "code_frequency": {
+      "emotion": 4,
+      "biography": 2,
+      "media_consumption": 2,
+      "reflection": 3,
+      "memory": 2,
+      "border_crossing": 2,
+      "west_berlin": 2,
+      "location": 2,
+      "family": 2
+    }
+  }
+}

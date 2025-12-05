@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partitur | Transcript | GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/modes/transcript-partitur.css">
+</head>
+<body>
+    <header class="mode-header">
+        <div class="header-left">
+            <a href="../../index.html" class="back-link">&larr; GRIP</a>
+            <span class="breadcrumb">Reader &rsaquo; Transcript &rsaquo; Partitur</span>
+        </div>
+        <nav class="mode-tabs">
+            <a href="partitur.html" class="mode-tab active">Partitur</a>
+            <a href="fliesstext.html" class="mode-tab">Fließtext</a>
+            <a href="codierung.html" class="mode-tab">Codierung</a>
+            <a href="audio-sync.html" class="mode-tab">Audio-Sync</a>
+        </nav>
+        <div class="header-right">
+            <span class="keyboard-hint">⌘1-4 Modi</span>
+        </div>
+    </header>
+
+    <main class="partitur-layout">
+        <!-- Sidebar: Sprecher & Navigation -->
+        <aside class="partitur-sidebar">
+            <section class="interview-info">
+                <h2>Interview</h2>
+                <div class="info-card">
+                    <div id="interview-id" class="interview-id">INT-2024-017</div>
+                    <div id="interview-title" class="interview-title">Zeitzeugengespräch</div>
+                    <div id="interview-date" class="interview-date">15.03.2024</div>
+                </div>
+            </section>
+
+            <section class="speaker-tracks">
+                <h2>Sprecher-Spuren</h2>
+                <ul id="speaker-list" class="speaker-list">
+                    <!-- Dynamisch gefüllt -->
+                </ul>
+            </section>
+
+            <section class="time-navigation">
+                <h2>Zeit-Navigation</h2>
+                <div class="time-display">
+                    <span id="current-time">00:00</span>
+                    <span class="time-separator">/</span>
+                    <span id="total-time">00:00</span>
+                </div>
+                <input type="range" id="time-slider" class="time-slider" min="0" max="100" value="0">
+                <div class="zoom-controls">
+                    <button id="zoom-out" class="zoom-btn">−</button>
+                    <span id="zoom-level">100%</span>
+                    <button id="zoom-in" class="zoom-btn">+</button>
+                </div>
+            </section>
+
+            <section class="partitur-stats">
+                <h3>Statistik</h3>
+                <dl>
+                    <dt>Turns</dt>
+                    <dd id="stat-turns">0</dd>
+                    <dt>Wörter</dt>
+                    <dd id="stat-words">0</dd>
+                    <dt>Überlappungen</dt>
+                    <dd id="stat-overlaps">0</dd>
+                </dl>
+            </section>
+        </aside>
+
+        <!-- Hauptbereich: Partitur-Darstellung -->
+        <section class="partitur-content">
+            <div class="partitur-header">
+                <h1 id="partitur-title">Partitur-Darstellung</h1>
+                <p class="partitur-subtitle">Mehrspur-Ansicht mit überlappender Rede</p>
+            </div>
+
+            <!-- Partitur-Grid -->
+            <div class="partitur-container">
+                <div class="partitur-timeline" id="partitur-timeline">
+                    <!-- Zeit-Achse -->
+                </div>
+                <div class="partitur-tracks" id="partitur-tracks">
+                    <!-- Dynamisch: Eine Zeile pro Sprecher -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontext-Panel: Turn-Details -->
+        <aside class="partitur-context">
+            <section class="turn-detail">
+                <h2>Turn-Details</h2>
+                <div id="turn-prompt" class="context-prompt">
+                    Klicken Sie auf einen Turn in der Partitur.
+                </div>
+                <div id="turn-info" class="context-info hidden">
+                    <div class="detail-header">
+                        <span id="turn-speaker" class="turn-speaker">Sprecher</span>
+                        <span id="turn-time" class="turn-time">00:00</span>
+                    </div>
+                    <p id="turn-text" class="turn-text"></p>
+
+                    <div class="paralinguistics-section">
+                        <h4>Paralinguistik</h4>
+                        <ul id="turn-paralinguistics" class="paralinguistics-list">
+                            <!-- Dynamisch -->
+                        </ul>
+                    </div>
+
+                    <div class="codes-section">
+                        <h4>Codes</h4>
+                        <div id="turn-codes" class="codes-badges">
+                            <!-- Dynamisch -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="legend-section">
+                <h3>Legende</h3>
+                <ul class="legend-list">
+                    <li><span class="legend-symbol pause">(.) (2.0)</span> Pause</li>
+                    <li><span class="legend-symbol hesitation">äh</span> Hesitation</li>
+                    <li><span class="legend-symbol repair">word- word</span> Reparatur</li>
+                    <li><span class="legend-symbol emphasis">CAPS</span> Betonung</li>
+                    <li><span class="legend-symbol lengthening">::</span> Dehnung</li>
+                    <li><span class="legend-symbol overlap">[ ]</span> Überlappung</li>
+                </ul>
+            </section>
+        </aside>
+    </main>
+
+    <script type="module" src="../../js/modes/transcript-partitur.js"></script>
+</body>
+</html>

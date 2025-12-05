@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korrelation | Monitor | GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/modes/monitor-korrelation.css">
+</head>
+<body>
+    <header class="mode-header">
+        <div class="header-left">
+            <a href="../../index.html" class="back-link">&larr; GRIP</a>
+            <span class="breadcrumb">Scope &rsaquo; Monitor &rsaquo; Korrelation</span>
+        </div>
+        <nav class="mode-tabs">
+            <a href="dashboard.html" class="mode-tab">Dashboard</a>
+            <a href="timeline.html" class="mode-tab">Timeline</a>
+            <a href="anomalie.html" class="mode-tab">Anomalie</a>
+            <a href="korrelation.html" class="mode-tab active">Korrelation</a>
+        </nav>
+        <div class="header-right">
+            <span class="keyboard-hint">⌘1-4 Modi</span>
+        </div>
+    </header>
+
+    <main class="korrelation-layout">
+        <!-- Sidebar: Metrik-Auswahl -->
+        <aside class="korrelation-sidebar">
+            <section class="metric-selector">
+                <h2>X-Achse</h2>
+                <select id="metric-x" class="metric-select">
+                    <!-- Dynamisch -->
+                </select>
+            </section>
+
+            <section class="metric-selector">
+                <h2>Y-Achse</h2>
+                <select id="metric-y" class="metric-select">
+                    <!-- Dynamisch -->
+                </select>
+            </section>
+
+            <section class="lag-control">
+                <h2>Lag-Korrelation</h2>
+                <div class="lag-slider">
+                    <label>Zeitversatz: <span id="lag-value">0</span> Stunden</label>
+                    <input type="range" id="lag-slider" min="-12" max="12" value="0">
+                </div>
+            </section>
+
+            <section class="correlation-matrix">
+                <h2>Korrelationsmatrix</h2>
+                <div id="correlation-matrix" class="matrix-mini">
+                    <!-- Dynamisch: Mini-Heatmap -->
+                </div>
+            </section>
+
+            <section class="korrelation-stats">
+                <h3>Statistik</h3>
+                <dl>
+                    <dt>Korrelationskoeffizient</dt>
+                    <dd id="stat-coefficient">--</dd>
+                    <dt>Signifikanz (p)</dt>
+                    <dd id="stat-pvalue">--</dd>
+                    <dt>Datenpunkte</dt>
+                    <dd id="stat-n">--</dd>
+                </dl>
+            </section>
+        </aside>
+
+        <!-- Hauptbereich: Scatter-Plot -->
+        <section class="korrelation-content">
+            <div class="korrelation-header">
+                <h1 id="korrelation-title">Korrelationsanalyse</h1>
+                <div class="chart-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="show-regression" checked>
+                        Regressionslinie
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="color-by-time" checked>
+                        Zeitfärbung
+                    </label>
+                </div>
+            </div>
+
+            <div class="scatter-container" id="scatter-container">
+                <!-- SVG Scatter Plot -->
+                <svg id="scatter-plot" class="scatter-plot">
+                    <!-- Dynamisch -->
+                </svg>
+                <div class="scatter-tooltip hidden" id="scatter-tooltip"></div>
+            </div>
+
+            <!-- Zeit-Legende -->
+            <div class="time-legend" id="time-legend">
+                <span class="legend-early">Früh</span>
+                <div class="legend-gradient"></div>
+                <span class="legend-late">Spät</span>
+            </div>
+        </section>
+
+        <!-- Kontext-Panel: Analyse-Details -->
+        <aside class="korrelation-context">
+            <section class="correlation-detail">
+                <h2>Analyse</h2>
+                <div class="correlation-result">
+                    <div class="result-coefficient" id="result-coefficient">
+                        <span class="coefficient-value">--</span>
+                        <span class="coefficient-label">r</span>
+                    </div>
+                    <div class="result-interpretation" id="result-interpretation">
+                        Wählen Sie zwei Metriken zur Analyse.
+                    </div>
+                </div>
+            </section>
+
+            <section class="predefined-correlations">
+                <h3>Bekannte Zusammenhänge</h3>
+                <ul id="known-correlations" class="known-correlations-list">
+                    <!-- Dynamisch: Vordefinierte Korrelationen aus Daten -->
+                </ul>
+            </section>
+
+            <section class="regression-info">
+                <h3>Regression</h3>
+                <dl>
+                    <dt>Steigung (m)</dt>
+                    <dd id="regression-slope">--</dd>
+                    <dt>Achsenabschnitt (b)</dt>
+                    <dd id="regression-intercept">--</dd>
+                    <dt>R²</dt>
+                    <dd id="regression-r2">--</dd>
+                </dl>
+            </section>
+
+            <section class="export-section">
+                <h3>Export</h3>
+                <div class="export-buttons">
+                    <button id="export-csv" class="export-btn">CSV</button>
+                    <button id="export-png" class="export-btn">PNG</button>
+                </div>
+            </section>
+        </aside>
+    </main>
+
+    <script type="module" src="../../js/modes/monitor-korrelation.js"></script>
+</body>
+</html>

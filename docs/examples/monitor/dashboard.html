@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Monitor | GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/modes/monitor-dashboard.css">
+</head>
+<body>
+    <header class="mode-header">
+        <div class="header-left">
+            <a href="../../index.html" class="back-link">&larr; GRIP</a>
+            <span class="breadcrumb">Scope &rsaquo; Monitor &rsaquo; Dashboard</span>
+        </div>
+        <nav class="mode-tabs">
+            <a href="dashboard.html" class="mode-tab active">Dashboard</a>
+            <a href="timeline.html" class="mode-tab">Timeline</a>
+            <a href="anomalie.html" class="mode-tab">Anomalie</a>
+            <a href="korrelation.html" class="mode-tab">Korrelation</a>
+        </nav>
+        <div class="header-right">
+            <span class="keyboard-hint">⌘1-4 Modi</span>
+        </div>
+    </header>
+
+    <main class="dashboard-layout">
+        <!-- Sidebar: System-Info & Alerts -->
+        <aside class="dashboard-sidebar">
+            <section class="system-info">
+                <h2>System</h2>
+                <div class="info-card">
+                    <div id="system-name" class="system-name">Messstation</div>
+                    <div id="system-location" class="system-location">Standort</div>
+                    <div class="system-status">
+                        <span class="status-indicator normal"></span>
+                        <span id="system-status">Normal</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="refresh-controls">
+                <h2>Aktualisierung</h2>
+                <div class="refresh-options">
+                    <button id="refresh-now" class="refresh-btn">↻ Jetzt</button>
+                    <select id="auto-refresh" class="refresh-select">
+                        <option value="0">Manuell</option>
+                        <option value="10">10 Sek</option>
+                        <option value="30">30 Sek</option>
+                        <option value="60" selected>1 Min</option>
+                    </select>
+                </div>
+                <div class="last-update">
+                    Letzte Aktualisierung: <span id="last-update">--:--</span>
+                </div>
+            </section>
+
+            <section class="alerts-section">
+                <h2>Aktive Warnungen <span id="alert-count" class="alert-badge">0</span></h2>
+                <ul id="alerts-list" class="alerts-list">
+                    <!-- Dynamisch gefüllt -->
+                </ul>
+            </section>
+
+            <section class="system-stats">
+                <h3>System-Status</h3>
+                <dl>
+                    <dt>Uptime</dt>
+                    <dd id="stat-uptime">--</dd>
+                    <dt>Datenqualität</dt>
+                    <dd id="stat-quality">--</dd>
+                    <dt>Messungen heute</dt>
+                    <dd id="stat-readings">--</dd>
+                </dl>
+            </section>
+        </aside>
+
+        <!-- Hauptbereich: Kachel-Grid -->
+        <section class="dashboard-content">
+            <div class="dashboard-header">
+                <h1 id="dashboard-title">Umwelt-Monitoring</h1>
+                <div class="view-toggle">
+                    <button id="view-grid" class="view-btn active">◫ Kacheln</button>
+                    <button id="view-list" class="view-btn">☰ Liste</button>
+                </div>
+            </div>
+
+            <div class="metrics-grid" id="metrics-grid">
+                <!-- Dynamisch: Ampel-Kacheln für jeden Metric -->
+            </div>
+        </section>
+
+        <!-- Kontext-Panel: Metric-Details -->
+        <aside class="dashboard-context">
+            <section class="metric-detail">
+                <h2>Metric-Details</h2>
+                <div id="metric-prompt" class="context-prompt">
+                    Wählen Sie eine Metrik aus dem Dashboard.
+                </div>
+                <div id="metric-info" class="context-info hidden">
+                    <div class="metric-header">
+                        <span id="detail-label" class="detail-label">Metrik</span>
+                        <span id="detail-status" class="detail-status normal">Normal</span>
+                    </div>
+                    <div class="metric-value-display">
+                        <span id="detail-value" class="detail-value">--</span>
+                        <span id="detail-unit" class="detail-unit">unit</span>
+                    </div>
+                    <div class="metric-trend">
+                        <span id="detail-trend" class="trend-indicator">→</span>
+                        <span id="detail-trend-text">stabil</span>
+                    </div>
+
+                    <div class="thresholds-section">
+                        <h4>Schwellwerte</h4>
+                        <div class="threshold-bar" id="threshold-bar">
+                            <!-- Visualisierung -->
+                        </div>
+                        <dl class="threshold-values">
+                            <dt>Kritisch niedrig</dt>
+                            <dd id="th-crit-low">--</dd>
+                            <dt>Warnung niedrig</dt>
+                            <dd id="th-warn-low">--</dd>
+                            <dt>Warnung hoch</dt>
+                            <dd id="th-warn-high">--</dd>
+                            <dt>Kritisch hoch</dt>
+                            <dd id="th-crit-high">--</dd>
+                        </dl>
+                    </div>
+
+                    <div class="mini-chart">
+                        <h4>Verlauf (letzte Stunden)</h4>
+                        <div id="mini-chart" class="mini-chart-container">
+                            <!-- SVG Sparkline -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </aside>
+    </main>
+
+    <script type="module" src="../../js/modes/monitor-dashboard.js"></script>
+</body>
+</html>

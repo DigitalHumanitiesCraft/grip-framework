@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio-Sync | Transcript | GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/modes/transcript-audio-sync.css">
+</head>
+<body>
+    <header class="mode-header">
+        <div class="header-left">
+            <a href="../../index.html" class="back-link">&larr; GRIP</a>
+            <span class="breadcrumb">Reader &rsaquo; Transcript &rsaquo; Audio-Sync</span>
+        </div>
+        <nav class="mode-tabs">
+            <a href="partitur.html" class="mode-tab">Partitur</a>
+            <a href="fliesstext.html" class="mode-tab">Fließtext</a>
+            <a href="codierung.html" class="mode-tab">Codierung</a>
+            <a href="audio-sync.html" class="mode-tab active">Audio-Sync</a>
+        </nav>
+        <div class="header-right">
+            <span class="keyboard-hint">⌘1-4 Modi</span>
+        </div>
+    </header>
+
+    <main class="audio-sync-layout">
+        <!-- Sidebar: Audio-Steuerung -->
+        <aside class="audio-sidebar">
+            <section class="audio-info">
+                <h2>Audio</h2>
+                <div class="info-card">
+                    <div id="audio-file" class="audio-file">INT-2024-017.mp3</div>
+                    <div id="audio-duration" class="audio-duration">57:00</div>
+                </div>
+            </section>
+
+            <section class="audio-controls">
+                <h2>Wiedergabe</h2>
+                <div class="playback-buttons">
+                    <button id="skip-back" class="control-btn" title="10s zurück">⏪</button>
+                    <button id="play-pause" class="control-btn play-btn" title="Play/Pause">▶</button>
+                    <button id="skip-forward" class="control-btn" title="10s vor">⏩</button>
+                </div>
+                <div class="speed-control">
+                    <label>Geschwindigkeit</label>
+                    <div class="speed-buttons">
+                        <button class="speed-btn" data-speed="0.5">0.5×</button>
+                        <button class="speed-btn active" data-speed="1">1×</button>
+                        <button class="speed-btn" data-speed="1.5">1.5×</button>
+                        <button class="speed-btn" data-speed="2">2×</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="loop-control">
+                <h2>Loop</h2>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="loop-turn">
+                    Aktuellen Turn loopen
+                </label>
+                <div class="loop-range hidden" id="loop-range-controls">
+                    <label>Loop-Bereich (ms)</label>
+                    <div class="loop-inputs">
+                        <input type="number" id="loop-start" placeholder="Start">
+                        <span>–</span>
+                        <input type="number" id="loop-end" placeholder="Ende">
+                    </div>
+                </div>
+            </section>
+
+            <section class="jump-section">
+                <h2>Springen zu</h2>
+                <select id="jump-to-turn" class="jump-select">
+                    <option value="">Turn auswählen...</option>
+                </select>
+            </section>
+
+            <section class="sync-stats">
+                <h3>Synchronisation</h3>
+                <dl>
+                    <dt>Aktuelle Position</dt>
+                    <dd id="stat-position">00:00</dd>
+                    <dt>Aktueller Turn</dt>
+                    <dd id="stat-current-turn">-</dd>
+                    <dt>Verbleibend</dt>
+                    <dd id="stat-remaining">00:00</dd>
+                </dl>
+            </section>
+        </aside>
+
+        <!-- Hauptbereich: Waveform & Text -->
+        <section class="audio-sync-content">
+            <div class="audio-sync-header">
+                <h1 id="sync-title">Audio-Synchronisation</h1>
+                <p class="sync-subtitle">Karaoke-Highlighting während der Wiedergabe</p>
+            </div>
+
+            <!-- Waveform (Platzhalter) -->
+            <div class="waveform-container">
+                <div id="waveform" class="waveform">
+                    <div class="waveform-placeholder">
+                        Waveform-Visualisierung (Prototyp)
+                    </div>
+                    <div id="waveform-progress" class="waveform-progress"></div>
+                </div>
+                <div class="waveform-time">
+                    <span id="time-current">00:00</span>
+                    <span id="time-total">00:00</span>
+                </div>
+            </div>
+
+            <!-- Synchronisierter Text -->
+            <div class="synced-transcript" id="synced-transcript">
+                <!-- Turns mit Karaoke-Highlighting -->
+            </div>
+        </section>
+
+        <!-- Kontext-Panel: Turn-Details -->
+        <aside class="audio-context">
+            <section class="active-turn">
+                <h2>Aktiver Turn</h2>
+                <div id="turn-prompt" class="context-prompt">
+                    Starten Sie die Wiedergabe.
+                </div>
+                <div id="turn-info" class="context-info hidden">
+                    <div class="turn-header">
+                        <span id="turn-speaker" class="turn-speaker">Sprecher</span>
+                        <span id="turn-number" class="turn-number">#1</span>
+                    </div>
+                    <div class="turn-timing">
+                        <span id="turn-start">00:00</span> – <span id="turn-end">00:00</span>
+                        <span id="turn-duration" class="turn-duration">(0s)</span>
+                    </div>
+                    <div class="turn-codes">
+                        <h4>Codes</h4>
+                        <div id="turn-code-badges" class="code-badges">
+                            <!-- Dynamisch -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="verification-section">
+                <h3>Verifikation</h3>
+                <p class="verification-hint">
+                    Klicken Sie auf Text-Segmente, um zur entsprechenden Audio-Position zu springen.
+                </p>
+                <div class="verification-buttons">
+                    <button id="mark-verified" class="verify-btn">✓ Verifiziert</button>
+                    <button id="mark-unclear" class="verify-btn unclear">? Unklar</button>
+                </div>
+            </section>
+
+            <section class="keyboard-shortcuts">
+                <h3>Tastenkürzel</h3>
+                <ul class="shortcut-list">
+                    <li><kbd>Space</kbd> Play/Pause</li>
+                    <li><kbd>←</kbd> 5s zurück</li>
+                    <li><kbd>→</kbd> 5s vor</li>
+                    <li><kbd>↑</kbd> Vorh. Turn</li>
+                    <li><kbd>↓</kbd> Nächst. Turn</li>
+                </ul>
+            </section>
+        </aside>
+    </main>
+
+    <script type="module" src="../../js/modes/transcript-audio-sync.js"></script>
+</body>
+</html>

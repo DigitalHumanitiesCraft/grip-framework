@@ -1,0 +1,116 @@
+{
+  "system": {
+    "name": "Umweltmessstation Berlin-Mitte",
+    "location": "Alexanderplatz",
+    "id": "STAT-BER-001",
+    "type": "environmental",
+    "coordinates": { "lat": 52.5219, "lon": 13.4132 }
+  },
+  "metrics": [
+    {
+      "id": "temperature",
+      "label": "Temperatur",
+      "unit": "°C",
+      "color": "#EF4444",
+      "thresholds": { "warning_low": 5, "critical_low": 0, "warning_high": 30, "critical_high": 35 },
+      "normal_range": { "min": 10, "max": 25 }
+    },
+    {
+      "id": "humidity",
+      "label": "Luftfeuchtigkeit",
+      "unit": "%",
+      "color": "#3B82F6",
+      "thresholds": { "warning_low": 30, "critical_low": 20, "warning_high": 80, "critical_high": 90 },
+      "normal_range": { "min": 40, "max": 70 }
+    },
+    {
+      "id": "pm25",
+      "label": "Feinstaub PM2.5",
+      "unit": "µg/m³",
+      "color": "#8B5CF6",
+      "thresholds": { "warning_low": null, "critical_low": null, "warning_high": 25, "critical_high": 50 },
+      "normal_range": { "min": 0, "max": 15 }
+    },
+    {
+      "id": "no2",
+      "label": "Stickstoffdioxid",
+      "unit": "µg/m³",
+      "color": "#F59E0B",
+      "thresholds": { "warning_low": null, "critical_low": null, "warning_high": 100, "critical_high": 200 },
+      "normal_range": { "min": 0, "max": 40 }
+    },
+    {
+      "id": "pressure",
+      "label": "Luftdruck",
+      "unit": "hPa",
+      "color": "#10B981",
+      "thresholds": { "warning_low": 980, "critical_low": 970, "warning_high": 1040, "critical_high": 1050 },
+      "normal_range": { "min": 1000, "max": 1025 }
+    },
+    {
+      "id": "wind_speed",
+      "label": "Windgeschwindigkeit",
+      "unit": "km/h",
+      "color": "#06B6D4",
+      "thresholds": { "warning_low": null, "critical_low": null, "warning_high": 50, "critical_high": 80 },
+      "normal_range": { "min": 0, "max": 30 }
+    }
+  ],
+  "readings": [
+    { "timestamp": "2024-03-15T06:00:00Z", "temperature": 8.2, "humidity": 78, "pm25": 12, "no2": 28, "pressure": 1015, "wind_speed": 8 },
+    { "timestamp": "2024-03-15T07:00:00Z", "temperature": 9.1, "humidity": 75, "pm25": 18, "no2": 45, "pressure": 1014, "wind_speed": 6 },
+    { "timestamp": "2024-03-15T08:00:00Z", "temperature": 10.5, "humidity": 71, "pm25": 28, "no2": 82, "pressure": 1014, "wind_speed": 5 },
+    { "timestamp": "2024-03-15T09:00:00Z", "temperature": 12.3, "humidity": 65, "pm25": 35, "no2": 95, "pressure": 1013, "wind_speed": 7 },
+    { "timestamp": "2024-03-15T10:00:00Z", "temperature": 14.8, "humidity": 58, "pm25": 31, "no2": 78, "pressure": 1013, "wind_speed": 12 },
+    { "timestamp": "2024-03-15T11:00:00Z", "temperature": 16.2, "humidity": 52, "pm25": 22, "no2": 55, "pressure": 1012, "wind_speed": 15 },
+    { "timestamp": "2024-03-15T12:00:00Z", "temperature": 17.5, "humidity": 48, "pm25": 18, "no2": 42, "pressure": 1012, "wind_speed": 18 },
+    { "timestamp": "2024-03-15T13:00:00Z", "temperature": 18.3, "humidity": 45, "pm25": 15, "no2": 38, "pressure": 1011, "wind_speed": 20 },
+    { "timestamp": "2024-03-15T14:00:00Z", "temperature": 19.1, "humidity": 43, "pm25": 14, "no2": 35, "pressure": 1011, "wind_speed": 22 },
+    { "timestamp": "2024-03-15T14:30:00Z", "temperature": 32.5, "humidity": 35, "pm25": 48, "no2": 125, "pressure": 1010, "wind_speed": 5, "anomaly": true },
+    { "timestamp": "2024-03-15T15:00:00Z", "temperature": 28.2, "humidity": 38, "pm25": 42, "no2": 105, "pressure": 1010, "wind_speed": 8 },
+    { "timestamp": "2024-03-15T16:00:00Z", "temperature": 22.5, "humidity": 45, "pm25": 32, "no2": 68, "pressure": 1011, "wind_speed": 12 },
+    { "timestamp": "2024-03-15T17:00:00Z", "temperature": 18.8, "humidity": 52, "pm25": 28, "no2": 75, "pressure": 1011, "wind_speed": 10 },
+    { "timestamp": "2024-03-15T18:00:00Z", "temperature": 16.2, "humidity": 58, "pm25": 35, "no2": 88, "pressure": 1012, "wind_speed": 8 },
+    { "timestamp": "2024-03-15T19:00:00Z", "temperature": 14.5, "humidity": 64, "pm25": 25, "no2": 62, "pressure": 1012, "wind_speed": 6 },
+    { "timestamp": "2024-03-15T20:00:00Z", "temperature": 12.8, "humidity": 70, "pm25": 18, "no2": 45, "pressure": 1013, "wind_speed": 5 },
+    { "timestamp": "2024-03-15T21:00:00Z", "temperature": 11.2, "humidity": 74, "pm25": 14, "no2": 32, "pressure": 1014, "wind_speed": 4 },
+    { "timestamp": "2024-03-15T22:00:00Z", "temperature": 10.1, "humidity": 78, "pm25": 11, "no2": 25, "pressure": 1014, "wind_speed": 3 }
+  ],
+  "current_values": {
+    "temperature": { "value": 10.1, "status": "normal", "trend": "falling" },
+    "humidity": { "value": 78, "status": "warning", "trend": "rising" },
+    "pm25": { "value": 11, "status": "normal", "trend": "falling" },
+    "no2": { "value": 25, "status": "normal", "trend": "falling" },
+    "pressure": { "value": 1014, "status": "normal", "trend": "rising" },
+    "wind_speed": { "value": 3, "status": "normal", "trend": "falling" }
+  },
+  "alerts": [
+    { "id": "ALT-001", "timestamp": "2024-03-15T14:30:00Z", "metric": "temperature", "type": "threshold_exceeded", "value": 32.5, "threshold": 30, "severity": "warning", "acknowledged": true, "acknowledged_by": "admin", "message": "Temperatur über Warngrenze" },
+    { "id": "ALT-002", "timestamp": "2024-03-15T14:30:00Z", "metric": "pm25", "type": "threshold_exceeded", "value": 48, "threshold": 25, "severity": "warning", "acknowledged": false, "message": "PM2.5 erhöht" },
+    { "id": "ALT-003", "timestamp": "2024-03-15T14:30:00Z", "metric": "no2", "type": "threshold_exceeded", "value": 125, "threshold": 100, "severity": "warning", "acknowledged": false, "message": "NO2 über Warngrenze" },
+    { "id": "ALT-004", "timestamp": "2024-03-15T08:00:00Z", "metric": "pm25", "type": "threshold_exceeded", "value": 28, "threshold": 25, "severity": "warning", "acknowledged": true, "acknowledged_by": "system", "message": "Morgendliche PM2.5-Spitze" }
+  ],
+  "anomalies": [
+    {
+      "id": "ANO-001",
+      "timestamp": "2024-03-15T14:30:00Z",
+      "metrics_affected": ["temperature", "pm25", "no2", "wind_speed"],
+      "anomaly_score": 0.92,
+      "description": "Multivariate Anomalie: Temperaturspitze mit erhöhten Schadstoffen bei geringer Windgeschwindigkeit",
+      "probable_cause": "Lokale Wärmequelle oder Messfehler"
+    }
+  ],
+  "correlations": [
+    { "metric_a": "temperature", "metric_b": "humidity", "coefficient": -0.87, "description": "Starke negative Korrelation" },
+    { "metric_a": "pm25", "metric_b": "no2", "coefficient": 0.78, "description": "Starke positive Korrelation (Verkehrsemissionen)" },
+    { "metric_a": "wind_speed", "metric_b": "pm25", "coefficient": -0.65, "description": "Mittlere negative Korrelation (Verdünnung)" },
+    { "metric_a": "temperature", "metric_b": "no2", "coefficient": 0.42, "description": "Schwache positive Korrelation" }
+  ],
+  "statistics": {
+    "readings_count": 18,
+    "alerts_count": 4,
+    "anomalies_count": 1,
+    "uptime_percent": 99.8,
+    "data_quality": "good"
+  }
+}
