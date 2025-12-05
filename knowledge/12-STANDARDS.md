@@ -2,7 +2,7 @@
 
 Dieses Dokument definiert die Mapping-Logik zwischen GRIP-Archetypen und wissenschaftlichen Metadaten-Standards. Es dient als Referenz für LLMs und Parser-Module zur Datenerkennung und -konvertierung.
 
-Abhängigkeiten: [[10-SPEZIALISIERUNGEN]], [[05-ARCHETYPEN]], [[14-EPICS]]
+Abhängigkeiten: [[10-SPEZIALISIERUNGEN]], [[05-ARCHETYPEN]]
 
 ---
 
@@ -491,7 +491,7 @@ Trigger-Keys: `$schema`, `properties`, `required`, `$ref`
 
 ## Verknüpfungen
 
-- [[10-SPEZIALISIERUNGEN]] enthält das vollständige Erkennungsprotokoll
-- [[14-EPICS]] dokumentiert Datenfelder und JSON-Schemata pro Spezialisierung
+- [[10-SPEZIALISIERUNGEN]] enthält Erkennungsprotokoll und JSON-Schemata
 - [[05-ARCHETYPEN]] beschreibt die Basis-Archetypen
 - [[11-CODE-MAP]] dokumentiert die technische Implementierung
+- [[15-MODI]] definiert Modi als dritte Taxonomie-Ebene

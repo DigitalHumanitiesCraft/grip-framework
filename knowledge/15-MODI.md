@@ -2,7 +2,7 @@
 
 Dieses Dokument definiert die Modi für alle 12 Spezialisierungen. Ein Modus ist eine Perspektive auf denselben Datensatz innerhalb einer Spezialisierung.
 
-Abhängigkeiten: [[05-ARCHETYPEN]], [[10-SPEZIALISIERUNGEN]], [[14-EPICS]]
+Abhängigkeiten: [[05-ARCHETYPEN]], [[10-SPEZIALISIERUNGEN]]
 
 ---
 
@@ -194,6 +194,6 @@ Gesamt: 12 Spezialisierungen × 4 Modi = 48 Modi
 ## Verknüpfungen
 
 - [[05-ARCHETYPEN]] definiert die vier Basis-Archetypen
-- [[10-SPEZIALISIERUNGEN]] katalogisiert die 12 Spezialisierungen
-- [[14-EPICS]] enthält User Stories, die Modi-Features spezifizieren
+- [[10-SPEZIALISIERUNGEN]] spezifiziert alle 12 Spezialisierungen mit JSON-Schemata
 - [[12-STANDARDS]] dokumentiert Datenformate für Modi-spezifische Felder
+- [[11-CODE-MAP]] dokumentiert die technische Implementierung

@@ -36,17 +36,15 @@ Der Projektauftrag definiert Vision und Grundannahmen. Die Archetypen-Spezifikat
 
 09-WORKFLOWS.md beschreibt typische Pfade durch die Archetypen für verschiedene Forschungstypen.
 
-10-SPEZIALISIERUNGEN.md definiert drei operationalisierte Varianten pro Archetyp mit unterscheidenden UI-Elementen, spezifischen Datenfeldern und Erkennungsheuristiken.
+10-SPEZIALISIERUNGEN.md spezifiziert alle 12 Spezialisierungen vollständig: Erkennungsheuristiken, kognitive Werkzeuge, UI-Elemente und JSON-Datenstrukturen.
+
+11-CODE-MAP.md dokumentiert die JavaScript-Architektur, Vererbungshierarchien, Modus-Wechsel-Architektur und den Wissensbedarf pro Datei.
 
 15-MODI.md definiert die dritte Taxonomie-Ebene: vier Modi pro Spezialisierung, die verschiedene Perspektiven auf denselben Datensatz ermöglichen.
-
-16-CONTEXT-MAP.md dokumentiert die Dateistruktur für Modi-Implementierung und welche Wissensbasis-Dokumente für welche Dateien relevant sind.
 
 12-STANDARDS.md dokumentiert die wissenschaftlichen Metadatenstandards (TEI, DDI, LIDO, SKOS) und ihre Zuordnung zu Spezialisierungen.
 
 13-RESEARCH-PLAN.md enthält den Recherche-Plan für alle 12 Spezialisierungen mit Primärquellen, Aufgaben und Priorisierung.
-
-14-EPICS.md spezifiziert die vier Kern-Spezialisierungen (Edition, Survey, Citation, Registry) mit Epics, User Stories und Akzeptanzkriterien, abgeleitet aus Fachstandards und Forschungsprozessen.
 
 DESIGN.md spezifiziert die visuelle Identität (Organic Academic) und die kognitiven Begründungen für Interface-Entscheidungen.
 
@@ -101,12 +99,10 @@ Die Versionierung erfolgt über das JOURNAL.md, das jeden Meilenstein dokumentie
 - [[02-MAPPINGS]] enthält die Zuordnungslogik
 - [[07-PROTOTYP]] definiert den Website-Prototypen
 - [[09-WORKFLOWS]] beschreibt Pfade durch die Archetypen
-- [[10-SPEZIALISIERUNGEN]] definiert operationalisierte Archetyp-Varianten
-- [[11-CODE-MAP]] dokumentiert die JavaScript-Architektur
+- [[10-SPEZIALISIERUNGEN]] spezifiziert alle 12 Spezialisierungen vollständig
+- [[11-CODE-MAP]] dokumentiert JavaScript-Architektur und Wissensbedarf
 - [[12-STANDARDS]] dokumentiert wissenschaftliche Metadatenstandards
 - [[13-RESEARCH-PLAN]] enthält Recherche-Plan für Spezialisierungen
-- [[14-EPICS]] spezifiziert Epics und User Stories für Kern-Spezialisierungen
 - [[15-MODI]] definiert Modi als dritte Taxonomie-Ebene
-- [[16-CONTEXT-MAP]] dokumentiert Dateistruktur und Wissensbedarf pro Modus
 - [[DESIGN]] spezifiziert visuelle Identität und kognitive Begründungen
 - [[CLAUDE]] definiert Stilregeln und Knowledge-Engineering-Methode

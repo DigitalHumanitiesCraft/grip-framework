@@ -1,8 +1,8 @@
 # Code Map: JavaScript und HTML-Architektur
 
-Dieses Dokument beschreibt die technische Struktur des GRIP-Prototypen. Es definiert die JavaScript-Module, ihre Abhängigkeiten und die Verbindungen zu HTML-Dateien.
+Dieses Dokument beschreibt die technische Struktur des GRIP-Prototypen. Es definiert JavaScript-Module, Abhängigkeiten, Vererbungshierarchien und den Wissensbedarf pro Datei.
 
-Abhängigkeiten: [[01-ARCHITEKTUR]], [[07-PROTOTYP]]
+Abhängigkeiten: [[01-ARCHITEKTUR]], [[07-PROTOTYP]], [[10-SPEZIALISIERUNGEN]]
 
 ---
 
@@ -414,11 +414,96 @@ Neue Spezialisierungen folgen dem Muster:
 
 ---
 
+## Vererbungs-Hierarchien
+
+### CSS-Vererbung
+
+```
+style.css (Basis)
+  └── archetypes/{archetyp}.css
+        └── specializations/{spezialisierung}.css
+              └── modes/{spezialisierung}-{modus}.css
+```
+
+Jede Ebene importiert die Vorgänger-Styles.
+
+### JS-Vererbung
+
+```
+BaseInterface (abstrakt)
+  └── Adaptive{Archetyp} (reader.js, scope.js, etc.)
+        └── {Spezialisierung}Interface (edition.js, survey.js, etc.)
+              └── {Spezialisierung}{Modus}Mode (edition-synopse.js, etc.)
+```
+
+Modi sind Render-Module, die in die Spezialisierungs-Klasse eingehängt werden.
+
+---
+
+## Modus-Wechsel-Architektur
+
+### URL-Schema
+
+```
+/examples/{spezialisierung}/{modus}.html?data={datensatz}
+
+Beispiele:
+/examples/edition/synopse.html?data=faust
+/examples/citation/ego.html?focus=doi:10.1234/xyz
+/examples/registry/karteikarte.html?inv=INV-001
+```
+
+### Shared State
+
+Modi einer Spezialisierung teilen:
+- Geladene Daten (JSON)
+- Aktuelle Selektion (selectedId)
+- Filter-Einstellungen
+- Scroll-Position (wo sinnvoll)
+
+Der State wird im localStorage oder URL-Hash persistiert.
+
+### Tab-Navigation
+
+```html
+<nav class="mode-tabs" role="tablist">
+  <a href="synopse.html" role="tab" aria-selected="true">Synopse</a>
+  <a href="apparat.html" role="tab">Apparat</a>
+  <a href="genetik.html" role="tab">Genetik</a>
+  <a href="faksimile.html" role="tab">Faksimile</a>
+</nav>
+```
+
+Tastenkürzel: Cmd/Ctrl + 1-4 für Modi 1-4.
+
+---
+
+## Wissensbedarf pro Spezialisierung
+
+Diese Tabelle zeigt, welche Wissensbasis-Dokumente für die Implementierung relevant sind.
+
+| Spezialisierung | Geteilte Datenfelder | Wissensbasis |
+|-----------------|---------------------|--------------|
+| Edition | `witnesses[]`, `text_flow[]`, `apparatus[]` | 10-SPEZIALISIERUNGEN#Edition, 12-STANDARDS#TEI-P5, 15-MODI#Edition |
+| Protokoll | `segments[]`, `speakers[]`, `agenda_items[]`, `votes[]` | 10-SPEZIALISIERUNGEN#Protokoll, 12-STANDARDS#Akoma-Ntoso |
+| Transcript | `turns[]`, `timeline`, `codes[]`, `codebook` | 10-SPEZIALISIERUNGEN#Transcript, 12-STANDARDS#EXMARaLDA |
+| Survey | `items[]`, `scales[]`, `responses[]`, `variables[]` | 10-SPEZIALISIERUNGEN#Survey, 12-STANDARDS#DDI |
+| Monitor | `datastreams[]`, `observations[]`, `thresholds`, `alerts[]` | 10-SPEZIALISIERUNGEN#Monitor, 12-STANDARDS#SensorThings |
+| Matrix | `dimensions`, `cells[]`, `measures[]` | 10-SPEZIALISIERUNGEN#Matrix, 12-STANDARDS#SDMX |
+| Citation | `publications[]`, `citations[]`, `clusters[]` | 10-SPEZIALISIERUNGEN#Citation, 12-STANDARDS#MODS |
+| Genealogy | `persons[]`, `relationships[]`, `events[]` | 10-SPEZIALISIERUNGEN#Genealogy, 12-STANDARDS#GEDCOM-X |
+| Concept | `concepts[]`, `relations[]`, `mappings[]` | 10-SPEZIALISIERUNGEN#Concept, 12-STANDARDS#SKOS |
+| Registry | `objects[]`, `locations`, `controlled_vocabularies` | 10-SPEZIALISIERUNGEN#Registry, 12-STANDARDS#LIDO |
+| Codebook | `variables[]`, `valid_values`, `missing_values`, `validation_rules` | 10-SPEZIALISIERUNGEN#Codebook, 12-STANDARDS#DDI-Lifecycle |
+| Schema | `schema_definition`, `$schema`, `properties`, `required` | 10-SPEZIALISIERUNGEN#Schema, 12-STANDARDS#JSON-Schema |
+
+---
+
 ## Verknüpfungen
 
 - [[01-ARCHITEKTUR]] beschreibt die Wissensbasis-Struktur
 - [[07-PROTOTYP]] definiert den Prototyp-Auftrag
-- [[10-SPEZIALISIERUNGEN]] spezifiziert UI-Elemente und Erkennungsheuristiken
+- [[10-SPEZIALISIERUNGEN]] spezifiziert UI-Elemente, Erkennungsheuristiken und JSON-Schemata
 - [[12-STANDARDS]] definiert Standard-Mappings und Parser-Architektur
+- [[15-MODI]] spezifiziert die 48 Modi (4 pro Spezialisierung)
 - [[DESIGN]] enthält die CSS-Variablen-Definitionen
-- [[05-ARCHETYPEN]] spezifiziert die konzeptuelle Grundlage der Klassen
