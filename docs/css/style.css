@@ -867,6 +867,49 @@ footer a:hover {
     font-weight: 600;
 }
 
+/* Mode Navigation in Header */
+.mode-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.mode-nav-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-ink-muted);
+}
+
+.mode-link {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--color-ink-light);
+    background: var(--color-paper);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.mode-link:hover {
+    color: var(--color-ink);
+    background: var(--color-paper-dark);
+    border-color: var(--color-ink-muted);
+}
+
+/* Archetype-specific mode link colors */
+.reader-header .mode-link:hover { border-color: var(--color-reader); color: var(--color-reader); }
+.scope-header .mode-link:hover { border-color: var(--color-scope); color: var(--color-scope); }
+.navigator-header .mode-link:hover { border-color: var(--color-navigator); color: var(--color-navigator); }
+.workbench-header .mode-link:hover { border-color: var(--color-workbench); color: var(--color-workbench); }
+
 /* Mode Badge in Header */
 .mode-badge {
     display: inline-block;
