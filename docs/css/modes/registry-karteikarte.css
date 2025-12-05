@@ -1,0 +1,277 @@
+/**
+ * Registry Karteikarten-Modus Styles
+ */
+
+.karteikarte-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr 220px;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    min-height: calc(100vh - 200px);
+}
+
+.registry-sidebar {
+    background: var(--color-paper);
+    padding: var(--space-md);
+    border-radius: 8px;
+}
+
+.registry-sidebar h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.object-navigator {
+    margin-bottom: var(--space-lg);
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-md);
+}
+
+.nav-controls button {
+    padding: var(--space-xs) var(--space-sm);
+    background: white;
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.nav-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#object-position {
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+}
+
+.object-thumbs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.object-thumbs li {
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 2px;
+    font-size: 0.8rem;
+}
+
+.object-thumbs li:hover {
+    background: var(--color-paper-dark);
+}
+
+.object-thumbs li.active {
+    background: var(--color-archetype-workbench);
+    color: white;
+}
+
+.object-thumbs li.has-errors {
+    border-left: 3px solid var(--color-archetype-scope);
+}
+
+.validation-summary {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+#validation-status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    border-radius: 4px;
+    margin-bottom: var(--space-sm);
+}
+
+#validation-status.status-ok {
+    background: rgba(74, 124, 89, 0.1);
+    color: rgb(74, 124, 89);
+}
+
+#validation-status.status-error {
+    background: rgba(184, 84, 80, 0.1);
+    color: rgb(184, 84, 80);
+}
+
+.error-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.error-list li {
+    padding: var(--space-xs) 0;
+    color: rgb(184, 84, 80);
+}
+
+/* Main Form */
+.registry-main {
+    background: white;
+    border-radius: 8px;
+    padding: var(--space-lg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.object-form {
+    max-width: 700px;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.form-header h2 {
+    font-family: var(--font-serif);
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.btn-primary, .btn-secondary {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background: var(--color-archetype-workbench);
+    color: white;
+    border: none;
+}
+
+.btn-secondary {
+    background: white;
+    border: 1px solid var(--color-paper-dark);
+}
+
+.form-section {
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 6px;
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.form-section legend {
+    padding: 0 var(--space-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.form-row {
+    margin-bottom: var(--space-md);
+}
+
+.form-row label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: var(--space-xs);
+    color: var(--color-ink-light);
+}
+
+.form-row input, .form-row select, .form-row textarea {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+    outline: none;
+    border-color: var(--color-archetype-workbench);
+}
+
+.form-row input[readonly] {
+    background: var(--color-paper);
+}
+
+.form-row-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+}
+
+/* Context */
+.registry-context {
+    background: var(--color-paper);
+    padding: var(--space-md);
+    border-radius: 8px;
+}
+
+.history-panel h3, .keyboard-hints h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.history-list li {
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.history-placeholder {
+    color: var(--color-ink-light);
+    font-style: italic;
+}
+
+.history-time {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+.hint-list dt {
+    font-family: monospace;
+    font-size: 0.8rem;
+    background: var(--color-paper-dark);
+    padding: 2px 6px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: var(--space-sm);
+}
+
+.hint-list dd {
+    font-size: 0.85rem;
+    margin: var(--space-xs) 0 0 0;
+}
+
+@media (max-width: 1024px) {
+    .karteikarte-layout {
+        grid-template-columns: 1fr;
+    }
+    .registry-sidebar, .registry-context {
+        display: none;
+    }
+}

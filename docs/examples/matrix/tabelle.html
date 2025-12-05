@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabelle - Matrix - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/scope.css">
+    <link rel="stylesheet" href="../../css/modes/matrix-tabelle.css">
+</head>
+<body>
+    <header class="demo-header scope-header matrix-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Matrix</h1>
+            <span class="mode-badge">Tabellen-Modus</span>
+        </div>
+        <p>Klassische Kreuztabelle mit exakten Werten</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="tabelle.html" role="tab" aria-selected="true" class="active">Tabelle</a>
+        <a href="heatmap.html" role="tab">Heatmap</a>
+        <a href="residuen.html" role="tab">Residuen</a>
+        <a href="pivot.html" role="tab">Pivot</a>
+    </nav>
+
+    <main class="matrix-layout tabelle-layout">
+        <aside class="matrix-sidebar">
+            <div class="matrix-meta">
+                <h2 id="matrix-title">Kreuztabelle</h2>
+                <p class="matrix-source" id="matrix-source"></p>
+            </div>
+
+            <div class="sort-options">
+                <h3>Sortierung</h3>
+                <div class="sort-group">
+                    <label>Zeilen:</label>
+                    <select id="sort-rows">
+                        <option value="original">Original</option>
+                        <option value="alpha">Alphabetisch</option>
+                        <option value="total-asc">Summe aufsteigend</option>
+                        <option value="total-desc">Summe absteigend</option>
+                    </select>
+                </div>
+                <div class="sort-group">
+                    <label>Spalten:</label>
+                    <select id="sort-cols">
+                        <option value="original">Original</option>
+                        <option value="alpha">Alphabetisch</option>
+                        <option value="total-asc">Summe aufsteigend</option>
+                        <option value="total-desc">Summe absteigend</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="display-options">
+                <h3>Anzeige</h3>
+                <label><input type="checkbox" id="show-totals" checked> Randsummen</label>
+                <label><input type="checkbox" id="show-percent"> Zusätzlich Prozent</label>
+            </div>
+
+            <div class="statistics-panel">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Chi-Quadrat</dt>
+                    <dd id="stat-chi">-</dd>
+                    <dt>df</dt>
+                    <dd id="stat-df">-</dd>
+                    <dt>p-Wert</dt>
+                    <dd id="stat-p">-</dd>
+                    <dt>Cramers V</dt>
+                    <dd id="stat-v">-</dd>
+                    <dt>N</dt>
+                    <dd id="stat-n">-</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <section class="matrix-main">
+            <div class="table-container">
+                <table class="crosstab-table" id="crosstab-table">
+                    <thead id="crosstab-head"></thead>
+                    <tbody id="crosstab-body"></tbody>
+                    <tfoot id="crosstab-foot"></tfoot>
+                </table>
+            </div>
+
+            <div class="cell-detail hidden" id="cell-detail">
+                <h3>Zelldetail</h3>
+                <dl id="cell-detail-content"></dl>
+            </div>
+        </section>
+
+        <aside class="matrix-context">
+            <section class="keyboard-hints">
+                <h3>Tastenkuerzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>Pfeiltasten</dt>
+                    <dd>Zelle navigieren</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer scope-footer">
+        <div class="mode-info">
+            <h3>Tabellen-Modus</h3>
+            <p><strong>Relevanz:</strong> Klassische Kreuztabelle fuer exakte Werte. Sortierbar nach jeder Dimension.</p>
+            <p><strong>Innovation:</strong> Summenzeilen/-spalten. Klick auf Zelle zeigt Details.</p>
+        </div>
+        <a href="../scope-matrix.html" class="back-to-spec scope-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/matrix-tabelle.js"></script>
+</body>
+</html>

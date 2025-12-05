@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definition - Concept - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navigator.css">
+    <link rel="stylesheet" href="../../css/modes/concept-definition.css">
+</head>
+<body>
+    <header class="demo-header navigator-header concept-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Concept</h1>
+            <span class="mode-badge">Definitions-Modus</span>
+        </div>
+        <p>Ein Begriff im Detail</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="hierarchie.html" role="tab">Hierarchie</a>
+        <a href="graph.html" role="tab">Graph</a>
+        <a href="definition.html" role="tab" aria-selected="true" class="active">Definition</a>
+        <a href="mapping.html" role="tab">Mapping</a>
+    </nav>
+
+    <main class="concept-layout definition-layout">
+        <aside class="concept-sidebar">
+            <div class="concept-navigator">
+                <h3>Begriffe</h3>
+                <input type="text" id="concept-search" placeholder="Suchen...">
+                <ul class="concept-list" id="concept-list">
+                    <!-- Dynamisch: Alle Begriffe -->
+                </ul>
+            </div>
+        </aside>
+
+        <section class="concept-main">
+            <article class="concept-card" id="concept-card">
+                <header class="card-header">
+                    <h2 id="card-label">Begriff waehlen</h2>
+                    <code id="card-id"></code>
+                </header>
+
+                <section class="card-section definition-section">
+                    <h3>Definition</h3>
+                    <p id="card-definition">Waehlen Sie einen Begriff aus der Liste.</p>
+                </section>
+
+                <section class="card-section synonyms-section hidden" id="synonyms-section">
+                    <h3>Synonyme</h3>
+                    <ul id="card-synonyms"></ul>
+                </section>
+
+                <section class="card-section scope-section hidden" id="scope-section">
+                    <h3>Scope Note</h3>
+                    <p id="card-scope"></p>
+                </section>
+
+                <section class="card-section relations-section">
+                    <h3>Relationen</h3>
+                    <div class="relation-groups" id="relation-groups">
+                        <!-- Dynamisch: Gruppierte Relationen -->
+                    </div>
+                </section>
+
+                <section class="card-section history-section hidden" id="history-section">
+                    <h3>Versionsgeschichte</h3>
+                    <ul id="card-history"></ul>
+                </section>
+            </article>
+        </section>
+
+        <aside class="concept-context">
+            <section class="related-concepts" id="related-concepts">
+                <h3>Verwandte Begriffe</h3>
+                <ul id="related-list"></ul>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkuerzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>&uarr;/&darr;</dt>
+                    <dd>Begriff wechseln</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer navigator-footer">
+        <div class="mode-info">
+            <h3>Definitions-Modus</h3>
+            <p><strong>Relevanz:</strong> Ein Begriff im Detail fuer tiefes Verstaendnis.</p>
+            <p><strong>Innovation:</strong> Kartenansicht. Verwandte Begriffe als Links. Mehrsprachigkeit.</p>
+        </div>
+        <a href="../navigator-concept.html" class="back-to-spec navigator-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/concept-definition.js"></script>
+</body>
+</html>

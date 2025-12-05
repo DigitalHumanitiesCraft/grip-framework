@@ -1,0 +1,346 @@
+/**
+ * Registry Standort-Modus Styles
+ */
+
+.standort-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr 220px;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    min-height: calc(100vh - 200px);
+}
+
+.registry-sidebar {
+    background: var(--color-paper);
+    padding: var(--space-md);
+    border-radius: 8px;
+}
+
+.registry-sidebar h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+/* Location Tree */
+.location-tree, .location-stats, .move-panel {
+    margin-bottom: var(--space-lg);
+}
+
+.tree-view {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tree-building {
+    margin-bottom: var(--space-xs);
+}
+
+.tree-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-sm);
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.tree-toggle:hover {
+    background: var(--color-paper-dark);
+}
+
+.toggle-icon {
+    font-size: 0.8rem;
+    width: 12px;
+}
+
+.tree-rooms {
+    list-style: none;
+    padding-left: var(--space-lg);
+    margin: 0;
+}
+
+.tree-room {
+    padding: var(--space-xs) var(--space-sm);
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.tree-room:hover {
+    background: var(--color-paper-dark);
+}
+
+.tree-room.selected, .tree-building.selected > .tree-toggle {
+    background: var(--color-archetype-workbench);
+    color: white;
+}
+
+.tree-room.drag-over {
+    background: rgba(118, 150, 86, 0.3);
+    outline: 2px dashed var(--color-archetype-workbench);
+}
+
+.count {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+    margin-left: auto;
+}
+
+.tree-room.selected .count, .tree-building.selected .count {
+    color: rgba(255,255,255,0.7);
+}
+
+/* Stats */
+.location-stats {
+    background: var(--color-paper-dark);
+    padding: var(--space-md);
+    border-radius: 6px;
+}
+
+.stats-list dt {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+.stats-list dd {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 var(--space-sm) 0;
+}
+
+/* Move Panel */
+.move-panel {
+    background: rgba(118, 150, 86, 0.1);
+    padding: var(--space-md);
+    border-radius: 6px;
+    border: 1px solid var(--color-archetype-workbench);
+}
+
+#move-source {
+    font-size: 0.85rem;
+    margin-bottom: var(--space-sm);
+}
+
+#move-target {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    margin-bottom: var(--space-sm);
+}
+
+/* Main */
+.registry-main {
+    background: white;
+    border-radius: 8px;
+    padding: var(--space-lg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.location-view {
+    height: 100%;
+}
+
+.location-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.location-header h2 {
+    font-family: var(--font-serif);
+}
+
+.view-toggle {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+.view-btn {
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-paper);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.view-btn.active {
+    background: var(--color-archetype-workbench);
+    color: white;
+    border-color: var(--color-archetype-workbench);
+}
+
+/* Object Cards */
+.object-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-md);
+}
+
+.object-card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 6px;
+    padding: var(--space-md);
+    cursor: grab;
+    transition: all 0.2s;
+}
+
+.object-card:hover {
+    border-color: var(--color-archetype-workbench);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.object-card.selected {
+    border-color: var(--color-archetype-workbench);
+    background: rgba(118, 150, 86, 0.05);
+}
+
+.object-card:active {
+    cursor: grabbing;
+}
+
+.card-header {
+    margin-bottom: var(--space-sm);
+}
+
+.card-id {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+}
+
+.card-body h4 {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    margin-bottom: var(--space-xs);
+}
+
+.card-creator {
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+}
+
+.card-footer {
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.card-location {
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+}
+
+/* Grid View */
+.object-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--space-sm);
+}
+
+.object-tile {
+    background: var(--color-paper);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    padding: var(--space-sm);
+    cursor: grab;
+    text-align: center;
+}
+
+.object-tile:hover {
+    border-color: var(--color-archetype-workbench);
+}
+
+.object-tile.selected {
+    background: rgba(118, 150, 86, 0.1);
+    border-color: var(--color-archetype-workbench);
+}
+
+.tile-id {
+    display: block;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+.tile-title {
+    font-size: 0.8rem;
+}
+
+/* Drag Hint */
+#drag-hint {
+    position: absolute;
+    bottom: var(--space-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-ink);
+    color: white;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+/* Context */
+.registry-context {
+    background: var(--color-paper);
+    padding: var(--space-md);
+    border-radius: 8px;
+}
+
+.selected-object h3, .keyboard-hints h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.selected-object dl {
+    font-size: 0.85rem;
+    margin-bottom: var(--space-md);
+}
+
+.selected-object dt {
+    color: var(--color-ink-light);
+    margin-top: var(--space-sm);
+}
+
+.selected-object dd {
+    margin: 0;
+}
+
+.hint-list dt {
+    font-family: monospace;
+    font-size: 0.8rem;
+    background: var(--color-paper-dark);
+    padding: 2px 6px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: var(--space-sm);
+}
+
+.hint-list dd {
+    font-size: 0.85rem;
+    margin: var(--space-xs) 0 0 0;
+}
+
+@media (max-width: 1024px) {
+    .standort-layout {
+        grid-template-columns: 1fr;
+    }
+    .registry-context {
+        display: none;
+    }
+}

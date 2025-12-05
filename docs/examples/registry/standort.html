@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standort - Registry - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/workbench.css">
+    <link rel="stylesheet" href="../../css/modes/registry-standort.css">
+</head>
+<body>
+    <header class="demo-header workbench-header registry-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Registry</h1>
+            <span class="mode-badge">Standort-Modus</span>
+        </div>
+        <p>Physische Verortung und Logistik</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="liste.html" role="tab">Liste</a>
+        <a href="karteikarte.html" role="tab">Karteikarte</a>
+        <a href="standort.html" role="tab" aria-selected="true" class="active">Standort</a>
+        <a href="zustand.html" role="tab">Zustand</a>
+    </nav>
+
+    <main class="registry-layout standort-layout">
+        <aside class="registry-sidebar">
+            <div class="location-tree">
+                <h3>Standorte</h3>
+                <ul class="tree-view" id="location-tree">
+                    <!-- Dynamisch: Hierarchische Standort-Ansicht -->
+                </ul>
+            </div>
+
+            <div class="location-stats">
+                <h3>Belegung</h3>
+                <dl class="stats-list">
+                    <dt>Ausstellung</dt>
+                    <dd id="stat-exhibition">0</dd>
+                    <dt>Depot</dt>
+                    <dd id="stat-depot">0</dd>
+                    <dt>Ohne Standort</dt>
+                    <dd id="stat-unassigned">0</dd>
+                </dl>
+            </div>
+
+            <div class="move-panel hidden" id="move-panel">
+                <h3>Umlagerung</h3>
+                <p id="move-source">Quelle: -</p>
+                <select id="move-target">
+                    <option value="">Ziel waehlen...</option>
+                </select>
+                <button class="btn-primary" id="confirm-move">Verschieben</button>
+                <button class="btn-secondary" id="cancel-move">Abbrechen</button>
+            </div>
+        </aside>
+
+        <section class="registry-main">
+            <div class="location-view">
+                <div class="location-header">
+                    <h2 id="current-location">Alle Standorte</h2>
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="tree">Baum</button>
+                        <button class="view-btn" data-view="grid">Raster</button>
+                    </div>
+                </div>
+
+                <div class="location-content" id="location-content">
+                    <!-- Dynamisch: Objekte am Standort -->
+                </div>
+            </div>
+
+            <div class="drag-hint hidden" id="drag-hint">
+                Objekt hierher ziehen zum Verschieben
+            </div>
+        </section>
+
+        <aside class="registry-context">
+            <section class="selected-object hidden" id="selected-object">
+                <h3>Ausgewaehlt</h3>
+                <div id="selected-content"></div>
+                <button class="btn-small" id="start-move">Verschieben</button>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkuerzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>Drag & Drop</dt>
+                    <dd>Objekt verschieben</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="mode-info">
+            <h3>Standort-Modus</h3>
+            <p><strong>Relevanz:</strong> Physische Verortung fuer Logistik und Inventur.</p>
+            <p><strong>Innovation:</strong> Baumansicht (Gebaeude/Raum/Regal), Drag-and-Drop Umlagerung.</p>
+        </div>
+        <a href="../workbench-registry.html" class="back-to-spec workbench-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/registry-standort.js"></script>
+</body>
+</html>

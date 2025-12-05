@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapping - Concept - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navigator.css">
+    <link rel="stylesheet" href="../../css/modes/concept-mapping.css">
+</head>
+<body>
+    <header class="demo-header navigator-header concept-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Concept</h1>
+            <span class="mode-badge">Mapping-Modus</span>
+        </div>
+        <p>Bruecken zwischen Vokabularen</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="hierarchie.html" role="tab">Hierarchie</a>
+        <a href="graph.html" role="tab">Graph</a>
+        <a href="definition.html" role="tab">Definition</a>
+        <a href="mapping.html" role="tab" aria-selected="true" class="active">Mapping</a>
+    </nav>
+
+    <main class="concept-layout mapping-layout">
+        <aside class="concept-sidebar">
+            <div class="mapping-filter">
+                <h3>Match-Typen</h3>
+                <label><input type="checkbox" data-type="exactMatch" checked> Exact Match</label>
+                <label><input type="checkbox" data-type="closeMatch" checked> Close Match</label>
+                <label><input type="checkbox" data-type="broadMatch" checked> Broad Match</label>
+                <label><input type="checkbox" data-type="narrowMatch" checked> Narrow Match</label>
+                <label><input type="checkbox" data-type="relatedMatch" checked> Related Match</label>
+            </div>
+
+            <div class="stats-section">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Mappings</dt>
+                    <dd id="stat-mappings">0</dd>
+                    <dt>Exact</dt>
+                    <dd id="stat-exact">0</dd>
+                    <dt>Close</dt>
+                    <dd id="stat-close">0</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <section class="concept-main">
+            <div class="mapping-header">
+                <div class="vocab-column source-vocab">
+                    <h2 id="source-vocab-name">Quell-Vokabular</h2>
+                </div>
+                <div class="mapping-indicator">
+                    <span>&harr;</span>
+                </div>
+                <div class="vocab-column target-vocab">
+                    <h2 id="target-vocab-name">Ziel-Vokabular</h2>
+                </div>
+            </div>
+
+            <div class="mapping-container" id="mapping-container">
+                <!-- Dynamisch: Zwei-Spalten-Ansicht mit Verbindungslinien -->
+            </div>
+        </section>
+
+        <aside class="concept-context">
+            <section class="mapping-detail hidden" id="mapping-detail">
+                <h3>Mapping-Detail</h3>
+                <dl>
+                    <dt>Quelle</dt>
+                    <dd id="detail-source"></dd>
+                    <dt>Ziel</dt>
+                    <dd id="detail-target"></dd>
+                    <dt>Match-Typ</dt>
+                    <dd id="detail-type"></dd>
+                    <dt>Konfidenz</dt>
+                    <dd id="detail-confidence"></dd>
+                </dl>
+            </section>
+
+            <section class="match-legend">
+                <h3>Legende</h3>
+                <ul class="legend-list">
+                    <li><span class="match-line exact"></span> Exact Match</li>
+                    <li><span class="match-line close"></span> Close Match</li>
+                    <li><span class="match-line broad"></span> Broad Match</li>
+                    <li><span class="match-line narrow"></span> Narrow Match</li>
+                    <li><span class="match-line related"></span> Related Match</li>
+                </ul>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkuerzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer navigator-footer">
+        <div class="mode-info">
+            <h3>Mapping-Modus</h3>
+            <p><strong>Relevanz:</strong> Bruecken zwischen Vokabularen fuer Interoperabilitaet.</p>
+            <p><strong>Innovation:</strong> Zwei-Spalten-Ansicht. Match-Typen visualisiert.</p>
+        </div>
+        <a href="../navigator-concept.html" class="back-to-spec navigator-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/concept-mapping.js"></script>
+</body>
+</html>

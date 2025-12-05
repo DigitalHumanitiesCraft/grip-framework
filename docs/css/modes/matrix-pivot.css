@@ -1,0 +1,261 @@
+/**
+ * Matrix Pivot-Modus Styles
+ */
+
+.pivot-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr 220px;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    min-height: calc(100vh - 200px);
+}
+
+/* Sidebar */
+.matrix-sidebar {
+    background: var(--color-paper);
+    padding: var(--space-md);
+    border-radius: 8px;
+}
+
+.matrix-sidebar h2, .matrix-sidebar h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.matrix-meta {
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+/* Dimension Config */
+.dimension-config {
+    margin-bottom: var(--space-lg);
+}
+
+.dimension-zone {
+    margin-bottom: var(--space-md);
+}
+
+.dimension-zone > label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+.drop-zone {
+    min-height: 40px;
+    border: 2px dashed var(--color-paper-dark);
+    border-radius: 6px;
+    padding: var(--space-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.drop-zone.drag-over {
+    border-color: var(--color-archetype-scope);
+    background: rgba(196, 112, 90, 0.1);
+}
+
+.drop-zone .placeholder {
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+}
+
+.dimension-chip {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-archetype-scope);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: grab;
+    user-select: none;
+}
+
+.dimension-chip:active {
+    cursor: grabbing;
+}
+
+.dimension-chip.dragging {
+    opacity: 0.5;
+}
+
+.available-dimensions {
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-paper-dark);
+}
+
+.available-dimensions > label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-xs);
+}
+
+.dimension-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+/* Aggregation & Filter Options */
+.aggregation-options, .filter-options, .display-options {
+    margin-bottom: var(--space-lg);
+}
+
+.aggregation-options select {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.display-options label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: var(--space-xs);
+    cursor: pointer;
+}
+
+/* Main Area */
+.matrix-main {
+    background: white;
+    border-radius: 8px;
+    padding: var(--space-lg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.pivot-toolbar {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.pivot-btn {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-paper);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.pivot-btn:hover {
+    background: var(--color-paper-dark);
+}
+
+.pivot-container {
+    overflow-x: auto;
+}
+
+/* Pivot Table */
+.pivot-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.pivot-table th, .pivot-table td {
+    padding: var(--space-sm) var(--space-md);
+    text-align: right;
+    border: 1px solid var(--color-paper-dark);
+}
+
+.pivot-table th {
+    background: var(--color-paper);
+    font-weight: 600;
+}
+
+.corner-cell {
+    text-align: left !important;
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+}
+
+.row-header {
+    text-align: left !important;
+    background: var(--color-paper);
+}
+
+.data-cell {
+    font-family: monospace;
+}
+
+.row-total, .col-total {
+    font-weight: 600;
+    background: var(--color-paper-dark);
+}
+
+.grand-total {
+    font-weight: 700;
+    background: var(--color-paper-dark);
+}
+
+.total-header, .total-label {
+    font-weight: 600;
+}
+
+/* Context Sidebar */
+.matrix-context {
+    background: var(--color-paper);
+    padding: var(--space-md);
+    border-radius: 8px;
+}
+
+.pivot-help {
+    margin-bottom: var(--space-lg);
+}
+
+.pivot-help h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.pivot-help p {
+    font-size: 0.85rem;
+    margin-bottom: var(--space-sm);
+}
+
+.keyboard-hints h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.hint-list dt {
+    font-family: monospace;
+    font-size: 0.8rem;
+    background: var(--color-paper-dark);
+    padding: 2px 6px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: var(--space-sm);
+}
+
+.hint-list dd {
+    font-size: 0.85rem;
+    margin: var(--space-xs) 0 0 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .pivot-layout {
+        grid-template-columns: 1fr;
+    }
+    .matrix-context {
+        display: none;
+    }
+}

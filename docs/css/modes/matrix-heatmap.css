@@ -1,0 +1,192 @@
+/**
+ * Matrix Heatmap-Modus Styles
+ */
+
+.heatmap-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr 220px;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    min-height: calc(100vh - 200px);
+}
+
+/* Sidebar */
+.matrix-sidebar {
+    background: var(--color-paper);
+    padding: var(--space-md);
+    border-radius: 8px;
+}
+
+.matrix-sidebar h2, .matrix-sidebar h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.matrix-meta {
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+/* Options */
+.color-options, .value-options, .display-options, .legend-panel, .statistics-panel {
+    margin-bottom: var(--space-lg);
+}
+
+.color-options select, .value-options select {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.display-options label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: var(--space-xs);
+    cursor: pointer;
+}
+
+/* Legend */
+.color-legend {
+    background: white;
+    padding: var(--space-sm);
+    border-radius: 4px;
+}
+
+.legend-gradient {
+    height: 20px;
+    border-radius: 3px;
+    background: linear-gradient(to right, rgba(70, 130, 180, 0.2), rgba(70, 130, 180, 1));
+}
+
+.legend-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+    margin-top: var(--space-xs);
+}
+
+/* Statistics */
+.statistics-panel {
+    background: var(--color-paper-dark);
+    padding: var(--space-md);
+    border-radius: 6px;
+}
+
+.stats-list dt {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+    margin-top: var(--space-sm);
+}
+
+.stats-list dd {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Main Area */
+.matrix-main {
+    background: white;
+    border-radius: 8px;
+    padding: var(--space-lg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: auto;
+    position: relative;
+}
+
+.heatmap-container {
+    overflow: auto;
+}
+
+.heatmap-svg {
+    display: block;
+}
+
+.heatmap-svg .col-label, .heatmap-svg .row-label {
+    font-size: 12px;
+    fill: var(--color-ink);
+}
+
+.heatmap-svg .cell-value {
+    font-size: 11px;
+    fill: white;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.heatmap-cell {
+    cursor: pointer;
+}
+
+.heatmap-cell rect {
+    transition: opacity 0.2s;
+}
+
+.heatmap-cell:hover rect {
+    opacity: 0.8;
+    stroke: var(--color-ink);
+    stroke-width: 2;
+}
+
+/* Tooltip */
+.cell-tooltip {
+    position: fixed;
+    background: var(--color-ink);
+    color: white;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    z-index: 1000;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.cell-tooltip.hidden {
+    display: none;
+}
+
+/* Context Sidebar */
+.matrix-context {
+    background: var(--color-paper);
+    padding: var(--space-md);
+    border-radius: 8px;
+}
+
+.keyboard-hints h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.hint-list dt {
+    font-family: monospace;
+    font-size: 0.8rem;
+    background: var(--color-paper-dark);
+    padding: 2px 6px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: var(--space-sm);
+}
+
+.hint-list dd {
+    font-size: 0.85rem;
+    margin: var(--space-xs) 0 0 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .heatmap-layout {
+        grid-template-columns: 1fr;
+    }
+    .matrix-context {
+        display: none;
+    }
+}

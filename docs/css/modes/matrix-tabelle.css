@@ -1,0 +1,233 @@
+/**
+ * Matrix Tabellen-Modus Styles
+ */
+
+.tabelle-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr 220px;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    min-height: calc(100vh - 200px);
+}
+
+/* Sidebar */
+.matrix-sidebar {
+    background: var(--color-paper);
+    padding: var(--space-md);
+    border-radius: 8px;
+}
+
+.matrix-sidebar h2, .matrix-sidebar h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.matrix-meta {
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-paper-dark);
+}
+
+.matrix-source {
+    font-size: 0.85rem;
+    color: var(--color-ink-light);
+}
+
+/* Sort Options */
+.sort-options, .display-options {
+    margin-bottom: var(--space-lg);
+}
+
+.sort-group {
+    margin-bottom: var(--space-sm);
+}
+
+.sort-group label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: var(--space-xs);
+}
+
+.sort-group select {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paper-dark);
+    border-radius: 4px;
+}
+
+.display-options label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: var(--space-xs);
+    cursor: pointer;
+}
+
+.display-options input[type="checkbox"] {
+    margin-right: var(--space-xs);
+}
+
+/* Statistics Panel */
+.statistics-panel {
+    background: var(--color-paper-dark);
+    padding: var(--space-md);
+    border-radius: 6px;
+}
+
+.stats-list dt {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+    margin-top: var(--space-sm);
+}
+
+.stats-list dd {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Main Area */
+.matrix-main {
+    background: white;
+    border-radius: 8px;
+    padding: var(--space-lg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: auto;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+/* Crosstab Table */
+.crosstab-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.crosstab-table th, .crosstab-table td {
+    padding: var(--space-sm) var(--space-md);
+    text-align: right;
+    border: 1px solid var(--color-paper-dark);
+}
+
+.crosstab-table th {
+    background: var(--color-paper);
+    font-weight: 600;
+}
+
+.corner-cell {
+    text-align: left !important;
+    font-style: italic;
+}
+
+.row-header {
+    text-align: left !important;
+    background: var(--color-paper);
+}
+
+.col-header {
+    white-space: nowrap;
+}
+
+.data-cell {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.data-cell:hover {
+    background: rgba(196, 112, 90, 0.1);
+}
+
+.data-cell.selected {
+    background: rgba(196, 112, 90, 0.2);
+    outline: 2px solid var(--color-archetype-scope);
+}
+
+.data-cell .percent {
+    font-size: 0.75rem;
+    color: var(--color-ink-light);
+}
+
+.row-total, .col-total, .grand-total {
+    font-weight: 600;
+    background: var(--color-paper-dark);
+}
+
+.total-header, .total-label {
+    font-weight: 600;
+}
+
+/* Cell Detail */
+.cell-detail {
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background: var(--color-paper);
+    border-radius: 6px;
+}
+
+.cell-detail h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.cell-detail dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-xs) var(--space-md);
+}
+
+.cell-detail dt {
+    font-size: 0.8rem;
+    color: var(--color-ink-light);
+}
+
+.cell-detail dd {
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Context Sidebar */
+.matrix-context {
+    background: var(--color-paper);
+    padding: var(--space-md);
+    border-radius: 8px;
+}
+
+.keyboard-hints h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-ink-light);
+    margin-bottom: var(--space-sm);
+}
+
+.hint-list dt {
+    font-family: monospace;
+    font-size: 0.8rem;
+    background: var(--color-paper-dark);
+    padding: 2px 6px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: var(--space-sm);
+}
+
+.hint-list dd {
+    font-size: 0.85rem;
+    margin: var(--space-xs) 0 0 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .tabelle-layout {
+        grid-template-columns: 1fr;
+    }
+    .matrix-context {
+        display: none;
+    }
+}
