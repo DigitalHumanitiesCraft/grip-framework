@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pivot - Matrix - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/scope.css">
+    <link rel="stylesheet" href="../../css/modes/matrix-pivot.css">
+</head>
+<body>
+    <header class="demo-header scope-header matrix-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Matrix</h1>
+            <span class="mode-badge">Pivot-Modus</span>
+        </div>
+        <p>Dimensionen flexibel anordnen und aggregieren</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="tabelle.html" role="tab">Tabelle</a>
+        <a href="heatmap.html" role="tab">Heatmap</a>
+        <a href="residuen.html" role="tab">Residuen</a>
+        <a href="pivot.html" role="tab" aria-selected="true" class="active">Pivot</a>
+    </nav>
+
+    <main class="matrix-layout pivot-layout">
+        <aside class="matrix-sidebar">
+            <div class="matrix-meta">
+                <h2 id="matrix-title">Pivot-Tabelle</h2>
+                <p class="matrix-source" id="matrix-source"></p>
+            </div>
+
+            <div class="dimension-config">
+                <h3>Dimensionen</h3>
+                <div class="dimension-zone" id="row-zone">
+                    <label>Zeilen</label>
+                    <div class="drop-zone" data-zone="rows">
+                        <span class="placeholder">Dimension hierher ziehen</span>
+                    </div>
+                </div>
+                <div class="dimension-zone" id="col-zone">
+                    <label>Spalten</label>
+                    <div class="drop-zone" data-zone="columns">
+                        <span class="placeholder">Dimension hierher ziehen</span>
+                    </div>
+                </div>
+                <div class="available-dimensions" id="available-dims">
+                    <label>Verfuegbar</label>
+                    <div class="dimension-chips"></div>
+                </div>
+            </div>
+
+            <div class="aggregation-options">
+                <h3>Aggregation</h3>
+                <select id="aggregation-function">
+                    <option value="sum">Summe</option>
+                    <option value="count">Anzahl</option>
+                    <option value="mean">Mittelwert</option>
+                    <option value="min">Minimum</option>
+                    <option value="max">Maximum</option>
+                </select>
+            </div>
+
+            <div class="filter-options">
+                <h3>Filter</h3>
+                <div id="filter-container">
+                    <!-- Dynamische Filter pro Dimension -->
+                </div>
+            </div>
+
+            <div class="display-options">
+                <h3>Anzeige</h3>
+                <label><input type="checkbox" id="show-grand-totals" checked> Gesamtsummen</label>
+                <label><input type="checkbox" id="show-subtotals"> Zwischensummen</label>
+            </div>
+        </aside>
+
+        <section class="matrix-main">
+            <div class="pivot-toolbar">
+                <button class="pivot-btn" id="reset-pivot">Zuruecksetzen</button>
+                <button class="pivot-btn" id="export-pivot">Exportieren</button>
+            </div>
+
+            <div class="pivot-container">
+                <table class="pivot-table" id="pivot-table">
+                    <thead id="pivot-head"></thead>
+                    <tbody id="pivot-body"></tbody>
+                    <tfoot id="pivot-foot"></tfoot>
+                </table>
+            </div>
+        </section>
+
+        <aside class="matrix-context">
+            <section class="pivot-help">
+                <h3>Anleitung</h3>
+                <p>Ziehen Sie Dimensionen in die Zeilen- oder Spaltenzone, um die Tabelle umzustrukturieren.</p>
+                <p>Waehlen Sie eine Aggregationsfunktion fuer die Werte.</p>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkuerzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>Cmd/Ctrl + R</dt>
+                    <dd>Zuruecksetzen</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer scope-footer">
+        <div class="mode-info">
+            <h3>Pivot-Modus</h3>
+            <p><strong>Relevanz:</strong> Dimensionen umordnen fuer explorative Analyse.</p>
+            <p><strong>Innovation:</strong> Drag-and-Drop Dimensionen. Aggregationsfunktion waehlbar.</p>
+        </div>
+        <a href="../scope-matrix.html" class="back-to-spec scope-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/matrix-pivot.js"></script>
+</body>
+</html>

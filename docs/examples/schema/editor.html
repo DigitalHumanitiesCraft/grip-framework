@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor - Schema - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/workbench.css">
+    <link rel="stylesheet" href="../../css/modes/schema-editor.css">
+</head>
+<body>
+    <header class="demo-header workbench-header schema-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Schema</h1>
+            <span class="mode-badge">Editor-Modus</span>
+        </div>
+        <p>Schema bearbeiten und erstellen</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="struktur.html" role="tab">Struktur</a>
+        <a href="editor.html" role="tab" aria-selected="true" class="active">Editor</a>
+        <a href="validator.html" role="tab">Validator</a>
+        <a href="diff.html" role="tab">Diff</a>
+    </nav>
+
+    <main class="schema-layout editor-layout">
+        <aside class="schema-sidebar">
+            <div class="editor-actions">
+                <h3>Aktionen</h3>
+                <button id="new-schema" class="action-btn">Neues Schema</button>
+                <button id="save-schema" class="action-btn primary">Speichern</button>
+            </div>
+
+            <div class="property-palette">
+                <h3>Property hinzufügen</h3>
+                <div class="type-buttons">
+                    <button class="type-btn" data-type="string">Abc String</button>
+                    <button class="type-btn" data-type="number">123 Number</button>
+                    <button class="type-btn" data-type="boolean">✓ Boolean</button>
+                    <button class="type-btn" data-type="object">{} Object</button>
+                    <button class="type-btn" data-type="array">[] Array</button>
+                </div>
+            </div>
+
+            <div class="templates-section">
+                <h3>Templates</h3>
+                <button class="template-btn" data-template="person">Person</button>
+                <button class="template-btn" data-template="address">Adresse</button>
+                <button class="template-btn" data-template="event">Event</button>
+            </div>
+        </aside>
+
+        <section class="schema-main">
+            <div class="editor-toolbar">
+                <div class="view-toggle">
+                    <button class="toggle-btn active" data-view="form">Formular</button>
+                    <button class="toggle-btn" data-view="code">Code</button>
+                </div>
+                <div class="toolbar-actions">
+                    <button id="format-json" class="tool-btn">Formatieren</button>
+                    <button id="copy-json" class="tool-btn">Kopieren</button>
+                </div>
+            </div>
+
+            <div class="editor-container">
+                <div class="form-editor" id="form-editor">
+                    <!-- Dynamisch: Formular-basierter Editor -->
+                </div>
+                <div class="code-editor hidden" id="code-editor">
+                    <textarea id="json-source" spellcheck="false"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <aside class="schema-context">
+            <section class="selected-property hidden" id="selected-property">
+                <h3>Property bearbeiten</h3>
+                <form id="property-form">
+                    <label>
+                        <span>Name</span>
+                        <input type="text" id="prop-name">
+                    </label>
+                    <label>
+                        <span>Typ</span>
+                        <select id="prop-type">
+                            <option value="string">String</option>
+                            <option value="number">Number</option>
+                            <option value="integer">Integer</option>
+                            <option value="boolean">Boolean</option>
+                            <option value="object">Object</option>
+                            <option value="array">Array</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Beschreibung</span>
+                        <textarea id="prop-description"></textarea>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="prop-required">
+                        <span>Required</span>
+                    </label>
+                    <button type="button" id="delete-property" class="delete-btn">Löschen</button>
+                </form>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>Cmd/Ctrl + S</dt>
+                    <dd>Speichern</dd>
+                    <dt>Tab</dt>
+                    <dd>Code/Form toggle</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="mode-info">
+            <h3>Editor-Modus</h3>
+            <p><strong>Relevanz:</strong> Visuelles Erstellen und Bearbeiten von JSON Schemas.</p>
+            <p><strong>Innovation:</strong> Formular + Code-Editor, Drag-Drop, Templates.</p>
+        </div>
+        <a href="../workbench-schema.html" class="back-to-spec workbench-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/schema-editor.js"></script>
+</body>
+</html>

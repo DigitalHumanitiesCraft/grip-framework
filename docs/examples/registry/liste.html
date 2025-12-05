@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste - Registry - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/workbench.css">
+    <link rel="stylesheet" href="../../css/modes/registry-liste.css">
+</head>
+<body>
+    <header class="demo-header workbench-header registry-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Registry</h1>
+            <span class="mode-badge">Listen-Modus</span>
+        </div>
+        <p>Objektuebersicht fuer Bestandsmanagement</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="liste.html" role="tab" aria-selected="true" class="active">Liste</a>
+        <a href="karteikarte.html" role="tab">Karteikarte</a>
+        <a href="standort.html" role="tab">Standort</a>
+        <a href="zustand.html" role="tab">Zustand</a>
+    </nav>
+
+    <main class="registry-layout liste-layout">
+        <aside class="registry-sidebar">
+            <div class="search-section">
+                <h3>Suche</h3>
+                <input type="text" id="search-input" placeholder="Inventarnummer, Titel...">
+            </div>
+
+            <div class="filter-section">
+                <h3>Filter</h3>
+                <div class="filter-group">
+                    <label>Kategorie</label>
+                    <select id="filter-category">
+                        <option value="all">Alle</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Standort</label>
+                    <select id="filter-location">
+                        <option value="all">Alle</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Zustand</label>
+                    <select id="filter-condition">
+                        <option value="all">Alle</option>
+                        <option value="excellent">Ausgezeichnet</option>
+                        <option value="good">Gut</option>
+                        <option value="fair">Befriedigend</option>
+                        <option value="poor">Schlecht</option>
+                    </select>
+                </div>
+                <button class="btn-secondary" id="reset-filters">Zuruecksetzen</button>
+            </div>
+
+            <div class="stats-section">
+                <h3>Bestand</h3>
+                <dl class="stats-list">
+                    <dt>Gefiltert</dt>
+                    <dd id="stat-filtered">0</dd>
+                    <dt>Gesamt</dt>
+                    <dd id="stat-total">0</dd>
+                    <dt>Mit Fehlern</dt>
+                    <dd id="stat-errors">0</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <section class="registry-main">
+            <div class="list-toolbar">
+                <div class="bulk-actions">
+                    <input type="checkbox" id="select-all">
+                    <button class="btn-small" id="bulk-export" disabled>Exportieren</button>
+                    <button class="btn-small" id="bulk-move" disabled>Verschieben</button>
+                </div>
+                <div class="view-options">
+                    <label>Spalten:</label>
+                    <select id="columns-select" multiple>
+                        <option value="inventory_number" selected>Inv.-Nr.</option>
+                        <option value="title" selected>Titel</option>
+                        <option value="creator" selected>Kuenstler</option>
+                        <option value="date" selected>Datierung</option>
+                        <option value="category">Kategorie</option>
+                        <option value="location" selected>Standort</option>
+                        <option value="condition">Zustand</option>
+                    </select>
+                </div>
+                <div class="sort-options">
+                    <label>Sortieren:</label>
+                    <select id="sort-by">
+                        <option value="inventory_number">Inv.-Nr.</option>
+                        <option value="title">Titel</option>
+                        <option value="creator">Kuenstler</option>
+                        <option value="date">Datierung</option>
+                    </select>
+                    <button class="sort-dir" id="sort-dir" title="Sortierrichtung">&#8593;</button>
+                </div>
+            </div>
+
+            <div class="object-list-container">
+                <table class="object-list" id="object-list">
+                    <thead id="list-head"></thead>
+                    <tbody id="list-body"></tbody>
+                </table>
+            </div>
+
+            <div class="pagination" id="pagination"></div>
+        </section>
+
+        <aside class="registry-context">
+            <section class="quick-view hidden" id="quick-view">
+                <h3>Schnellansicht</h3>
+                <div id="quick-view-content"></div>
+                <a href="#" class="edit-link" id="edit-link">Bearbeiten &rarr;</a>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkuerzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>Enter</dt>
+                    <dd>Zur Karteikarte</dd>
+                    <dt>Space</dt>
+                    <dd>Auswaehlen</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="mode-info">
+            <h3>Listen-Modus</h3>
+            <p><strong>Relevanz:</strong> Objektuebersicht fuer Bestandsmanagement. Filterbar, sortierbar.</p>
+            <p><strong>Innovation:</strong> Bulk-Aktionen, konfigurierbare Spalten.</p>
+        </div>
+        <a href="../workbench-registry.html" class="back-to-spec workbench-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/registry-liste.js"></script>
+</body>
+</html>

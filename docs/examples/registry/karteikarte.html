@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karteikarte - Registry - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/workbench.css">
+    <link rel="stylesheet" href="../../css/modes/registry-karteikarte.css">
+</head>
+<body>
+    <header class="demo-header workbench-header registry-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Registry</h1>
+            <span class="mode-badge">Karteikarten-Modus</span>
+        </div>
+        <p>Einzelobjekt-Formular mit Validierung</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="liste.html" role="tab">Liste</a>
+        <a href="karteikarte.html" role="tab" aria-selected="true" class="active">Karteikarte</a>
+        <a href="standort.html" role="tab">Standort</a>
+        <a href="zustand.html" role="tab">Zustand</a>
+    </nav>
+
+    <main class="registry-layout karteikarte-layout">
+        <aside class="registry-sidebar">
+            <div class="object-navigator">
+                <h3>Objekte</h3>
+                <div class="nav-controls">
+                    <button id="prev-object" title="Vorheriges">&larr;</button>
+                    <span id="object-position">1 / 25</span>
+                    <button id="next-object" title="Naechstes">&rarr;</button>
+                </div>
+                <ul class="object-thumbs" id="object-thumbs"></ul>
+            </div>
+
+            <div class="validation-summary">
+                <h3>Validierung</h3>
+                <div id="validation-status" class="status-ok">
+                    <span class="status-icon">&#10003;</span>
+                    <span class="status-text">Keine Fehler</span>
+                </div>
+                <ul id="validation-errors" class="error-list"></ul>
+            </div>
+        </aside>
+
+        <section class="registry-main">
+            <form class="object-form" id="object-form">
+                <div class="form-header">
+                    <h2 id="object-title">Objektdaten</h2>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="discard-changes">Verwerfen</button>
+                        <button type="submit" class="btn-primary" id="save-changes">Speichern</button>
+                    </div>
+                </div>
+
+                <fieldset class="form-section">
+                    <legend>Identifikation</legend>
+                    <div class="form-row">
+                        <label for="field-inventory">Inventarnummer *</label>
+                        <input type="text" id="field-inventory" name="inventory_number" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="field-title">Titel *</label>
+                        <input type="text" id="field-title" name="title" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="field-creator">Kuenstler/Urheber *</label>
+                        <input type="text" id="field-creator" name="creator">
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <legend>Beschreibung</legend>
+                    <div class="form-row">
+                        <label for="field-date">Datierung</label>
+                        <input type="text" id="field-date" name="date" placeholder="z.B. 1920, ca. 1850-1860">
+                    </div>
+                    <div class="form-row">
+                        <label for="field-medium">Material/Technik</label>
+                        <input type="text" id="field-medium" name="medium">
+                    </div>
+                    <div class="form-row form-row-split">
+                        <div>
+                            <label for="field-height">Hoehe (cm)</label>
+                            <input type="number" id="field-height" name="height_cm">
+                        </div>
+                        <div>
+                            <label for="field-width">Breite (cm)</label>
+                            <input type="number" id="field-width" name="width_cm">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="field-category">Kategorie</label>
+                        <select id="field-category" name="category">
+                            <option value="">-- Waehlen --</option>
+                            <option value="Malerei">Malerei</option>
+                            <option value="Skulptur">Skulptur</option>
+                            <option value="Grafik">Grafik</option>
+                            <option value="Fotografie">Fotografie</option>
+                            <option value="Installation">Installation</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <legend>Verwaltung</legend>
+                    <div class="form-row">
+                        <label for="field-location">Standort</label>
+                        <input type="text" id="field-location" name="location" readonly>
+                        <button type="button" class="btn-small" id="change-location">Aendern</button>
+                    </div>
+                    <div class="form-row">
+                        <label for="field-condition">Zustand</label>
+                        <select id="field-condition" name="condition">
+                            <option value="">-- Waehlen --</option>
+                            <option value="excellent">Ausgezeichnet</option>
+                            <option value="good">Gut</option>
+                            <option value="fair">Befriedigend</option>
+                            <option value="poor">Schlecht</option>
+                            <option value="unknown">Unbekannt</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label for="field-notes">Anmerkungen</label>
+                        <textarea id="field-notes" name="notes" rows="3"></textarea>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+
+        <aside class="registry-context">
+            <section class="history-panel">
+                <h3>Aenderungshistorie</h3>
+                <ul id="change-history" class="history-list">
+                    <li class="history-placeholder">Keine Aenderungen</li>
+                </ul>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkuerzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + S</dt>
+                    <dd>Speichern</dd>
+                    <dt>Cmd/Ctrl + &larr;/&rarr;</dt>
+                    <dd>Navigieren</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="mode-info">
+            <h3>Karteikarten-Modus</h3>
+            <p><strong>Relevanz:</strong> Einzelobjekt bearbeiten mit Formular-Validierung.</p>
+            <p><strong>Innovation:</strong> Vokabular-Autocomplete, Aenderungshistorie.</p>
+        </div>
+        <a href="../workbench-registry.html" class="back-to-spec workbench-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/registry-karteikarte.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zustand - Registry - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/workbench.css">
+    <link rel="stylesheet" href="../../css/modes/registry-zustand.css">
+</head>
+<body>
+    <header class="demo-header workbench-header registry-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Registry</h1>
+            <span class="mode-badge">Zustands-Modus</span>
+        </div>
+        <p>Erhaltungsstatus und Konservierung</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="liste.html" role="tab">Liste</a>
+        <a href="karteikarte.html" role="tab">Karteikarte</a>
+        <a href="standort.html" role="tab">Standort</a>
+        <a href="zustand.html" role="tab" aria-selected="true" class="active">Zustand</a>
+    </nav>
+
+    <main class="registry-layout zustand-layout">
+        <aside class="registry-sidebar">
+            <div class="condition-filter">
+                <h3>Zustandsfilter</h3>
+                <div class="condition-buttons">
+                    <button class="condition-btn active" data-condition="all">Alle</button>
+                    <button class="condition-btn excellent" data-condition="excellent">Ausgezeichnet</button>
+                    <button class="condition-btn good" data-condition="good">Gut</button>
+                    <button class="condition-btn fair" data-condition="fair">Befriedigend</button>
+                    <button class="condition-btn poor" data-condition="poor">Schlecht</button>
+                    <button class="condition-btn unknown" data-condition="unknown">Unbekannt</button>
+                </div>
+            </div>
+
+            <div class="condition-summary">
+                <h3>Zustandsuebersicht</h3>
+                <div class="condition-chart" id="condition-chart">
+                    <!-- SVG Balkendiagramm -->
+                </div>
+            </div>
+
+            <div class="priority-panel">
+                <h3>Restaurierungsprioriaet</h3>
+                <ul id="priority-list" class="priority-list">
+                    <!-- Dynamisch: Objekte nach Dringlichkeit -->
+                </ul>
+            </div>
+        </aside>
+
+        <section class="registry-main">
+            <div class="condition-header">
+                <h2>Zustandsbewertungen</h2>
+                <div class="view-options">
+                    <select id="sort-condition">
+                        <option value="priority">Nach Prioritaet</option>
+                        <option value="date">Nach letzter Pruefung</option>
+                        <option value="alpha">Alphabetisch</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="condition-grid" id="condition-grid">
+                <!-- Dynamisch: Objektkarten mit Zustandsampel -->
+            </div>
+        </section>
+
+        <aside class="registry-context">
+            <section class="condition-detail hidden" id="condition-detail">
+                <h3>Zustandsdetail</h3>
+                <div id="detail-content"></div>
+                <button class="btn-small" id="add-assessment">Neue Bewertung</button>
+            </section>
+
+            <section class="condition-legend">
+                <h3>Legende</h3>
+                <ul class="legend-list">
+                    <li><span class="legend-dot excellent"></span> Ausgezeichnet</li>
+                    <li><span class="legend-dot good"></span> Gut</li>
+                    <li><span class="legend-dot fair"></span> Befriedigend</li>
+                    <li><span class="legend-dot poor"></span> Schlecht</li>
+                    <li><span class="legend-dot unknown"></span> Unbekannt</li>
+                </ul>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkuerzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>1-5</dt>
+                    <dd>Zustand filtern</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="mode-info">
+            <h3>Zustands-Modus</h3>
+            <p><strong>Relevanz:</strong> Erhaltungsstatus fuer Konservierung und Priorisierung.</p>
+            <p><strong>Innovation:</strong> Ampelsystem, Restaurierungsprioritaet, Fotodokumentation.</p>
+        </div>
+        <a href="../workbench-registry.html" class="back-to-spec workbench-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/registry-zustand.js"></script>
+</body>
+</html>

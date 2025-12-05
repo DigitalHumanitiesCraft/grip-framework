@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur - Schema - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/workbench.css">
+    <link rel="stylesheet" href="../../css/modes/schema-struktur.css">
+</head>
+<body>
+    <header class="demo-header workbench-header schema-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Schema</h1>
+            <span class="mode-badge">Struktur-Modus</span>
+        </div>
+        <p>JSON Schema Baumansicht</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="struktur.html" role="tab" aria-selected="true" class="active">Struktur</a>
+        <a href="editor.html" role="tab">Editor</a>
+        <a href="validator.html" role="tab">Validator</a>
+        <a href="diff.html" role="tab">Diff</a>
+    </nav>
+
+    <main class="schema-layout struktur-layout">
+        <aside class="schema-sidebar">
+            <div class="schema-source">
+                <h3>Schema laden</h3>
+                <input type="file" id="schema-file" accept=".json">
+                <span class="or-divider">oder URL</span>
+                <input type="text" id="schema-url" placeholder="https://...">
+                <button id="load-schema" class="action-btn">Laden</button>
+            </div>
+
+            <div class="schema-info">
+                <h3>Schema-Info</h3>
+                <dl class="info-list">
+                    <dt>Titel</dt>
+                    <dd id="info-title">–</dd>
+                    <dt>Version</dt>
+                    <dd id="info-version">–</dd>
+                    <dt>$schema</dt>
+                    <dd id="info-draft">–</dd>
+                </dl>
+            </div>
+
+            <div class="stats-section">
+                <h3>Statistik</h3>
+                <dl class="stats-list">
+                    <dt>Properties</dt>
+                    <dd id="stat-properties">0</dd>
+                    <dt>Required</dt>
+                    <dd id="stat-required">0</dd>
+                    <dt>Tiefe</dt>
+                    <dd id="stat-depth">0</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <section class="schema-main">
+            <div class="tree-toolbar">
+                <button id="expand-all" class="tool-btn">+ Alle</button>
+                <button id="collapse-all" class="tool-btn">− Alle</button>
+                <input type="text" id="tree-search" placeholder="Property suchen...">
+            </div>
+
+            <div class="schema-tree" id="schema-tree">
+                <!-- Dynamisch: Schema-Baum -->
+                <div class="empty-state">
+                    <p>Laden Sie ein JSON Schema um die Struktur anzuzeigen.</p>
+                </div>
+            </div>
+        </section>
+
+        <aside class="schema-context">
+            <section class="property-detail hidden" id="property-detail">
+                <h3>Property</h3>
+                <h4 id="detail-name"></h4>
+                <dl>
+                    <dt>Typ</dt>
+                    <dd id="detail-type"></dd>
+                    <dt>Beschreibung</dt>
+                    <dd id="detail-description"></dd>
+                    <dt>Required</dt>
+                    <dd id="detail-required"></dd>
+                    <dt>Default</dt>
+                    <dd id="detail-default"></dd>
+                </dl>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>E / W</dt>
+                    <dd>Expand / Collapse</dd>
+                    <dt>/</dt>
+                    <dd>Suche</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="mode-info">
+            <h3>Struktur-Modus</h3>
+            <p><strong>Relevanz:</strong> Visualisierung der Schema-Hierarchie als Baum.</p>
+            <p><strong>Innovation:</strong> Expandierbarer Baum, Property-Details, Suche.</p>
+        </div>
+        <a href="../workbench-schema.html" class="back-to-spec workbench-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/schema-struktur.js"></script>
+</body>
+</html>

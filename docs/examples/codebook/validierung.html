@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validierung - Codebook - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/workbench.css">
+    <link rel="stylesheet" href="../../css/modes/codebook-validierung.css">
+</head>
+<body>
+    <header class="demo-header workbench-header codebook-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Codebook</h1>
+            <span class="mode-badge">Validierung-Modus</span>
+        </div>
+        <p>Qualitätsprüfung und Konsistenz</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="variablenliste.html" role="tab">Variablenliste</a>
+        <a href="variablendetail.html" role="tab">Variablendetail</a>
+        <a href="validierung.html" role="tab" aria-selected="true" class="active">Validierung</a>
+        <a href="export.html" role="tab">Export</a>
+    </nav>
+
+    <main class="codebook-layout validierung-layout">
+        <aside class="codebook-sidebar">
+            <div class="validation-controls">
+                <h3>Prüfungen</h3>
+                <button id="run-validation" class="action-btn primary">▶ Validierung starten</button>
+            </div>
+
+            <div class="rule-categories">
+                <h3>Regelkategorien</h3>
+                <label>
+                    <input type="checkbox" data-category="completeness" checked>
+                    Vollständigkeit
+                </label>
+                <label>
+                    <input type="checkbox" data-category="consistency" checked>
+                    Konsistenz
+                </label>
+                <label>
+                    <input type="checkbox" data-category="format" checked>
+                    Format
+                </label>
+                <label>
+                    <input type="checkbox" data-category="range" checked>
+                    Wertebereich
+                </label>
+            </div>
+
+            <div class="stats-section">
+                <h3>Ergebnis</h3>
+                <dl class="stats-list">
+                    <dt>Geprüft</dt>
+                    <dd id="stat-checked">0</dd>
+                    <dt>Fehler</dt>
+                    <dd id="stat-errors" class="error">0</dd>
+                    <dt>Warnungen</dt>
+                    <dd id="stat-warnings" class="warning">0</dd>
+                    <dt>OK</dt>
+                    <dd id="stat-ok" class="ok">0</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <section class="codebook-main">
+            <div class="validation-header">
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">Alle</button>
+                    <button class="filter-btn" data-filter="error">Fehler</button>
+                    <button class="filter-btn" data-filter="warning">Warnungen</button>
+                    <button class="filter-btn" data-filter="ok">OK</button>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="issue-search" placeholder="Issue suchen...">
+                </div>
+            </div>
+
+            <div class="validation-results" id="validation-results">
+                <div class="empty-state">
+                    <p>Klicken Sie "Validierung starten" um die Prüfung durchzuführen.</p>
+                </div>
+            </div>
+        </section>
+
+        <aside class="codebook-context">
+            <section class="issue-detail hidden" id="issue-detail">
+                <h3>Issue-Detail</h3>
+                <div class="severity-badge" id="detail-severity"></div>
+                <h4 id="detail-rule"></h4>
+                <dl>
+                    <dt>Variable</dt>
+                    <dd id="detail-variable"></dd>
+                    <dt>Erwartet</dt>
+                    <dd id="detail-expected"></dd>
+                    <dt>Gefunden</dt>
+                    <dd id="detail-found"></dd>
+                    <dt>Empfehlung</dt>
+                    <dd id="detail-suggestion"></dd>
+                </dl>
+                <button id="fix-issue" class="action-btn">🔧 Beheben</button>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>Enter</dt>
+                    <dd>Validierung starten</dd>
+                    <dt>F</dt>
+                    <dd>Issue beheben</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="mode-info">
+            <h3>Validierung-Modus</h3>
+            <p><strong>Relevanz:</strong> Automatische Qualitätsprüfung des Codebooks.</p>
+            <p><strong>Innovation:</strong> Regelbasierte Validierung, Fix-Vorschläge, Batch-Korrektur.</p>
+        </div>
+        <a href="../workbench-codebook.html" class="back-to-spec workbench-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/codebook-validierung.js"></script>
+</body>
+</html>

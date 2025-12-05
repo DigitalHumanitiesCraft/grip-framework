@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diff - Schema - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/workbench.css">
+    <link rel="stylesheet" href="../../css/modes/schema-diff.css">
+</head>
+<body>
+    <header class="demo-header workbench-header schema-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Schema</h1>
+            <span class="mode-badge">Diff-Modus</span>
+        </div>
+        <p>Schema-Versionen vergleichen</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="struktur.html" role="tab">Struktur</a>
+        <a href="editor.html" role="tab">Editor</a>
+        <a href="validator.html" role="tab">Validator</a>
+        <a href="diff.html" role="tab" aria-selected="true" class="active">Diff</a>
+    </nav>
+
+    <main class="schema-layout diff-layout">
+        <aside class="schema-sidebar">
+            <div class="diff-options">
+                <h3>Vergleich</h3>
+                <label>
+                    <input type="checkbox" id="opt-structural" checked>
+                    Strukturelle Änderungen
+                </label>
+                <label>
+                    <input type="checkbox" id="opt-semantic" checked>
+                    Semantische Änderungen
+                </label>
+                <label>
+                    <input type="checkbox" id="opt-breaking" checked>
+                    Breaking Changes hervorheben
+                </label>
+            </div>
+
+            <div class="stats-section">
+                <h3>Änderungen</h3>
+                <dl class="stats-list">
+                    <dt>Hinzugefügt</dt>
+                    <dd id="stat-added" class="added">0</dd>
+                    <dt>Entfernt</dt>
+                    <dd id="stat-removed" class="removed">0</dd>
+                    <dt>Geändert</dt>
+                    <dd id="stat-changed" class="changed">0</dd>
+                    <dt>Breaking</dt>
+                    <dd id="stat-breaking" class="breaking">0</dd>
+                </dl>
+            </div>
+
+            <div class="diff-actions">
+                <button id="compare-btn" class="action-btn primary">Vergleichen</button>
+                <button id="swap-btn" class="action-btn">⇆ Tauschen</button>
+            </div>
+        </aside>
+
+        <section class="schema-main">
+            <div class="diff-panels">
+                <div class="panel left-panel">
+                    <div class="panel-header">
+                        <h3>Schema A (alt)</h3>
+                        <input type="file" id="schema-a-file" accept=".json">
+                    </div>
+                    <div class="panel-body">
+                        <textarea id="schema-a" placeholder="Altes Schema hier einfügen..."></textarea>
+                    </div>
+                </div>
+
+                <div class="panel right-panel">
+                    <div class="panel-header">
+                        <h3>Schema B (neu)</h3>
+                        <input type="file" id="schema-b-file" accept=".json">
+                    </div>
+                    <div class="panel-body">
+                        <textarea id="schema-b" placeholder="Neues Schema hier einfügen..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="diff-results" id="diff-results">
+                <div class="results-header">
+                    <h3>Unterschiede</h3>
+                    <div class="legend">
+                        <span class="legend-item added">+ Hinzugefügt</span>
+                        <span class="legend-item removed">− Entfernt</span>
+                        <span class="legend-item changed">~ Geändert</span>
+                    </div>
+                </div>
+                <div class="results-body" id="results-body">
+                    <div class="empty-state">
+                        <p>Fügen Sie zwei Schemas ein und klicken Sie "Vergleichen".</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="schema-context">
+            <section class="change-detail hidden" id="change-detail">
+                <h3>Änderung</h3>
+                <div class="change-type" id="detail-type"></div>
+                <dl>
+                    <dt>Pfad</dt>
+                    <dd id="detail-path"></dd>
+                    <dt>Vorher</dt>
+                    <dd id="detail-before"></dd>
+                    <dt>Nachher</dt>
+                    <dd id="detail-after"></dd>
+                    <dt>Impact</dt>
+                    <dd id="detail-impact"></dd>
+                </dl>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkürzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>Cmd/Ctrl + D</dt>
+                    <dd>Vergleichen</dd>
+                    <dt>↑ ↓</dt>
+                    <dd>Zwischen Änderungen</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer workbench-footer">
+        <div class="mode-info">
+            <h3>Diff-Modus</h3>
+            <p><strong>Relevanz:</strong> Vergleich von Schema-Versionen für Migration.</p>
+            <p><strong>Innovation:</strong> Breaking-Change-Erkennung, visueller Diff.</p>
+        </div>
+        <a href="../workbench-schema.html" class="back-to-spec workbench-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/schema-diff.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph - Concept - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navigator.css">
+    <link rel="stylesheet" href="../../css/modes/concept-graph.css">
+</head>
+<body>
+    <header class="demo-header navigator-header concept-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Concept</h1>
+            <span class="mode-badge">Graph-Modus</span>
+        </div>
+        <p>Alle Relationstypen als Netzwerk</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="hierarchie.html" role="tab">Hierarchie</a>
+        <a href="graph.html" role="tab" aria-selected="true" class="active">Graph</a>
+        <a href="definition.html" role="tab">Definition</a>
+        <a href="mapping.html" role="tab">Mapping</a>
+    </nav>
+
+    <main class="concept-layout graph-layout">
+        <aside class="concept-sidebar">
+            <div class="ontology-meta">
+                <h2 id="ontology-name">Thesaurus</h2>
+            </div>
+
+            <div class="relation-filter">
+                <h3>Relationstypen</h3>
+                <div id="relation-toggles">
+                    <!-- Dynamisch: Checkboxen fuer Relationstypen -->
+                </div>
+            </div>
+
+            <div class="layout-options">
+                <h3>Layout</h3>
+                <select id="layout-type">
+                    <option value="force">Force-Directed</option>
+                    <option value="radial">Radial</option>
+                    <option value="hierarchical">Hierarchisch</option>
+                </select>
+            </div>
+
+            <div class="display-options">
+                <h3>Anzeige</h3>
+                <label><input type="checkbox" id="show-labels" checked> Labels</label>
+                <label><input type="checkbox" id="show-orphans"> Isolierte zeigen</label>
+            </div>
+
+            <div class="legend-section">
+                <h3>Legende</h3>
+                <ul class="relation-legend" id="relation-legend">
+                    <!-- Dynamisch: Relationstyp-Farben -->
+                </ul>
+            </div>
+        </aside>
+
+        <section class="concept-main">
+            <div class="graph-toolbar">
+                <button class="graph-btn" id="zoom-in">+</button>
+                <button class="graph-btn" id="zoom-out">-</button>
+                <button class="graph-btn" id="reset-view">Reset</button>
+            </div>
+
+            <div class="graph-container" id="graph-container">
+                <svg id="concept-graph"></svg>
+            </div>
+
+            <div class="node-tooltip hidden" id="node-tooltip"></div>
+        </section>
+
+        <aside class="concept-context">
+            <section class="selected-concept hidden" id="selected-concept">
+                <h3>Ausgewaehlt</h3>
+                <h4 id="selected-label"></h4>
+                <p id="selected-definition"></p>
+                <div class="selected-relations" id="selected-relations"></div>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkuerzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                    <dt>+/-</dt>
+                    <dd>Zoom</dd>
+                    <dt>Drag</dt>
+                    <dd>Knoten verschieben</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer navigator-footer">
+        <div class="mode-info">
+            <h3>Graph-Modus</h3>
+            <p><strong>Relevanz:</strong> Alle Relationstypen als Netzwerk fuer komplexe Zusammenhaenge.</p>
+            <p><strong>Innovation:</strong> Force-Layout. Kantentypen farbcodiert. Filterbare Relationen.</p>
+        </div>
+        <a href="../navigator-concept.html" class="back-to-spec navigator-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/concept-graph.js"></script>
+</body>
+</html>

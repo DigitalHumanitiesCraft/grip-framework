@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residuen - Matrix - GRIP Framework</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/scope.css">
+    <link rel="stylesheet" href="../../css/modes/matrix-residuen.css">
+</head>
+<body>
+    <header class="demo-header scope-header matrix-header">
+        <a href="../../index.html" class="back-link">&larr; Zur Matrix</a>
+        <div class="header-main">
+            <h1>Matrix</h1>
+            <span class="mode-badge">Residuen-Modus</span>
+        </div>
+        <p>Statistische Abweichungen vom Erwartungswert</p>
+    </header>
+
+    <nav class="mode-tabs" role="tablist">
+        <a href="tabelle.html" role="tab">Tabelle</a>
+        <a href="heatmap.html" role="tab">Heatmap</a>
+        <a href="residuen.html" role="tab" aria-selected="true" class="active">Residuen</a>
+        <a href="pivot.html" role="tab">Pivot</a>
+    </nav>
+
+    <main class="matrix-layout residuen-layout">
+        <aside class="matrix-sidebar">
+            <div class="matrix-meta">
+                <h2 id="matrix-title">Residuenanalyse</h2>
+                <p class="matrix-source" id="matrix-source"></p>
+            </div>
+
+            <div class="residual-options">
+                <h3>Residuen-Typ</h3>
+                <select id="residual-type">
+                    <option value="standardized">Standardisiert</option>
+                    <option value="adjusted">Korrigiert (adjusted)</option>
+                    <option value="raw">Roh (O-E)</option>
+                </select>
+            </div>
+
+            <div class="threshold-options">
+                <h3>Signifikanzschwelle</h3>
+                <select id="threshold">
+                    <option value="1.96">|z| > 1.96 (p &lt; .05)</option>
+                    <option value="2.58">|z| > 2.58 (p &lt; .01)</option>
+                    <option value="3.29">|z| > 3.29 (p &lt; .001)</option>
+                </select>
+            </div>
+
+            <div class="display-options">
+                <h3>Anzeige</h3>
+                <label><input type="checkbox" id="highlight-sig" checked> Signifikante hervorheben</label>
+                <label><input type="checkbox" id="show-expected"> Erwartete Werte zeigen</label>
+            </div>
+
+            <div class="chi-breakdown">
+                <h3>Chi-Quadrat-Beitraege</h3>
+                <div id="chi-contributions">
+                    <!-- Balkendiagramm der Chi-Quadrat-Beitraege -->
+                </div>
+            </div>
+
+            <div class="statistics-panel">
+                <h3>Gesamtstatistik</h3>
+                <dl class="stats-list">
+                    <dt>Chi-Quadrat</dt>
+                    <dd id="stat-chi">-</dd>
+                    <dt>df</dt>
+                    <dd id="stat-df">-</dd>
+                    <dt>p-Wert</dt>
+                    <dd id="stat-p">-</dd>
+                    <dt>Cramers V</dt>
+                    <dd id="stat-v">-</dd>
+                </dl>
+            </div>
+        </aside>
+
+        <section class="matrix-main">
+            <div class="residuen-container">
+                <table class="residuen-table" id="residuen-table">
+                    <thead id="residuen-head"></thead>
+                    <tbody id="residuen-body"></tbody>
+                </table>
+            </div>
+
+            <div class="legend-container">
+                <div class="residuen-legend">
+                    <span class="legend-negative">Unter Erwartung</span>
+                    <div class="legend-gradient diverging"></div>
+                    <span class="legend-positive">Ueber Erwartung</span>
+                </div>
+            </div>
+
+            <div class="cell-detail hidden" id="cell-detail">
+                <h3>Zelldetail</h3>
+                <dl id="cell-detail-content"></dl>
+            </div>
+        </section>
+
+        <aside class="matrix-context">
+            <section class="interpretation-help">
+                <h3>Interpretation</h3>
+                <p><strong>Positive Residuen:</strong> Mehr beobachtet als erwartet</p>
+                <p><strong>Negative Residuen:</strong> Weniger beobachtet als erwartet</p>
+                <p><strong>|z| > 1.96:</strong> Statistisch signifikant (p &lt; .05)</p>
+            </section>
+
+            <section class="keyboard-hints">
+                <h3>Tastenkuerzel</h3>
+                <dl class="hint-list">
+                    <dt>Cmd/Ctrl + 1-4</dt>
+                    <dd>Modus wechseln</dd>
+                </dl>
+            </section>
+        </aside>
+    </main>
+
+    <footer class="demo-footer scope-footer">
+        <div class="mode-info">
+            <h3>Residuen-Modus</h3>
+            <p><strong>Relevanz:</strong> Statistische Abweichungen visualisieren. Fuer Signifikanzanalyse.</p>
+            <p><strong>Innovation:</strong> Faerbung nach Residuengroesse. Chi-Quadrat-Zerlegung visualisiert.</p>
+        </div>
+        <a href="../scope-matrix.html" class="back-to-spec scope-btn">Zur Spezialisierung</a>
+    </footer>
+
+    <script type="module" src="../../js/modes/matrix-residuen.js"></script>
+</body>
+</html>
