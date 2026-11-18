@@ -999,6 +999,20 @@ footer a:hover {
     max-width: 400px;
 }
 
+/* Imprint line, present in every page footer */
+.site-imprint {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.footer-content .site-imprint {
+    margin-top: var(--space-md);
+}
+
+.demo-footer .site-imprint {
+    width: 100%;
+}
+
 .demo-footer .archetype-info h3 {
     font-family: var(--font-serif);
     font-size: 1rem;
